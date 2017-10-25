@@ -17,10 +17,10 @@ import './utils/iconfont/iconfont.css'
 
 
 
-import Active from './containers/active/native_index'
+// import Active from './containers/active/native_index'
 // import Active from './components/Commons/demo'
 
-
+import Home from './containers/Home/index'
 
 export default class App extends React.Component {
 
@@ -38,7 +38,7 @@ export default class App extends React.Component {
 
                         <div key={location.pathname}>
 
-                            <Route location={location} path="/" component={Active}/>
+                            <Route location={location} path="/" component={Home}/>
 
 
                         </div>

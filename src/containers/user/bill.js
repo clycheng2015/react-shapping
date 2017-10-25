@@ -48,18 +48,12 @@ export default class Bill extends React.Component {
     render() {
         const {bill, history} = this.props
         const {data} = bill
-
-        console.log(data)
-
-
-        if (data && data.datalist && data.datalist.length > 0) {
-
             return (
                 <div className="bill-container"
 
                      style={{
-                         // minHeight: document.documentElement.clientHeight,
-                         // background: "#f3f3f1"
+                         minHeight: document.documentElement.clientHeight,
+                         background: "#f3f3f1"
                      }}
                 >
 
@@ -68,22 +62,26 @@ export default class Bill extends React.Component {
                             <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
                                 history.goBack()
                             }}/></Flex.Item>
-                            <Flex.Item className="item-head center">账单</Flex.Item>
+                            <Flex.Item className="item-head center">资金记录</Flex.Item>
                             <Flex.Item className="item-head right"><span></span></Flex.Item>
                         </Flex>
                     </div>
 
+                    {
+                        data && data.datalist && data.datalist.length > 0?
+                            <List style={{paddingTop: "1rem"}} key="k"
 
-                    <List style={{paddingTop: ".8rem"}} key="k">
+                                  renderHeader={() => '2017年9月'}
+                            >
 
-                        {
-                            data.datalist.map((i, key) => {
+                            {
+                                data.datalist.map((i, key) => {
 
-                                switch (i.type) {
+                                    switch (i.type) {
 
-                                    case 'TX':
+                                        case 'TX':
 
-                                        return (
+                                            return (
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_red.png')}
                                                            key={key}
@@ -95,11 +93,11 @@ export default class Bill extends React.Component {
                                                     </List.Item.Brief>
                                                 </List.Item>
 
-                                        )
+                                            )
 
-                                    case 'RECHARGE':
+                                        case 'RECHARGE':
 
-                                        return (
+                                            return (
 
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_blue.png')}
@@ -112,11 +110,11 @@ export default class Bill extends React.Component {
                                                     </List.Item.Brief>
                                                 </List.Item>
 
-                                        )
+                                            )
 
-                                    case 'GOODS':
+                                        case 'GOODS':
 
-                                        return (
+                                            return (
 
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_blue.png')}
@@ -129,11 +127,11 @@ export default class Bill extends React.Component {
                                                     </List.Item.Brief>
                                                 </List.Item>
 
-                                        )
+                                            )
 
-                                    case 'FAN':
+                                        case 'FAN':
 
-                                        return (
+                                            return (
 
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_blue.png')}
@@ -146,48 +144,32 @@ export default class Bill extends React.Component {
                                                     </List.Item.Brief>
                                                 </List.Item>
 
-                                        )
+                                            )
 
 
-                                }
-                            })}
+                                    }
+                                })}
 
-                    </List>
+                        </List>
 
+                            :
 
+                            <div className="empty-info"
+                                 style={{
+                                     height: document.documentElement.clientHeight - 130,
+                                     background: "#f3f3f1"
+                                 }}
+                            >
+
+                                <img src={require('static/images/empty/tmp_order@2x.png')} alt=""/>
+                                <p> </p>
+                                <p > 您还没有账单信息</p>
+                            </div>
+
+                    }
                 </div>
             )
 
-
-        } else {
-
-
-            return (
-                <div className="bill-container"
-
-                     style={{
-                         // minHeight: document.documentElement.clientHeight,
-                         // background: "#f3f3f1"
-                     }}
-                >
-
-                    <div className="nav-tab">
-                        <Flex justify="center" align="center">
-                            <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                                history.goBack()
-                            }}/></Flex.Item>
-                            <Flex.Item className="item-head center">账单</Flex.Item>
-                            <Flex.Item className="item-head right"><span></span></Flex.Item>
-                        </Flex>
-                    </div>
-                    <div style={{width: '100%', textAlign: "center", marginTop: "3rem"}}>
-
-                        暂无账单信息
-                    </div>
-
-                </div>
-            )
-        }
 
     }
 }

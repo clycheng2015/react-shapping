@@ -2,30 +2,34 @@
  * Created by bear on 2017/9/14.
  */
 
+body{
+  background: #f7f6f6;
 
-.item-list-container{
-
-  .nav-tab{
-    height: .8rem;
+}
+.item-list-container {
+  background: #f7f6f6;
+  .nav-tab {
+    z-index: 1111;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
-    top:0;
+    top: 0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
-    .back-icon{
+    line-height: .9rem;
+    .back-icon {
       float: left;
       padding-left: .2rem;
       padding-top: .1rem;
 
     }
-    span{
+    span {
       margin-right: .35rem;
 
     }
   }
-  .list{
+  .list {
     margin-top: .8rem;
   }
   .flex-container .per {
@@ -33,14 +37,12 @@
     border: 3px solid white;
     box-sizing: border-box;
 
-    .img-info{
+    .img-info {
       width: 100%;
       //height: auto;
       background: #f3f3f1;
-      height:3rem;
+      height: 3rem;
       overflow: hidden;
-
-
 
     }
   }
@@ -54,20 +56,20 @@
     padding-left: .1rem;
     padding-top: .1rem;
 
-    .mall-title{
+    .mall-title {
       overflow: hidden;
-      text-overflow:ellipsis;
+      text-overflow: ellipsis;
       white-space: nowrap;
       padding-right: .2rem;
       font-size: .25rem;
 
     }
   }
-  a{
+  a {
     color: black;
   }
 
-  .no-goods{
+  .no-goods {
 
     width: 100%;
     text-align: center;
@@ -75,4 +77,89 @@
     color: #666666;
 
   }
+  .goods{
+    width: 3.7rem;
+    height: 5rem;
+    background: white;
+    //border: 1px solid red;
+    float: left;
+    box-sizing: border-box;
+    margin-top: .1rem;
+    .img-info{
+      width: 3.7rem;
+      height: 3.7rem;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      img{
+        width: 70%;
+        max-height:3.7rem;
+        vertical-align: middle;
+      }
+
+
+    }
+
+    .txt-info{
+      width: 3.7rem;
+      height: 1.2rem;
+      overflow: hidden;
+
+      .title{
+
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-line-clamp: 2 !important;
+        overflow: hidden !important;
+        font-size: .3rem;
+        height: .71rem;
+        padding-right: .2rem;
+        padding-left: .2rem;
+      }
+      .price{
+        padding-right: .2rem;
+        padding-left: .2rem;
+        color: red;
+        font-size: .3rem;
+        line-height: .5rem;
+      }
+
+    }
+
+  }
+  .goods:nth-child(even){
+    margin-left: .09rem;
+  }
+
+  .tab-bar{
+    z-index: 1111;
+    position: fixed;
+    top: .9rem;
+    width: 7.5rem;
+    text-align: center;
+    height: .8rem;
+    background: white;
+    border-top: 1px solid #f7f6f6;
+    border-bottom: 1px solid #f7f6f6;
+    box-sizing: border-box;
+    box-shadow: 0 2px  2px #f7f6f6;
+
+    img{
+      width: .15rem;
+      margin-left: .1rem;
+      }
+
+    .img-up{
+      transform: rotate(180deg);
+
+    }
+
+
+  }
+  .am-list-body{
+    border:none
+  }
+
+
+
 }

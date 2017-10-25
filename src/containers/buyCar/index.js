@@ -68,8 +68,8 @@ export default class BuyCar extends React.Component {
         return (
             <div className="car-container"
                  style={{
-                     minHeight: document.documentElement.clientHeight,
-                     background: "#f3f3f1"
+                     // minHeight: document.documentElement.clientHeight,
+                     background: "#f7f6f6"
                  }}>
                 <div key={this.props.location.pathname}>
                     <div className="nav-tab">
@@ -90,33 +90,39 @@ export default class BuyCar extends React.Component {
 
                     {
                         data && data.datalist && data.datalist.length > 0 ?
-                            <CarList history={history} list={data.datalist} fetchDelCar={fetchDelCar}
-                                     fetchUpdateCarNum={fetchUpdateCarNum} match={match}/>
+
+                            <div>
+
+                                <div className="banner-info">
+
+                                    <img src={require('static/images/user/car_icon.png')} alt=""/>
+                                    全场满88包邮！
+                                    {/*<img src={require('static/images/user/close_icon.png')} alt=""/>*/}
+
+                                </div>
+                                <CarList history={history} list={data.datalist} fetchDelCar={fetchDelCar}
+                                         fetchUpdateCarNum={fetchUpdateCarNum} match={match}/>
+                            </div>
                             :
-                            <Flex justify="center" align="center" style={{width: "100%", height: "100%"}}>
-                                <Flex.Item >
-                                    <div style={{width: "100%", textAlign: "center", paddingTop: "2.8rem"}}>
-                                        <img style={{width: "3rem",}}
+                            <div className="empty-info"
+                                 style={{
+                                     height: document.documentElement.clientHeight - 130,
+                                     background: "#f7f6f6"
+                                 }}
+                            >
 
-                                             src={require('static/image/caricon.png')} alt=""/>
-
-                                        <p style={{
-                                            color:"grey",
-                                            paddingTop:".5rem"
-                                        }}>哎呀，购物车是空的！</p>
-                                    </div>
-
-                                </Flex.Item>
-                            </Flex>
+                                <img src={require('static/images/empty/noads_icon.png')} alt=""/>
+                                <p> 您的购物车空空如也</p>
+                                <p onClick={() => {
+                                    history.push("/")
+                                }}> 去逛逛</p>
+                            </div>
                     }
                 </div>
                 {
                     match.params.state == 'dltocar' ?'' :
-
                         <TabBarMain history={history} page="buyCar"/>
-
                 }
-
             </div>
         )
     }

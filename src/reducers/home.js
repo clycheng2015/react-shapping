@@ -12,13 +12,12 @@ let init = {
     tab: "推荐",
     cid:"",
     tabIndex:'',
-
-
     //改版
     bannerList:[],
     centerList:[],
     moreList:[],
-    hamMore:false
+    hamMore:false,
+
 
 }
 

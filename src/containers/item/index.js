@@ -1,4 +1,7 @@
 /**
+ * Created by bear on 2017/10/20.
+ */
+/**
  * Created by Administrator on 2016/7/1.
  */
 import React, {PropTypes} from 'react'
@@ -12,7 +15,7 @@ require('./styles/index.less')
 import * as item from 'actions/item'
 import * as global from 'actions/global'
 import TabBarMain from 'containers/common/tabbar'
-import IndexList from 'components/item/indexList'
+import IndexList from 'components/item/list'
 
 @connect(
     state => {
@@ -44,11 +47,14 @@ export default class Item extends React.Component {
         const {list, history} = this.props
 
 
+        console.log(list)
+
+
         const itemList = () => {
 
             if (list && list.categories && list.categories.length > 0) {
                 return (
-                    <IndexList list={list.categories}/>
+                    <IndexList list={list.categories} history={history}/>
                 )
             } else {
 
@@ -61,23 +67,38 @@ export default class Item extends React.Component {
         }
 
         return (
-            <div className="item-container">
-                <SearchBar
-                    placeholder="搜索商品,共1200件商品"
-                    focused={this.state.focused}
-                    // cancelText="确定"
-                    onFocus={() => {
-                        this.setState({
-                            focused: false,
-                        });
-                    }}
-                    onCancel={this._onSearch}
-                    onSubmit={value =>
+            <div className="item-container"
 
-                        history.push(`/search/${value}`)
+            style={{
+                height:'auto',
+                // height: document.documentElement.clientHeight,
 
-                    }
-                />
+            }}
+            >
+
+                <div className="nav">
+                    <SearchBar
+                        placeholder="上新1200种商品"
+                        focused={this.state.focused}
+                        // cancelText="确定"
+                        onFocus={() => {
+                            this.setState({
+                                focused: false,
+                            });
+                        }}
+                        onCancel={this._onSearch}
+                        onSubmit={value =>
+
+                            history.push(`/search/${value}`)
+
+                        }
+                    />
+                </div>
+
+                <div style={{height:"1rem",width:"100%"}}>
+
+                </div>
+
                 <div className="list-info">
                     {itemList()}
                 </div>

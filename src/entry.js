@@ -12,7 +12,7 @@ import createLogger from 'redux-logger';
 import { AppContainer } from 'react-hot-loader'
 
 ////测试
-import App from './test'
+// import App from './test'
 
 
 ////活动入口
@@ -21,8 +21,8 @@ import App from './test'
 
 ////商城入口
 
-// import App from './App'
-//
+import App from './App'
+
 
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
@@ -37,10 +37,10 @@ const nodeEnv = process.env.NODE_ENV || 'development'
 
 const isPro = nodeEnv === 'production'
 
-if (isPro) {
-    console.log("获取openid")
-    require('./utils/openId')
-}
+// if (isPro) {
+//     console.log("获取openid")
+//     require('./utils/openId')
+// }
 // removeLocalItem("userInfo")
 window.isEmpty = isEmpty
 window.isEqual = isEqual

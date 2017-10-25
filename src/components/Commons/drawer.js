@@ -1,10 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactDrawer from './lib/react-drawer';
-/* if you using webpack, should not apply identity to this css */
 require('./lib/react-drawer.less')
 
-export  default  class Main extends React.Component {
+
+/**
+ * goodsDetail   component
+ */
+
+
+const Main=(props)=>{
+    "use strict";
+
+    const {type}=this.props
+
+    return(
+
+        <div></div>
+    )
+
+}
+
+
+
+
+export  default  class Drawer extends React.Component {
     constructor() {
         super();
         this.state = {

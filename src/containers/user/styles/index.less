@@ -1,42 +1,43 @@
 .user-container {
   //background: #f3f3f1;
   height: auto;
-  //margin-top: 1rem;
+  overflow: hidden;
 
-  .nav-tab{
+
+  .nav-tab {
 
     z-index: 1111111;
-    height: .8rem;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
-    top:0;
+    top: 0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
-    .set-icon{
+    line-height: .9rem;
+    .set-icon {
       width: .35rem;
 
     }
-    .left{
+    .left {
       text-align: left;
       padding-top: .1rem;
       padding-left: .1rem;
     }
 
-    .center{
+    .center {
       line-height: .6rem;
       padding-bottom: .2rem;
       text-align: center;
 
     }
-    .right{
+    .right {
 
       text-align: right;
       padding-right: .3rem;
       padding-bottom: .1rem;
     }
-    .item-head{
+    .item-head {
       //text-align: center;
       line-height: .8rem;
       overflow: hidden;
@@ -52,21 +53,89 @@
   .head {
     border: none;
     border-radius: 0;
-    //padding-top: .2rem;
+    padding-top: .4rem;
+
+    margin-top: .9rem;
 
   }
 
+  .order-info{
+    //padding-left: .2rem;
+    //padding-right: .2rem;
+
+    margin-top: .2rem;
+    .am-list-item{
+      border-bottom: 1px solid #f3f3f1;
+    }
+
+  }
+  .jin-info{
+    margin-top: .2rem;
+    .am-list-item{
+      height: 1rem;
+    }
+
+    .count{
+      color: #5c5c5c;
+      padding-left: .2rem;
+    }
+
+  }
+
+  .other-list{
+
+    margin-top: .2rem;
+    .am-list-item{
+      border-bottom: 1px solid #f3f3f1;
+    }
+
+
+  }
   .username {
 
-    font-size: .25rem;
-    padding-left: .1rem;
+    font-size: .5rem;
+    //padding-left: .1rem;
+
+
     p{
+      width: 3.5rem;
       padding-left: .1rem;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+
+    .wallet-info{
+
+      width: 2.5rem;
+      height: 1rem;
+      background: #f6f5f5;
+      margin-left: .15rem;
+      border-radius:.2rem ;
+      margin-top: .2rem;
+
+      overflow: hidden;
+      .title{
+
+        font-size: .2rem;
+        line-height: .4rem;
+        color: #999999;
+        padding-left: .2rem;
+        padding-top: .1rem;
+
+      }
+      .count{
+        font-size: .3rem;
+        color: #080808;
+        line-height: .3rem;
+        padding-left: .2rem;
+      }
+
+
     }
 
   }
   .username .uslVip {
-    display: inline-block;
     //background: #faa100;
     color: #afafaf;
     font-size: .18rem;
@@ -74,15 +143,17 @@
     border-radius: .5rem;
     margin-top: .05rem;
     border: 1px solid #aeaeac;
+    display: none;
   }
   .username .lvVip {
     display: inline-block;
-    background: #faa100;
+    background: #fa325d;
     color: white;
     font-size: .18rem;
-    padding: .05rem .1rem .05rem .1rem;
-    border-radius: .5rem;
+    padding: 1px .1rem 2px .1rem;
+    border-radius: .4rem;
     margin-top: .05rem;
+    margin-left: .1rem;
   }
 
 

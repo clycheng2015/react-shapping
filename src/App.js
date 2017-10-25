@@ -56,11 +56,39 @@ const YesOrderDetail = asyncComponent(() => import( './containers/common/yesOrde
 const TopUp = asyncComponent(() => import( './containers/user/topUp'))
 const WithDraw = asyncComponent(() => import( './containers/user/withdraw'))
 const Remark = asyncComponent(() => import( './containers/user/remark'))
+const Wallet = asyncComponent(() => import( './containers/user/wallet'))
+const Jinfu = asyncComponent(() => import( './containers/user/jinfu'))
+const JinTopUp = asyncComponent(() => import( './containers/user/jinTopUp'))
+const JinDraw = asyncComponent(() => import( './containers/user/jinDraw'))
+
+
+const PostType = asyncComponent(() => import( './containers/common/postType'))
+const Invoice = asyncComponent(() => import( './containers/common/invoice'))
+
+
+
+
+
+
 
 //活动中心
 
 const Active = asyncComponent(() => import( './containers/active/index'))
 const ActiveDetail = asyncComponent(() => import( './containers/common/activeDetail'))
+
+
+const NewPer = asyncComponent(() => import( './containers/active/newPer'));
+const Special = asyncComponent(() => import( './containers/active/special'));
+const NewDay = asyncComponent(() => import( './containers/active/newDay'));
+const Ranking = asyncComponent(() => import( './containers/active/ranking'));
+const Seckill = asyncComponent(() => import( './containers/active/seckill'));
+const Imported = asyncComponent(() => import( './containers/active/imported'));
+const ImportedClass = asyncComponent(() => import( './containers/active/importedClass'));
+const VipActive = asyncComponent(() => import( './containers/active/vipActive'));
+const HotGoods = asyncComponent(() => import( './containers/active/hotGoods'));
+const JoinUs = asyncComponent(() => import( './containers/active/joinUs'));
+
+
 
 
 let u = navigator.userAgent;
@@ -121,11 +149,15 @@ export default class App extends React.Component {
 
                 href=href.replace(url,'#')
             }
+            if (isPro) {
 
-            this.props.fetchWxConfig({
 
-                imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
-            });
+                this.props.fetchWxConfig({
+
+                    imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
+                });
+
+            }
 
 
         })
@@ -171,6 +203,29 @@ export default class App extends React.Component {
                             <Route location={location} path="/active" component={Active}/>
                             <Route location={location} path="/activeDetail/:id" component={ActiveDetail}/>
                             <Route location={location} path="/remark/:id" component={Remark}/>
+                            <Route location={location} path="/wallet" component={Wallet}/>
+                            <Route location={location} path="/jinfu" component={Jinfu}/>
+                            <Route location={location} path="/jinTopUp/:id" component={JinTopUp}/>
+                            <Route location={location} path="/jinDraw" component={JinDraw}/>
+                            <Route location={location} path="/postType" component={PostType}/>
+                            <Route location={location} path="/invoice" component={Invoice}/>
+
+
+
+                            <Route location={location} path="/newPer" component={NewPer}/>
+                            <Route location={location} path="/special" component={Special}/>
+                            <Route location={location} path="/newDay" component={NewDay}/>
+                            <Route location={location} path="/ranking" component={Ranking}/>
+                            <Route location={location} path="/seckill" component={Seckill}/>
+                            <Route location={location} path="/imported" component={Imported}/>
+                            <Route location={location} path="/importedClass" component={ImportedClass}/>
+
+                            <Route location={location} path="/vipActive" component={VipActive}/>
+                            <Route location={location} path="/hotGoods" component={HotGoods}/>
+                            <Route location={location} path="/joinUs" component={JoinUs}/>
+
+
+
                         </div>
                     )
                 }}/>

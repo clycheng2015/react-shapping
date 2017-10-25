@@ -6,14 +6,14 @@
   .nav-tab {
 
     z-index: 1111111;
-    height: .8rem;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
     top: 0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
+    line-height: .9rem;
     .set-icon {
       width: .35rem;
 
@@ -197,8 +197,7 @@
   }
 
   .am-tabs-default-bar {
-    position: fixed;
-    top: .8rem;
+    position: relative;
     border-bottom: 1px solid #b1b1af !important;;
   }
   .top-box{
@@ -353,7 +352,18 @@
   }
 
   //首页样式复写
+  .am-tabs-default-bar-top .am-tabs-default-bar-content, .am-tabs-default-bar-bottom .am-tabs-default-bar-content{
 
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    height: .85rem;
+    position: fixed;
+    z-index: 9999;
+    top: .9rem;
+    background: white;
+  }
 
 
 }

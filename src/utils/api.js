@@ -80,6 +80,10 @@ export const user = {
 
 
 
+    jinfuUrl:"/findgoods/findjfjfgoodslist"
+
+
+
 
 
 }

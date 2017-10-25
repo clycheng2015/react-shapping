@@ -107,6 +107,9 @@ export  default  class OrderList extends React.Component {
     render() {
         const {list, history, savePayOrder, postageData} = this.props
 
+
+
+
         const row = (data) => {
             if (data.length > 0) {
                 return (
@@ -332,35 +335,19 @@ export  default  class OrderList extends React.Component {
             )
         };
         return (
-            <Scroller
 
-                ref={ref => {
-                    this.scroller = ref
-                }}
-                // usePullRefresh
-                // pullRefreshAction={this.pullRefreshAction}
-                useLoadMore
-                loadMoreAction={this.loadMoreAction}
-                click={true}
-            >
                 <div
                     style={
                         {
-                            marginTop: "1.3rem",
+
                             paddingBottom: "1rem",
-                            paddingTop: ".1rem"
+                            paddingTop: ".8rem"
                         }
                     }
                 >
                     {row(list.orderList)}
                 </div>
-                <div style={{
-                    height:"1.5rem"
-                }}>
 
-                </div>
-
-            </Scroller>
         );
     }
 

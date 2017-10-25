@@ -10,6 +10,8 @@ import {auth} from './auth'
 import {car} from './car'
 import {search} from './search'
 import {goodsDetail} from './goodsDetail'
+import {postType} from './postType'
+import {invoice} from './invoice'
 import {global, myTabBarReducer} from './global'
 const rootReducer = {
     home,
@@ -19,6 +21,8 @@ const rootReducer = {
     car,
     user,
     active,
+    postType,
+    invoice,
     activeDetail,
     saveParams,
     moreList,

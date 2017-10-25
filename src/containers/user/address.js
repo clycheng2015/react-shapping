@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 import {removeLocalItem, localItem} from '../../utils/cookie'
 
 
-import {Modal, Icon, Flex, Radio} from 'antd-mobile'
+import {Modal, Icon, Flex, Radio,Button} from 'antd-mobile'
 
 import * as user from 'actions/user'
 
@@ -59,7 +59,7 @@ export default class Address extends React.Component {
             id: id
         })
     }
-    _delAddress=(id)=>{
+    _delAddress = (id) => {
 
 
         const {uid, fetchDelAds} = this.props
@@ -90,89 +90,80 @@ export default class Address extends React.Component {
 
     }
 
-
     render() {
         const {address, history} = this.props
-
         const {data} = address
-        console.log(data)
+        return (
+            <div className="ads-container"
 
-        if (data && data.length > 0) {
+                 style={{
+                     minHeight: document.documentElement.clientHeight,
+                     background: "#f3f3f1"
+                 }}
+            >
 
-            return (
-                <div className="ads-container"
-
-                     style={{
-                         minHeight: document.documentElement.clientHeight,
-                         background: "#f3f3f1"
-                     }}
-                >
-
-                    <div className="nav-tab">
-                        <Flex justify="center" align="center">
-                            <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                                history.goBack()
-                            }}/></Flex.Item>
-                            <Flex.Item className="item-head center">选择收货地址</Flex.Item>
-                            <Flex.Item className="item-head right"><span></span></Flex.Item>
-                        </Flex>
-                    </div>
-
-                    <div className="add-info"
-
-                    >
-                        <Link to={{
-                            pathname: "/newAds"
-
-                        } }><span>+</span>新增收货地址</Link>
-                    </div>
-                    <div className="list-info">
+                <div className="nav-tab">
+                    <Flex justify="center" align="center">
+                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
+                            history.goBack()
+                        }}/></Flex.Item>
+                        <Flex.Item className="item-head center">收货地址</Flex.Item>
+                        <Flex.Item className="item-head right"><span></span></Flex.Item>
+                    </Flex>
+                </div>
 
 
-                        {
+                {
+                    data && data.length > 0 ?
+                        <div>
 
-                            data.map((i, key) => (
+                        <div className="list-info">
 
 
-                                <div key={key} className="item">
+                            {
 
-                                    <div className="head">
+                                data.map((i, key) => (
 
-                                        <span>{i.realname}</span>
-                                        <span>{i.mobile}</span>
 
-                                    </div>
+                                    <div key={key} className="item">
 
-                                    <div className="ads">
+                                        <div className="head">
 
-                                        {
-                                            i.provincename == '/' ? '' : i.provincename
-                                        }
+                                            <span>{i.realname}</span>
+                                            <span>{i.mobile}</span>
 
-                                        {
-                                            i.cityname == '/' ? '' : i.cityname
-                                        }
+                                        </div>
 
-                                        {
-                                            i.countyname == '/' ? '' : i.countyname
-                                        }
-                                        {
-                                            i.address
-                                        }
+                                        <div className="ads">
 
-                                    </div>
+                                            {
+                                                i.provincename == '/' ? '' : i.provincename
+                                            }
 
-                                    <div className="btn">
-                                        <Radio className="my-radio" checked={i.isdefault} value={i.id}
-                                               onChange={e => this._updateDefault(i.id)}>
-                                            <span className="name">默认地址</span>
-                                        </Radio>
+                                            {
+                                                i.cityname == '/' ? '' : i.cityname
+                                            }
 
-                                        <span className="right">
+                                            {
+                                                i.countyname == '/' ? '' : i.countyname
+                                            }
+                                            {
+                                                i.address
+                                            }
+
+                                        </div>
+
+                                        <div className="btn">
+                                            <Radio className="my-radio" checked={i.isdefault} value={i.id}
+                                                   onChange={e => this._updateDefault(i.id)}>
+                                                <span className="name">默认地址</span>
+                                            </Radio>
+
+                                            <span className="right">
 
                                             <Link className="edit-info" to={{
-                                                pathname:"/newAds",
-                                                state:{data:i}
+                                                pathname: "/newAds",
+                                                state: {data: i}
                                             }}>
                                          <img src={require('static/image/ic_edit_address.png')} alt=""
                                               className="edit-img"/>
@@ -181,7 +172,7 @@ export default class Address extends React.Component {
 
 
 
-                                            <span  onClick={()=>this._delAddress(i.id)}>
+                                            <span onClick={() => this._delAddress(i.id)}>
                                                   <img src={require('static/image/ic_delte_address.png')} alt=""
                                                        className="del-img"/>
 
@@ -191,55 +182,40 @@ export default class Address extends React.Component {
 
                                         </span>
 
+                                        </div>
+
+
                                     </div>
+                                ))
+                            }
+                        </div>
+
+                            <Button type="primary" style={{width:"100%",margin:"0 auto"}}  className="add-btn"   onClick={() => history.push('/newAds')}>新建地址</Button>
+
+                        </div>
+                        :
+
+                        <div className="empty-info"
+                             style={{
+                                 height: document.documentElement.clientHeight - 130,
+                                 background: "#f3f3f1"
+                             }}
+                        >
+
+                            <img src={require('static/images/empty/noads_icon.png')} alt=""/>
+                            <p> 您还没有添加收货地址</p>
+                            <p onClick={() => {
+                                history.push("/newAds")
+                            }}> 赶紧去添加一个</p>
+
+                        </div>
 
 
-                                </div>
-                            ))
-                        }
-                    </div>
 
-                </div>
-            )
+                }
 
-        } else {
-
-
-            return (
-                <div className="ads-container"
-
-                     style={{
-                         minHeight: document.documentElement.clientHeight,
-                         background: "#f3f3f1"
-                     }}
-                >
-
-                    <div className="nav-tab">
-                        <Flex justify="center" align="center">
-                            <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                                history.goBack()
-                            }}/></Flex.Item>
-                            <Flex.Item className="item-head center">选择收货地址</Flex.Item>
-                            <Flex.Item className="item-head right"><span></span></Flex.Item>
-                        </Flex>
-                    </div>
-
-                    <div className="add-info"
-
-                    >
-                        <Link to={{
-                            pathname: "/newAds"
-
-                        } }><span>+</span>新增收货地址</Link>
-                    </div>
-
-
-                    <div className="no-ads">
-                        暂无收货地址
-                    </div>
-                </div>
-            )
-        }
+            </div>
+        )
 
 
     }

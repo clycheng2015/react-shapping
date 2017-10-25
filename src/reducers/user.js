@@ -39,7 +39,9 @@ let init = {
     withDraw:{},
     payData:{},
     newPayOrder:{},
-    postageData:{}
+    postageData:{},
+
+    jinfuList:[]
 
 
 }
@@ -221,6 +223,13 @@ export const user = (state = init, action) => {
 
             return {
                 ...state,newPayOrder:action.data
+            }
+
+
+        case types.GET_JINFU_PRO:
+
+            return {
+                ...state,jinfuList:action.data
             }
 
 

@@ -6,13 +6,40 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {removeLocalItem, localItem} from '../../utils/cookie'
-
-
-import {Button, Modal, Icon, Card, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
+import {Button, Modal, Icon, Card, Toast, WhiteSpace, Flex, List,Grid} from 'antd-mobile'
 let alert=Modal.alert
 import * as user from 'actions/user'
 import * as global from 'actions/global'
+import TabBarMain from 'containers/common/tabbar'
 require('./styles/index.less')
+
+const orderData=[
+    {
+        icon:require('static/images/user/pay_icon.png'),
+        text:"待付款",
+        index:"0",
+        state:1
+    },
+    {
+        icon:require('static/images/user/send_icon.png'),
+        text:"待发货",
+        index:"1",
+        state:2
+
+    },
+    {
+        icon:require('static/images/user/rec_icon.png'),
+        text:"待收货",
+        index:"2",
+        state:3
+    },
+    {
+        icon:require('static/images/user/cha_icon.png'),
+        text:"退/换货",
+        index:"3",
+        state:4
+    },
+]
 
 @connect(
     state => {
@@ -22,18 +49,12 @@ require('./styles/index.less')
 )
 
 export default class User extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {
             id: ''
         }
 
-    }
-
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
     }
     componentWillMount(){
         // document.title = '个人中心';
@@ -51,7 +72,6 @@ export default class User extends React.Component {
         // };
         // iframe.addEventListener('load', listener);
         // document.body.appendChild(iframe);
-
     }
     componentDidMount() {
         const {getUserInfo} = this.props
@@ -65,9 +85,19 @@ export default class User extends React.Component {
         if (typeof userInfo == 'string') {
             // console.log(JSON.parse(userInfo))
             getUserInfo({uid: JSON.parse(userInfo).id})
+
+
         }
     }
 
+
+    _tabChange = (tab, index,state) => {
+        const {userInfo, orderTabChange,history} = this.props
+        orderTabChange(tab, state, index)
+        history.push(`/myOrder/${userInfo.id}`);
+
+
+    }
     render() {
         const {userInfo, history} = this.props
         console.log(userInfo)
@@ -78,17 +108,26 @@ export default class User extends React.Component {
             if (userInfo && userInfo.id) {
                 return (
                     <div>
-                        <Card className='head' style={{paddingTop: "1rem"}}>
+                        <Card className='head' >
 
-                            <Link to={{
-                                pathname: "/userCenter",
-                                state: {userInfo: userInfo}
-                            }}>
+
                                 <Card.Header
-                                    title={<div className="username"><p>{userInfo.realname}</p><span
-                                        className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '普通会员' : "高级会员"}</span>
+                                    title={<div className="username">
+                                        <p>{userInfo.realname}<span className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '' : "vip"}</span></p>
+                                        <div className="wallet-info" onClick={()=>{
+
+                                            history.push("/wallet")
+                                        }}>
+
+                                            <p className="title">我的钱包</p>
+                                            <p className="count">￥{Number(userInfo.money).toFixed(2)}</p>
+
+                                        </div>
                                     </div> }
-                                    thumb={userInfo.headpic}
+                                    extra={<img onClick={()=>{history.push({
+                                        pathname: "/userCenter",
+                                        state: {userInfo: userInfo}
+                                    })}} src={userInfo.headpic} alt="" className="headpic" style={{width:"1.6rem",height:"1.6rem",borderRadius:"1rem",boxShadow:"0 0 3px black"}}/>}
                                     thumbStyle={{
                                         width: '1rem',
                                         height: '1rem',
@@ -96,75 +135,11 @@ export default class User extends React.Component {
                                     }
                                     }
                                 />
-                            </Link>
-                            <Card.Body style={{border: 'none'}}>
-                                <div className="wallet">
-                                    <Flex>
-
-                                        <Flex.Item>
-                                            <p className="title">我的钱包（元）</p>
-                                            <p className="count">{userInfo.money}</p>
-
-                                        </Flex.Item>
-                                        <Flex.Item>
-                  <span className="draw-btn"
-
-                  onClick={()=>history.push('/topUp')}
-                  >
-                    <img style={{width: '.2rem', paddingLeft: '.1rem'}}
-                         src={require('../../static/image/icon_bill_blue.png')} alt=""/>
-                     充值
-                  </span>
-
-                                        </Flex.Item>
-                                    </Flex>
-                                    <WhiteSpace size="lg"/>
-
-                                    <Flex>
-
-                                        <Flex.Item>
-                                            <p className="title">累计可提现（元）</p>
-                                            <p className="e-count">{userInfo.jftomoney}</p>
-
-                                        </Flex.Item>
-                                        <Flex.Item>
-                                            {
-                                                userInfo.istixian == 0 ?
-                                                    <span className="draw-btn-not"
-                                                          onClick={()=>Toast.info('返现时间为每周二（9:00-18:00）')}
-
-
-                                                    ><img
-                                                        style={{width: '.2rem', paddingLeft: '.1rem'}}
-                                                        src={require('../../static/image/ic_reflect.png')}
-                                                        alt=""/>提现</span>
-                                                    :
-                                                    <span className="draw-btn"
-                                                          onClick={()=>history.push(
-
-                                                              {
-                                                                  pathname:"/withdraw",
-
-                                                                  state:{expCount:userInfo.jftomoney}
-
-                                                              }
-                                                          )}
-
-                                                    ><img
-                                                        style={{width: '.2rem', paddingLeft: '.1rem'}}
-                                                        src={require('../../static/image/ic_reflect.png')}
-                                                        alt=""/>提现</span>
-                                            }
-
-                                        </Flex.Item>
-                                    </Flex>
-                                    <WhiteSpace size="lg"/>
-                                </div>
-                            </Card.Body>
                         </Card>
 
-                        <List style={{paddingTop: '.2rem'}}>
-                            <List.Item thumb={require('../../static/image/ic_my_order.png')} arrow="horizontal"
+                        <div className="order-info">
+                            <List.Item  arrow="horizontal"
+                                        extra="全部订单"
                                        onClick={() => {
 
                                            history.push(`/myOrder/${userInfo.id}`);
@@ -175,34 +150,45 @@ export default class User extends React.Component {
                             >
 
                                 我的订单
-
                             </List.Item>
-                            <List.Item thumb={require('../../static/image/ic_bill.png')}
-                                       onClick={() => {
 
-                                           history.push('/bill')
-                                       }}
-                                       arrow="horizontal">账单</List.Item>
-                            <List.Item thumb={require('../../static/image/ic_pos.png')}
-                                       arrow="horizontal"
-                                       onClick={() => {
+                            <Grid data={orderData} hasLine={false} onClick={(el)=>this._tabChange(el.text,el.index,el.state)}/>
+                        </div>
+
+                        {/*<div className="jin-info">*/}
+                            {/*<List.Item*/}
+                                         {/*extra={<img src={require('static/images/user/jin_icon.png')} alt=""/>}*/}
+                                        {/*onClick={() => {*/}
+
+                                            {/*history.push(`/jinfu`)*/}
+                                        {/*}}*/}
+                            {/*>*/}
+
+                                {/*金凤金服  <span className="count">￥{Number(userInfo.money).toFixed(2)}</span>*/}
+                            {/*</List.Item>*/}
+
+                        {/*</div>*/}
+
+
+
+                        <div className="other-list">
+
+                            <List.Item
+                                // thumb={require('../../static/image/ic_pos.png')}
+                                //        arrow="horizontal"
+                                extra={<img src={require('static/images/user/ads_icon.png')} alt=""/>}
+
+                                onClick={() => {
 
                                            history.push('/address')
                                        }}
 
                             >收货地址</List.Item>
-                            <List.Item thumb={require('../../static/image/ic_phone.png')}
-                                       onClick={() => {
 
-                                           history.push('/phone')
-                                       }}
-                                       arrow="horizontal">绑定手机号</List.Item>
-                        </List>
+                            <List.Item
+                                extra={<img src={require('static/images/user/ser_icon.png')} alt=""/>}
 
-
-                        <List style={{paddingTop: '.1rem'}}>
-                            <List.Item thumb={require('../../static/image/kefuicon.png')} arrow="horizontal"
-                                       onClick={() => {
+                                onClick={() => {
 
 
                                            alert('联系客服', <div>请选择咨询客服</div>, [
@@ -210,34 +196,27 @@ export default class User extends React.Component {
                                                {text: '招商咨询', onPress: () =>  location.href='tel:028-8593-8032'},
                                                {text: '取消', onPress: () => {}},
                                            ])
-
                                        }}
                             >
-
                                 联系客服
-
                             </List.Item>
-                            <List.Item thumb={require('../../static/image/ic_set.png')} arrow="horizontal"
-                                       onClick={() => {
+                            <List.Item
+                                extra={<img src={require('static/images/user/set_icon.png')} alt=""/>}
 
+                                onClick={() => {
                                            history.push('/setting')
                                        }}
                             >
-
                                 设置
-
                             </List.Item>
-                        </List>
+
+                        </div>
 
 
                     </div>
                 )
-
             }
-
-
         }
-
         return (
             <div className="user-container"
                  style={{
@@ -247,18 +226,14 @@ export default class User extends React.Component {
             >
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
-                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                            history.push('/')
-                        }}/></Flex.Item>
-                        <Flex.Item className="item-head center">个人中心</Flex.Item>
+                        <Flex.Item className="item-head left"></Flex.Item>
+                        <Flex.Item className="item-head center">我的</Flex.Item>
                         <Flex.Item className="item-head right"><span></span></Flex.Item>
                     </Flex>
-
-
                 </div>
 
                 {info()}
-
+                <TabBarMain history={history} page="user"/>
             </div>
         )
     }

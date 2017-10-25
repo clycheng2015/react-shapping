@@ -1,27 +1,22 @@
 import React, {PropTypes}from "react";
 import {Icon, TabBar} from 'antd-mobile';
-// import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import {localItem} from '../../utils/cookie'
-
 class TabBarMain extends React.Component {
 
     constructor(props) {
         super(props);
         this.displayName = "TabBar";
         this.state = {
-            // selectedTab: '/',
             hidden: false,
             userInfo: 'undefined'
         }
 
     }
 
-
     componentWillMount() {
         let userInfo = localItem('userInfo')
-            console.log(typeof userInfo)
         if ((typeof userInfo)== 'string' ) {
 
             this.setState({
@@ -41,61 +36,14 @@ class TabBarMain extends React.Component {
                 barTintColor="white"
                 hidden={this.state.hidden}
             >
-                <TabBar.Item
-                    icon={
-                        <div style={{
-                            width: '.7rem',
-                            height: '.7rem',
-                            borderRadius: '1rem',
-                            background: `url(${this.state.userInfo=='undefined'?require('static/image/ic_no_login.png') :this.state.userInfo.headpic}) center center /  .8rem .8rem no-repeat`,
-                            overflow: 'hidden'
-                        }}
-                        />
-                    }
-                    selectedIcon={
-                        <div style={{
-                            width: '.7rem',
-                            height: '.7rem',
-                            // border:"1px solid red",
-                            overflow: "hidden",
-                            borderRadius: '1rem',
-                            background: `url(${this.state.userInfo=='undefined'?require('static/image/ic_no_login.png'):this.state.userInfo.headpic }) center center /  .8rem .8rem no-repeat`,
-                        }}
-                        />
-                    }
-                    title=""
-                    key="个人中心"
-                    // dot
-                    selected={page === 'user'}
-                    onPress={() => {
-                        changeTab('user')
-                        if (this.state.userInfo=='undefined') {
-                            // history.push('/auth')
 
-
-                            let url=window.location.href
-
-                            url= url.match(/#(\S*)/)[1];
-
-                            url=url.replace('/','')
-
-                            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-
-                        } else {
-                            history.push('/user')
-
-                        }
-
-                    }}
-                >
-                </TabBar.Item>
                 <TabBar.Item
                     icon={
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/home3@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/home.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />}
@@ -103,8 +51,8 @@ class TabBarMain extends React.Component {
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/home4@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/home_filter.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />
@@ -125,8 +73,8 @@ class TabBarMain extends React.Component {
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/f3@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/item.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />}
@@ -134,8 +82,8 @@ class TabBarMain extends React.Component {
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/f4@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/item_filter.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />
@@ -156,8 +104,8 @@ class TabBarMain extends React.Component {
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/car3@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/car.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />}
@@ -165,8 +113,8 @@ class TabBarMain extends React.Component {
                         <div style={{
                             width: '.4rem',
                             height: '.4rem',
-                            borderRadius: '1rem',
-                            background: 'url(' + require('static/image/car4@2x.png') + ') center center /  .4rem .4rem no-repeat',
+
+                            background: 'url(' + require('static/images/tabbar/car_filter.png') + ') center center /  .4rem .4rem no-repeat',
                             overflow: 'hidden'
                         }}
                         />
@@ -181,18 +129,59 @@ class TabBarMain extends React.Component {
                     }}
                 >
                 </TabBar.Item>
+                <TabBar.Item
+                    icon={
+                        <div style={{
+                            width: '.4rem',
+                            height: '.4rem',
+
+                            background: 'url(' + require('static/images/tabbar/my.png') + ') center center /  .4rem .4rem no-repeat',
+                            overflow: 'hidden'
+                        }}
+                        />
+                    }
+                    selectedIcon={
+                        <div style={{
+                            width: '.4rem',
+                            height: '.4rem',
+
+                            background: 'url(' + require('static/images/tabbar/my_filter.png') + ') center center /  .4rem .4rem no-repeat',
+                        }}
+                        />
+                    }
+                    title="我的"
+                    key="我的"
+                    // dot
+                    selected={page === 'user'}
+                    onPress={() => {
+                        changeTab('user')
+                        // history.push('/user')
+                        if (this.state.userInfo=='undefined') {
+                            // history.push('/auth')
+
+
+                            let url=window.location.href
+
+                            url= url.match(/#(\S*)/)[1];
+
+                            url=url.replace('/','')
+
+                            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+
+                        } else {
+                            history.push('/user')
+
+                        }
+
+                    }}
+                >
+                </TabBar.Item>
             </TabBar>
         )
     }
 }
 
-//约束类型
-TabBarMain.propTypes = {
-    // selectedTab: PropTypes.string.isRequired,
-    changeTab: PropTypes.func.isRequired
-};
 
-//事件创造器
 function actionCreate(witchTab) {
     return {
         type: 'CHANGE_TAB',
@@ -200,8 +189,6 @@ function actionCreate(witchTab) {
     }
 }
 
-
-//关联redux
 export default  connect((state) => ({selectedTab: state.selectedTab}), (dispatch) => ({changeTab: (witchTab) => dispatch(actionCreate(witchTab))}))(TabBarMain);
 
 

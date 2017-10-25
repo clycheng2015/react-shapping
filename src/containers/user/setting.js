@@ -93,7 +93,7 @@ export default class Setting extends React.Component {
                 </div>
 
 
-                <List style={{paddingTop: "1rem"}}>
+                <div style={{paddingTop: "1rem"}}>
                     <List.Item arrow="" onClick={() => alert('提示', '清除本地缓存成功', [
                         {text: '确定', onPress: () => console.log('ok')},
                     ])}>
@@ -105,14 +105,14 @@ export default class Setting extends React.Component {
                     <List.Item arrow="" onClick={() => {
                         history.push('/about')
                     }}> 关于</List.Item>
-                </List>
+                </div>
                 <WhiteSpace/>
-                <List>
+                <div>
 
                     <List.Item arrow="" onClick={() => {
                         this._loginOut()
                     }}>安全退出</List.Item>
-                </List>
+                </div>
 
                 {/*<Button onClick={() => {*/}
                 {/*removeLocalItem("userInfo")*/}

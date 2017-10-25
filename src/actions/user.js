@@ -310,6 +310,19 @@ export  const refundRemark = (data) => ({
 })
 
 
+/**
+ *
+ * @param data
+ * @returns {function(*, *)}
+ *
+ *
+ */
+  const getJinfu = (data) => ({
+    type: types.GET_JINFU_PRO,
+    data
+
+})
+
 
 
 
@@ -884,27 +897,33 @@ export const fetchRefund = (data,history) => {
 
 
 export const fetchComfirm = (data) => {
-
     return (dispatch, getState) => {
-
         instance.post(user.comfirmUrl, qs.stringify(data))
-
             .then(res => {
-
                 if (res.data.code == 200) {
-
                     dispatch(comfirmOreder(res.data.data))
-
                     Toast.success(res.data.msg, 1)
-
-
                 } else {
-
                     Toast.fail(res.data.msg, 1)
-
                 }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
 
 
+
+export const fetchJinfu = (data) => {
+    return (dispatch, getState) => {
+        instance.post(user.jinfuUrl, qs.stringify(data))
+            .then(res => {
+                if (res.data.code == 200) {
+                    dispatch(getJinfu(res.data.data))
+                }
             })
             .catch(error => {
 

@@ -11,6 +11,8 @@ import {Button, Flex, Icon} from 'antd-mobile'
 
 import * as global from 'actions/global'
 import * as itemList from 'actions/itemList'
+
+import List from '../../components/item/itemList'
 require('./styles/itemList.less')
 
 
@@ -29,11 +31,10 @@ export default class ItemList extends React.Component {
 
         this.state = {
 
-            title: ''
+            title: '',
+            price:true
         }
-
     }
-
     componentDidMount() {
 
         const {match, getItemGoodsList, location} = this.props
@@ -61,62 +62,12 @@ export default class ItemList extends React.Component {
 
 
     handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
+
     }
 
     render() {
         const {data, history, location} = this.props
 
-        const list = () => {
-
-            if (data.datalist && data.datalist.length > 0) {
-
-                return (
-                    <div className="flex-container">
-                        <Flex wrap="wrap">
-
-                            {
-                                data.datalist.map((i, key) => (
-                                        <div key={key} className="per">
-                                            <Link
-                                                to={{
-                                                    pathname: `/goodsDetail/${i.id}`,
-                                                    // state:location.state.title
-
-                                                }}
-                                            >
-                                                <div className="img-info">
-
-                                                    <img src={i.bigpic} alt=""/>
-                                                </div>
-                                                <div className="pretxt">
-
-                                                    <p className="mall-title">{i.gtitle}</p>
-                                                    <p style={{color: "#e85c34", paddingTop: ".1rem"}}>￥{i.zkprice}  </p>
-
-                                                </div>
-                                            </Link>
-                                        </div>
-
-                                    )
-                                )
-                            }
-                        </Flex>
-                    </div>
-                )
-            } else {
-
-                return (
-
-                    <div className="no-goods">
-
-                        暂无商品分类
-                    </div>
-                )
-            }
-
-        }
         const title = () => {
 
             if (location && (location.state !== undefined)) {
@@ -133,7 +84,10 @@ export default class ItemList extends React.Component {
         }
 
         return (
-            <div className="item-list-container">
+            <div className="item-list-container"
+
+
+            >
                 <div className="nav-tab">
 
                     <Icon type="left" size="lg" onClick={() => {
@@ -147,7 +101,40 @@ export default class ItemList extends React.Component {
                 </div>
 
                 <div key={this.props.location.pathname} className="list">
-                    {list()}
+
+                    <Flex className="tab-bar">
+                        <Flex.Item  onClick={()=>{}}>
+                            综合
+                        </Flex.Item>
+                        <Flex.Item onClick={()=>{this.setState({price:!this.state.price})}}>
+                            价格
+
+                            <img src={require("static/images/ite/up_icon.png")} alt="" className={`${this.state.price?'img-up':''}`}/>
+
+                        </Flex.Item>
+                    </Flex>
+
+                    {
+                        data.datalist && data.datalist.length > 0?  <List list={data.datalist} history={history}/>:
+
+
+                            <div className="empty-info"
+                                 style={{
+                                     height: document.documentElement.clientHeight - 130,
+                                     background: "#f7f6f6"
+                                 }}
+                            >
+
+                                <img src={require('static/images/empty/tmp_shopcar@2x.png')} alt=""/>
+                                <p>此分类商品正在上新中</p>
+                                <p onClick={() => {
+                                    history.push("/item")
+                                }}> 逛逛其他的</p>
+
+                            </div>
+
+                    }
+
                 </div>
 
             </div>

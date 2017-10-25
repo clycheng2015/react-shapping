@@ -1,1 +1,55 @@
-<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>内容详情</title><meta name=\"keywords\" content=\"\"><meta name=\"description\" content=\"\"><link href=\"http://worldwideapp.chinazjtc.com/wap/css/bootstrap.css\" rel=\"stylesheet\"><link href=\"http://worldwideapp.chinazjtc.com/wap/css/happy.css?170901095811830\" rel=\"stylesheet\"></head><body><div class=\"wapcontent\">\t\t\t\t\t\t\t\t\t<p><br/></p><p><br/></p><p><img src=\"http://worldwideapp.chinazjtc.com/ueditor/jsp/upload/image/20170504/1493890383022000760.jpg\" title=\"1493890383022000760.jpg\" alt=\"58a138eeN5a870ef2.jpg!q70.jpg\"/></p><p><img src=\"http://worldwideapp.chinazjtc.com/ueditor/jsp/upload/image/20170504/1493890407931075339.jpg\" title=\"1493890407931075339.jpg\" alt=\"58a138faN27133365.jpg\"/></p><p><img src=\"http://worldwideapp.chinazjtc.com/ueditor/jsp/upload/image/20170504/1493890400915007585.jpg\" title=\"1493890400915007585.jpg\" alt=\"58a138faNcc795b02.jpg\"/></p><p><img class=\"loadingclass\" id=\"loading_j2a7p4qu\" src=\"http://worldwideapp.chinazjtc.com/ueditor/themes/default/images/spacer.gif\" title=\"正在上传...\"/></p><p><img src=\"http://worldwideapp.chinazjtc.com/ueditor/jsp/upload/image/20170504/1493890408640044726.jpg\" title=\"1493890408640044726.jpg\" alt=\"58a138fbN6faf26ef.jpg\"/></p><p><img src=\"http://worldwideapp.chinazjtc.com/ueditor/jsp/upload/image/20170504/1493890395561045480.jpg\" title=\"1493890395561045480.jpg\" alt=\"58a138faN7f65aac9.jpg\"/></p><p><br/></p></div><script src=\"http://worldwideapp.chinazjtc.com/wap/js/jquery.min.js\"></script><script src=\"http://worldwideapp.chinazjtc.com/wap/js/bootstrap.min.js\"></script></body></html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>移动端左右滑动DEMO</title>
+    <link href="http://cdn.bootcss.com/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+    <!--Swiper3.0.4-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .blue-slide {
+            background: #4390EE;
+        }
+        .red-slide {
+            background: #CA4040;
+        }
+        .orange-slide {
+            background: #FF8604;
+        }
+        .swiper-slide {
+            line-height: 600px;
+            color: #fff;
+            font-size: 36px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div>本例子在console中可以看到索引页</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide blue-slide">第一页</div>
+        <div class="swiper-slide red-slide">第二页</div>
+        <div class="swiper-slide orange-slide">第三页</div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/Swiper/3.3.1/js/swiper.min.js"></script>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container',{
+        loop: true,
+        autoplay: 4000,
+        onSlideChangeEnd:function(swiper){
+            console.log(swiper.activeIndex);
+        }
+    });
+</script>
+</body>
+</html>  

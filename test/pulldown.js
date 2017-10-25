@@ -23,10 +23,10 @@ export  default  class ListIndex extends React.Component {
             <PullToRefresh
 
                 ref={el => this.ptr = el}
-                style={{
-                    height: this.state.height,
-                    overflow: 'auto',
-                }}
+                // style={{
+                //     height: this.state.height,
+                //     overflow: 'auto',
+                // }}
                 indicator={this.state.down ? {} : { deactivate: '上拉可以刷新' }}
                 direction={this.state.down ? 'down' : 'up'}
                 refreshing={this.state.refreshing}

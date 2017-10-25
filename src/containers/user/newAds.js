@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {createForm} from 'rc-form';
 
-import {Modal, Icon, Flex, List, InputItem, Toast, Picker,Button,WhiteSpace} from 'antd-mobile'
+import {Modal, Icon, Flex, Switch, InputItem,List, Toast, Picker,Button,WhiteSpace,TextareaItem} from 'antd-mobile'
 
 const area = require('./json/area.json')
 
@@ -46,7 +46,7 @@ const CustomChildren = props => {
                 }}>{props.children}</div>
                 <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
                     <input type="text" disabled
-                           style={{width: "100%"}}
+                           style={{width: "100%",border:'none',outline:"none"}}
                            value={props.extra}/></div>
             </div>
         </div>
@@ -245,7 +245,7 @@ class NewAds extends React.Component {
 
                             {/*</List.Item>*/}
                         {/*</List>*/}
-                        <List className="list">
+                        <div className="list">
                             <InputItem
 
                                 {...getFieldProps('receiveName', {
@@ -275,16 +275,24 @@ class NewAds extends React.Component {
                             >
                                 <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
                             </Picker>
-                            <InputItem
-                                {...getFieldProps('delAds',{
-                                    initialValue:data.address ,
-                                })}
+                            <TextareaItem
+                                {...getFieldProps('delAds')}
                                 clear
+                                title="详细地区"
+                                autoHeight
                                 placeholder="请填写详细配送地址"
                                 ref={el => this.autoFocusInst = el}
-
-                            >详细地址</InputItem>
-                        </List>
+                            />
+                            <List.Item
+                                extra={<Switch
+                                    {...getFieldProps('Switch1', {
+                                        initialValue: true,
+                                        valuePropName: 'checked',
+                                    })}
+                                    onClick={(checked) => { console.log(checked); }}
+                                />}
+                            >选为默认地址：</List.Item>
+                        </div>
                         <WhiteSpace />
                         <WhiteSpace />
                         <WhiteSpace />
@@ -328,7 +336,7 @@ class NewAds extends React.Component {
 
                             {/*</List.Item>*/}
                         {/*</List>*/}
-                        <List className="list">
+                        <div className="list">
                             <InputItem
                                 {...getFieldProps('receiveName')}
                                 clear
@@ -354,17 +362,25 @@ class NewAds extends React.Component {
                             >
                                 <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
                             </Picker>
-                            <InputItem
+                            <TextareaItem
                                 {...getFieldProps('delAds')}
                                 clear
+                                title="详细地区"
+                                autoHeight
                                 placeholder="请填写详细配送地址"
                                 ref={el => this.autoFocusInst = el}
-                            >详细地址</InputItem>
-                        </List>
-                        <WhiteSpace />
-                        <WhiteSpace />
-                        <WhiteSpace />
-                        <Button type="primary" style={{width:"95%",margin:"0 auto"}}     onClick={() => this._save()}>保存</Button>
+                            />
+                            <List.Item
+                                extra={<Switch
+                                    {...getFieldProps('Switch1', {
+                                        initialValue: true,
+                                        valuePropName: 'checked',
+                                    })}
+                                    onClick={(checked) => { console.log(checked); }}
+                                />}
+                            >选为默认地址：</List.Item>
+                        </div>
+                        <Button type="primary" style={{width:"100%",margin:"0 auto"}}  className="new-btn"   onClick={() => this._save()}>保存地址</Button>
                     </div>
                 </div>
             )

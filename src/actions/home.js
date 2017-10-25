@@ -9,6 +9,12 @@ import qs from 'qs'
 
 
 
+export const headChange=(scroll)=>({
+
+    type:types.HEAD_STATE,
+    scroll
+})
+
 
 
 const requestList= tab => ({

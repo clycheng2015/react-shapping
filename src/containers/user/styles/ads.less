@@ -2,18 +2,19 @@
   //background: #f3f3f1;
   height: auto;
   //margin-top: 1rem;
+  overflow: hidden;
 
   .nav-tab {
 
     z-index: 1111111;
-    height: .8rem;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
     top: 0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
+    line-height: .9rem;
     .set-icon {
       width: .35rem;
 
@@ -28,9 +29,6 @@
       line-height: .6rem;
       padding-bottom: .2rem;
       text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
 
     }
     .right {
@@ -68,10 +66,26 @@
     }
   }
 
-  .no-ads {
+  .empty-info{
     width: 100%;
+    //height: 100%;
     text-align: center;
-    padding-top: 5rem;
+    display:table-cell;
+    vertical-align: middle;
+    img{
+      width: 45%;
+      vertical-align: middle;
+    }
+    p{
+      font-size: .26rem;
+
+    }
+    :last-child{
+      color: #fb8707;
+      padding-top: .2rem;
+      font-size: .3rem;
+    }
+
   }
   a {
     display: inline-block;
@@ -81,8 +95,9 @@
   }
   .list-info {
 
-    padding-top: 2.2rem;
+    padding-top: .9rem;
     padding-bottom: 2rem;
+
     .item:not(:first-child) {
       margin-top: .2rem;
 
@@ -90,6 +105,7 @@
 
     .item {
       background: white;
+
 
       .head {
         height: .6rem;
@@ -113,17 +129,21 @@
         padding-left: .2rem;
         padding-right: .2rem;
         margin-top: .2rem;
-        height: .6rem;
+        height: auto;
         font-size: .25rem;
         //line-height:.8rem;
         color: #31312f;
+        padding-bottom: .2rem;
+
+        word-wrap:break-word;
+        border-bottom: 1px solid #f3f3f1;
 
       }
       .btn {
 
         height: .8rem;
         width: 100%;
-        background: #f6f6f4;
+        //background: #f6f6f4;
         color: #4c4c4a;
         font-size: .2rem;
         line-height: .8rem;
@@ -158,7 +178,22 @@
     }
 
   }
+  .am-button-primary {
+    color: #fff;
+    background-color: #fe4203;
+    border: 1PX solid #fe4203;
+    border-radius: 0px;
 
+
+  }
+  .add-btn{
+    position: fixed;
+    bottom: 0;
+    height: .84rem;
+    line-height: .84rem;
+    font-size: .3rem;
+
+  }
   .am-radio {
     border: 1px solid #434343;
     border-radius: 1rem;
@@ -186,5 +221,6 @@
     height: 10px;
 
   }
+
 
 }

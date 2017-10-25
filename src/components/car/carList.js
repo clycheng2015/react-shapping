@@ -73,27 +73,13 @@ export  default  class CarList extends React.Component {
             refreshing: true
         })
         // handle https://github.com/ant-design/ant-design-mobile/issues/1588
-        this.lv.getInnerViewNode().addEventListener('touchstart', this.ts = (e) => {
-            this.tsPageY = e.touches[0].pageY;
-        });
-        this.lv.getInnerViewNode().addEventListener('touchmove', this.tm = (e) => {
-            this.tmPageY = e.touches[0].pageY;
-            if (this.tmPageY > this.tsPageY && this.st <= 0 && document.body.scrollTop > 0) {
-                console.log('start pull to refresh');
-                this.domScroller.options.preventDefaultOnTouchMove = false;
-            } else {
-                this.domScroller.options.preventDefaultOnTouchMove = undefined;
-            }
-        });
+
     }
 
     componentWillUnmount() {
-        this.lv.getInnerViewNode().removeEventListener('touchstart', this.ts);
-        this.lv.getInnerViewNode().removeEventListener('touchmove', this.tm);
     }
 
     onScroll = (e) => {
-        this.st = e.scroller.getValues().top;
         this.domScroller = e;
     };
     onRefresh = () => {
@@ -269,14 +255,12 @@ export  default  class CarList extends React.Component {
             <div
                 key={`${sectionID}-${rowID}`}
                 style={{
-                    backgroundColor: '#f3f3f1',
-                    height: 8,
-                    borderTop: '1px solid #ECECED',
-                    borderBottom: '1px solid #ECECED',
+                    backgroundColor: '#f7f6f6',
+                    height: 10,
                 }}
             />
         );
-        const row = (data, sectionID, rowID) => {
+        const row = (data, rowID) => {
 
 
             let rowData = data.list
@@ -377,27 +361,19 @@ export  default  class CarList extends React.Component {
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource.cloneWithRows(this.state.list)}
                     // renderHeader={() => <span>Pull to refresh</span>}
-                    renderFooter={() => (<div style={{padding: 30, paddingBottom: 200, textAlign: 'center'}}>
+                    renderFooter={() => (<div style={{padding: 30, paddingBottom: 80, textAlign: 'center'}}>
                         {this.state.isLoading ? '加载中' : '暂无更多'}
                     </div>)}
                     renderRow={row}
                     renderSeparator={separator}
                     initialListSize={5}
                     pageSize={5}
-                    style={{
-                        height: this.state.height,
-                        borderTop: '1px solid #ddd',
-                        // margin: '5px 0',
-                        // marginBottom: "rem",
-                        paddingTop: ".8rem"
-                    }}
-                    scrollerOptions={{scrollbars: true, scrollingComplete: this.scrollingComplete}}
-                    // refreshControl={<RefreshControl
-                    //     refreshing={this.state.refreshing}
-                    //     onRefresh={this.onRefresh}
-                    //     icon={this.renderCustomIcon()}
-                    // />}
-                    onScroll={this.onScroll}
+                     useBodyScroll
+                     style={{
+                      paddingTop:"1.7rem",
+                         zIndex:"100"
+                     }}
+                     onScroll={this.onScroll}
                     scrollRenderAheadDistance={200}
                     scrollEventThrottle={20}
                     // onEndReached={this.onEndReached}
@@ -405,34 +381,32 @@ export  default  class CarList extends React.Component {
                 />
 
 
-                <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}>
+                <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}
+                     style={{
+                         zIndex:"1000"
+                     }}
+                >
 
-                    <Flex>
-                        <Flex.Item>
+                    <div>
+                        <div className="check-all-info">
                             <CheckboxItem className="checkbox" key={1} onChange={() => this._checkAll()}
                                           activeStyle={{background: "none"}}
-
                                           checked={this.state.checkAll}
-
-                                // defaultChecked={true}
                             >全选</CheckboxItem>
 
-                        </Flex.Item>
-                        <Flex.Item className="tot">
+                        </div>
+                        <div className="tot">
 
-                            总计:￥{ Number(sum).toFixed(2)}
-                        </Flex.Item>
-
-
-                        <Flex.Item className="buy-btn" onClick={() => {
-
+                            合计：￥{ Number(sum).toFixed(2)}
+                        </div>
+                        <div className="buy-btn" onClick={() => {
 
                             if (Number(sum).toFixed(2) == 0) {
 
                                 Toast.info("您还没有选择商品！", 1)
 
-
                             } else {
+
                                 history.push({
                                     pathname: "/orderDetail",
 
@@ -443,8 +417,9 @@ export  default  class CarList extends React.Component {
 
                         }}>
                             去结算
-                        </Flex.Item>
-                    </Flex>
+                            {/*<span>(0)</span>*/}
+                        </div>
+                    </div>
 
 
                 </div>

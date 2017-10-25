@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView} from 'antd-mobile';
+import { ListView } from 'antd-mobile';
 
 const data = [
     {
@@ -20,7 +20,7 @@ const data = [
 ];
 let index = data.length - 1;
 
-const NUM_ROWS = 5;
+const NUM_ROWS = 20;
 let pageIndex = 0;
 
 function genData(pIndex = 0) {
@@ -42,7 +42,6 @@ class Demo extends React.Component {
         this.state = {
             dataSource,
             isLoading: true,
-            refreshing: false,
         };
     }
 
@@ -68,28 +67,11 @@ class Demo extends React.Component {
     //     });
     //   }
     // }
-    onRefresh = () => {
-        this.setState({ refreshing: true, isLoading: true });
-        // simulate initial Ajax
-        pageIndex=0
-        setTimeout(() => {
-            this.rData = genData();
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(this.rData),
-                refreshing: false,
-                isLoading: false,
-            });
-        }, 600);
-    };
+
     onEndReached = (event) => {
-        console.log(pageIndex)
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
         if (this.state.isLoading && !this.state.hasMore) {
-            return;
-        }
-
-        if(pageIndex==2){
             return;
         }
         console.log('reach end', event);
@@ -131,7 +113,7 @@ class Demo extends React.Component {
                         }}
                     >{obj.title}</div>
                     <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-                        <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="icon" />
+                        <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
                         <div style={{ lineHeight: 1 }}>
                             <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
                             <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span>¥</div>
@@ -141,27 +123,24 @@ class Demo extends React.Component {
             );
         };
         return (
-          <div>
-
-              <ListView
-                  ref={el => this.lv = el}
-                  dataSource={this.state.dataSource}
-                  renderHeader={() => <span>header</span>}
-                  renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-                      {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                  </div>)}
-                  renderRow={row}
-                  renderSeparator={separator}
-                  className="am-list"
-                  pageSize={4}
-                    useBodyScroll
-                  onScroll={() => { console.log('scroll'); }}
-                  scrollRenderAheadDistance={500}
-                  scrollEventThrottle={200}
-                  onEndReached={this.onEndReached}
-                  onEndReachedThreshold={10}
-              />
-          </div>
+            <ListView
+                ref={el => this.lv = el}
+                dataSource={this.state.dataSource}
+                renderHeader={() => <span>header</span>}
+                renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+                    {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                </div>)}
+                renderRow={row}
+                renderSeparator={separator}
+                className="am-list"
+                pageSize={4}
+                useBodyScroll
+                onScroll={() => { console.log('scroll'); }}
+                scrollRenderAheadDistance={500}
+                scrollEventThrottle={200}
+                onEndReached={this.onEndReached}
+                onEndReachedThreshold={10}
+            />
         );
     }
 }

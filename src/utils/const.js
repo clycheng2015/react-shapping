@@ -3,6 +3,17 @@ export const GET_HOME_LIST = 'GET_HOME_LIST' //获取首页列表
 export const REQUEST_LIST = 'REQUEST_LIST' //请求列表
 export const GET_TABS = 'GET_TABS' //获取选项卡
 export const TAB_CHANGE = 'TAB_CHANGE' //切换选项卡
+
+export const HEAD_STATE='HEAD_STATE'// 首页头部变化
+
+
+
+
+
+
+
+
+
 //item
 export const REQUEST_ITEM_LIST = 'REQUEST_ITEM_LIST' //请求列表
 export const RECIEVE_ITEM_LIST = 'RECIEVE_ITEM_LIST' //获取标题列表
@@ -135,6 +146,25 @@ export const CONFIRM_BUY_ORDER='CONFIRM_BUY_ORDER' //确认收货
 export const REFUND_REMARK='REFUND_REMARK'//退货理由
 
 
+
+///post
+
+export const GET_POST_TYPE='GET_POST_TYPE'
+export const SAVE_POST_TYPE='SAVE_POST_TYPE'
+
+
+
+//invoice
+
+
+export const GET_INVOICE_TYPE='GET_INVOICE_TYPE'
+export const SAVE_INVOICE_TYPE='SAVE_INVOICE_TYPE'
+
+
+
+//
+
+export const GET_JINFU_PRO='GET_JINFU_PRO'
 
 
 
