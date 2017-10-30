@@ -20,7 +20,8 @@ let init = {
             [{title: '待付款', state: 1},
             {title: '待发货', state: 2},
             {title: '待收货', state: 3},
-            {title: '退/换货', state: 4}],
+            {title: '退/换货', state: 4},
+            {title: '已完成', state: 5}],
     },
     bill: {
         pagesize: 100,

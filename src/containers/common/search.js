@@ -5,8 +5,8 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-
-import {Button, Flex, Icon} from 'antd-mobile'
+import {SearchBar, Flex, Icon} from 'antd-mobile'
+import GoodsList from '../../components/Commons/goodsList'
 /*actions*/
 
 import * as global from 'actions/global'
@@ -33,14 +33,14 @@ export default class Search extends React.Component {
     }
 
     componentDidMount() {
-
-        const {match, getSearchList, location} = this.props
-        const {params} = match
-        getSearchList({
-            pagesize: 100,
-            pagenum: 1,
-            word: params.value
-        })
+        //
+        // const {match, getSearchList, location} = this.props
+        // const {params} = match
+        // getSearchList({
+        //     pagesize: 100,
+        //     pagenum: 1,
+        //     word: params.value
+        // })
 
 
     }
@@ -49,92 +49,56 @@ export default class Search extends React.Component {
         //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
         // this.props.history.push('/')
     }
+
+
+    _search = (v) => {
+        const {getSearchList, pagesize, pagenum} = this.props
+
+        getSearchList({
+            pagesize: pagesize,
+            pagenum: pagenum,
+            word: v
+        })
+    }
+
     render() {
-        const {data, history, location} = this.props
-
-        console.log(data)
-        const list = () => {
-
-            if (data && data.goodList && data.goodList.length > 0) {
-
-                return (
-                    <div className="flex-container">
-                        <Flex wrap="wrap">
-
-                            {
-                                data.goodList.map((i, key) => (
-                                        <div key={key} className="per">
-                                            <Link
-                                                to={{
-                                                    pathname: `/goodsDetail/${i.id}`,
-                                                    // state:location.state.title
-
-                                                }}
-                                            >
-                                                <div className="img-info">
-
-                                                    <img src={i.bigpic} alt=""/>
-                                                </div>
-                                                <div className="pretxt">
-
-                                                    <p className="mall-title">{i.gtitle}</p>
-                                                    <p style={{color: "#e85c34", paddingTop: ".1rem"}}>￥{i.price}  </p>
-
-                                                </div>
-                                            </Link>
-                                        </div>
-
-                                    )
-                                )
-                            }
-                        </Flex>
-                    </div>
-                )
-            } else {
-
-                return (
-
-                    <div className="no-goods">
-
-                        {/*暂无商品分类*/}
-                    </div>
-                )
-            }
-
-        }
-        console.log(this.props)
-
-        // const title = () => {
-        //
-        //     if (location && (location.state !== undefined)) {
-        //         return (
-        //             <span>{ location.state !== undefined ? location.state.title : ''}</span>
-        //         )
-        //     } else {
-        //
-        //         return (
-        //
-        //             <span></span>
-        //         )
-        //     }
-        // }
-
+        const {list, history} = this.props
+        console.log(list)
         return (
-            <div className="item-list-container">
+            <div className="search-list-container">
                 <div className="nav-tab">
+
 
                     <Icon type="left" size="lg" onClick={() => {
                         history.goBack()
                     }} className='back-icon'/>
 
-                    <span>
-                      <span>搜索结果</span>
-                    </span>
+
+                    <div className="s-box">
+                        <SearchBar
+                            placeholder="搜索"
+                            focused={this.state.focused}
+                            // cancelText="确定"
+                            onFocus={() => {
+                                this.setState({
+                                    focused: false,
+                                });
+                            }}
+                            // showCancelButton={false}
+                            onSubmit={value =>
+                                this._search(value)
+                            }
+                        />
+                    </div>
+
 
                 </div>
 
-                <div key={this.props.location.pathname} className="list">
-                    {list()}
+                <div className="list">
+
+                    {list && list.length > 0 &&
+                    <GoodsList {...this.props}/>}
+
                 </div>
 
             </div>

@@ -3,17 +3,18 @@
  */
 
 
-.item-list-container{
+.search-list-container{
 
   .nav-tab{
-    height: .8rem;
+    z-index: 9999;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
     top:0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
+    line-height: .9rem;
     .back-icon{
       float: left;
       padding-left: .2rem;
@@ -24,9 +25,106 @@
       margin-right: .35rem;
 
     }
+    .s-box{
+      float: left;
+      background: #f3f3f1;
+      height: .6rem;
+      width: 80%;
+      margin-top: .15rem;
+      border-radius: 1rem;
+      .am-search {
+        padding: 0;
+        margin: 0;
+        height: .6rem;
+        background: transparent;
+        .am-search-input {
+
+          background: transparent;
+          overflow:hidden;
+        }
+        .am-search-cancel{
+          color: #4b4b4b;
+          padding-right: .2rem !important;
+          font-size: .23rem;
+          overflow: hidden;
+
+        }
+
+      }
+    }
+
   }
   .list{
-    margin-top: .8rem;
+    margin-top: .9rem;
+
+    .am-list-body {
+      border: none;
+    }
+    .am-list-body {
+      border: none;
+      float: left;
+      background: #f7f6f6;
+      width: 7.5rem !important;
+      overflow: hidden;
+    }
+    .am-list-footer{
+      background: #f7f6f6;
+      overflow: hidden;
+
+
+    }
+    .goods {
+      width: 3.7rem;
+      height: 5rem;
+      background: white;
+      //border: 1px solid red;
+      float: left;
+      box-sizing: border-box;
+      margin-top: .1rem;
+      .img-info {
+        width: 3.7rem;
+        height: 3.7rem;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        img {
+          width: 100%;
+          max-height: 3.7rem;
+          vertical-align: middle;
+        }
+
+      }
+
+      .txt-info {
+        width: 3.7rem;
+        height: 1.2rem;
+        overflow: hidden;
+
+        .title {
+
+          display: -webkit-box !important;
+          -webkit-box-orient: vertical !important;
+          -webkit-line-clamp: 2 !important;
+          overflow: hidden !important;
+          font-size: .3rem;
+          height: .71rem;
+          padding-right: .2rem;
+          padding-left: .2rem;
+        }
+        .price {
+          padding-right: .2rem;
+          padding-left: .2rem;
+          color: red;
+          font-size: .3rem;
+          line-height: .5rem;
+        }
+
+      }
+
+    }
+    .goods:nth-child(even) {
+      margin-left: .09rem;
+    }
   }
   .flex-container .per {
     width: 50%;
@@ -75,4 +173,6 @@
     color: #666666;
 
   }
+
+
 }

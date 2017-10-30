@@ -2,7 +2,7 @@ import React, {PropTypes}from "react";
 import {Icon, TabBar} from 'antd-mobile';
 import {connect} from 'react-redux'
 
-import {localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
 class TabBarMain extends React.Component {
 
     constructor(props) {
@@ -16,13 +16,7 @@ class TabBarMain extends React.Component {
     }
 
     componentWillMount() {
-        let userInfo = localItem('userInfo')
-        if ((typeof userInfo)== 'string' ) {
 
-            this.setState({
-                userInfo:JSON.parse(userInfo)
-            })
-        }
 
     }
 
@@ -155,24 +149,7 @@ class TabBarMain extends React.Component {
                     selected={page === 'user'}
                     onPress={() => {
                         changeTab('user')
-                        // history.push('/user')
-                        if (this.state.userInfo=='undefined') {
-                            // history.push('/auth')
-
-
-                            let url=window.location.href
-
-                            url= url.match(/#(\S*)/)[1];
-
-                            url=url.replace('/','')
-
-                            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-
-                        } else {
-                            history.push('/user')
-
-                        }
-
+                        history.push('/user')
                     }}
                 >
                 </TabBar.Item>

@@ -76,7 +76,10 @@ export default class Item extends React.Component {
             }}
             >
 
-                <div className="nav">
+                <div className="nav"
+
+                     onClick={()=>history.push('/search')}
+                >
                     <SearchBar
                         placeholder="上新1200种商品"
                         focused={this.state.focused}
@@ -86,12 +89,9 @@ export default class Item extends React.Component {
                                 focused: false,
                             });
                         }}
-                        onCancel={this._onSearch}
-                        onSubmit={value =>
 
-                            history.push(`/search/${value}`)
+                        disabled
 
-                        }
                     />
                 </div>
 

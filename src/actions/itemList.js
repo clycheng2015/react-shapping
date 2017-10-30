@@ -26,7 +26,7 @@ export const removeList=()=>({
 export const getItemGoodsList = ( data) => {
     return (dispatch, getState) => {
         dispatch(requestItemGoodsList());
-        instance.post(itemList.detailUrl, qs.stringify(data))
+        instance.get(itemList.detailUrl+'?'+qs.stringify(data))
             .then(res => {
                 dispatch(receiveItemGoodsList(res.data.data))
             })

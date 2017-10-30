@@ -7,69 +7,79 @@ import * as types from '../utils/const'
 import qs from 'qs'
 
 
+export const severError=(data)=>({
 
 
-export const headChange=(scroll)=>({
+    type:types.SEVER_ERROR,data
 
-    type:types.HEAD_STATE,
-    scroll
 })
 
 
+const receiveHome = (data) => ({
 
-const requestList= tab => ({
-    type:types.REQUEST_LIST,
-    tab
+    type: types.RECEIVE_HOME, data
+})
+
+const requestHomeList= () => ({
+    type:types.REQUEST_HOME_MORE_LIST,
 });
 
 
-const receiveHomeList = (tab, pagenum, pagesize, list) => ({
-    type: types.GET_HOME_LIST,
-    tab, pagenum, pagesize, list
+const receiveHomeList = (pagenum, pagesize, data) => ({
+
+    type: types.RECEIVE_HOME_MORE_LIST,
+    pagenum, pagesize, data
 })
-const receiveTabs = (tabs) => ({
-    type: types.GET_TABS,
-    tabs
+
+export const recordScrollT=(scrollT)=>({
+
+   type: types.RECORD_SCROLLT,scrollT
+
+
+
 })
-export const tabChange = (tab,cid,index) => ({
-    type: types.TAB_CHANGE,
-    tab,cid,index
+
+
+export const headChange =(headState)=>({
+    type:types.HEAD_STATE,headState
 })
-export const getTabs = () => {
+
+export const fetchHome = () => {
     return (dispatch, getState) => {
-        instance.post(home.tabsUrl, {})
+        instance.get(home.homeUrl)
+
             .then(res => {
-                console.log('获取tab成功')
-                if(res.data.code==200){
-                    dispatch(receiveTabs(res.data.data))
-                    dispatch(getHomeList('推荐',{
-                        pagenum:1,
-                        pagesize:30,
-                        cid:'',
-                    }))
+
+                // console.log(res)
+               if(res.data.code===200){
+                   let result=res.data.data
+                   dispatch(receiveHome(result))
+               }
+            })
+            .catch(error => {
+                console.log('error: ', error)
+            })
+    }
+}
+export  const fetchHomeList=(data)=>{
+    "use strict";
+    return (dispatch, getState) => {
+        dispatch( requestHomeList())
+        instance.get(home.moreListUrl+'?'+qs.stringify(data))
+            .then(res => {
+                if(res.data.code===200){
+                    let result=res.data.data
+                    dispatch(receiveHomeList( data.pagenum, data.pagesize, result))
+                }
+                else {
+                    dispatch(severError(res.data))
                 }
             })
             .catch(error => {
                 console.log('error: ', error)
             })
     }
+
+
+
 }
-
-export const getHomeList = (tab, data,resolve, reject) => {
-    data.boolean=true
-    return (dispatch, getState) => {
-        dispatch(requestList(tab));
-        instance.post(home.homeUrl, qs.stringify(data))
-            .then(res => {
-                console.log('获取列表成功')
-                dispatch(receiveHomeList(tab, data.pagenum, data.pagesize, res.data.data))
-                // resolve()
-
-            })
-            .catch(error => {
-                // reject()
-                console.log('error: ', error)
-            })
-    }
-}
-

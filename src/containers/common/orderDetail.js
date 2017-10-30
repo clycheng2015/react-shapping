@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeLocalItem, localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
 
 import {Radio, Modal, Icon, Flex, TextareaItem, Toast, InputItem, Checkbox, List} from 'antd-mobile'
 import {createForm} from 'rc-form';
@@ -43,7 +43,7 @@ class OrderDetail extends React.Component {
 
 
         }
-        this.userInfo = localItem('userInfo')
+        this.userInfo = '1111'
     }
 
     componentDidMount() {

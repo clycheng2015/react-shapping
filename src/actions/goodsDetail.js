@@ -26,6 +26,33 @@ const addCar = () => ({
 
 })
 
+export const drawerShow=(showType)=>({
+
+    type:'DRAWER_TYPE',showType
+
+})
+
+
+
+
+export const countAdd=()=>({
+
+    type:'COUNT_ADD'
+
+})
+
+
+export const countLose=()=>({
+
+    type:'COUNT_LOSE'
+
+})
+
+
+
+
+
+
 export const removeDetail=()=>({
 
     type:'DETAIL_REMOVE'
@@ -36,7 +63,7 @@ export const removeDetail=()=>({
 export const getGoodsDetail = (data) => {
     return (dispatch, getState) => {
         dispatch(requestItemList());
-        instance.post(goodsDetail.detailUrl, qs.stringify(data))
+        instance.get(goodsDetail.detailUrl+'?'+ qs.stringify(data))
             .then(res => {
                 dispatch(receiveItemList(res.data.data))
             })
@@ -46,10 +73,6 @@ export const getGoodsDetail = (data) => {
             })
     }
 }
-
-
-
-
 
 export const fetchAddCar = (data) => {
     return (dispatch, getState) => {

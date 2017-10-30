@@ -1,9 +1,6 @@
 /**
  * Created by bear on 2017/9/15.
  */
-/**
- * Created by bear on 2017/9/14.
- */
 
 import qs from 'qs'
 import instance from '../utils/instance'
@@ -418,7 +415,7 @@ export const fetchMyBill = (data) => {
 export const fetchAddAds = (data, history) => {
     return (dispatch, getState) => {
 
-        instance.post(user.addressUrl, qs.stringify(data))
+        instance.post(user.addressUrl,qs.stringify(data))
 
             .then(res => {
                 if (res.data.code == 200) {
@@ -440,7 +437,7 @@ export const fetchAddAds = (data, history) => {
 export const fetchGetAds = (data) => {
     return (dispatch, getState) => {
 
-        instance.post(user.getAddressUrl, qs.stringify(data))
+        instance.get(user.getAddressUrl +'?'+qs.stringify(data))
 
             .then(res => {
 
@@ -464,7 +461,7 @@ export const fetchGetAds = (data) => {
 export const fetchDefAds = (data) => {
     return (dispatch, getState) => {
 
-        instance.post(user.defaultAddressUrl, qs.stringify(data))
+        instance.get(user.defaultAddressUrl+'?'+qs.stringify(data))
 
             .then(res => {
 
@@ -487,7 +484,7 @@ export const fetchDefAds = (data) => {
 export const fetchDelAds = (data) => {
     return (dispatch, getState) => {
 
-        instance.post(user.delAddressUrl, qs.stringify(data))
+        instance.get(user.delAddressUrl+'?'+qs.stringify(data))
 
             .then(res => {
 

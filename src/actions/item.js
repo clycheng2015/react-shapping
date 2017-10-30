@@ -19,7 +19,7 @@ const receiveItemList = (list) => ({
 export const getItemList = ( ) => {
     return (dispatch, getState) => {
         dispatch(requestItemList());
-        instance.post(item.itemListUrl, {})
+        instance.get(item.itemListUrl, {})
             .then(res => {
                 dispatch(receiveItemList(res.data.data))
             })

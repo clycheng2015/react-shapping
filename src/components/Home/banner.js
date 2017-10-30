@@ -1,121 +1,54 @@
 /**
  * Created by bear on 2017/9/9.
  */
-
 import React from 'react'
+import {Carousel} from 'antd-mobile'
 
-import {Carousel, WhiteSpace, WingBlank} from 'antd-mobile'
+const data = [
 
+    {img: require('static/images/home/banner.png')},
+    {img: require('static/images/home/banner1.jpg')},
 
-import {Link} from "react-router-dom"
-
-
+]
 class Banner extends React.Component {
-    state = {
-        data: [],
-        initialHeight: 300,
+    constructor(props) {
+        super(props);
+        this.state = {};
     }
 
     componentDidMount() {
-        const {list} = this.props
-        this.setState({
-            data: list
-        })
-    }
-
-    _getPath = (history, data, tab) => {
-
-        console.log(data)
-
-        if (data.type == 'GOODS') {
-            if (tab == '推荐') {
-                history.push(`/goodsDetail/${data.good_id}`)
-            } else {
-
-                history.push(`/goodsDetail/${data.id}`)
-            }
-
-
-        }
-
-
-        if (data.type == 'CATEGORY') {
-
-            history.push(`/itemList/${data.id}`)
-
-        }
-
-        if (data.type == 'SECKILL') {
-
-
-            history.push(`/active/${data.id}`)
-
-        }
-
-        else {
-
-            history.push(`/goodsDetail/${data.id}`)
-        }
-
 
     }
 
     render() {
-        const {tab, history, list} = this.props
-        const hProp = this.state.initialHeight ? {height: this.state.initialHeight} : {}
-        if (list && list.length > 1) {
-            return (
-                <div>
 
+        const {data,history} = this.props
 
-                            <Carousel
-                                className="my-carousel"
-                                autoplay
-                                infinite
-                                selectedIndex={1}
-                                swipeSpeed={35}
-                                beforeChange={(from, to) => {
-                                }}
-                                afterChange={index => {
-                                }}
-                            >
-                                {list.map((i, key) => (
+        return (
+            <Carousel
+                className="my-carousel"
+                autoplay
+                infinite
+                selectedIndex={1}
+                swipeSpeed={35}
+                beforeChange={(from, to) => {
+                }}
+                afterChange={index => {
+                }}
+            >
+                {data.map((i, key) => (
 
-                                    <img key={key} src={i.flashpic} onLoad={() => {
-                                        this.setState({initialHeight: null,})
-                                    }}
+                    <img key={key} src={i.iconpic} onLoad={() => {
+                        this.setState({initialHeight: null,})
+                    }}
+                         onClick={() => history.push('/')}
+                    />
 
-                                         onClick={() => this._getPath(history, i, tab)}
-                                    />
+                ))}
+            </Carousel>
 
-                                ))}
-                            </Carousel>
+        )
 
-
-                </div>
-            )
-        } else if (list.length === 1) {
-
-            return (
-
-                <div className="my-carousel" style={{width: '100%'}}>
-
-
-                            <img src={list[0].flashpic} alt="" style={{width: '100%'}}
-
-                                 onClick={() => this._getPath(history, list[0], tab)}/>
-
-                </div>
-            )
-        } else {
-
-            return (
-
-                <div className="my-carousel">
-
-                </div>
-            )
-        }
     }
 
 }

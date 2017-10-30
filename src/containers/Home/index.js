@@ -4,18 +4,13 @@
 import React, {PropTypes}from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-
-import {Tabs, Icon, SearchBar, Button} from 'antd-mobile'
 import * as home from '../../actions/home'
-import getSize from '../../utils/getSize'
 import HomePage from '../../components/Home/homePage'
+import Head from '../../components/Home/head'
 import TabBarMain from 'containers/common/tabbar'
-
-
-
-
-require('./styles/home.less')
-
+import {getSize} from '../../utils/getSize'
+import {Icon} from 'antd-mobile'
+require('./styles/index.less')
 @connect(
     state => {
         return {...state.home}
@@ -25,29 +20,57 @@ require('./styles/home.less')
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            focused: false,
-        };
     }
-
 
     componentDidMount() {
-            const {pagenum, pagesize, cid, success, isFetching, tab, getHomeList, homeList} = this.props
+        const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
 
-                getHomeList(tab, {pagesize: 100, pagenum: pagenum, cid: cid})
-
+        fetchHome()
+        if (dataList.length === 0) {
+            fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
+        }
     }
 
+    componentWillUnmount() {
 
-    componentWillReceiveProps(nextProps) {
+        let {scrollT} = getSize();
 
+        const {recordScrollT} = this.props;
+
+        recordScrollT(scrollT);
+
+        window.onscroll = null;
     }
+
 
     render() {
-        const {list, tabs, location, history, success, homeList, tab, isFetching, tabIndex, pagenum, pagesize, cid, getHomeList} = this.props
+        const {history, homeData, errorData, isFetching,headState} = this.props
         return (
             <div className="home-container">
-                <HomePage history={history} dataList={homeList}/>
+
+                {headState === 0 && <Head type={headState} history={history}/>}
+
+                {headState === 1 && <div className="white"><Head type={headState}/></div>}
+
+
+                { homeData && homeData.bannerDtoList && <HomePage {...this.props}/> }
+
+                {
+                    errorData && errorData.code && errorData.code !== 200 &&
+
+                    <div className="empty-info"
+                         style={{
+                             height: document.documentElement.clientHeight - 130,
+                         }}
+                    >
+                        <img src={require('static/images/empty/404.png')} alt=""/>
+                        <p> 服务器出错啦</p>
+                        <p onClick={() => {
+                            // history.push("/newAds")
+                        }}> 立即刷新</p>
+
+                    </div>
+                }
                 <TabBarMain history={history} page="/"/>
             </div>
         )

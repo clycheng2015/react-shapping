@@ -7,31 +7,24 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {removeLocalItem} from '../../utils/cookie'
-
-import {getQueryString} from  '../../utils/tools'
-import PropTypes from 'prop-types'
-
 import {Button, Flex, Icon, InputItem, List, Modal, Toast} from 'antd-mobile'
-const alert = Modal.alert;
+import PropTypes from 'prop-types'
 import {createForm} from 'rc-form';
-/*actions*/
+import {removeLocalItem} from '../../utils/cookie'
 import * as auth from 'actions/auth'
-import * as global from 'actions/global'
+import {getQueryString} from  '../../utils/tools'
 
-//scroll 听说不错  试试
-
-// import BScroll from 'better-scroll'
-
-
+const alert = Modal.alert;
 const prompt = Modal.prompt;
 require('./styles/login.less')
+
+
 
 @connect(
     state => {
         return {...state.auth}
     },
-    dispatch => bindActionCreators({...global, ...auth}, dispatch)
+    dispatch => bindActionCreators({ ...auth}, dispatch)
 )
 class Login extends React.Component {
 
@@ -60,22 +53,13 @@ class Login extends React.Component {
 
     _login = () => {
         const {match, fetchLogin, form, history} = this.props
-
         const {getFieldValue} = form
-
         let openid = getQueryString("openid");
-
-
         let toUrl=getQueryString("toUrl")
-
         // if(true){
-
-        if (openid && openid.length > 0) {
-
+        // if (openid && openid.length > 0) {
             let mobile = getFieldValue('number')
-
             let pwd = getFieldValue('password')
-
             if (mobile == undefined || pwd == undefined) {
                 Toast.info('请输入账号或者密码！', 1);
             }
@@ -83,31 +67,32 @@ class Login extends React.Component {
                 let data = {
                     mobile: mobile,
                     password: pwd,
-                    openid:openid
+                    // openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
                 }
                 fetchLogin(data, history,toUrl)
             }
-        } else {
-
-            let url=window.location.href
-
-            url= url.match(/#(\S*)/)[1];
-
-            url=url.replace('/','')
-
-            alert('微信授权', <div></div>, [
-                {
-                    text: '立即授权', onPress: () => {
-                    // removeLocalItem("userInfo")
-                    location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-                }
-                },
-                {text: '微信搜索"美纶购"公众号', onPress: () => console.log('第1个按钮被点击了')},
-                {text: '取消登录', onPress: () => history.goBack()},
-            ])
-
-
-        }
+        // }
+        // else {
+        //
+        //     let url=window.location.href
+        //
+        //     url= url.match(/#(\S*)/)[1];
+        //
+        //     url=url.replace('/','')
+        //
+        //     alert('微信授权', <div></div>, [
+        //         {
+        //             text: '立即授权', onPress: () => {
+        //             // removeLocalItem("userInfo")
+        //             location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        //         }
+        //         },
+        //         {text: '微信搜索"美纶购"公众号', onPress: () => console.log('第1个按钮被点击了')},
+        //         {text: '取消登录', onPress: () => history.goBack()},
+        //     ])
+        //
+        //
+        // }
 
 
     }

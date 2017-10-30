@@ -8,7 +8,11 @@ import {auth} from '../utils/api'
 import * as types from '../utils/const'
 import {Toast} from 'antd-mobile'
 
-import {localItem} from '../utils/cookie'
+import {AppLocalStorage} from '../utils/cookie'
+
+
+import {keys} from '../utils/appkeys'
+import {hex_sha1} from   '../utils/sha1'
 
 
 const login = (userInfo) => ({
@@ -37,17 +41,42 @@ const sendSmsCode = (data) => ({
 })
 
 
-export const fetchLogin = (data, history,toUrl) => {
+export const fetchLogin = (data, history, toUrl) => {
+
+    let newData = {
+        ...data,
+        appkey: keys.APP_KEY,
+        timestamp: keys.TIMESTAMP,
+        machine: keys.APP_MACHINE
+    };
+    let arr = Object.keys(newData).sort().map((key) => newData[key])
+
+    let signData = {
+        ...newData,
+
+        sign: hex_sha1(arr.join('') + keys.APP_SECRET)
+    }
+
     return (dispatch, getState) => {
-        instance.post(auth.loginUrl, qs.stringify(data))
+        instance.post(auth.loginUrl, qs.stringify(signData))
             .then(res => {
+                console.log(res)
                 if (res.data.code == 200) {
 
                     dispatch(login(res.data.data))
-
                     Toast.success("登录成功", 1)
-                    localItem('userInfo', JSON.stringify(res.data.data))
-                    history.push(`/${toUrl?toUrl:''}`)
+                    // AppLocalStorage.Cache.clear()
+
+                    AppLocalStorage.Cache.put("user",{
+                        userInfo:res.data.data,
+                        // openid:data.openid
+                        openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
+
+                    },res.data.data.expires_in)
+
+                    // localItem('userInfo', JSON.stringify(res.data.data))
+                    // history.push(`/${toUrl ? toUrl : ''}`)
+
                 }
                 else {
 
@@ -104,13 +133,8 @@ export const fetchUpdate = (data, history) => {
                     history.push('/login')
 
                 } else {
-
-
                     Toast.info(res.data.msg, 1)
-
                 }
-
-
             })
             .catch(error => {
 

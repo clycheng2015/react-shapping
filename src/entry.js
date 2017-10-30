@@ -15,9 +15,9 @@ import { AppContainer } from 'react-hot-loader'
 // import App from './test'
 
 
-////活动入口
+//原生
 
-// import App from './activeApp'
+// import App from './native'
 
 ////商城入口
 

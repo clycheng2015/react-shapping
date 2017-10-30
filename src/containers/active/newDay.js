@@ -402,33 +402,6 @@ export default class Special extends React.Component{
 
     }
 
-
-    renderContent = tab =>
-        (<div className='tab'>
-            <ul>
-                {this.getData.map(function (item,index) {
-
-                    return(
-                        <li key={index} onClick={()=>{
-                            history.push(`/goodsDetail/${item.id}`)
-                        }}>
-                            <div className='image'>
-                                <img src={item.bigpic} alt=""  />
-                            </div>
-                            <div className='box'>
-                                <p className='name'>{item.title} </p>
-                                <p className='price'>
-                                    ￥{item.zkprice}<span>￥{item.price}</span>
-                                    {/*<button>马上抢</button>*/}
-                                </p>
-                            </div>
-                        </li>
-                    )
-
-                })}
-            </ul>
-
-        </div>);
     render(){
         const {data,history}=this.props
         const tabs = [];
@@ -478,7 +451,31 @@ export default class Special extends React.Component{
                    <p className='title'>今日新品到货 <br/> <span>每日17点准时更新</span></p>
                    <WhiteSpace />
                        <Tabs tabs={tabs} swipeable={false}  onChange={this._change}>
-                           {this.renderContent}
+                           <div className='tab'>
+                               <ul>
+                                   {this.getData.map(function (item,index) {
+
+                                       return(
+                                           <li key={index} onClick={()=>{
+                                               history.push(`/goodsDetail/${item.id}`)
+                                           }}>
+                                               <div className='image'>
+                                                   <img src={item.bigpic} alt=""  />
+                                               </div>
+                                               <div className='box'>
+                                                   <p className='name'>{item.title} </p>
+                                                   <p className='price'>
+                                                       ￥{item.zkprice}<span>￥{item.price}</span>
+                                                       {/*<button>马上抢</button>*/}
+                                                   </p>
+                                               </div>
+                                           </li>
+                                       )
+
+                                   })}
+                               </ul>
+
+                           </div>
                        </Tabs>
                    <WhiteSpace />
 

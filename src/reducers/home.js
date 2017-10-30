@@ -1,105 +1,79 @@
 import * as types from '../utils/const'
 
 let init = {
-    pagesize: 30,
-    pagenum: 1,
-    isFetching: false,
-    success: false,
-    scrollT: 0,
-    list: [],
-    homeList: {},
-    tabs: [],
-    tab: "推荐",
-    cid:"",
-    tabIndex:'',
-    //改版
-    bannerList:[],
-    centerList:[],
-    moreList:[],
-    hamMore:false,
 
+    pagesize: 20,
+    pagenum: 0,
+    scrollT: 0,
+    hamMore: true,
+    isFetching: false,
+    homeData: {},
+    moreData: {},
+    dataList: [],
+    headState:0,
+    errorData:{}
 
 }
-
 export const home = (state = init, action) => {
 
 
     switch (action.type) {
 
-        case types.GET_TABS:
-            let tabs = []
-            if (action.tabs.length > 0) {
-                action.tabs.forEach(i => {
-                    "use strict";
-                    tabs.push({
-                        title: i.cname,
-                        cid: i.id
-                    })
-                })
-            }
-            return {...state, tabs: tabs}
+        case types.RECEIVE_HOME:
 
-        case types.TAB_CHANGE:
-            //初始化状态
             return {
                 ...state,
-                tab: action.tab,
-                tabIndex:action.index,
-                cid:action.cid,
-                pagesize: 30,
-                pagenum: 1,
-                isFetching: false,
-                success: false,
-                scrollT: 0,
-                list: [],
-                // bannerList:[],
-                // centerList:[],
-                moreList:[],
-
+                homeData: action.data,
             }
+        case types.HEAD_STATE:
 
+            return {
+                ...state,
+                headState: action.headState,
+            }
+        case types.RECORD_SCROLLT:
 
-        case types.REQUEST_LIST:
-
+            return {
+                ...state,
+                scrollT: action.scrollT,
+            }
+        case types.REQUEST_HOME_MORE_LIST:
 
             return {...state, isFetching: true}
 
+        case types.RECEIVE_HOME_MORE_LIST:
+            let pages = action.data.pages
+            let hasMore = true
+            let dataList = state.dataList
+            if (action.pagenum > pages) {
+                hasMore = false
+            } else if(action.pagenum>state.pagenum) {
 
-        case types.GET_HOME_LIST:
+                dataList = dataList.concat(action.data.datalist)
+            }
 
+            else if(action.pagenum===0){
 
-            let hasMore=false
+                dataList=action.data.datalist
 
-            if(action.list[2].dataList.length===0){
-
-                hasMore=true
             }
 
             return {
                 ...state,
                 isFetching: false,
-                success: true,
+                hasMore: hasMore,
+                moreData: action.data,
+                dataList: dataList,
                 pagesize: action.pagesize,
-                pagenum: action.pagenum,
-                list: action.list,
-                moreList:state.moreList.concat(action.list[2].dataList),
-                homeList: {
-                    ...state.homeList,
-                    [action.tab]: {
-                        list: action.list,
-                        bannerList:action.list[0].dataList,
-                        centerList:action.list[1].dataList,
-                        moreList:state.moreList.concat(action.list[2].dataList),
-                        isFetching: false,
-                        success: true,
-                        pagesize: action.pagesize,
-                        pagenum: action.pagenum,
-                        hasMore:hasMore
-                    }
-                }
+                pagenum: action.pagenum
             }
+
+        case types.SEVER_ERROR:
+
+            return {...state,errorData:action.data}
+
         default:
-            return state
+            return {...state}
     }
 }
 

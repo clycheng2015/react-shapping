@@ -71,7 +71,7 @@ export default class Bill extends React.Component {
                         data && data.datalist && data.datalist.length > 0?
                             <List style={{paddingTop: "1rem"}} key="k"
 
-                                  renderHeader={() => '2017年9月'}
+                                  // renderHeader={() => '2017年9月'}
                             >
 
                             {

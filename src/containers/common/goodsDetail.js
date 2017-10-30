@@ -9,7 +9,7 @@ const alert = Modal.alert;
 import * as goodsDetail from 'actions/goodsDetail'
 import ReactDrawer from '../../components/Commons/lib/react-drawer';
 import Timer from '../../components/Commons/timer';
-import {localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
 require('../../components/Commons/lib/react-drawer.less')
 require('./styles/goodsDetail.less')
 
@@ -25,7 +25,7 @@ export default class GoodsDetail extends React.Component {
         super();
         this.state = {
             open: false,
-            copen:false,
+            copen: false,
             position: 'bottom',
             noOverlay: false,
             inputValue: 1,
@@ -33,9 +33,9 @@ export default class GoodsDetail extends React.Component {
             clear: false,
             tabState: true,
             tabValue: 0,
-            drawerType:"know",
+            drawerType: "know",
         };
-        this.userInfo = localItem('userInfo')
+        this.user = AppLocalStorage.Cache.get('user')
     }
 
     onChange = (v) => {
@@ -77,13 +77,21 @@ export default class GoodsDetail extends React.Component {
 
     toggleDrawer = (type) => {
 
+        // AppLocalStorage.Cache.clear()
+
         this.setState({
-            drawerType:"buy",
+            drawerType: "buy",
         })
-        let userInfo = this.userInfo
+        let user = this.user
+        console.log(user)
         const {history} = this.props
-        // console.log(userInfo)
-        if ((typeof userInfo) != 'string') {
+        if (user && user.userInfo) {
+            this.setState({
+                open: !this.state.open,
+                inputValue: 1,
+                addOrBuyState: type
+            });
+        } else {
 
             alert('请先登录', '立即前往？', [
 
@@ -105,13 +113,6 @@ export default class GoodsDetail extends React.Component {
                 },
             ])
 
-
-        } else {
-            this.setState({
-                open: !this.state.open,
-                inputValue: 1,
-                addOrBuyState: type
-            });
         }
     }
     closeDrawer = () => {
@@ -135,15 +136,13 @@ export default class GoodsDetail extends React.Component {
     _submite_gs = (id) => {
         const {fetchAddCar, history} = this.props
 
-        let userInfo = this.userInfo
+        let user = this.user
 
-        console.log(userInfo)
 
         if (this.state.addOrBuyState == 'add') {
-            let userInfo = this.userInfo
 
             // console.log(userInfo)
-            if ((typeof userInfo) == 'string') {
+            if (user && user.userInfo) {
 
 
                 this.setState({open: false});
@@ -153,7 +152,7 @@ export default class GoodsDetail extends React.Component {
                     goods_att1: "",
                     goods_att2: "",
                     id: '',
-                    uid: JSON.parse(userInfo).id
+                    // uid: JSON.parse(userInfo).id
                 })
             } else {
 
@@ -165,20 +164,20 @@ export default class GoodsDetail extends React.Component {
         if (this.state.addOrBuyState == 'buy') {
 
 
-            let userInfo = this.userInfo
+
 
             // console.log(userInfo)
-            if ((typeof userInfo) == 'string') {
+            if (user && user.userInfo) {
 
                 const {data, history} = this.props
 
-                let price = ''
+                // let price = ''
 
-                if (JSON.parse(userInfo).isvip == 0) {
-                    price = data.zkprice
-                } else {
-                    price = data.vipprice
-                }
+                // if (JSON.parse(userInfo).isvip == 0) {
+                //     price = data.zkprice
+                // } else {
+                //     price = data.vipprice
+                // }
                 let newData = [{
                     att1: "",
                     att2: "",
@@ -187,12 +186,12 @@ export default class GoodsDetail extends React.Component {
                     goods_desc: '',
                     goods_id: data.id,
                     goods_num: this.state.inputValue,
-                    goods_price: price,
+                    goods_price: data.zkprice,
                     goods_smallpic: data.smallpic,
                     goods_title: data.gtitle,
                     id: data.id,
                     shareurl: data.shareurl,
-                    user_id: JSON.parse(userInfo).id,
+                    // user_id: JSON.parse(userInfo).id,
 
                 }]
 
@@ -256,14 +255,14 @@ export default class GoodsDetail extends React.Component {
 
 
     _tabChange = (v) => {
-        if(v===0){
+        if (v === 0) {
 
-            window.scrollTo(0,0)
+            window.scrollTo(0, 0)
 
         }
         else {
 
-            window.scrollTo(0,this.dlScroll.offsetTop-50)
+            window.scrollTo(0, this.dlScroll.offsetTop - 50)
         }
 
 
@@ -285,44 +284,58 @@ export default class GoodsDetail extends React.Component {
 
     }
 
+
     render() {
         const {data, history} = this.props
+        return (
+            <div className="goods-detail-container">
+                <div className="nav-tab">
+                    <Flex justify="center" align="center">
+                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
+                            history.goBack()
+                        }}/></Flex.Item>
+                        <Flex.Item className="item-head center"><span
+                            className={`${this.state.tabState && this.state.tabValue === 0 ? 'active' : ''}`}
+                            onClick={() => this._tabChange(0)}>商品</span><span
+                            className={`${this.state.tabState && this.state.tabValue === 1 ? 'active' : ''}`}
+                            onClick={() => this._tabChange(1)}>详情</span></Flex.Item>
+                        <Flex.Item className="item-head right"></Flex.Item>
+                    </Flex>
+                </div>
 
-        const cntInfo = () => {
-            if (data && data.id) {
-                const cnt = {
+                <div className="detail-info">
 
-                    __html: data.gcontent
-                }
-                return (
+
+                    {data && data.id &&
+
                     <div className="cnt-info">
                         <div className="img-info">
                             <img src={data.bigpic} alt=""/>
                         </div>
 
                         {/*<div className="active-info"*/}
-                             {/*style={{*/}
-                                 {/*background: 'url(' + require('static/images/gs/gs_detail_bg.png') + ') center center /  105%  105%  no-repeat'*/}
-                             {/*}}*/}
+                        {/*style={{*/}
+                        {/*background: 'url(' + require('static/images/gs/gs_detail_bg.png') + ') center center /  105%  105%  no-repeat'*/}
+                        {/*}}*/}
                         {/*>*/}
 
-                            {/*<div className="ac-price">*/}
-                                {/*<p>￥{data.zkprice}</p>*/}
-                                {/*<p>￥{data.price}</p>*/}
-                            {/*</div>*/}
-                            {/*<div className="count-info">*/}
-                                {/*<p > 距结束还</p>*/}
-                                {/*<div>*/}
-                                    {/*<Timer*/}
-                                        {/*date="2017-11-28T00:00:00+00:00"*/}
-                                        {/*days={{plural: 'Days ', singular: 'day '}}*/}
-                                        {/*hours=':'*/}
-                                        {/*mins=':'*/}
-                                        {/*segs=''*/}
-                                    {/*/>*/}
-                                {/*</div>*/}
+                        {/*<div className="ac-price">*/}
+                        {/*<p>￥{data.zkprice}</p>*/}
+                        {/*<p>￥{data.price}</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="count-info">*/}
+                        {/*<p > 距结束还</p>*/}
+                        {/*<div>*/}
+                        {/*<Timer*/}
+                        {/*date="2017-11-28T00:00:00+00:00"*/}
+                        {/*days={{plural: 'Days ', singular: 'day '}}*/}
+                        {/*hours=':'*/}
+                        {/*mins=':'*/}
+                        {/*segs=''*/}
+                        {/*/>*/}
+                        {/*</div>*/}
 
-                            {/*</div>*/}
+                        {/*</div>*/}
 
                         {/*</div>*/}
 
@@ -335,9 +348,10 @@ export default class GoodsDetail extends React.Component {
 
                                 <Flex.Item className="sall">
                                     <p>￥{data.zkprice}</p>
-                                    <p className="vip">￥{data.vipprice}
-                                        <img style={{width: '.5rem'}} src={require('static/images/gs/vip_icon.png')} alt=""/>
-                                    </p>
+                                    {/*<p className="vip">￥{data.vipprice}*/}
+                                        {/*<img style={{width: '.5rem'}} src={require('static/images/gs/vip_icon.png')}*/}
+                                             {/*alt=""/>*/}
+                                    {/*</p>*/}
                                 </Flex.Item>
 
                                 <Flex.Item className="usl">
@@ -346,7 +360,8 @@ export default class GoodsDetail extends React.Component {
                             </Flex>
                         </div>
 
-                        <div className="know-info" onClick={()=>this.setState({drawerType:"know", open: !this.state.open,})}>
+                        <div className="know-info"
+                             onClick={() => this.setState({drawerType: "know", open: !this.state.open,})}>
                             <ul >
                                 <li>
                                     <img src={require('static/images/gs/k_icon.png')} alt=""/>
@@ -385,17 +400,14 @@ export default class GoodsDetail extends React.Component {
 
                         </div>
 
-                        <div className="url" >
+                        <div className="url">
 
-                            <div className="title" ref={(el)=>this.dlScroll=el}>
+                            <div className="title" ref={(el) => this.dlScroll = el}>
                                 商品详情
 
                             </div>
 
-                            <div className=".markdown-body" dangerouslySetInnerHTML={cnt}/>
-
-                            <div ref="cnt"></div>
-
+                            <div className="markdown-body" dangerouslySetInnerHTML={{__html: data.gcontent}}/>
                         </div>
 
                         <div className="like">
@@ -406,38 +418,38 @@ export default class GoodsDetail extends React.Component {
                                 <span className="line"></span>
                             </div>
 
-                            <div className="flex-container" >
+                            <div className="flex-container">
                                 <div wrap="wrap">
                                     {
                                         data.likes.map((i, key) => (
 
-                                            <div key={key} className="goods"
+                                                <div key={key} className="goods"
 
 
-                                                 onClick={() => {
-                                                     history.push({
-                                                         pathname: `/goodsDetail/${i.id}`,
-                                                         // state:location.state.title
-                                                     });
+                                                     onClick={() => {
+                                                         history.push({
+                                                             pathname: `/goodsDetail/${i.id}`,
+                                                             // state:location.state.title
+                                                         });
 
-                                                     window.scrollTo(0, 0)
-                                                 }}
-                                            >
+                                                         window.scrollTo(0, 0)
+                                                     }}
+                                                >
 
-                                                <div className="img-info">
+                                                    <div className="img-info">
 
-                                                    <img src={i.bigpic} alt=""/>
+                                                        <img src={i.bigpic} alt=""/>
+
+                                                    </div>
+
+                                                    <div className="txt-info">
+                                                        <p className="title">
+                                                            {i.gtitle}
+                                                        </p>
+                                                        <p className="price">￥{Number(i.zkprice).toFixed(2)}</p>
+                                                    </div>
 
                                                 </div>
-
-                                                <div className="txt-info">
-                                                    <p className="title">
-                                                        {i.gtitle}
-                                                    </p>
-                                                    <p className="price">￥{Number(i.zkprice).toFixed(2)}</p>
-                                                </div>
-
-                                            </div>
 
                                             )
                                         )
@@ -456,32 +468,42 @@ export default class GoodsDetail extends React.Component {
                         >
 
                             {
-                                this.state.drawerType=="know"?
+                                this.state.drawerType == "know" ?
 
-                                    <div className="know-drawer-info" >
+                                    <div className="know-drawer-info">
                                         <div className="drawer-title">
                                             <span className="title">服务说明</span>
                                             <span className='close-btn' onClick={this.closeDrawer}>x</span>
                                         </div>
                                         <ul className="list">
                                             <li>
-                                                <div className="title"><img src={require('static/images/gs/true.png')} alt=""/>正品保障</div>
+                                                <div className="title"><img src={require('static/images/gs/true.png')}
+                                                                            alt=""/>正品保障
+                                                </div>
                                                 <div className="exp">全球精选，正品保障</div>
                                             </li>
                                             <li>
-                                                <div className="title"><img src={require('static/images/gs/pei.png')} alt=""/>假一罚百</div>
+                                                <div className="title"><img src={require('static/images/gs/pei.png')}
+                                                                            alt=""/>假一罚百
+                                                </div>
                                                 <div className="exp">商品可查，假一罚百</div>
                                             </li>
                                             <li>
-                                                <div className="title"><img src={require('static/images/gs/sui.png')} alt=""/>税费</div>
+                                                <div className="title"><img src={require('static/images/gs/sui.png')}
+                                                                            alt=""/>税费
+                                                </div>
                                                 <div className="exp">税费：0元，该商品已完税</div>
                                             </li>
                                             <li>
-                                                <div className="title"><img src={require('static/images/gs/zi.png')} alt=""/>自提</div>
+                                                <div className="title"><img src={require('static/images/gs/zi.png')}
+                                                                            alt=""/>自提
+                                                </div>
                                                 <div className="exp">全国体验店提供自提服务</div>
                                             </li>
                                         </ul>
-                                        <div className="drawer-btn" onClick={() => this.setState({open:!this.state.open})}>确定</div>
+                                        <div className="drawer-btn"
+                                             onClick={() => this.setState({open: !this.state.open})}>确定
+                                        </div>
                                     </div>
                                     :
                                     <div className="buy-info">
@@ -526,38 +548,9 @@ export default class GoodsDetail extends React.Component {
                             }
                         </ReactDrawer>
                     </div>
-                )
-            } else {
-                return (
-
-                    <div style={{width: '100%', textAlign: "center", marginTop: '.2rem'}}>
-                        <Icon type="loading"/>
-                    </div>
-                )
-            }
+                    }
 
 
-        }
-        return (
-            <div className="goods-detail-container">
-                <div className="nav-tab">
-                    <Flex justify="center" align="center">
-                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                            history.goBack()
-                        }}/></Flex.Item>
-                        <Flex.Item className="item-head center"><span
-                            className={`${this.state.tabState && this.state.tabValue === 0 ? 'active' : ''}`}
-                            onClick={() => this._tabChange(0)}>商品</span><span
-                            className={`${this.state.tabState && this.state.tabValue === 1 ? 'active' : ''}`}
-                            onClick={() => this._tabChange(1)} >详情</span></Flex.Item>
-                        <Flex.Item className="item-head right"></Flex.Item>
-                    </Flex>
-                </div>
-
-                <div className="detail-info">
-
-
-                    {cntInfo()}
                 </div>
                 <div className="bottom">
                     <Flex >

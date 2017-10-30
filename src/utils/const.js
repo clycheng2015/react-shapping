@@ -1,18 +1,15 @@
+
+
+export const SEVER_ERROR='SEVER_ERROR' //服务器错误
+
+
 //home
-export const GET_HOME_LIST = 'GET_HOME_LIST' //获取首页列表
-export const REQUEST_LIST = 'REQUEST_LIST' //请求列表
-export const GET_TABS = 'GET_TABS' //获取选项卡
-export const TAB_CHANGE = 'TAB_CHANGE' //切换选项卡
-
+export const RECORD_SCROLLT='RECORD_SCROLLT'
 export const HEAD_STATE='HEAD_STATE'// 首页头部变化
-
-
-
-
-
-
-
-
+export const RECEIVE_HOME = 'RECEIVE_HOME' //获取首页列表
+export const REQUEST_HOME = 'REQUEST_HOME' //请求列表
+export const RECEIVE_HOME_MORE_LIST = 'RECEIVE_HOME_MORE_LIST' //底部列表
+export const REQUEST_HOME_MORE_LIST = 'REQUEST_HOME_MORE_LIST' //底部列表保存
 
 //item
 export const REQUEST_ITEM_LIST = 'REQUEST_ITEM_LIST' //请求列表

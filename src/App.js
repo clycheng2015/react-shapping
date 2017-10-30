@@ -107,10 +107,7 @@ export default class App extends React.Component {
     componentDidMount() {
 
         if (isPro) {
-
             let href=window.location.href
-
-
             if(href.indexOf('?from=singlemessage&isappinstalled=0')>0){
 
               href= href.replace('?from=singlemessage&isappinstalled=0','')
@@ -132,7 +129,9 @@ export default class App extends React.Component {
 
         }
         window.addEventListener('hashchange', () => {
-            this.props.currentAnimate('normal')
+
+            // this.props.currentAnimate('normal')
+
 
             let href=window.location.href
 
@@ -181,7 +180,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/goodsDetail/:id" component={GoodsDetail}/>
                             <Route location={location} path="/itemList/:id" component={ItemList}/>
                             <Route location={location} path="/moreList/:id" component={MoreList}/>
-                            <Route location={location} path="/search/:value" component={Search}/>
+                            <Route location={location} path="/search" component={Search}/>
                             <Route location={location} path="/auth" component={Auth}/>
                             <Route location={location} path="/login" component={Login}/>
                             <Route location={location} path="/reg" component={Reg}/>
@@ -209,9 +208,6 @@ export default class App extends React.Component {
                             <Route location={location} path="/jinDraw" component={JinDraw}/>
                             <Route location={location} path="/postType" component={PostType}/>
                             <Route location={location} path="/invoice" component={Invoice}/>
-
-
-
                             <Route location={location} path="/newPer" component={NewPer}/>
                             <Route location={location} path="/special" component={Special}/>
                             <Route location={location} path="/newDay" component={NewDay}/>

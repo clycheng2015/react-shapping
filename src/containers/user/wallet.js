@@ -84,7 +84,7 @@ export default class Wallet extends React.Component {
                 <div className="msg-info">
                     <p>温馨提示</p>
                     <p>1、开业大酬宾：充值500送100。</p>
-                    <p> 2、VIP：余额与金凤余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格。</p>
+                    <p> 2、VIP：余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格。</p>
                 </div>
 
             </div>
