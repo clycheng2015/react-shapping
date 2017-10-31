@@ -1,8 +1,5 @@
 .myOrder-container {
-  //background: #f3f3f1;
-  height: auto;
-  //margin-top: 1rem;
-
+  overflow: hidden;
   .nav-tab {
 
     z-index: 1111111;
@@ -43,91 +40,6 @@
 
     }
   }
-  .user-nav {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    border-bottom: 1px solid #f3f3f1;
-  }
-  .head {
-    border: none;
-    border-radius: 0;
-    //padding-top: .2rem;
-
-  }
-
-  .username {
-
-    font-size: .25rem;
-    padding-left: .1rem;
-    p {
-      padding-left: .1rem;
-    }
-
-  }
-  .username .uslVip {
-    display: inline-block;
-    //background: #faa100;
-    color: #afafaf;
-    font-size: .18rem;
-    padding: .03rem .1rem .03rem .1rem;
-    border-radius: .5rem;
-    margin-top: .05rem;
-    border: 1px solid #aeaeac;
-  }
-  .username .lvVip {
-    display: inline-block;
-    background: #faa100;
-    color: white;
-    font-size: .18rem;
-    padding: .05rem .1rem .05rem .1rem;
-    border-radius: .5rem;
-    margin-top: .05rem;
-  }
-
-  .wallet {
-    .title {
-      color: #9f9f9f;
-      font-size: .2rem;
-
-    }
-    .count {
-      padding-top: .2rem;
-      font-size: .4rem;
-      font-weight: 400;
-
-    }
-    .e-count {
-      font-size: .3rem;
-      padding-top: .2rem;
-      font-weight: 400;
-
-    }
-    .draw-btn-not {
-      margin-top: .4rem;
-      overflow: hidden;
-      text-align: center;
-      padding: .05rem .2rem .05rem .05rem;
-      border: 1px solid #cecdcd;
-      border-radius: 1rem;
-      font-size: .2rem;
-      float: right;
-      //color: #cccccc;
-      opacity: .4;
-
-    }
-    .draw-btn {
-      margin-top: .4rem;
-      overflow: hidden;
-      text-align: center;
-      padding: .05rem .2rem .05rem .05rem;
-      border: 1px solid #cecdcd;
-      border-radius: 1rem;
-      font-size: .2rem;
-      float: right;
-
-    }
-  }
 
   .am-list-body div:not(:last-child) .am-list-line {
     //border-bottom: 0 ;
@@ -140,7 +52,7 @@
   }
 
   .list {
-    padding-top: 1rem;
+    //padding-top: 1rem;
     width: 100%;
     .head {
       height: .6rem;
@@ -186,7 +98,7 @@
   }
   .am-list-body {
     border: none;
-    background: white;
+    background: #f3f3f1;
   }
   .am-list-view-scrollview {
     border: none;
@@ -199,6 +111,10 @@
   .am-tabs-default-bar {
     position: relative;
     border-bottom: 1px solid #b1b1af !important;;
+  }
+  .list-info{
+    //margin-top: .9rem;
+
   }
   .top-box{
     background: white;
@@ -350,7 +266,13 @@
       }
     }
   }
-
+  .am-list-view-scrollview-content{
+    min-height: 100% !important;
+  }
+  .am-pull-to-refresh-content-wrapper{
+    padding-top: 1.4rem;
+    height: 100%;
+  }
   //首页样式复写
   .am-tabs-default-bar-top .am-tabs-default-bar-content, .am-tabs-default-bar-bottom .am-tabs-default-bar-content{
 
@@ -364,7 +286,6 @@
     top: .9rem;
     background: white;
   }
-
 
 }
 

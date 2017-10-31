@@ -71,10 +71,8 @@ export const user = {
     drawMoneyUrl:"/app/user/withdrawals",//提现
 
     payUrl:'/app/wechat/pay/index',//支付接口
-
     expPayUrl:'/app/order/successorder',//余额支付
-
-    postage:"/app/findgoods/findyf",//获取邮费
+    postage:"/app/findgoods/open/findyf",//获取邮费
     refundUrl:"/app/order/applyrefund",//申请退款
     comfirmUrl:"/app/order/confirmreceipt",//确认收货
 

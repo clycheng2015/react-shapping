@@ -1,6 +1,6 @@
 import React from 'react'
 import {Badge, SearchBar} from 'antd-mobile'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class Head extends React.Component {
     constructor(props) {
@@ -17,11 +17,10 @@ class Head extends React.Component {
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
                 <div className="box name">美纶购</div>
-                <div className="box s-btn"
 
+                <Link to='/search'>
+                    <div className="box s-btn">
 
-                >
-                    <Link to='/search'>
                         <SearchBar
                             placeholder="上新1200商品"
                             focused={this.state.focused}
@@ -34,10 +33,8 @@ class Head extends React.Component {
                             }}
                             disabled
                         />
-
-                    </Link>
-
-                </div>
+                    </div>
+                </Link>
                 <div className="box msg">
 
                     {/*<p><img src={type==1?require('static/images/wmsg.png'):require('static/images/msg.png')} alt=""/><Badge dot className="badge"/></p>*/}

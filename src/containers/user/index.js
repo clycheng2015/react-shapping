@@ -17,26 +17,26 @@ const orderData = [
     {
         icon: require('static/images/user/pay_icon.png'),
         text: "待付款",
-        index: "0",
+        index: 0,
         state: 1
     },
     {
         icon: require('static/images/user/send_icon.png'),
         text: "待发货",
-        index: "1",
+        index: 1,
         state: 2
 
     },
     {
         icon: require('static/images/user/rec_icon.png'),
         text: "待收货",
-        index: "2",
+        index: 2,
         state: 3
     },
     {
         icon: require('static/images/user/cha_icon.png'),
         text: "退/换货",
-        index: "3",
+        index: 3,
         state: 4
     },
 ]
@@ -158,7 +158,7 @@ export default class User extends React.Component {
                                            history.push(`/myOrder/${userInfo.id}`);
                                            const {orderTabChange} = this.props
 
-                                           orderTabChange('待收款', 1, 0)
+                                           orderTabChange('待付款', 1, 0)
                                        }}
                             >
 

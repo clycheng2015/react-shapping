@@ -36,9 +36,9 @@ const requestOrderList = (tab) => ({
     tab,
 });
 
-const orderList = (tab, orderState, datalist, pagenum, pagesize, success) => ({
+const receiveOrderList = (tab, orderState, datalist, pagenum, pagesize, success) => ({
 
-    type: types.GET_ORDER_LIST,
+    type: types.RECEIVE_ORDER_LIST,
     tab,
     orderState,
     pagenum,
@@ -374,11 +374,12 @@ export const fetchOrderList = (tab, data) => {
     return (dispatch, getState) => {
 
         dispatch(requestOrderList(tab))
-        instance.post(user.orderListUrl, qs.stringify(data))
+
+        instance.get(user.orderListUrl+"?"+ qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
 
-                    dispatch(orderList(tab, data.state, res.data.data.datalist, data.pagenum, data.pagesize, true))
+                    dispatch(receiveOrderList(tab, data.state, res.data.data.datalist, data.pagenum, data.pagesize, true))
                 }
                 else {
 
@@ -844,7 +845,7 @@ export const fetchExpPay = (data,history) => {
 
 export const fetchGetPostage = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.postage, qs.stringify(data))
+        instance.get(user.postage+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(getPostage(res.data.data))

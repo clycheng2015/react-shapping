@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {nativeClick} from '../../utils/native-sdk'
 
 class ModelFour extends React.Component {
     constructor(props) {
@@ -14,6 +14,8 @@ class ModelFour extends React.Component {
     render() {
 
         const {history, data} = this.props
+
+        console.log(data)
         return (
             <div className="model-four">
                 <ul>
@@ -23,11 +25,14 @@ class ModelFour extends React.Component {
 
                             <li
                                 key={k}
-                                onClick={() => history.push({
-                                    pathname: `/itemList/66`,
-                                    state: {title: '酒水饮料'}
-
-                                })}><img src={i.iconpic} alt=""/></li>
+                                onClick={ ()=>{nativeClick({
+                                    type:3,
+                                    url:'',
+                                    id:'66',
+                                    name:'酒水饮料',
+                                    activeType:''
+                                })}}
+                            ><img src={i.iconpic} alt=""/></li>
                         ))
 
                     }

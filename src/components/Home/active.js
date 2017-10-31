@@ -22,6 +22,8 @@ class Active extends React.Component {
     render() {
         const {data}=this.props
 
+        console.log(data)
+
         const {history }=this.props
         return (
             <div className="active-info">
@@ -34,8 +36,8 @@ class Active extends React.Component {
                         <span className="title">活动结束时间</span>
                         <div className="count-info">
                             <Timer
-                                date={new Date(parseInt(data.endtime)).toISOString()}
-                                // date="2017-11-10T00:00:00+00:00"
+                                date={data.endtime?new Date(parseInt(data.endtime)).toISOString():"2017-11-10T00:00:00+00:00"}
+                                 // date="2017-11-10T00:00:00+00:00"
                                 days={{plural: 'Days ', singular: 'day '}}
                                 hours=':'
                                 mins=':'

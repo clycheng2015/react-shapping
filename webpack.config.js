@@ -36,9 +36,7 @@ var plugins = [
 var app = ['./entry']
 if (isPro) {
     plugins.push(
-        new ExtractTextPlugin({
-            filename: 'styles.css'
-        }),
+        new ExtractTextPlugin('[name].css'),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.LoaderOptionsPlugin({
@@ -88,7 +86,7 @@ if (isPro) {
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
-    devtool: isPro ? 'source-map' : 'inline-source-map',
+    // devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
         app: app
     },

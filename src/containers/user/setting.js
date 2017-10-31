@@ -4,8 +4,8 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {removeLocalItem, localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
+import {store} from '../../entry'
 
 
 import { Modal, Icon,Toast, WhiteSpace, Flex, List} from 'antd-mobile'
@@ -34,45 +34,29 @@ export default class Setting extends React.Component {
     }
 
     handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
+
     }
 
     componentDidMount() {
-        // const {getUserInfo} = this.props
-        //
-        // let userInfo = localItem('userInfo')
-        //
-        // if (typeof userInfo == 'string') {
-        //     // console.log(JSON.parse(userInfo))
-        //     getUserInfo({uid: JSON.parse(userInfo).id})
-        // }
+
     }
 
     _loginOut = () => {
         const {loginOut, history} = this.props
-        removeLocalItem("userInfo")
+        window.resetState = () => {
+            store.dispatch(init());
+        }
+        AppLocalStorage.Cache.clear()
         loginOut()
         Toast.loading('正在退出...', 1, () => {
-
             console.log('Load complete !!!');
-
-
         });
         setTimeout(() => {
             history.push("/")
         }, 2000)
-
-
-
-
     }
-
     render() {
-        const {userInfo, history} = this.props
-        // console.log(userInfo)
-
-
+        const { history} = this.props
         return (
             <div className="setting-container"
 

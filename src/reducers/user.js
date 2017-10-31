@@ -13,7 +13,7 @@ let init = {
         pagenum: 1,
         tab: "待付款",
         tabIndex: 0,
-        orderState: "1",
+        orderState:1,
         orderList: [],
         orderListInfo: {},
         tabs:
@@ -77,14 +77,7 @@ export const user = (state = init, action) => {
             }
         case types.REQUEST_ORDER_LIST:
             return {...state, order: {...state.order, isFetching: true,isHandle:false,}}
-
-        case types.GET_BILL_LIST:
-            return {
-                ...state,
-                bill: {...state.bill, pagesize: action.pagesize, pagenum: action.pagenum, data: action.data}
-            }
-
-        case types.GET_ORDER_LIST:
+        case types.RECEIVE_ORDER_LIST:
 
             return {
                 ...state,
@@ -109,6 +102,12 @@ export const user = (state = init, action) => {
 
                 }
             }
+        case types.GET_BILL_LIST:
+            return {
+                ...state,
+                bill: {...state.bill, pagesize: action.pagesize, pagenum: action.pagenum, data: action.data}
+            }
+
         case types.ADD_ADDRESS:
 
             return {...state, address: {...state.address,}}
@@ -207,34 +206,22 @@ export const user = (state = init, action) => {
                 ...state,payData:action.data,newPayOrder:{}
             }
 
-
         case types.SAVE_PAY_ORDER:
-
             return {
                 ...state,newPayOrder:action.data
             }
-
         case types.GET_POSTAGE:
-
             return {
                 ...state,postageData:action.data
             }
-
         case types.GOODS_ACTIVE_ORDER:
-
             return {
                 ...state,newPayOrder:action.data
             }
-
-
         case types.GET_JINFU_PRO:
-
             return {
                 ...state,jinfuList:action.data
             }
-
-
-
         default:
             return state
     }

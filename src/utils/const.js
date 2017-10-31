@@ -38,7 +38,7 @@ export const UPDATE_NAME = 'UPDATE_NAME' //修改名称
 
 export const REQUEST_ORDER_LIST = 'REQUEST_ORDER_LIST'
 
-export const GET_ORDER_LIST = 'GET_ORDER_LIST' //获取订单列表
+export const RECEIVE_ORDER_LIST = 'RECEIVE_ORDER_LIST' //获取订单列表
 
 export const ORDER_TAB_CHANGE = 'ORDER_TAB_CHANGE' //订单选选项卡改变
 

@@ -1,41 +1,7 @@
 import React ,{ReactDom}from 'react';
 import {ListView, Icon} from 'antd-mobile';
+import {nativeClick} from '../../utils/native-sdk'
 
-const data = [
-    {
-        img: require("static/images/d1.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900gasdasdasdsadasdasdsadasd',
-        price: 199,
-    },
-    {
-        img: require("static/images/d2.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-    {
-        img: require("static/images/d3.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-    {
-        img: require("static/images/d4.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-];
-let index = data.length - 1;
-
-const NUM_ROWS = 20;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataBlob = {};
-    for (let i = 0; i < NUM_ROWS; i++) {
-        const ii = (pIndex * NUM_ROWS) + i;
-        dataBlob[`${ii}`] = `row - ${ii}`;
-    }
-    return dataBlob;
-}
 
 class MoreList extends React.Component {
     constructor(props) {
@@ -91,7 +57,15 @@ class MoreList extends React.Component {
         const row = (rowData, sectionID, rowID) => {
 
             return (
-                <div key={rowID} className="goods" onClick={() => history.push(`/goodsDetail/${rowData.id}`)}>
+                <div key={rowID} className="goods" onClick={() =>
+
+                    nativeClick({
+                        type:2,
+                        url:'',
+                        id:rowData.id,
+                        name:rowData.stitle,
+                        activeType:'0'
+                    })}>
 
                     <div className="img-info">
 

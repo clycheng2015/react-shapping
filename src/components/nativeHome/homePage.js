@@ -160,10 +160,9 @@ export  default  class ListIndex extends React.Component {
 
                 {/*秒杀折扣活动开始******************************/}
                 {
-                    homeData && homeData.activityDto &&
+                    homeData && homeData.activityDto && homeData.activityDto.type!==null&&
 
-                    <Active hitory={history} data={homeData.activityDto} turn={this._turnToNative}/>
-                }
+                    <Active hitory={history} data={homeData.activityDto}/>                }
                 {/*秒杀折扣活动结束******************************/}
 
                 {/*B区开始*************************************************************/}

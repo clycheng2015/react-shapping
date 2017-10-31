@@ -2,6 +2,7 @@
  * Created by bear on 2017/10/26.
  */
 import React from 'react'
+import {nativeClick} from '../../utils/native-sdk'
 
 
 class ModelTree extends React.Component {
@@ -16,28 +17,36 @@ class ModelTree extends React.Component {
 
     render() {
         const {history,data}=this.props
+        console.log(data)
         return (
 
 
             <div className="model-tree">
                 <ul>
                     <li className="bg-img"
-                        onClick={() => history.push({
-                            pathname: `/imported`,
-
-                        })}><img src={require('static/images/home/i_A.png')} alt=""/></li>
+                        onClick={()=>{nativeClick({
+                            type:'',
+                            url:'',
+                            id:'',
+                            name:'',
+                            activeType:''
+                        })}}><img src={require('static/images/home/i_A.png')} alt=""/></li>
                     <li
-                        onClick={() => history.push({
-                            pathname: `/itemList/66`,
-                            state: {title: '酒水饮料'}
-
-                        })}><img src={require('static/images/home/i_1.png')} alt=""/></li>
+                        onClick={ ()=>{nativeClick({
+                            type:3,
+                            url:'',
+                            id:'66',
+                            name:'酒水饮料',
+                            activeType:''
+                        })}}><img src={require('static/images/home/i_1.png')} alt=""/></li>
                     <li
-                        onClick={() => history.push({
-                            pathname: `/itemList/60`,
-                            state: {title: '厨卫清洁'}
-
-                        })}
+                        onClick={()=>{nativeClick({
+                            type:3,
+                            url:'',
+                            id:'60',
+                            name:'厨卫清洁',
+                            activeType:''
+                        })}}
                     ><img src={require('static/images/home/i_2.png')} alt=""/></li>
                 </ul>
             </div>
