@@ -120,33 +120,37 @@
     background: white;
     width: 100%;
     .box {
-
-      width: 95%;
-      margin: .2rem auto;
+      width: 7.5rem;
+      //margin: .2rem auto;
       height: auto;
       //border: 1px solid red;
-      padding-top: .2rem;
+      //padding-top: .2rem;
       //padding:.2rem;
       border-bottom: 1px solid #f3f3f1;
       //border-top: 1px solid #f3f3f1;
+      margin-top: .2rem;
 
 
 
 
       .odd-info{
+        padding: .2rem;
         width: 100%;
-        padding-bottom: .2rem;
         span{
           display: inline-block;
         }
         .odd{
-          width: 60%;
+          width: 3.3rem;
           text-align: left;
-          font-size: .25rem;
+          font-size:.26rem;
+          color: #333333;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
 
         }
         .icon{
-          width: 20%;
+          width:.6rem;
           text-align: left;
           font-size: .2rem;
 
@@ -155,40 +159,48 @@
             color: #f29848;
             padding: .01rem;
             border-radius: .1rem;
+            font-size: .24rem;
           }
 
         }
+        .post{
+          color: black;
+          font-size: .24rem;
+          width: 1.6rem;
+        }
         .state{
-          width: 20%;
+          width: 1.6rem;
+          font-size: .26rem;
           text-align: right;
-          color: #ff5058;
+          color: #fe4203;
         }
       }
       .top {
+        padding: .2rem;
         width: 100%;
-        height: 1.5rem;
+        min-height: 1.6rem;
         //border: 1px solid red;
         margin-top: .1rem;
         border-bottom:1px solid #f3f3f1;
 
         .img {
-          width: 30%;
-          height: 1.5rem;
+          width: 1.5rem;
+          min-height: 1.6rem;
           //border: 1px solid red;
           overflow: hidden;
           float: left;
           padding-bottom: .1rem;
 
           img {
-            width: 100%;
+            width: 1.5rem;
             //height: 1.9rem;
-            height: 100%;
+            //height: 100%;
           }
         }
         .title {
           float: right;
-          width: 64%;
-          height: 1.5rem;
+          width: 4.7rem;
+          min-height: 1.6rem;
           padding-bottom: .1rem;
 
           .name {
@@ -197,11 +209,12 @@
             -webkit-line-clamp: 2;
             overflow: hidden;
             padding-top: .1rem;
+            font-size: .27rem;
             //height: .5rem;
           }
           .price {
 
-            font-size: .22rem;
+            font-size: .27rem;
             color: #666666;
             padding-top: .2rem;
 
@@ -214,13 +227,36 @@
 
           }
         }
+        overflow: hidden;
+      }
+
+      .time-info{
+        overflow: hidden;
+        width: 100%;
+        height: .66rem;
+        background: #fafafa;
+        font-size: .24rem;
+        text-align: right;
+        line-height: .66rem;
+        padding-right: .2rem;
+        img{
+          width: .28rem;
+          display: inline-block;
+          margin-top: .1rem;
+          margin-bottom: -.05rem;
+          margin-right: .1rem;
+        }
+        .time{
+          min-width: 1.2rem;
+          float: right;
+        }
 
       }
 
       .bottom {
         width: 100%;
-        margin-top: .15rem;
-        margin-bottom: .2rem;
+        padding: .2rem;
+
         .btn {
           width: 100%;
           text-align: right;
@@ -234,7 +270,7 @@
             border: 1px solid #b8b8b8;
             border-radius: .05rem;
             margin-right: .3rem;
-            color: #292929;
+            color: #a5a5a5;
             box-sizing: border-box;
           }
 
@@ -244,20 +280,24 @@
             border-radius: .05rem;
             //margin-right: .2rem;
             border: 1px solid #ff535b;
-            color: #ff535b;
+            color: #fe4203;
           }
           .countinfo {
+
+
             //color: #fe4203;
             float: left;
             font-size: .23rem;
+            color: #fe4203;
             //padding-left: .3rem;
             //padding-right: .2rem;
             display: inline-block;
             padding-top: .1rem;
             span {
-              font-size: .3rem;
+              font-size: .28rem;
 
             }
+
           }
 
 

@@ -15,10 +15,10 @@ export const goodsDetail = {
 
     detailUrl: "/app/findgoods/open/goodsinfo",//Get
 
-    addCarUrl: '/cart/editcart',//post  goods_num goods_att1  goods_att2  id goods_id
+    addCarUrl: '/app/cart/editcart',//post  goods_num goods_att1  goods_att2  id goods_id
 
-    killUrl:"/findgoods/seckillgoodsinfo",
-    dislUrl:"/findgoods/discountgoodsinfo"
+    killUrl:"/app/findgoods/seckillgoodsinfo",
+    dislUrl:"/app/findgoods/discountgoodsinfo"
 }
 export const itemList = {
 
@@ -26,7 +26,7 @@ export const itemList = {
 
 }
 export const moreList = {
-    listUrl: "/circle/searchall",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id type
+    listUrl: "/app/circle/searchall",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id type
 }
 
 export const search = {
@@ -37,10 +37,10 @@ export const auth = {
     regUrl: '/app/user/open/register',  //POST mobile  password  smscode
 
 
-    regCodeUrl: "/user/sendregsms",//post mobile
+    regCodeUrl: "/app/user/open/sendregsms",//post mobile
 
-    sendCodeUrl: '/user/sendresetpwdsms',  //POST mobile
-    resetPwdUrl: '/user/resetpwd',   //POST mobile  password  smscode
+    sendCodeUrl: '/app/user/open/sendresetpwdsms',  //POST mobile
+    resetPwdUrl: '/app/user/open/resetpwd',   //POST mobile  password  smscode
 }
 export const user = {
     userInfoUrl: "/app/my/userinfo",//POST   uid   获取用户信息
@@ -61,24 +61,19 @@ export const user = {
     carCreateOrderUrl: "/app/order/seccreategoodsorder",//创建订单
     gsCreateOrderUrl: '/app/order/secdirectcreategoodsorder',//直接从详情页创建订单
     activeOrder:"/app/order/secdirectcreateseckillorder" ,//活动订单
-
     delOrder:"/app/order/delorder",//删除订单
-
-    getOrderDetail:"/app/order/getgoodsorderdetail",//删除订单
-
+    getOrderDetail:"/app/order/getgoodsorderdetail",//
     topUpUrl:"/app/order/createrechargeorder",//充值
-
     drawMoneyUrl:"/app/user/withdrawals",//提现
-
     payUrl:'/app/wechat/pay/index',//支付接口
     expPayUrl:'/app/order/successorder',//余额支付
     postage:"/app/findgoods/open/findyf",//获取邮费
     refundUrl:"/app/order/applyrefund",//申请退款
     comfirmUrl:"/app/order/confirmreceipt",//确认收货
+    jinfuUrl:"/app/findgoods/open/findjfjfgoodslist",
+    helpUrl:"/app/findgoods/open/fuwulist",
 
-
-
-    jinfuUrl:"/app/findgoods/findjfjfgoodslist"
+    telUrl:"/app/user/open/getlxdh"
 
 
 
@@ -88,18 +83,18 @@ export const user = {
 
 export const car = {
 
-    carList: "/cart/cartlist",//获取购物车列表
-    delCarList: '/cart/delcart',//删除购物车
-    updateCarNum: '/cart/editnum', //修改购物数量
+    carList: "/app/cart/cartlist",//获取购物车列表
+    delCarList: '/app/cart/delcart',//删除购物车
+    updateCarNum: '/app/cart/editnum', //修改购物数量
 
 
 }
 
 
 export const active = {
-    activeList:"/findgoods/seckilllist",//列表
-    activeDetail: "/findgoods/seckillgoodsinfo",//秒杀商品详情
-    disList: "/findgoods/discountlist",//超值特惠
+    activeList:"/app/findgoods/seckilllist",//列表
+    activeDetail: "/app/findgoods/seckillgoodsinfo",//秒杀商品详情
+    disList: "/app/findgoods/discountlist",//超值特惠
 }
 
 

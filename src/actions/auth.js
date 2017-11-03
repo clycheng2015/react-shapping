@@ -10,9 +10,7 @@ import {Toast} from 'antd-mobile'
 
 import {AppLocalStorage} from '../utils/cookie'
 
-
-import {keys} from '../utils/appkeys'
-import {hex_sha1} from   '../utils/sha1'
+import {getSign} from '../utils/appkeys'
 
 
 const login = (userInfo) => ({
@@ -42,23 +40,8 @@ const sendSmsCode = (data) => ({
 
 
 export const fetchLogin = (data, history, toUrl) => {
-
-    let newData = {
-        ...data,
-        appkey: keys.APP_KEY,
-        timestamp: keys.TIMESTAMP,
-        machine: keys.APP_MACHINE
-    };
-    let arr = Object.keys(newData).sort().map((key) => newData[key])
-
-    let signData = {
-        ...newData,
-
-        sign: hex_sha1(arr.join('') + keys.APP_SECRET)
-    }
-
     return (dispatch, getState) => {
-        instance.post(auth.loginUrl, qs.stringify(signData))
+        instance.post(auth.loginUrl, qs.stringify(getSign(data)))
             .then(res => {
                 console.log(res)
                 if (res.data.code == 200) {
@@ -70,20 +53,16 @@ export const fetchLogin = (data, history, toUrl) => {
                     AppLocalStorage.Cache.put("user",{
                         userInfo:res.data.data,
                         // openid:data.openid
-                        openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
+                        // openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
 
                     },res.data.data.expires_in)
 
-                    // localItem('userInfo', JSON.stringify(res.data.data))
-                    // history.push(`/${toUrl ? toUrl : ''}`)
+                    history.push(`/${toUrl ? toUrl : ''}`)
 
                 }
                 else {
-
-
                     Toast.info(res.data.msg, 1)
                 }
-
             })
             .catch(error => {
                 Toast.fail("服务器错误，请稍后重试！", 1)
@@ -95,7 +74,7 @@ export const fetchLogin = (data, history, toUrl) => {
 export const fetchReg = (data, history) => {
     return (dispatch, getState) => {
 
-        instance.post(auth.regUrl, qs.stringify(data))
+        instance.post(auth.regUrl, qs.stringify(getSign(data)))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -123,7 +102,7 @@ export const fetchUpdate = (data, history) => {
 
     return (dispatch, getState) => {
 
-        instance.post(auth.resetPwdUrl, qs.stringify(data))
+        instance.post(auth.resetPwdUrl, qs.stringify(getSign(data)))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -146,7 +125,7 @@ export const fetchUpdate = (data, history) => {
 export const sendCode = (data) => {
     return (dispatch, getState) => {
 
-        instance.post(auth.sendCodeUrl, qs.stringify(data))
+        instance.post(auth.sendCodeUrl, qs.stringify(getSign(data)))
             .then(res => {
                 if (res.data.code == 200) {
                     Toast.info(res.data.msg, 1)
@@ -165,9 +144,10 @@ export const sendCode = (data) => {
 }
 
 export const sendRegCode = (data) => {
+
     return (dispatch, getState) => {
 
-        instance.post(auth.regCodeUrl, qs.stringify(data))
+        instance.post(auth.regCodeUrl, qs.stringify(getSign(data)))
             .then(res => {
 
                 if (res.data.code == 200) {

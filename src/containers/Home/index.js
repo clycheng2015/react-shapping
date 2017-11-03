@@ -42,6 +42,13 @@ export default class Home extends React.Component {
         window.onscroll = null;
     }
 
+    _toRefresh=()=>{
+        const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
+        fetchHome()
+        if (dataList.length === 0) {
+            fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
+        }
+    }
 
     render() {
         const {history, homeData, errorData, isFetching,headState} = this.props
@@ -65,9 +72,7 @@ export default class Home extends React.Component {
                     >
                         <img src={require('static/images/empty/404.png')} alt=""/>
                         <p> 服务器出错啦</p>
-                        <p onClick={() => {
-                            // history.push("/newAds")
-                        }}> 立即刷新</p>
+                        <p onClick={() => this._toRefresh()}> 立即刷新</p>
 
                     </div>
                 }

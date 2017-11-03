@@ -30,21 +30,15 @@ export default class Bill extends React.Component {
     }
 
     componentDidMount() {
-        const {fetchMyBill, bill, uid} = this.props
-
-        console.log(this.props)
-
-
+        const {fetchMyBill, bill,match} = this.props
+       const {params}=match
         const {pagesize, pagenum} = bill
-
         fetchMyBill({
             pagesize: pagesize,
             pagenum: pagenum,
-            uid: uid
+            type:params.id
         })
     }
-
-
     render() {
         const {bill, history} = this.props
         const {data} = bill

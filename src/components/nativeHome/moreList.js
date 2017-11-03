@@ -18,8 +18,6 @@ class MoreList extends React.Component {
     componentDidMount() {
 
         const {scrollT} =this.props
-
-
             this.lv.scrollTo(0,scrollT-this.imgH.offsetHeight);
 
         // console.log(  window.getComputedStyle((this.imgH).height))
@@ -43,7 +41,7 @@ class MoreList extends React.Component {
 
         let num = pagenum
 
-        if (isFetching && !hasMore) {
+        if (isFetching || !hasMore) {
             return;
         }
 

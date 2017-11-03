@@ -1,19 +1,19 @@
 .yesOrderDetail-container {
   //background: #f3f3f1;
   height: auto;
-  //margin-top: 1rem;
+
 
   .nav-tab {
 
     z-index: 1111111;
-    height: .8rem;
+    height: .9rem;
     width: 100%;
     background: white;
     position: fixed;
     top: 0;
     border-bottom: 1px solid #eaeae8;
     text-align: center;
-    line-height: .8rem;
+    line-height: .9rem;
     .set-icon {
       width: .35rem;
 
@@ -45,22 +45,12 @@
   }
 
   .ads-info {
-    .no-ads {
-
-      display: inline-block;
-      width: 90%;
-      float: left;
-      text-align: center;
-      margin-top: .4rem;
-      color: rgb(206, 182, 68)
-
-    }
+    margin-top: .2rem;
     width: 100%;
-    height: 1.5rem;
+    min-height: 1.2rem;
     background: white;
     padding-top: 1rem;
     position: relative;
-
     .line {
       display: block;
       width: 100%;
@@ -69,89 +59,79 @@
       bottom: 0;
     }
     .name-msg {
-
       width: 80%;
-      padding-left: .3rem;
-
+      padding-left: .2rem;
       .mobile {
-
-        float: right;
+        margin-left: .5rem;
       }
-
     }
 
     .ads {
-      float: left;
-      width: 80%;
-      padding-left: .3rem;
-      padding-top: .3rem;
-      font-size: .25rem;
+      width: 100%;
+      padding-left: .2rem;
+      padding-top: .2rem;
+      font-size: .28rem;
 
-      .icon {
-        display: inline-block;
-        width: 10%;
-        img {
-          width: .3rem;
-        }
-      }
       .txt {
         display: inline-block;
-        width: 90%;
-        font-size: .22rem;
-        color: #6b6b6a;
-      }
+        width: 94%;
+        font-size: .28rem;
+        color: #333333;
+        padding-bottom: .2rem;
 
-    }
-    .right-icon {
-      float: right;
-      margin-right: .2rem;
-      color: #797979;
-      margin-top: .2rem;
+      }
 
     }
 
   }
 
   .goods-list {
-
-    margin-top: .1rem;
-    padding: .1rem;
+    margin-top: .2rem;
+    padding: .2rem;
+    padding-bottom: 0;
     background: white;
     .head {
       width: 100%;
       height: .4rem;
       line-height: .4rem;
-      border-bottom: 1px #f3f3f1;
-      font-size: .22rem;
-      color: #777775;
+      font-size: .26rem;
+
+      color: #333333;
+      .state{
+        float: right;
+        color: #fe4203;
+        font-size: .26rem;
+
+      }
 
     }
     .goods-info {
-      border-top: 1px solid #dfdfdd;
+
       overflow: hidden;
-      //border-bottom: 1px solid #bfbfbd;
+      border-bottom: 1px solid #f3f3f1;
       width: 100%;
-      height: 2rem;
+      min-height: 2rem;
       .img {
         width: 30%;
-        height: 2rem;
+        min-height: 2rem;
         float: left;
         padding-top: .2rem;
         img {
           width: 1.8rem;
-          height: 1.6rem;
         }
 
       }
       .msg {
+        min-height: 2rem;
         p {
           width: 100%;
+
         }
-        width: 60%;
+        width: 66%;
         float: left;
-        height: 2rem;
         padding-left: .25rem;
         .name {
+
           padding-top: .3rem;
           height: .6rem;
           font-size: .25rem;
@@ -163,11 +143,18 @@
           padding-bottom: 0;
 
         }
+
+        .bom{
+          height: 1rem;
+          line-height: 1.5rem;
+        }
+
         .count {
           display: inline-block;
           font-size: .22rem;
           color: #707070;
           width: 50%;
+          text-align: right;
           span {
             font-size: .25rem;
             color: #545454;
@@ -177,73 +164,81 @@
         .price {
           display: inline-block;
           width: 50%;
-          font-size: .22rem;
-          color: #707070;
-          span {
-            font-size: .25rem;
-            color: #545454;
-          }
+          font-size: .32rem;
+          color: #fe4203;
+
+
         }
 
       }
 
     }
 
-    .tot-info {
-      height: .6rem;
-      width: 100%;
-      border-top: 1px solid #dfdfdd;
-      text-align: right;
-      line-height: .6rem;
 
-      font-size: .25rem;
-      .count {
-        margin-right: .3rem;
-
-      }
-      .totPrice {
-        padding-right: .2rem;
-        color: red;
-      }
-
-    }
 
   }
-
-  .res-info {
-    width: 100%;
-    height: 1.2rem;
+  .tot-info {
     background: white;
-    margin-top: .1rem;
-    padding-left: .3rem;
-    .head {
-      font-size: .2rem;
-      color: #707070;
-      line-height: .4rem;
-      padding-top: .2rem;
-      overflow: hidden;
-      .input-info {
-        width: 100%;
-      }
-      input {
-        font-size: 12px !important;
-        color: #a5a5a5;
-      }
-      .all {
-        float: right;
-        font-size: 12px;
+    height: .8rem;
+    width: 100%;
+    border-top: 1px solid #dfdfdd;
+    text-align: right;
+    line-height: .8rem;
+    font-size: .3rem;
+    .count {
+      margin-left: .2rem;
+      float: left;
+      font-size: .28rem;
+      color: #333333;
 
-      }
     }
+    .totPrice {
+      padding-right: .2rem;
+      color: red;
+    }
+
   }
+
   .re-info {
-    margin-top: .1rem;
-    .am-textarea-control textarea {
+    width: 100%;
+    min-height: 1.5rem;
+    background: white;
+    margin-top: .2rem;
 
-      font-size: .2rem;
+    .title{
+      font-size: .26rem;
+      color: #666666;
+      height: .6rem;
+      line-height: .6rem;
+      padding-left: .2rem;
+      border-bottom: 1px solid #f3f3f1;
+
+
+    }
+    .re-msg{
+
+      padding: .2rem;
+      font-size: .3rem;
+      word-break: break-all;
+      color: #333333;
+
+
+    }
+    .re-ms{
+
+      padding: .2rem;
+      font-size: .3rem;
+      word-break: break-all;
+      color: #333333;
+      border-bottom: 1px solid #f3f3f1;
+
+
+
     }
 
+
   }
+
 
   .fapiao {
 

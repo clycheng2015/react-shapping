@@ -5,7 +5,7 @@ let init = {
     pagesize: 20,
     pagenum: 0,
     scrollT: 0,
-    hamMore: true,
+    hasMore: true,
     isFetching: false,
     homeData: {},
     moreData: {},

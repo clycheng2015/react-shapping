@@ -121,10 +121,10 @@ export default class TopUP extends React.Component {
                     }
 
                     {
-                        Number(userInfo.money)<500 && `您还差${500-Number(userInfo.money).toFixed(2)}元，享受专享优惠`
+                        Number(userInfo.money)<500 && `您还差${(500-Number(userInfo.money)).toFixed(2)}元，享受专享优惠`
                     }
 
-                    <img src={require('static/images/user/close_icon.png')} alt=""/>
+                    {/*<img src={require('static/images/user/close_icon.png')} alt=""/>*/}
 
                 </div>
 
@@ -162,12 +162,12 @@ export default class TopUP extends React.Component {
                 </div>
 
 
-                <div className="msg-info">
-                    <p>温馨提示</p>
-                    <p> 1、余额与金凤余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格;</p>
-                    <p> 2、若一次充值超过500元，立返20%。实际到账=充值金额+充值；</p>
-                    <p> 3、充值的金额，每天都由返的钱÷365进行返现，每周二进行提现。</p>
-                </div>
+                {/*<div className="msg-info">*/}
+                    {/*<p>温馨提示</p>*/}
+                    {/*<p> 1、余额与金凤余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格;</p>*/}
+                    {/*<p> 2、若一次充值超过500元，立返20%。实际到账=充值金额+充值；</p>*/}
+                    {/*<p> 3、充值的金额，每天都由返的钱÷365进行返现，每周二进行提现。</p>*/}
+                {/*</div>*/}
 
                 <Flex  className="deal-info">
                     <Flex.Item style={{ padding: '15px 0', color: '#888', flex: 'none' }}>

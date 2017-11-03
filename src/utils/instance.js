@@ -15,7 +15,7 @@ if (isPro) {
 
 } else {
 
-    url = 'http://192.168.1.247:3011'
+    url = 'http://localhost:3011'
 }
 
 //封装好的get和post接口，调用方法情况action文件
@@ -33,16 +33,12 @@ let xToken = '';
 if (user && user.userInfo) {
 
     xToken = user.userInfo.access_token
-
-    console.log("xToken")
-
     options = {
         ...options, headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer' + xToken
         }
     }
-
 }
 
 console.log(xToken)

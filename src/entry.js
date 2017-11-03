@@ -30,13 +30,23 @@ const middlewares = [thunk, middleware]
 
 
 
-import App from './native'
-// import App from './App'
+// import App from './native'
+// import App from './nativehome'
+
+import App from './App'
 
 export const store = createStore(
     combineReducers({routing: routerReducer, ...rootReducer}),
 
-    composeWithDevTools(applyMiddleware(...middlewares,createLogger()))
+
+        // composeWithDevTools(applyMiddleware(...middlewares))
+
+
+        composeWithDevTools(applyMiddleware(...middlewares,createLogger()))
+
+
+
+
 )
 // removeLocalItem('userInfo')
 const render = Component =>

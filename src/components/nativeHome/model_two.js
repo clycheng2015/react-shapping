@@ -15,7 +15,9 @@ class ModelTwo extends React.Component {
     render() {
 
         const {data} = this.props
-        console.log(data)
+
+
+
         return (
             <Flex className="model-two">
                 {
@@ -25,8 +27,8 @@ class ModelTwo extends React.Component {
                                  onClick={()=>{nativeClick({
                                      type:i.type,
                                      url:i.linked_txt,
-                                     id:'',
-                                     name:'',
+                                     id:i.linked_txt,
+                                     name:i.remark,
                                      activeType:''
                                  })}}
                             />

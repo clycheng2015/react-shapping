@@ -47,7 +47,8 @@ class HomeGrid extends React.Component {
                 {
                     icon:key.iconpic,
                     text:key.name,
-                    path:pathArr[index]
+                    path:pathArr[index],
+                    url:key.linked_txt
                 }
             )
         )
@@ -58,7 +59,7 @@ class HomeGrid extends React.Component {
                 activeStyle={false}
                 onClick={(el) => nativeClick({
                     type:1,
-                    url:'http://192.168.1.247:3011/#'+el.path,
+                    url:el.url,
                     id:'',
                     name:el.text,
                     activeType:''

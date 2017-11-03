@@ -1,6 +1,5 @@
 import React from 'react'
 import {getSize} from '../../utils/getSize'
-import {nativeHomeSdk} from '../../utils/native-sdk'
 
 /**
  * 首页模块组件
@@ -22,7 +21,7 @@ import ModelFive from './model_five'
 import List from './moreList'
 
 
-export  default  class ListIndex extends React.Component {
+export  default  class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -32,6 +31,19 @@ export  default  class ListIndex extends React.Component {
             headState: 1
 
         };
+        let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        if (isiOS) {
+
+            // window.H5Refresh = this.H5Refresh
+        }
+
+
+
+        // window.webkit.H5Refresh = this.H5Refresh
+        //
 
 
     }
@@ -55,25 +67,13 @@ export  default  class ListIndex extends React.Component {
 
     componentWillReceiveProps(np, ns) {
 
+        // const {isFetching} = np
+        // if (!isFetching) {
+        //     console.log('in')
+        //     endRefresh()
+        // }
 
-    }
-    _turnToNative = (data) => {
-        let u = navigator.userAgent;
-        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-        let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        if (isAndroid) {
-            window.android.messageHandlers(JSON.stringify(data))
-        }
-        if (isiOS) {
-            window.webkit.messageHandlers.AppModel.postMessage(data);
-        }
-    }
 
-    reFresh = () => {
-
-        const {pagesize, fetchHome, fetchHomeList} = this.props
-        fetchHome()
-        fetchHomeList({pagesize: pagesize, pagenum: 0,})
     }
 
 
@@ -109,99 +109,131 @@ export  default  class ListIndex extends React.Component {
 
     render() {
         const {history, homeData, dataList, pagenum, isFetching, hasMore, fetchHomeList, pagesize, scrollT, headState} = this.props
-        console.log(homeData)
 
         return (
             <div>
 
                 {/*固定头部开始**********************************/}
 
+                <div className="area-banner">
+                    {homeData && homeData.bannerDtoList &&
+                    <Banner data={homeData.bannerDtoList} turn={this._turnToNative}/>}
+                </div>
 
-                {homeData.bannerDtoList && <Banner data={homeData.bannerDtoList} turn={this._turnToNative}/>}
 
-                {homeData.topfunDtos && <Grid data={homeData.topfunDtos} history={history} turn={this._turnToNative}/>}
-                {homeData.headlineDto && <News data={homeData.headlineDto} turn={this._turnToNative}/>}
+                <div className="area-gird">
+                    {homeData && homeData.topfunDtos &&
+                    <Grid data={homeData.topfunDtos} history={history} turn={this._turnToNative}/>}
+                </div>
+
+                <div className="area-news">
+                    {homeData && homeData.headlineDto && <News data={homeData.headlineDto} turn={this._turnToNative}/>}
+                </div>
 
                 {/*固定头部结束**********************************/}
+
                 {/*A区开始*************************************************************/}
-                {
-                    homeData.homepageModelADtos.map((i, k) => {
+                <div className="area-A">
+                    {
+                        homeData && homeData.homepageModelADtos.map((i, k) => {
 
-                        switch (i.type) {
-                            case 1:
-                                switch (i.num) {
+                            switch (i.type) {
+                                case 1:
+                                    switch (i.num) {
 
-                                    case 1:
-                                        return <ModelOne key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                            ;
-                                    case 2:
-                                        return (
-                                            <ModelTwo key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        );
-                                    case 3:
-                                        return (
-                                            <ModelTree key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        );
-                                    case 4:
-                                        return (
-                                            <ModelFour key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        )
-                                    default:
-                                        break;
-                                }
-                            case 5:
-                                return (<ModelFive key={k} hitory={history} data={i.goodsSimpleDtos} turn={this._turnToNative}/>)
-                            default:
-                                break;
-                        }
-                    })
-                }
+                                        case 1:
+                                            return <ModelOne key={k} hitory={history} data={i.linkedDtos}
+                                                             turn={this._turnToNative}/>
+                                                ;
+                                        case 2:
+                                            return (
+                                                <ModelTwo key={k} hitory={history} data={i.linkedDtos}
+                                                          turn={this._turnToNative}/>
+                                            );
+                                        case 3:
+                                            return (
+                                                <ModelTree key={k} hitory={history} data={i.linkedDtos}
+                                                           turn={this._turnToNative}/>
+                                            );
+                                        case 4:
+                                            return (
+                                                <ModelFour key={k} hitory={history} data={i.linkedDtos}
+                                                           turn={this._turnToNative}/>
+                                            )
+                                        default:
+                                            break;
+                                    }
+                                case 5:
+                                    return (<ModelFive key={k} hitory={history} data={i.goodsSimpleDtos}
+                                                       turn={this._turnToNative}  linkedDtos={i.linkedDtos}/>)
+                                default:
+                                    break;
+                            }
+                        })
+                    }
+                </div>
+
                 {/*A区结束*************************************************************/}
 
                 {/*秒杀折扣活动开始******************************/}
-                {
-                    homeData && homeData.activityDto && homeData.activityDto.type!==null&&
 
-                    <Active hitory={history} data={homeData.activityDto}/>                }
+                <div className="area-active">
+                    {
+                        homeData && homeData.activityDto && homeData.activityDto.type !== null &&
+
+                        <Active hitory={history} data={homeData.activityDto}/>
+                    }
+
+                </div>
+
                 {/*秒杀折扣活动结束******************************/}
 
                 {/*B区开始*************************************************************/}
-                {
-                    homeData.homepageModelBDtos.map((i, k) => {
 
-                        switch (i.type) {
-                            case 1:
-                                switch (i.num) {
+                <div className="area-B">
+                    {
+                        homeData && homeData.homepageModelBDtos.map((i, k) => {
 
-                                    case 1:
-                                        return <ModelOne key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                            ;
-                                    case 2:
-                                        return (
-                                            <ModelTwo key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        );
-                                    case 3:
-                                        return (
-                                            <ModelTree key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        );
-                                    case 4:
-                                        return (
-                                            <ModelFour key={k} hitory={history} data={i.linkedDtos} turn={this._turnToNative}/>
-                                        )
-                                    default:
-                                        break;
+                            switch (i.type) {
+                                case 1:
+                                    switch (i.num) {
 
-                                }
+                                        case 1:
+                                            return <ModelOne key={k} hitory={history} data={i.linkedDtos}
+                                                             turn={this._turnToNative}/>
+                                                ;
+                                        case 2:
+                                            return (
+                                                <ModelTwo key={k} hitory={history} data={i.linkedDtos}
+                                                          turn={this._turnToNative}/>
+                                            );
+                                        case 3:
+                                            return (
+                                                <ModelTree key={k} hitory={history} data={i.linkedDtos}
+                                                           turn={this._turnToNative}/>
+                                            );
+                                        case 4:
+                                            return (
+                                                <ModelFour key={k} hitory={history} data={i.linkedDtos}
+                                                           turn={this._turnToNative}/>
+                                            )
+                                        default:
+                                            break;
 
-                            case 5:
-                                return (<ModelFive key={k} hitory={history}  data={i.goodsSimpleDtos} turn={this._turnToNative}/>)
+                                    }
 
-                            default:
-                                break;
+                                case 5:
+                                    return (<ModelFive key={k} hitory={history} data={i.goodsSimpleDtos}
+                                                       turn={this._turnToNative} linkedDtos={i.linkedDtos}/>)
 
-                        }
-                    })
-                }
+                                default:
+                                    break;
+
+                            }
+                        })
+                    }
+                </div>
+
                 {/*B区结束*************************************************************/}
 
                 {/*更多商品列表--------------------------------------*/}
@@ -209,7 +241,7 @@ export  default  class ListIndex extends React.Component {
                 <div className="hot-list">
 
                     {
-                        dataList && dataList.length > 0 &&
+                        homeData && dataList && dataList.length > 0 &&
                         <List
                             getScroll={this.getScroll}
                             list={dataList}
@@ -232,3 +264,4 @@ export  default  class ListIndex extends React.Component {
         );
     }
 }
+

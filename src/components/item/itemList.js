@@ -5,7 +5,6 @@
 import React from 'react'
 import { ListView,Icon } from 'antd-mobile';
 
-
 export  default  class List extends React.Component {
     constructor(props) {
         super(props);

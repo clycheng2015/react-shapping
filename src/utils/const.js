@@ -102,6 +102,11 @@ export  const SAVE_PAY_ORDER='SAVE_PAY_ORDER' //保存支付订单
 export  const GET_POSTAGE='GET_POSTAGE' //获取邮费
 
 
+export  const GET_HELP='GET_HELP' //获取帮助中心
+
+export  const GET_Tel='GET_Tel' //获取客服电话
+
+
 
 
 export  const REQUEST_ACTIVE_LIST='REQUEST_ACTIVE_LIST' //
@@ -162,6 +167,9 @@ export const SAVE_INVOICE_TYPE='SAVE_INVOICE_TYPE'
 //
 
 export const GET_JINFU_PRO='GET_JINFU_PRO'
+
+
+export const ORDER_REMARK='ORDER_REMARK'
 
 
 

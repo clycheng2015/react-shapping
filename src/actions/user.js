@@ -306,6 +306,30 @@ export  const refundRemark = (data) => ({
 
 })
 
+/**
+ * 获取帮助中心
+ */
+
+export  const getHelp = (data) => ({
+
+    type: types.GET_HELP,
+
+    data
+
+})
+
+/**
+ * 获取客服电话
+ */
+
+export  const getTel = (data) => ({
+
+    type: types.GET_Tel,
+
+    data
+
+})
+
 
 /**
  *
@@ -316,6 +340,21 @@ export  const refundRemark = (data) => ({
  */
   const getJinfu = (data) => ({
     type: types.GET_JINFU_PRO,
+    data
+
+})
+
+
+
+/**
+ *
+ * @param data
+ * @returns {function(*, *)}
+ *
+ *
+ */
+ export const orderRemark = (data) => ({
+    type: types.ORDER_REMARK,
     data
 
 })
@@ -666,7 +705,7 @@ export const fetchDelOrder = (data, history, type) => {
 
         // Toast.loading("创建订单中，请稍后！",1)
 
-        instance.post(user.delOrder, qs.stringify(data))
+        instance.get(user.delOrder+'?'+ qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     // Toast.info(res.data.msg, 1)
@@ -695,7 +734,7 @@ export const fetchOrderDetai = (data) => {
     return (dispatch, getState) => {
 
 
-        instance.post(user.getOrderDetail, qs.stringify(data))
+        instance.get(user.getOrderDetail+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
 
@@ -869,7 +908,7 @@ export const fetchRefund = (data,history) => {
 
     return (dispatch, getState) => {
 
-        instance.post(user.refundUrl, qs.stringify(data))
+        instance.get(user.refundUrl+"?"+qs.stringify(data))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -896,7 +935,7 @@ export const fetchRefund = (data,history) => {
 
 export const fetchComfirm = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.comfirmUrl, qs.stringify(data))
+        instance.get(user.comfirmUrl+"?"+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(comfirmOreder(res.data.data))
@@ -917,10 +956,46 @@ export const fetchComfirm = (data) => {
 
 export const fetchJinfu = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.jinfuUrl, qs.stringify(data))
+        instance.get(user.jinfuUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(getJinfu(res.data.data))
+                }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+
+
+export const fetchHelp = () => {
+    return (dispatch, getState) => {
+        instance.get(user.helpUrl)
+            .then(res => {
+                if (res.data.code == 200) {
+                    dispatch(getHelp(res.data.data))
+                }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+export const fetchTel = () => {
+    return (dispatch, getState) => {
+        instance.get(user.telUrl)
+            .then(res => {
+                if (res.data.code == 200) {
+                    dispatch(getTel(res.data.data))
                 }
             })
             .catch(error => {

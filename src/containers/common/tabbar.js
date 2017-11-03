@@ -119,7 +119,7 @@ class TabBarMain extends React.Component {
                     selected={page === 'buyCar'}
                     onPress={() => {
                         changeTab('buyCar')
-                        history.push(`/burCar/${'a'}`)
+                        history.push(`/burCar/${'tab'}`)
                     }}
                 >
                 </TabBar.Item>
@@ -149,7 +149,15 @@ class TabBarMain extends React.Component {
                     selected={page === 'user'}
                     onPress={() => {
                         changeTab('user')
-                        history.push('/user')
+
+                        let user=AppLocalStorage.Cache.get("user")
+
+                        if(user){
+                            history.push('/user')
+                        }
+                        else {
+                            history.push('/auth')
+                        }
                     }}
                 >
                 </TabBar.Item>

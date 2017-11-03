@@ -1,32 +1,34 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 import {Route, Router} from 'react-router-dom'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
 const history = createHistory()
 
 /*
  全局导入less
  */
-// import Demo from '../test/testListView'
-import Demo from '../test/tabs'
-// import Demo from '../test/useBody'
-// import Demo from '../test/useBody'
+import './app.less'
+import './utils/iconfont/iconfont.css'
+
+
+import Home from './containers/Home/native-index'
 
 export default class App extends React.Component {
+
     componentDidMount() {
-        window.addEventListener('hashchange', () => {
-            this.props.currentAnimate('normal')
-        })
+
+
     }
+
     render() {
         return (
             <Router history={history}>
                 <Route render={({location}) => {
                     return (
+
                         <div key={location.pathname}>
-                            <Route location={location} path="/" component={Demo}/>
+                            <Route location={location} exact path="/" component={Home}/>
+                            <Route location={location} path="/home" component={Home}/>
+
                         </div>
                     )
                 }}/>

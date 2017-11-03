@@ -24,45 +24,44 @@ export default class MyOrder extends React.Component {
         //邮费
         fetchGetPostage()
         if (!isFetching) {
-            fetchOrderList(tab, { state: orderState, pagesize: pagesize, pagenum: pagenum})
+            fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
     }
 
     _tabChange = (tab, index) => {
-        const { orderTabChange} = this.props
+        const {orderTabChange} = this.props
         orderTabChange(tab.title, tab.state, index)
 
     }
 
     _refresh = () => {
         const {fetchOrderList, order} = this.props
-        const { orderState, pagesize, pagenum, tab} = order
+        const {orderState, pagesize, pagenum, tab} = order
         //邮费
-        fetchOrderList(tab, { state: orderState, pagesize: pagesize, pagenum: 0})
+        fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: 0})
 
     }
 
     componentWillReceiveProps(nextProps) {
 
-        const { fetchOrderList, order, } = nextProps
+        const {fetchOrderList, order,} = nextProps
 
-        const {tab, isFetching, orderState,  pagesize, pagenum,orderListInfo, isHandle} = order
+        const {tab, isFetching, orderState, pagesize, pagenum, orderListInfo, isHandle} = order
 
         if ((!isFetching && tab != this.props.tab && !orderListInfo[tab])) {
 
-            fetchOrderList(tab, { state: orderState, pagesize: pagesize, pagenum: pagenum})
+            fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
         if (isHandle) {
-            fetchOrderList(tab, { state: orderState, pagesize: pagesize, pagenum: pagenum})
+            fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
     }
 
     render() {
 
-        const {uid, fetchOrderList, order, history, fetchDelOrder, savePayOrder, match, postageData, fetchComfirm} = this.props
-        const {tab, success, isFetching, tabs, orderList, orderState, pagesize, pagenum, tabIndex, orderListInfo} = order
+        const {order, history, fetchDelOrder, savePayOrder, postageData, fetchComfirm} = this.props
+        const {tab, tabs, tabIndex, orderListInfo} = order
 
-        console.log(orderListInfo[tab])
 
         return (
             <div className="myOrder-container"
@@ -96,15 +95,15 @@ export default class MyOrder extends React.Component {
                                     minHeight: document.documentElement.clientHeight,
 
                                 }}>
-
                                     {
-                                        orderListInfo && orderListInfo[tab] &&
+                                        orderListInfo && orderListInfo[tab] && postageData &&
                                         <OrderList list={orderListInfo[tab]} fetchDelOrder={fetchDelOrder}
 
                                                    history={history} savePayOrder={savePayOrder}
                                                    postageData={postageData}
                                                    fetchComfirm={fetchComfirm}
-                                                    refresh={this._refresh}
+                                                   refresh={this._refresh}
+                                                   tabIndex={tabIndex}
                                         />
                                     }
 

@@ -25,7 +25,7 @@ let init = {
     },
     bill: {
         pagesize: 100,
-        pagenum: 1,
+        pagenum: 0,
         data: {}
     },
     address: {
@@ -33,7 +33,8 @@ let init = {
         data: {},
     },
     orderDetail: {
-        pathList: []
+        pathList: [],
+        remark:""
     },
     yesOrderDetail:{},
     topUp:{},
@@ -41,8 +42,9 @@ let init = {
     payData:{},
     newPayOrder:{},
     postageData:{},
-
-    jinfuList:[]
+    jinfuData:{},
+    helpData:{},
+    kefuTel:{}
 
 
 }
@@ -174,6 +176,15 @@ export const user = (state = init, action) => {
                 }
             }
 
+        case types.ORDER_REMARK:
+
+            return {
+                ...state, orderDetail: {
+                    ...state.orderDetail,
+                    remark: action.data,
+                }
+            }
+
 
 
 
@@ -220,8 +231,20 @@ export const user = (state = init, action) => {
             }
         case types.GET_JINFU_PRO:
             return {
-                ...state,jinfuList:action.data
+                ...state,jinfuData:action.data
             }
+
+        case types.GET_HELP:
+            return {
+                ...state,helpData:action.data
+            }
+
+        case types.GET_Tel:
+            return {
+                ...state,kefuTel:action.data
+            }
+
+
         default:
             return state
     }

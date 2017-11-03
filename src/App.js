@@ -51,7 +51,7 @@ const NewAds = asyncComponent(() => import( './containers/user/newAds'))
 const UpdatePhone = asyncComponent(() => import( './containers/user/phone'))
 const OrderDetail = asyncComponent(() => import( './containers/common/orderDetail'))
 const Pay = asyncComponent(() => import( './containers/common/pay'))
-const Ceshi = asyncComponent(() => import( './containers/common/ceshi'))
+
 const YesOrderDetail = asyncComponent(() => import( './containers/common/yesOrderDetail'))
 const TopUp = asyncComponent(() => import( './containers/user/topUp'))
 const WithDraw = asyncComponent(() => import( './containers/user/withdraw'))
@@ -60,6 +60,8 @@ const Wallet = asyncComponent(() => import( './containers/user/wallet'))
 const Jinfu = asyncComponent(() => import( './containers/user/jinfu'))
 const JinTopUp = asyncComponent(() => import( './containers/user/jinTopUp'))
 const JinDraw = asyncComponent(() => import( './containers/user/jinDraw'))
+const Help = asyncComponent(() => import( './containers/user/help'))
+const WebTxt = asyncComponent(() => import( './containers/user/webTxt'))
 
 
 const PostType = asyncComponent(() => import( './containers/common/postType'))
@@ -189,14 +191,16 @@ export default class App extends React.Component {
                             <Route location={location} path="/about" component={About}/>
                             <Route location={location} path="/userCenter" component={UserCenter}/>
                             <Route location={location} path="/myOrder/:id" component={MyOrder}/>
-                            <Route location={location} path="/bill" component={Bill}/>
+                            <Route location={location} path="/bill/:id" component={Bill}/>
                             <Route location={location} path="/address" component={Address}/>
                             <Route location={location} path="/newAds" component={NewAds}/>
                             <Route location={location} path="/phone" component={UpdatePhone}/>
                             <Route location={location} path="/orderDetail" component={OrderDetail}/>
                             <Route location={location} path="/pay" component={Pay}/>
-                            <Route location={location} path="/ceshi" component={Ceshi}/>
-                            <Route location={location} path="/yesOrder/:count" component={YesOrderDetail}/>
+                            <Route location={location} path="/help" component={Help}/>
+                            <Route location={location} path="/webTxt" component={WebTxt}/>
+
+                            <Route location={location} path="/yesOrder/:id" component={YesOrderDetail}/>
                             <Route location={location} path="/topUp" component={TopUp}/>
                             <Route location={location} path="/withdraw" component={WithDraw}/>
                             <Route location={location} path="/active" component={Active}/>

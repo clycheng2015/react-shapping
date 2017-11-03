@@ -28,6 +28,8 @@ class Banner extends React.Component {
 
         const {data}=this.props
 
+
+
         return(
             <Carousel
                 className="my-carousel"
@@ -43,8 +45,8 @@ class Banner extends React.Component {
                 {data.map((i, key) => (
                     <img key={key} src={i.iconpic} onClick={()=>{nativeClick({
                         type:i.type,
-                        url:'',
-                        id:'',
+                        url:i.linked_txt,
+                        id:i.linked_txt,
                         name:i.title,
                         activeType:''
                     })}}

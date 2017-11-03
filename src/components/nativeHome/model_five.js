@@ -1,7 +1,7 @@
 
 import React from 'react'
 import BScroll from 'better-scroll'
-
+import {nativeClick} from '../../utils/native-sdk'
 class ModelFour extends React.Component {
     constructor(props) {
         super(props);
@@ -19,14 +19,23 @@ class ModelFour extends React.Component {
         new BScroll(this.shop, options)
     }
     render() {
-        const {history ,data}=this.props
+        const {history ,data,linkedDtos}=this.props
+
+
         return (
                 <div className="model-five" ref={el => this.shop = el} style={{width: "100%"}}>
                     <ul style={{width: `${(data.length+3)*2}rem`}}>
                         {
                             data.map((i, index) => (
                                 <li className="" key={index}
-                                    onClick={() => history.push(`/goodsDetail/${i.goods_id}`)}>
+                                    onClick={ ()=>{nativeClick({
+                                        type:i.type,
+                                        url:i.linked_txt,
+                                        id:i.linked_txt,
+                                        name:i.remark,
+                                        activeType:''
+                                    })}}
+                                >
                                     <div className="img-info">
                                         <img src={i.pic} alt=""/>
                                     </div>
@@ -44,11 +53,13 @@ class ModelFour extends React.Component {
                         <li className="more">
 
                             <div className="box"
-                                 onClick={() => history.push({
-                                     pathname: `/itemList/36`,
-                                     state: {title: '商场推荐'}
-
-                                 })}>
+                                 onClick={ ()=>{nativeClick({
+                                     type:linkedDtos.type,
+                                     url:linkedDtos.linked_txt,
+                                     id:linkedDtos.linked_txt,
+                                     name:linkedDtos.remark,
+                                     activeType:''
+                                 })}}>
                                 查看更多
                             </div>
 

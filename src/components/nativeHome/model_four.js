@@ -13,9 +13,8 @@ class ModelFour extends React.Component {
 
     render() {
 
-        const {history, data} = this.props
+        const {data} = this.props
 
-        console.log(data)
         return (
             <div className="model-four">
                 <ul>
@@ -26,10 +25,10 @@ class ModelFour extends React.Component {
                             <li
                                 key={k}
                                 onClick={ ()=>{nativeClick({
-                                    type:3,
-                                    url:'',
-                                    id:'66',
-                                    name:'酒水饮料',
+                                    type:i.type,
+                                    url:i.linked_txt,
+                                    id:i.linked_txt,
+                                    name:i.remark,
                                     activeType:''
                                 })}}
                             ><img src={i.iconpic} alt=""/></li>

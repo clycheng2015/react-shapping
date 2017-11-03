@@ -46,7 +46,7 @@ class MoreList extends React.Component {
 
         let num = pagenum
 
-        if (isFetching && !hasMore) {
+        if (isFetching || !hasMore) {
             return;
         }
 

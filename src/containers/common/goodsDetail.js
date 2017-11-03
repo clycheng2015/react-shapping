@@ -197,9 +197,7 @@ export default class GoodsDetail extends React.Component {
 
                 history.push({
                     pathname: "/orderDetail",
-
                     state: {
-
                         data: newData,
                         state: "det"
                     }
@@ -355,11 +353,10 @@ export default class GoodsDetail extends React.Component {
                                 </Flex.Item>
 
                                 <Flex.Item className="usl">
-                                    <span style={{textDecoration: 'line-through'}}>￥{data.price}</span>
+                                    <span style={{textDecoration: 'line-through'}}>市场价：￥{data.price}</span>
                                 </Flex.Item>
                             </Flex>
                         </div>
-
                         <div className="know-info"
                              onClick={() => this.setState({drawerType: "know", open: !this.state.open,})}>
                             <ul >
@@ -530,7 +527,6 @@ export default class GoodsDetail extends React.Component {
                                                         <InputItem
                                                             type="number"
                                                             error={this.state.hasError}
-
                                                             onChange={this.onChange}
                                                             value={this.state.inputValue}
                                                         />

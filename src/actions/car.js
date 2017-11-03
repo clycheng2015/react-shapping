@@ -26,12 +26,21 @@ const updateCarNum = () => ({
 });
 
 
+
+export const carCheckAll=()=>({
+
+    type:"CAR_CHECK_ALL"
+
+})
+
+export const carCheck=(id)=>({
+
+    type:"CAR_CHECK",id
+})
+
 export const fetchCarList = (data) => {
-
     return (dispatch, getState) => {
-
-
-        instance.post(car.carList, qs.stringify(data))
+        instance.get(car.carList+"?"+qs.stringify(data))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -52,7 +61,7 @@ export const fetchCarList = (data) => {
 export const fetchDelCar = (data) => {
 
     return (dispatch, getState) => {
-        instance.post(car.delCarList, qs.stringify(data))
+        instance.get(car.delCarList+'?'+qs.stringify(data))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -70,7 +79,7 @@ export const fetchDelCar = (data) => {
 export const fetchUpdateCarNum = (data) => {
 
     return (dispatch, getState) => {
-        instance.post(car.updateCarNum, qs.stringify(data))
+        instance.get(car.updateCarNum+'?'+ qs.stringify(data))
             .then(res => {
 
                 if (res.data.code == 200) {

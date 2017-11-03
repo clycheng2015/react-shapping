@@ -17,15 +17,15 @@ class ModelOne extends React.Component {
     render() {
         const {data }=this.props
 
-        console.log(data)
+
         return (
             <div className="model-one">
                 <img src={data[0].iconpic} alt=""
                      onClick={()=>{nativeClick({
                          type:data[0].type,
-                         url:'',
-                         id:'',
-                         name:'',
+                         url:data[0].linked_txt,
+                         id:data[0].linked_txt,
+                         name:data[0].remark,
                          activeType:''
                      })}}
                 />

@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import {Carousel} from 'antd-mobile'
+import {nativeClick} from '../../utils/native-sdk'
 
 class News extends React.Component {
     constructor(props) {
@@ -16,6 +17,8 @@ class News extends React.Component {
 
     render() {
         const {data}=this.props
+
+        console.log(data)
 
         return (
             <div className="news">
@@ -35,7 +38,14 @@ class News extends React.Component {
                         {
                             data.headLineDtoItems.map((i,k)=>(
 
-                                <div className="v-item" key={k}>{i.linked_txt}</div>
+                                <div className="v-item" key={k} onClick={()=>nativeClick({
+                                    type:1,
+                                    url:i.linked_txt,
+                                    id:i.id,
+                                    name:i.title,
+                                    activeType:''
+
+                                })}>{i.title}</div>
 
                             ))
                         }

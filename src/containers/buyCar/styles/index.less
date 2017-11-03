@@ -1,6 +1,6 @@
 .car-container {
   //padding-bottom: 3rem;
-  //overflow: hidden;
+  overflow: hidden;
   .am-list-body {
     border: none;
   }
@@ -208,12 +208,13 @@
   }
 
   .gobuy {
-
+    z-index: 99999;
     box-shadow: 3px 0 8px #f7f6f6;
     height: 1rem;
     width: 100%;
     background: white;
     position: fixed;
+    overflow: hidden;
     bottom: 50px;
     .am-list-content {
       font-size: .22rem;
@@ -287,6 +288,7 @@
 
   }
   .dgobuy {
+    z-index: 99999;
 
     box-shadow: 3px 0 8px #f7f6f6;
     overflow: hidden;
@@ -401,5 +403,10 @@
       margin-top: .23rem;
     }
 
+  }
+
+  .am-list-item .am-list-line{
+
+    padding: 0;
   }
 }
