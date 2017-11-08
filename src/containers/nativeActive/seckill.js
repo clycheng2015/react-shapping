@@ -2,18 +2,16 @@
 
 
 import React from 'react';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux';
-import { ListView , Tabs, WhiteSpace, PullToRefresh, Button} from 'antd-mobile';
-import { StickyContainer, Sticky } from 'react-sticky';
+
+
 import {Icon, Flex} from 'antd-mobile'
 
 import './style/seckill.less';
 
 
+import {nativeClick} from '../../utils/native-sdk'
 
-
-export default class Special extends React.Component{
+export default class Seckill extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -439,13 +437,13 @@ export default class Special extends React.Component{
             
             <div className='new-seckill'>
 
-                <div style={{overflow:'hidden'}}><img src={require('static/image/scekill.png')} style={{width:"7.5rem",marginTop:'0.9rem',float:'left'}} alt=""/></div>
+                <div style={{overflow:'hidden'}}><img src={require('static/image/scekill.png')} style={{width:"7.5rem",float:'left'}} alt=""/></div>
                 <div className='ranking'>
                     <div className='tab'>
 
                         {this.data.map(function (item,index) {
                             return(
-                                <ul>
+                                <ul key={index}>
                                     {item.map((item,key)=>{
 
                                         return(

@@ -67,6 +67,8 @@ const WebTxt = asyncComponent(() => import( './containers/user/webTxt'))
 const PostType = asyncComponent(() => import( './containers/common/postType'))
 const Invoice = asyncComponent(() => import( './containers/common/invoice'))
 
+const Protocol = asyncComponent(() => import( './containers/common/protocol'))
+
 
 
 
@@ -118,44 +120,33 @@ export default class App extends React.Component {
             }
 
             if(href.indexOf('?')>0){
-
                 let url= href.match(/\?(\S*)#/)[0]
-
                 href=href.replace(url,'#')
             }
-
             this.props.fetchWxConfig({
-
-                imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
+                imgUrl: 'http://app.meilungo.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
             });
 
         }
-        window.addEventListener('hashchange', () => {
+        window.addEventListener('hashchange', (el) => {
 
             // this.props.currentAnimate('normal')
-
-
             let href=window.location.href
-
-
             if(href.indexOf('from=singlemessage&isappinstalled=0')>0){
-
                 href= href.replace('from=singlemessage&isappinstalled=0','')
                 window.location.href=href
                 return
             }
             if(href.indexOf('?')>0){
-
                 let url= href.match(/\?(\S*)#/)[0]
-
                 href=href.replace(url,'#')
             }
+            if(href.indexOf('goodsDetail')>0||href.indexOf('activeDetail')>0){
+                return
+            }
             if (isPro) {
-
-
                 this.props.fetchWxConfig({
-
-                    imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
+                    imgUrl: 'http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
                 });
 
             }
@@ -196,7 +187,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/newAds" component={NewAds}/>
                             <Route location={location} path="/phone" component={UpdatePhone}/>
                             <Route location={location} path="/orderDetail" component={OrderDetail}/>
-                            <Route location={location} path="/pay" component={Pay}/>
+                            <Route location={location} path="/pay/:id" component={Pay}/>
                             <Route location={location} path="/help" component={Help}/>
                             <Route location={location} path="/webTxt" component={WebTxt}/>
 
@@ -223,6 +214,8 @@ export default class App extends React.Component {
                             <Route location={location} path="/vipActive" component={VipActive}/>
                             <Route location={location} path="/hotGoods" component={HotGoods}/>
                             <Route location={location} path="/joinUs" component={JoinUs}/>
+
+                            <Route location={location} path="/protocol/:id" component={Protocol}/>
 
 
 

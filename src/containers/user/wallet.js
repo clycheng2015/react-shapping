@@ -60,7 +60,7 @@ export default class Wallet extends React.Component {
                 }}>
 
                     <p>单位(元)</p>
-                    <p className="count">{Number(userInfo.money).toFixed(2)}</p>
+                    <p className="count">{Number(userInfo.mymoney).toFixed(2)}</p>
 
                 </div>
                 <List.Item

@@ -13,6 +13,7 @@ import * as global from 'actions/global'
 import TabBarMain from 'containers/common/tabbar'
 require('./styles/index.less')
 
+
 const orderData = [
     {
         icon: require('static/images/user/pay_icon.png'),
@@ -98,6 +99,7 @@ export default class User extends React.Component {
                      background: "#f3f3f1"
                  }}
             >
+
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
                         <Flex.Item className="item-head left"></Flex.Item>
@@ -114,14 +116,13 @@ export default class User extends React.Component {
                                     <div className="username">
                                         <p>
                                             {userInfo.realname}
-                                            <span
-                                                className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '' : "vip"}</span>
+                                            {/*<span className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '' : "vip"}</span>*/}
                                         </p>
                                         <div className="wallet-info" onClick={() => {
                                             history.push("/wallet")
                                         }}>
                                             <p className="title">我的钱包</p>
-                                            <p className="count">￥{Number(userInfo.money).toFixed(2)}</p>
+                                            <p className="count">￥{Number(userInfo.mymoney).toFixed(2)}</p>
                                         </div>
                                     </div> }
                                 extra={<img onClick={() => {
@@ -164,7 +165,7 @@ export default class User extends React.Component {
                                             style={{width: '.64rem', height: ".36rem"}}/>}
                                 onClick={() => {history.push(`/jinfu`)}}
                             >
-                                金凤金服 <span className="count">￥{Number(userInfo.mymoney).toFixed(2)}</span>
+                                金凤金服 <span className="count">￥{Number(userInfo.money).toFixed(2)}</span>
                             </List.Item>
                         </div>
                         <div className="other-list">
@@ -176,7 +177,7 @@ export default class User extends React.Component {
                                 extra={<img src={require('static/images/user/ser_icon.png')} alt=""/>}
                                 onClick={() => history.push('/help')}
                             >
-                                联系客服
+                                帮助中心
                             </List.Item>
                             <List.Item
                                 extra={<img src={require('static/images/user/set_icon.png')} alt=""/>}

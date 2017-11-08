@@ -2,6 +2,8 @@
 import React from 'react'
 import {Flex} from 'antd-mobile'
 
+import {getPath} from '../../utils/tools'
+
 class ModelTwo extends React.Component {
     constructor(props) {
         super(props);
@@ -12,21 +14,41 @@ class ModelTwo extends React.Component {
 
     }
 
+    _click=(i,history)=>{
+
+        switch(i.type){
+            case 1:
+                history.push(getPath(i.linked_txt))
+                break;
+            case 2:
+
+                history.push(`/goodsDetail/${i.linked_txt}`)
+
+                break;
+            case 3:
+
+                history.push(`/itemList/${i.linked_txt}T${i.remark}`)
+
+                break;
+            default :
+                break
+        }
+    }
     render() {
 
-        const {history}=this.props
+        const {history,data}=this.props
         return (
 
 
             <Flex className="model-two">
-                <Flex.Item>
-                    <img src={require('static/images/home/newUser.png')} alt=""
-                         onClick={() => history.push('/newPer')}/>
-                </Flex.Item>
-                <Flex.Item>
-                    <img src={require('static/images/home/newDay.png')} alt=""
-                         onClick={() => history.push('/newDay')}/>
-                </Flex.Item>
+                {
+                    data.map((i,k)=>(
+
+                        <Flex.Item key={k}>
+                            <img src={i.iconpic} alt="" onClick={()=>this._click(i,history)}/>
+                        </Flex.Item>
+                    ))
+                }
             </Flex>
 
 
@@ -36,5 +58,4 @@ class ModelTwo extends React.Component {
     }
 
 }
-
 export  default ModelTwo

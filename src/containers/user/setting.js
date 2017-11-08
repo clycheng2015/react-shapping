@@ -8,7 +8,7 @@ import {AppLocalStorage} from '../../utils/cookie'
 import {store} from '../../entry'
 
 
-import { Modal, Icon,Toast, WhiteSpace, Flex, List} from 'antd-mobile'
+import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
 import * as global from 'actions/global'
@@ -43,20 +43,19 @@ export default class Setting extends React.Component {
 
     _loginOut = () => {
         const {loginOut, history} = this.props
+        loginOut()
         window.resetState = () => {
             store.dispatch(init());
         }
         AppLocalStorage.Cache.clear()
-        loginOut()
-        Toast.loading('正在退出...', 1, () => {
-            console.log('Load complete !!!');
-        });
-        setTimeout(() => {
+        Toast.loading('正在退出...', 2, () => {
             history.push("/")
-        }, 2000)
+        });
+
     }
+
     render() {
-        const { history} = this.props
+        const {history} = this.props
         return (
             <div className="setting-container"
 

@@ -8,7 +8,7 @@ import {Icon, Flex} from 'antd-mobile'
 
 import * as active from 'actions/active'
 require('./style/index.less')
-
+import {nativeClick} from '../../utils/native-sdk'
 import ActiveContent from '../../components/active/avtive_20170928'
 
 @connect(

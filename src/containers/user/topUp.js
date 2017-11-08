@@ -47,6 +47,8 @@ export default class TopUP extends React.Component {
 
         const {fetchTopUp,history}=this.props
 
+        console.log("1323")
+
         if(this.state.value==null){
 
             Toast.info("请输入充值金额！",1)
@@ -60,9 +62,7 @@ export default class TopUP extends React.Component {
 
             return false
         }
-        fetchTopUp({
-            money:this.state.value
-        },history)
+        fetchTopUp({money:this.state.value},history)
 
     }
     render() {
@@ -97,21 +97,17 @@ export default class TopUP extends React.Component {
 
                     <img src={require('static/images/user/ban_icon.png')} alt=""/>
                     {
-                        Number(userInfo.money)>=500 && '充值500元以上，享受专享优惠'
+                        Number(userInfo.mymoney)>=500 && '充值500元以上，享受专享优惠'
                     }
 
                     {
-                        Number(userInfo.money)<500 && `您还差${(500-Number(userInfo.money)).toFixed(2)}元，享受专享优惠`
+                        Number(userInfo.mymoney)<500 && `您还差${(500-Number(userInfo.mymoney)).toFixed(2)}元，享受专享优惠`
                     }
 
                     <img src={require('static/images/user/close_icon.png')} alt="" onClick={()=>this.setState({bannerState:0})}/>
 
                     </div>
-
-
                 }
-
-
 
                 <div className="count-info">
                     <p className="title">
@@ -148,7 +144,7 @@ export default class TopUP extends React.Component {
                 <Flex  className="deal-info">
                     <Flex.Item style={{ padding: '15px 0', color: '#888', flex: 'none' }}>
                         <Radio className="my-radio"  checked={true} onChange={e => console.log('checkbox', e)}> &nbsp;选择勾选，</Radio>
-                        则代表您同意 <span style={{color:"#2aa2e2"}}>《美纶购充值协议》</span></Flex.Item>
+                        则代表您同意 <span style={{color:"#2aa2e2"}} onClick={()=>history.push('/protocol/2')}>《美纶购充值协议》</span></Flex.Item>
                 </Flex>
                 <div className="up-btn"
                 onClick={()=>this._topUp()}

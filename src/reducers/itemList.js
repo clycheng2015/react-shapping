@@ -7,13 +7,19 @@ import * as types from '../utils/const'
 let init = {
     data: {},
     pagesize: 20,
-    pagenum: 0,
+    pagenum: 1,
     list: [],
     isFetching: false,
     hasMore: true,
     scrollT: 0,
-    priceSort:''
+    priceSort:'',
+    leftBtnState:1,
+    rightBtnState:0,
+    price:true
+
 }
+
+
 
 
 export const itemList = (state = init, action) => {
@@ -30,13 +36,17 @@ export const itemList = (state = init, action) => {
                 dataList = state.list[id].dataList
             }
 
+            if(action.data.datalist.length<state.pagesize){
+
+                hasMore = false
+            }
 
             if (action.pagenum > pages) {
                 hasMore = false
             } else if (action.pagenum > state.pagenum) {
                 dataList = dataList.concat(action.data.datalist)
             }
-            else if (action.pagenum === 0) {
+            else if (action.pagenum === 1) {
                 dataList = action.data.datalist
             }
             return {
@@ -68,6 +78,18 @@ export const itemList = (state = init, action) => {
                 }
             }
 
+
+        case 'ITEM_LEFT_BTN':
+
+            return {...state,rightBtnState:0,leftBtnState:1}
+
+        case 'ITEM_RIGHT_BTN':
+
+
+            return {...state,rightBtnState:1,leftBtnState:0,}
+
+        case 'ITEM_SORT_BTN':
+            return {...state,price:!state.price}
 
         default:
             return state

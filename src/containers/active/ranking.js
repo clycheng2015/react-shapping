@@ -13,7 +13,7 @@ import './style/ranking.less';
 
 import {Icon, Flex} from 'antd-mobile'
 
-export default class Special extends React.Component{
+export default class Ranking extends React.Component{
     constructor(props) {
         super(props)
         this.state = {

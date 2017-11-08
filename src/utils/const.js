@@ -106,6 +106,8 @@ export  const GET_HELP='GET_HELP' //获取帮助中心
 
 export  const GET_Tel='GET_Tel' //获取客服电话
 
+export  const GET_IC_BANNER='GET_IC_BANNER' //获取登陆后的banner
+
 
 
 

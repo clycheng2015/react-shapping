@@ -6,14 +6,17 @@
 
 
 export const pay=(data,history)=>{
+
+
+
     const onBridgeReady=()=>{
         WeixinJSBridge.invoke(
             'getBrandWCPayRequest', {
                 "appId":data.appId,     //公众号名称，由商户传入
                 "timeStamp":data.timeStamp,         //时间戳，自1970年以来的秒数
                 "nonceStr":data.nonceStr, //随机串
-                "package":`prepay_id=${data.prepay_id}`,
-                "signType":data.signType,         //微信签名方式：
+                "package":data.package,
+                "signType":data.signType,//微信签名方式：
                 "paySign":data.paySign, //微信签名
                 'prepay_id':data.prepay_id
 

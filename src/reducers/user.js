@@ -44,7 +44,8 @@ let init = {
     postageData:{},
     jinfuData:{},
     helpData:{},
-    kefuTel:{}
+    kefuTel:{},
+    IcBanner:{}
 
 
 }
@@ -242,6 +243,11 @@ export const user = (state = init, action) => {
         case types.GET_Tel:
             return {
                 ...state,kefuTel:action.data
+            }
+
+        case types.GET_IC_BANNER:
+            return {
+                ...state,IcBanner:action.data
             }
 
 

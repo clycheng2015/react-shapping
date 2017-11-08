@@ -101,11 +101,7 @@ export default class YesOrderDetail extends React.Component {
     _toPay = (rowData) => {
 
         const {savePayOrder,history}=this.props
-        history.push(
-            {
-                pathname: "/pay",
-                state: {count: this._tolPrice()}
-            });
+        history.push({pathname: `/pay/${this._tolPrice()}`});
             savePayOrder({
             id: rowData.id,
             ordernum: rowData.ordernum
@@ -150,7 +146,7 @@ export default class YesOrderDetail extends React.Component {
                                 </div>
                                 <div className="ads">
                                     <span className="txt">
-                                        {yesOrderDetail.address.provincename + yesOrderDetail.address.cityname + yesOrderDetail.address.countyname + yesOrderDetail.address.address}
+                                        {yesOrderDetail.address.province + yesOrderDetail.address.city + yesOrderDetail.address.county + yesOrderDetail.address.address}
                           </span>
                                 </div>
                             </div>

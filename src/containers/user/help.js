@@ -99,9 +99,9 @@ export default class Help extends React.Component {
                 {
                     kefuTel.length>0&&
                     <div className="tel-info">
-                        <a href={`tel:${kefuTel[1].customermobile}`}>招商咨询</a>
 
-                        <a href={`tel:${kefuTel[0].customermobile}`}>购物咨询</a>
+                        <a href={`tel:${kefuTel[1]&&kefuTel[1].customermobile}`}>招商咨询</a>
+                        <a href={`tel:${kefuTel[0]&&kefuTel[0].customermobile}`}>购物咨询</a>
 
                     </div>
                 }

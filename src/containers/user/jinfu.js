@@ -43,7 +43,6 @@ export default class Jinfu extends React.Component {
     render() {
         const {history, jinfuData, userInfo} = this.props
 
-        console.log(jinfuData)
         return (
             <div className="jinfu-container" ref='wrapper'
                  style={{minHeight: document.documentElement.clientHeight, background: "#f3f3f1"}}>
@@ -53,7 +52,7 @@ export default class Jinfu extends React.Component {
                             history.goBack()
                         }}/></Flex.Item>
                         <Flex.Item className="item-head center">金凤金服</Flex.Item>
-                        <Flex.Item className="item-head right"><span style={{color: "#999999"}}>协议</span></Flex.Item>
+                        <Flex.Item className="item-head right"><span style={{color: "#999999"}} onClick={()=>history.push('/protocol/5')}>协议</span></Flex.Item>
                     </Flex>
                 </div>
                 <div style={{height: ".9rem"}}>
@@ -71,7 +70,7 @@ export default class Jinfu extends React.Component {
                     <div className="box">
 
                         <p>单位(元)</p>
-                        <p className="count">{Number(userInfo.mymoney).toFixed(2)}</p>
+                        <p className="count">{Number(userInfo.money).toFixed(2)}</p>
                     </div>
 
 
@@ -90,8 +89,9 @@ export default class Jinfu extends React.Component {
 
                             <div key={k}>{
                                 i.list.map((i, index) => (
-                                    <img  key={index} src={i.smallpic} alt=""/>
+                                    <img  key={index} src={i.smallpic} alt=""   onClick={()=>history.push(`/jinTopUp/${i.id}`)}/>
                                 ))}
+
                             </div>
                         ))
                     }

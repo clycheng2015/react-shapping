@@ -1,3 +1,285 @@
+// /**
+//  * Created by Administrator on 2016/7/1.
+//  */
+// import React from 'react'
+// import {bindActionCreators} from 'redux'
+// import {connect} from 'react-redux'
+// import {createForm} from 'rc-form';
+// import {Modal, Icon, Flex, Switch, InputItem,List, Toast, Picker,Button,WhiteSpace,TextareaItem} from 'antd-mobile'
+// const area = require('./json/area.json')
+// import * as user from 'actions/user'
+// require('./styles/newads.less')
+// const alert = Modal.alert;
+// let areaTxt = ''
+// @connect(
+//     state => {
+//         return {...state.user}
+//     },
+//     dispatch => bindActionCreators({...user}, dispatch)
+// )
+// class NewAds extends React.Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             id: '',
+//             modal1: false,
+//             modal2: false,
+//             hasError: false,
+//             value: '',
+//             area: [],
+//             areaText: ""
+//         }
+//     }
+//     _save = () => {
+//         const {uid, fetchAddAds, form, history, location} = this.props;
+//         let id = 0;
+//         let isdefault = 1
+//         if (location.state != undefined) {
+//
+//             let data = location.state.data
+//
+//             id = data.id
+//             isdefault = data.isdefault
+//         }
+//         const {getFieldValue} = form
+//         let realname = getFieldValue('receiveName')
+//         let mobile = this.state.value
+//         let area = this.state.area
+//         let address = this.state.areaText
+//         console.log(address)
+//         if (realname === undefined) {
+//             Toast.info("收件人不能为空！", 1)
+//         }
+//         else if (mobile === undefined) {
+//             Toast.info("联系电话不能为空！", 1)
+//         }
+//         else if (area === '请选择配送地址') {
+//             Toast.info('请选择所在地区', 1)
+//         }
+//         else if (address === '') {
+//             Toast.info('收货地址不能为空！', 1)
+//         }
+//         else {
+//             // area = area.split(",")
+//             console.log(area)
+//             let data = {
+//                 uid: uid,
+//                 id: id,
+//                 realname: realname,
+//                 mobile: mobile.replace(/\s/g, ''),
+//                 province: area[0] ? area[0] : '/',
+//                 city: area[1] ? area[1] : '/',
+//                 county: area[2] ? area[2] : '/',
+//                 address: address,
+//                 isdefault: isdefault
+//             }
+//
+//             fetchAddAds(data, history)
+//         }
+//     }
+//
+//     componentDidMount() {
+//         const {history, location} = this.props
+//         if (location.state != undefined) {
+//             let data = location.state.data
+//             this.setState({
+//                 value: data.mobile,
+//                 areaText:data.address
+//
+//             })
+//             areaTxt=data.mobile
+//         }
+//
+//     }
+//
+//     onErrorClick = () => {
+//         if (this.state.hasError) {Toast.info('Please enter 11 digits');}
+//     }
+//     onChange = (value) => {
+//         if (value.replace(/\s/g, '').length < 11) {
+//             this.setState({hasError: true,});
+//         } else {
+//             this.setState({hasError: false,});
+//         }
+//         this.setState({value,});
+//     }
+//     render() {
+//         const {history, location} = this.props
+//         const {getFieldProps} = this.props.form;
+//         if (location.state !== undefined) {
+//             let data = location.state.data
+//             let province = data.province === '/' ? '' : data.province
+//             let city = data.city === '/' ? '' : data.city
+//             let county = data.county === '/' ? '' : data.county
+//             let exp = ''
+//             if (county !== '') {
+//                 exp = province + "," + city + "," + county
+//             }
+//             else {
+//                 exp = province + "," + city
+//             }
+//
+//             return (
+//                 <div className="newads-container"
+//
+//                      style={{
+//                          minHeight: document.documentElement.clientHeight,
+//                          background: "#f3f3f1"
+//                      }}
+//                 >
+//
+//                     <div className="nav-tab">
+//                         <Flex justify="center" align="center">
+//                             <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
+//                                 history.goBack()
+//                             }}/></Flex.Item>
+//                             <Flex.Item className="item-head center">编辑收货地址</Flex.Item>
+//                             <Flex.Item className="item-head right"> </Flex.Item>
+//                         </Flex>
+//                     </div>
+//                     <div className="form-info">
+//
+//                         <div className="list">
+//                             <InputItem
+//
+//                                 {...getFieldProps('receiveName', {
+//                                     initialValue:data.realname ,
+//                                 })}
+//
+//                                 clear
+//                                 placeholder="请填写收件人"
+//                                 ref={el => this.autoFocusInst = el}
+//                             >收件人</InputItem>
+//                             <InputItem
+//                                 {...getFieldProps('phone')}
+//                                 type="phone"
+//                                 placeholder="请输入联系电话"
+//                                 error={this.state.hasError}
+//                                 onErrorClick={this.onErrorClick}
+//                                 onChange={this.onChange}
+//                                 value={this.state.value}
+//                             >联系电话</InputItem>
+//                             <div className="area-check">
+//                             <Picker
+//                                 title="选择地区"
+//                                 extra={exp}
+//                                 data={area.data}
+//                                 value={this.state.area}
+//                                 onChange={v => this.setState({area: v})}
+//
+//                             >
+//                                 <List.Item  arrow="horizontal">所在地区</List.Item>
+//                             </Picker>
+//                             </div>
+//                             <TextareaItem
+//                                 clear
+//                                 title="详细地区"
+//                                 autoHeight
+//                                 placeholder="请填写详细配送地址"
+//                                 rows={3}
+//                                 defaultValue={data.address}
+//                                 ref={el => this.autoFocusInst = el}
+//                                 onChange={v => this.setState({areaText: v})}
+//                             />
+//                             <List.Item
+//                                 extra={<Switch
+//                                     {...getFieldProps('Switch1', {
+//                                         initialValue: false,
+//                                         valuePropName: 'checked',
+//                                     })}
+//                                     onClick={(checked) => { console.log(checked); }}
+//                                 />}
+//                             >选为默认地址：</List.Item>
+//                         </div>
+//                         <WhiteSpace />
+//                         <WhiteSpace />
+//                         <WhiteSpace />
+//                         <Button type="primary"   style={{width:"95%",margin:"0 auto"}}     onClick={() => this._save()}>保存</Button>
+//                     </div>
+//                 </div>
+//             )
+//
+//
+//         } else {
+//             console.log("我是新增页面")
+//             return (
+//                 <div className="newads-container"
+//
+//                      style={{
+//                          minHeight: document.documentElement.clientHeight,
+//                          background: "#f3f3f1"
+//                      }}
+//                 >
+//
+//                     <div className="nav-tab">
+//                         <Flex justify="center" align="center">
+//                             <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
+//                                 history.goBack()
+//                             }}/></Flex.Item>
+//                             <Flex.Item className="item-head center">编辑收货地址</Flex.Item>
+//                             <Flex.Item className="item-head right"> </Flex.Item>
+//                         </Flex>
+//                     </div>
+//                     <div className="form-info">
+//                         <div className="list">
+//                             <InputItem
+//                                 {...getFieldProps('receiveName')}
+//                                 clear
+//                                 placeholder="请填写收件人"
+//                                 ref={el => this.autoFocusInst = el}
+//                             >收件人</InputItem>
+//                             <InputItem
+//                                 {...getFieldProps('phone')}
+//                                 type="phone"
+//                                 placeholder="请输入联系电话"
+//                                 error={this.state.hasError}
+//                                 onErrorClick={this.onErrorClick}
+//                                 onChange={this.onChange}
+//                                 value={this.state.value}
+//                             >联系电话</InputItem>
+//
+//                             <div className="area-check">
+//                             <Picker
+//
+//                                 title="选择地区"
+//                                 extra="请选择(可选)"
+//                                 data={area.data}
+//                                 value={this.state.area}
+//                                 onChange={v => this.setState({area: v})}
+//                             >
+//                                 <List.Item    arrow="horizontal" onClick={() => this.setState({ visible: true })} >
+//                                     所在地区
+//                                 </List.Item>
+//                             </Picker>
+//                             </div>
+//                             <TextareaItem
+//                                 onChange={v => this.setState({areaText: v})}
+//                                 clear
+//                                 title="详细地区"
+//                                 autoHeight
+//                                 placeholder="请填写详细配送地址"
+//                                 ref={el => this.autoFocusInst = el}
+//                             />
+//                             <List.Item
+//                                 extra={<Switch
+//                                     {...getFieldProps('Switch1', {
+//                                         initialValue: true,
+//                                         valuePropName: 'checked',
+//                                     })}
+//                                     onClick={(checked) => { console.log(checked); }}
+//                                 />}
+//                             >选为默认地址：</List.Item>
+//                         </div>
+//                         <Button type="primary" style={{width:"100%",margin:"0 auto"}}  className="new-btn"   onClick={() => this._save()}>保存地址</Button>
+//                     </div>
+//                 </div>
+//             )
+//         }
+//
+//
+//     }
+// }
+// export default createForm()(NewAds)
 /**
  * Created by Administrator on 2016/7/1.
  */
@@ -6,7 +288,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {createForm} from 'rc-form';
 
-import {Modal, Icon, Flex, Switch, InputItem,List, Toast, Picker,Button,WhiteSpace,TextareaItem} from 'antd-mobile'
+import {Modal, Icon, Flex, List, InputItem, Toast, Picker,Button,WhiteSpace} from 'antd-mobile'
 
 const area = require('./json/area.json')
 
@@ -46,7 +328,7 @@ const CustomChildren = props => {
                 }}>{props.children}</div>
                 <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
                     <input type="text" disabled
-                           style={{width: "100%",border:'none',outline:"none"}}
+                           style={{width: "100%"}}
                            value={props.extra}/></div>
             </div>
         </div>
@@ -235,17 +517,17 @@ class NewAds extends React.Component {
 
                         {/*<List className="pos">*/}
 
-                            {/*<List.Item*/}
-                                {/*thumb={ require('static/image/ic_pos.png')}*/}
-                                {/*arrow="horizontal"*/}
-                                {/*className="txt"*/}
+                        {/*<List.Item*/}
+                        {/*thumb={ require('static/image/ic_pos.png')}*/}
+                        {/*arrow="horizontal"*/}
+                        {/*className="txt"*/}
 
-                            {/*>*/}
-                                {/*当前位置：未获取地址*/}
+                        {/*>*/}
+                        {/*当前位置：未获取地址*/}
 
-                            {/*</List.Item>*/}
+                        {/*</List.Item>*/}
                         {/*</List>*/}
-                        <div className="list">
+                        <List className="list">
                             <InputItem
 
                                 {...getFieldProps('receiveName', {
@@ -275,24 +557,16 @@ class NewAds extends React.Component {
                             >
                                 <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
                             </Picker>
-                            <TextareaItem
-                                {...getFieldProps('delAds')}
+                            <InputItem
+                                {...getFieldProps('delAds',{
+                                    initialValue:data.address ,
+                                })}
                                 clear
-                                title="详细地区"
-                                autoHeight
                                 placeholder="请填写详细配送地址"
                                 ref={el => this.autoFocusInst = el}
-                            />
-                            <List.Item
-                                extra={<Switch
-                                    {...getFieldProps('Switch1', {
-                                        initialValue: true,
-                                        valuePropName: 'checked',
-                                    })}
-                                    onClick={(checked) => { console.log(checked); }}
-                                />}
-                            >选为默认地址：</List.Item>
-                        </div>
+
+                            >详细地址</InputItem>
+                        </List>
                         <WhiteSpace />
                         <WhiteSpace />
                         <WhiteSpace />
@@ -326,17 +600,17 @@ class NewAds extends React.Component {
 
                         {/*<List className="pos">*/}
 
-                            {/*<List.Item*/}
-                                {/*thumb={ require('static/image/ic_pos.png')}*/}
-                                {/*arrow="horizontal"*/}
-                                {/*className="txt"*/}
+                        {/*<List.Item*/}
+                        {/*thumb={ require('static/image/ic_pos.png')}*/}
+                        {/*arrow="horizontal"*/}
+                        {/*className="txt"*/}
 
-                            {/*>*/}
-                                {/*当前位置：未获取地址*/}
+                        {/*>*/}
+                        {/*当前位置：未获取地址*/}
 
-                            {/*</List.Item>*/}
+                        {/*</List.Item>*/}
                         {/*</List>*/}
-                        <div className="list">
+                        <List className="list">
                             <InputItem
                                 {...getFieldProps('receiveName')}
                                 clear
@@ -362,25 +636,17 @@ class NewAds extends React.Component {
                             >
                                 <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
                             </Picker>
-                            <TextareaItem
+                            <InputItem
                                 {...getFieldProps('delAds')}
                                 clear
-                                title="详细地区"
-                                autoHeight
                                 placeholder="请填写详细配送地址"
                                 ref={el => this.autoFocusInst = el}
-                            />
-                            <List.Item
-                                extra={<Switch
-                                    {...getFieldProps('Switch1', {
-                                        initialValue: true,
-                                        valuePropName: 'checked',
-                                    })}
-                                    onClick={(checked) => { console.log(checked); }}
-                                />}
-                            >选为默认地址：</List.Item>
-                        </div>
-                        <Button type="primary" style={{width:"100%",margin:"0 auto"}}  className="new-btn"   onClick={() => this._save()}>保存地址</Button>
+                            >详细地址</InputItem>
+                        </List>
+                        <WhiteSpace />
+                        <WhiteSpace />
+                        <WhiteSpace />
+                        <Button type="primary" style={{width:"95%",margin:"0 auto"}}     onClick={() => this._save()}>保存</Button>
                     </div>
                 </div>
             )

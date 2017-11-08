@@ -4,21 +4,23 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Flex, Icon, List, ActionSheet, InputItem, Toast, Modal} from 'antd-mobile'
+import {Flex, Icon, List, InputItem, Toast, Modal} from 'antd-mobile'
 const alert = Modal.alert;
 import * as goodsDetail from 'actions/goodsDetail'
+import * as global from 'actions/global'
 import ReactDrawer from '../../components/Commons/lib/react-drawer';
-import Timer from '../../components/Commons/timer';
+
 import {AppLocalStorage} from '../../utils/cookie'
 require('../../components/Commons/lib/react-drawer.less')
 require('./styles/goodsDetail.less')
-
+const nodeEnv = process.env.NODE_ENV || 'development'
+const isPro = nodeEnv === 'production'
 @connect(
     state => {
 
-        return {...state.goodsDetail}
+        return {...state.goodsDetail,...state.global}
     },
-    dispatch => bindActionCreators({...goodsDetail}, dispatch)
+    dispatch => bindActionCreators({...goodsDetail,...global}, dispatch)
 )
 export default class GoodsDetail extends React.Component {
     constructor() {
@@ -106,7 +108,7 @@ export default class GoodsDetail extends React.Component {
 
                     url = url.replace('/', '')
 
-                    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+                    window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://app.meilungo.com/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
 
                     // history.push("/auth")
                 }
@@ -217,7 +219,7 @@ export default class GoodsDetail extends React.Component {
 
                         url = url.replace('/', '')
 
-                        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://www.worldwideapp.chinazjtc.com/app/user/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+                        window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://app.meilungo.com/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
 
                     }
 
@@ -236,19 +238,40 @@ export default class GoodsDetail extends React.Component {
     }
 
     componentDidMount() {
-
-
-        const {match, getGoodsDetail, location} = this.props
-
-        // console.log(location)
-
-
+        const {match, getGoodsDetail,} = this.props
         const {params} = match
         getGoodsDetail({
             pagesize: 1,
             pagenum: 10,
             id: parseInt(params.id)
         })
+
+    }
+
+    componentWillReceiveProps(np) {
+
+        const {data} = np
+        if (isPro&&data && data.id) {
+
+            let href=window.location.href
+            if(href.indexOf('?from=singlemessage&isappinstalled=0')>0){
+
+                href= href.replace('?from=singlemessage&isappinstalled=0','')
+                window.location.href=href
+                return
+            }
+
+            if(href.indexOf('?')>0){
+                let url= href.match(/\?(\S*)#/)[0]
+                href=href.replace(url,'#')
+            }
+            this.props.fetchWxConfig({
+                imgUrl: `${data.bigpic}?imageMogr2/thumbnail/!30p`, title: '美纶购商城', description:data.gtitle, link: href
+            });
+            return
+        }
+
+
     }
 
 
@@ -308,35 +331,8 @@ export default class GoodsDetail extends React.Component {
 
                     <div className="cnt-info">
                         <div className="img-info">
-                            <img src={data.bigpic} alt=""/>
+                            <img src={data.bigpic + '?imageMogr2/thumbnail/!99p'} alt=""/>
                         </div>
-
-                        {/*<div className="active-info"*/}
-                        {/*style={{*/}
-                        {/*background: 'url(' + require('static/images/gs/gs_detail_bg.png') + ') center center /  105%  105%  no-repeat'*/}
-                        {/*}}*/}
-                        {/*>*/}
-
-                        {/*<div className="ac-price">*/}
-                        {/*<p>￥{data.zkprice}</p>*/}
-                        {/*<p>￥{data.price}</p>*/}
-                        {/*</div>*/}
-                        {/*<div className="count-info">*/}
-                        {/*<p > 距结束还</p>*/}
-                        {/*<div>*/}
-                        {/*<Timer*/}
-                        {/*date="2017-11-28T00:00:00+00:00"*/}
-                        {/*days={{plural: 'Days ', singular: 'day '}}*/}
-                        {/*hours=':'*/}
-                        {/*mins=':'*/}
-                        {/*segs=''*/}
-                        {/*/>*/}
-                        {/*</div>*/}
-
-                        {/*</div>*/}
-
-                        {/*</div>*/}
-
                         <div className="msg-info">
                             <div className="title">
                                 <p>{data.gtitle}</p>
@@ -347,8 +343,8 @@ export default class GoodsDetail extends React.Component {
                                 <Flex.Item className="sall">
                                     <p>￥{data.zkprice}</p>
                                     {/*<p className="vip">￥{data.vipprice}*/}
-                                        {/*<img style={{width: '.5rem'}} src={require('static/images/gs/vip_icon.png')}*/}
-                                             {/*alt=""/>*/}
+                                    {/*<img style={{width: '.5rem'}} src={require('static/images/gs/vip_icon.png')}*/}
+                                    {/*alt=""/>*/}
                                     {/*</p>*/}
                                 </Flex.Item>
 
@@ -390,7 +386,7 @@ export default class GoodsDetail extends React.Component {
                             <Icon type="right" className="r-icon"/>
                         </div>
 
-                        <div className="more-know-info">
+                        <div className="more-know-info" onClick={() => history.push('/protocol/1')}>
 
                             美纶购购物须知
                             <Icon type="right" className="r-icon"/>
@@ -435,7 +431,7 @@ export default class GoodsDetail extends React.Component {
 
                                                     <div className="img-info">
 
-                                                        <img src={i.bigpic} alt=""/>
+                                                        <img src={i.bigpic + '?imageMogr2/thumbnail/!30p'} alt=""/>
 
                                                     </div>
 

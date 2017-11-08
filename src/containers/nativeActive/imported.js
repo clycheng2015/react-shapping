@@ -5,8 +5,9 @@ import {Tabs, WhiteSpace, PullToRefresh, ListView,} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import {Icon, Flex} from 'antd-mobile'
 import './style/imported.less';
+import {nativeClick} from '../../utils/native-sdk'
 const goodsList = [];
-export default class Special extends React.Component {
+export default class Imported extends React.Component {
     constructor(props) {
         super(props);
 
@@ -330,7 +331,17 @@ export default class Special extends React.Component {
                                     <ul>
                                         {this.getData.map((item, index) => {
                                             return (
-                                                <li key={index} onClick={()=>history.push(`/goodsDetail/${item.id}`)}>
+                                                <li key={index}
+
+                                                    onClick={ ()=>{nativeClick({
+                                                        type:2,
+                                                        url:item.id,
+                                                        id:item.id,
+                                                        name:item.gtitle,
+                                                        activeType:''
+                                                    })}}
+                                                >
+
                                                     <p><img src={item.bigpic} alt=""/></p>
                                                     <div>
                                                         <p className='name'>{item.gtitle} </p>

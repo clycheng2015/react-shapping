@@ -6,7 +6,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import {Icon, Flex} from 'antd-mobile'
 import './style/imported.less';
 const goodsList = [];
-export default class Special extends React.Component {
+export default class Imported extends React.Component {
     constructor(props) {
         super(props);
 

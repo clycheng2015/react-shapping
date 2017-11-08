@@ -12,8 +12,8 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import './style/ranking.less';
 
 import {Icon, Flex} from 'antd-mobile'
-
-export default class Special extends React.Component{
+import {nativeClick} from '../../utils/native-sdk'
+export default class Ranking extends React.Component{
     constructor(props) {
         super(props)
         this.state = {

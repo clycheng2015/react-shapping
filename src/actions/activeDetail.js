@@ -25,7 +25,7 @@ const receiveItemList = (data) => ({
 export const fetchSkillDetail = (data) => {
     return (dispatch, getState) => {
         dispatch(requestItemList());
-        instance.post(goodsDetail.killUrl, qs.stringify(data))
+        instance.get(goodsDetail.killUrl+'?'+ qs.stringify(data))
             .then(res => {
                 dispatch(receiveItemList(res.data.data))
             })
@@ -47,7 +47,7 @@ export const removeAcDetail=()=>({
 export const fetchDisDetail = (data) => {
     return (dispatch, getState) => {
         dispatch(requestItemList());
-        instance.post(goodsDetail.dislUrl, qs.stringify(data))
+        instance.get(goodsDetail.dislUrl+'?'+qs.stringify(data))
             .then(res => {
                 dispatch(receiveItemList(res.data.data))
             })

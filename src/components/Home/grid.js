@@ -3,7 +3,9 @@
  */
 import React from 'react'
 import {Grid} from 'antd-mobile'
- const pathArr=['/special','/vipActive','/hotGoods','/joinUs']
+const pathArr=['/special','/vipActive','/hotGoods','/joinUs']
+
+import {getPath} from '../../utils/tools'
 class HomeGrid extends React.Component {
     constructor(props) {
         super(props);
@@ -13,36 +15,33 @@ class HomeGrid extends React.Component {
     componentDidMount() {
 
     }
-    _gridClick=(el)=>{
-        const {history} = this.props
 
+    _gridClick=(el)=>{
+        const {history}=this.props
         history.push(el.path)
 
-
     }
-    render() {
+    _getGrid=()=>{
         const {data} = this.props
         let newData = data.map((key,index)=>(
                 {
                     icon:key.iconpic,
                     text:key.name,
-                    path:pathArr[index]
+                    path:getPath(key.linked_txt)
                 }
             )
         )
+        return newData
+    }
+    render() {
         return (
             <Grid
-                data={newData}
+                data={this._getGrid()}
                 hasLine={false}
-                activeStyle={false}
+                activeStyle='false'
                 onClick={(el) => this._gridClick(el)}
             />
-
-
         )
-
     }
-
 }
-
 export  default HomeGrid

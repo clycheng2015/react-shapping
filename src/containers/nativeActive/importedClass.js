@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 
 import './style/importedClass.less';
-
+import {nativeClick} from '../../utils/native-sdk'
 
 export default class ImportedClass extends React.Component{
     constructor(props){

@@ -17,8 +17,10 @@ export const goodsDetail = {
 
     addCarUrl: '/app/cart/editcart',//post  goods_num goods_att1  goods_att2  id goods_id
 
-    killUrl:"/app/findgoods/seckillgoodsinfo",
-    dislUrl:"/app/findgoods/discountgoodsinfo"
+    killUrl:"/app/findgoods/open/seckillgoodsinfo",
+
+
+    dislUrl:"/app/findgoods/open/discountgoodsinfo"
 }
 export const itemList = {
 
@@ -65,7 +67,7 @@ export const user = {
     getOrderDetail:"/app/order/getgoodsorderdetail",//
     topUpUrl:"/app/order/createrechargeorder",//充值
     drawMoneyUrl:"/app/user/withdrawals",//提现
-    payUrl:'/app/wechat/pay/index',//支付接口
+    payUrl:'/app/pay/api',//支付接口
     expPayUrl:'/app/order/successorder',//余额支付
     postage:"/app/findgoods/open/findyf",//获取邮费
     refundUrl:"/app/order/applyrefund",//申请退款
@@ -73,8 +75,11 @@ export const user = {
     jinfuUrl:"/app/findgoods/open/findjfjfgoodslist",
     helpUrl:"/app/findgoods/open/fuwulist",
 
-    telUrl:"/app/user/open/getlxdh"
+    telUrl:"/app/user/open/getlxdh",
 
+    icbannerUrl:"/app/ad/open/getadinfos",
+
+    protoUrl:"/app/user/open/getprotocol"
 
 
 
@@ -100,7 +105,7 @@ export const active = {
 
 export const wxSdkConfig={
 
-    shareUrl:"/wechat/pay/fenxiang",
+    shareUrl:"/app/share/open/fenxiang",
 
 }
 

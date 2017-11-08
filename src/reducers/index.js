@@ -8,6 +8,7 @@ import {active} from './active'
 import {user} from './user'
 import {auth} from './auth'
 import {car} from './car'
+import {protocol} from './protocol'
 import {search} from './search'
 import {goodsDetail} from './goodsDetail'
 import {postType} from './postType'
@@ -26,6 +27,7 @@ const rootReducer = {
     activeDetail,
     saveParams,
     moreList,
+    protocol,
     goodsDetail,
     itemList,
     global,

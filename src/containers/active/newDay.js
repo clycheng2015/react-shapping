@@ -13,9 +13,7 @@ import '../../utils/swiper/swiper.min.js';
 
 const goodsList = [];
 
-
-
-export default class Special extends React.Component{
+export default class NewDay extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -371,14 +369,15 @@ export default class Special extends React.Component{
 
     }
     componentDidMount(){
-
+        const {history} = this.props
         // this.props.getTitleList({pagesize:8,pagenum:3})
         // 轮播
-            const swiper = new Swiper(this.swiper, {
+        const swiper = new Swiper(this.swiper, {
                 pagination: '.swiper-pagination',
                 effect: 'coverflow',
                 grabCursor: true,
                 centeredSlides: true,
+                autoplay : 3000,
                 slidesPerView: 'auto',
                 loop : true,
                 coverflow: {
@@ -390,6 +389,58 @@ export default class Special extends React.Component{
                 }
             });
 
+        let lunbo1 = document.getElementsByClassName('lunbo1');
+        let lunbo2 = document.getElementsByClassName('lunbo2');
+        let lunbo3 = document.getElementsByClassName('lunbo3');
+
+
+        for(var i=0;i<lunbo1.length;i++){
+            lunbo1[i].addEventListener('click',()=>{
+                history.push(`/goodsDetail/1558`)
+            })
+        }
+        for(var i=0;i<lunbo2.length;i++){
+            lunbo2[i].addEventListener('click',()=>{
+                history.push(`/goodsDetail/241`)
+            })
+        }
+        for(var i=0;i<lunbo3.length;i++){
+            lunbo3[i].addEventListener('click',()=>{
+                history.push(`/goodsDetail/305`)
+            })
+        }
+
+
+
+    }
+
+    renderContent = tab =>{
+        const {history} = this.props
+        return(
+            <div className='tab'>
+                <ul>
+                    {this.getData.map(function (item,index) {
+                        return(
+                            <li key={index} onClick={()=>{
+                                history.push(`/goodsDetail/${item.id}`)
+                            }}>
+                                <div className='image'>
+                                    <img src={item.bigpic} alt=""  />
+                                </div>
+                                <div className='box'>
+                                    <p className='name'>{item.title} </p>
+                                    <p className='price'>
+                                        ￥{item.zkprice}<span>￥{item.price}</span>
+                                        {/*<button>马上抢</button>*/}
+                                    </p>
+                                </div>
+                            </li>
+                        )
+
+                    })}
+                </ul>
+            </div>
+        )
     }
 
 
@@ -431,16 +482,15 @@ export default class Special extends React.Component{
                    background:'url('+require('static/image/lunbobg.jpg')+') no-repeat'
                }}
                >
-                    <p className='title'>新品首发 10/03 <br/> <span>每日大牌新品推荐 折扣超前</span></p>
+                    <p className='title'>新品首发 <br/> <span>每日大牌新品推荐 折扣超前</span></p>
                    <div className="swiper-container" ref={(el)=>this.swiper=el}>
-                       <div className="swiper-wrapper">
+                        <div className="swiper-wrapper">
 
-                           <div className='swiper-slide' onClick={()=>history.push(`/goodsDetail/1558`)}><img src={require('static/image/newDay1.jpg')} alt=""/></div>
+                           <div className='swiper-slide lunbo1' ><img src={require('static/image/newDay1.jpg')} alt=""/></div>
+                           <div className='swiper-slide lunbo2' ><img src={require('static/image/newDay2.jpg')} alt=""/></div>
+                           <div className='swiper-slide lunbo3' ><img src={require('static/image/newDay3.jpg')} alt=""/></div>
 
-                           <div className='swiper-slide' onClick={()=>history.push(`/goodsDetail/241`)}><img src={require('static/image/newDay2.jpg')} alt=""/></div>
-                           <div className='swiper-slide' onClick={()=>history.push(`/goodsDetail/305`)}><img src={require('static/image/newDay3.jpg')} alt=""/></div>
-
-                       </div>
+                        </div>
 
                        <div className="swiper-pagination">
 
@@ -451,31 +501,8 @@ export default class Special extends React.Component{
                    <p className='title'>今日新品到货 <br/> <span>每日17点准时更新</span></p>
                    <WhiteSpace />
                        <Tabs tabs={tabs} swipeable={false}  onChange={this._change}>
-                           <div className='tab'>
-                               <ul>
-                                   {this.getData.map(function (item,index) {
+                           {this.renderContent}
 
-                                       return(
-                                           <li key={index} onClick={()=>{
-                                               history.push(`/goodsDetail/${item.id}`)
-                                           }}>
-                                               <div className='image'>
-                                                   <img src={item.bigpic} alt=""  />
-                                               </div>
-                                               <div className='box'>
-                                                   <p className='name'>{item.title} </p>
-                                                   <p className='price'>
-                                                       ￥{item.zkprice}<span>￥{item.price}</span>
-                                                       {/*<button>马上抢</button>*/}
-                                                   </p>
-                                               </div>
-                                           </li>
-                                       )
-
-                                   })}
-                               </ul>
-
-                           </div>
                        </Tabs>
                    <WhiteSpace />
 

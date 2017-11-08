@@ -19,7 +19,7 @@ import ModelTree from './model_tree'
 import ModelFour from './model_four'
 import ModelFive from './model_five'
 import List from './moreList'
-
+import GoTop from '../../components/Commons/goTop'
 
 export  default  class HomePage extends React.Component {
     constructor(props) {
@@ -39,7 +39,6 @@ export  default  class HomePage extends React.Component {
 
             // window.H5Refresh = this.H5Refresh
         }
-
 
 
         // window.webkit.H5Refresh = this.H5Refresh
@@ -142,32 +141,31 @@ export  default  class HomePage extends React.Component {
                                     switch (i.num) {
 
                                         case 1:
-                                            return <ModelOne key={k} hitory={history} data={i.linkedDtos}
-                                                             turn={this._turnToNative}/>
+                                            return <ModelOne key={k}  data={i.linkedDtos}/>
                                                 ;
                                         case 2:
                                             return (
-                                                <ModelTwo key={k} hitory={history} data={i.linkedDtos}
-                                                          turn={this._turnToNative}/>
+                                                <ModelTwo key={k}  data={i.linkedDtos}/>
                                             );
                                         case 3:
                                             return (
-                                                <ModelTree key={k} hitory={history} data={i.linkedDtos}
-                                                           turn={this._turnToNative}/>
+                                                <ModelTree key={k}  data={i.linkedDtos}/>
                                             );
                                         case 4:
                                             return (
-                                                <ModelFour key={k} hitory={history} data={i.linkedDtos}
-                                                           turn={this._turnToNative}/>
+                                                <ModelFour key={k}  data={i.linkedDtos}/>
                                             )
                                         default:
                                             break;
+
                                     }
+
                                 case 5:
-                                    return (<ModelFive key={k} hitory={history} data={i.goodsSimpleDtos}
-                                                       turn={this._turnToNative}  linkedDtos={i.linkedDtos}/>)
+                                    return (<ModelFive key={k} data={i.goodsSimpleDtos} linkedDtos={i.linkedDtos}/>)
+
                                 default:
                                     break;
+
                             }
                         })
                     }
@@ -177,14 +175,15 @@ export  default  class HomePage extends React.Component {
 
                 {/*秒杀折扣活动开始******************************/}
 
-                <div className="area-active">
-                    {
-                        homeData && homeData.activityDto && homeData.activityDto.type !== null &&
 
+                {
+                    homeData && homeData.activityDto && homeData.activityDto.type !== null &&
+
+                    <div className="area-active">
                         <Active hitory={history} data={homeData.activityDto}/>
-                    }
+                    </div>
+                }
 
-                </div>
 
                 {/*秒杀折扣活动结束******************************/}
 
@@ -199,23 +198,19 @@ export  default  class HomePage extends React.Component {
                                     switch (i.num) {
 
                                         case 1:
-                                            return <ModelOne key={k} hitory={history} data={i.linkedDtos}
-                                                             turn={this._turnToNative}/>
+                                            return <ModelOne key={k}  data={i.linkedDtos}/>
                                                 ;
                                         case 2:
                                             return (
-                                                <ModelTwo key={k} hitory={history} data={i.linkedDtos}
-                                                          turn={this._turnToNative}/>
+                                                <ModelTwo key={k}  data={i.linkedDtos}/>
                                             );
                                         case 3:
                                             return (
-                                                <ModelTree key={k} hitory={history} data={i.linkedDtos}
-                                                           turn={this._turnToNative}/>
+                                                <ModelTree key={k}  data={i.linkedDtos}/>
                                             );
                                         case 4:
                                             return (
-                                                <ModelFour key={k} hitory={history} data={i.linkedDtos}
-                                                           turn={this._turnToNative}/>
+                                                <ModelFour key={k}  data={i.linkedDtos}/>
                                             )
                                         default:
                                             break;
@@ -223,8 +218,7 @@ export  default  class HomePage extends React.Component {
                                     }
 
                                 case 5:
-                                    return (<ModelFive key={k} hitory={history} data={i.goodsSimpleDtos}
-                                                       turn={this._turnToNative} linkedDtos={i.linkedDtos}/>)
+                                    return (<ModelFive key={k} data={i.goodsSimpleDtos} linkedDtos={i.linkedDtos}/>)
 
                                 default:
                                     break;
@@ -259,6 +253,7 @@ export  default  class HomePage extends React.Component {
 
                 </div>
 
+                {headState===1&& <GoTop/>}
 
             </div>
         );

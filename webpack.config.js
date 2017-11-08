@@ -86,6 +86,7 @@ if (isPro) {
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
+    devtool: isPro ? '' : 'inline-source-map',
     // devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
         app: app

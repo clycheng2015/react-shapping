@@ -2,13 +2,12 @@
 
 
 import React from 'react';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux';
+
 import {Icon, Flex} from 'antd-mobile'
 
 import './style/style.less';
-
-export default class Index extends React.Component{
+import {nativeClick} from '../../utils/native-sdk'
+export default class HotGoods extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -363,27 +362,12 @@ export default class Index extends React.Component{
 
     }
     componentDidMount(){
-        // this.props.getActiveList({});
-        // this.props.getNameList({pagesize:0,pagenum:100,cid:12})
+
 
     }
 
     render(){
-        const {data,history} = this.props
-
-        // const classTitle = []
-        //
-        // if(data && data.length>0){
-        //     data.map(function (item,index) {
-        //         classTitle.push(item)
-        //
-        //
-        //     })
-        //
-        // }
-
-
-
+        const {history} = this.props
 
         return(
             <div className='new-exclusive'>
@@ -402,7 +386,16 @@ export default class Index extends React.Component{
                                     <ul>
                                         {this.goods[index].map((i,key)=> {
                                             return(
-                                                <li key={key} onClick={()=>history.push(`/goodsDetail/${i.id}`)}>
+                                                <li key={key}
+
+                                                    onClick={ ()=>{nativeClick({
+                                                        type:2,
+                                                        url:i.id,
+                                                        id:i.id,
+                                                        name:i.title,
+                                                        activeType:''
+                                                    })}}
+                                                  >
                                                     <p><img src={i.bigpic} alt=""/></p>
                                                     <div>
                                                         <p className='name'>{i.title} </p>

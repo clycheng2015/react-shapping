@@ -10,8 +10,6 @@ import GoodsList from '../../components/Commons/goodsList'
 import {getSize} from '../../utils/getSize'
 require('./styles/itemList.less')
 
-
-let ctitle = ''
 @connect(
     state => {
         return {...state.itemList}
@@ -30,10 +28,11 @@ export default class ItemList extends React.Component {
         }
     }
     componentDidMount() {
-        const {match, getItemGoodsList,pagesize,pagenum,list} = this.props
+        const {match, getItemGoodsList,pagesize,pagenum,list,leftBtn} = this.props
         const {params} = match
         let id=params.id.split('T')[0]
         let name=params.id.split('T')[1]
+        leftBtn()
         if(!list[id]){
             getItemGoodsList({
                 pagesize: pagesize,
@@ -61,10 +60,16 @@ export default class ItemList extends React.Component {
 
 
     _updownMore = () => {
-        const { isFetching,match,getItemGoodsList,list} = this.props
+        const { isFetching,match,getItemGoodsList,list,price,rightBtnState} = this.props
         const {params} = match
         let id=params.id.split('T')[0]
         const {pagesize,pagenum,hasMore}=list[id]
+
+        let type=''
+
+        if(rightBtnState===1&& price===false){type='pricedesc'}
+        if(rightBtnState===1&& price===true){type='priceasc'}
+
         if (isFetching || !hasMore) {
             return;
         }
@@ -72,9 +77,24 @@ export default class ItemList extends React.Component {
         let data = {
             pagesize: pagesize,
             pagenum: ++num,
-            cid:id
+            cid:id,
+            sort:type
         }
         getItemGoodsList(data)
+    }
+
+    _getList=(type,pagenum)=>{
+        const {match, getItemGoodsList,pagesize} = this.props
+        const {params} = match
+        let id=params.id.split('T')[0]
+        getItemGoodsList({
+            pagesize: pagesize,
+            pagenum: pagenum,
+            cid: id,
+            sort:type
+        })
+
+
     }
 
     /***
@@ -84,33 +104,44 @@ export default class ItemList extends React.Component {
 
     _priceAll=()=>{
 
-
+        const {leftBtn}=this.props
+        leftBtn()
+        this._getList('',1)
+        window.scrollTo(0,0)
     }
-    /***
-     * 价格升序
-     * @private
-     */
 
     _priceUp=()=>{
-
-
+        const {rightBtn,price}=this.props
+        rightBtn()
+        if(price===false){
+            this._getList('pricedesc',1)
+        }
+        if(price===true){
+            this._getList('priceasc',1)
+        }
+        window.scrollTo(0,0)
+    }
+    _sortBtn=()=>{
+        const {sortBtn,price}=this.props
+        sortBtn()
+        if(price===true){
+            this._getList('pricedesc',1)
+        }
+        if(price===false){
+            this._getList('priceasc',1)
+        }
+        window.scrollTo(0,0)
 
     }
-    /***
-     * 价格降序
-     * @private
-     */
-
-    _priceDown=()=>{
 
 
-
-    }
     render() {
-        const {list, history, isFetching,match} = this.props
+        const {list, history, isFetching,match,rightBtnState,leftBtnState,price} = this.props
         const {params} = match
         let id=params.id.split('T')[0]
         let name=params.id.split('T')[1]
+
+        console.log(list)
 
         return (
             <div className="item-list-container">
@@ -119,10 +150,18 @@ export default class ItemList extends React.Component {
                 </div>
                 <div key={this.props.location.pathname} className="list">
                     <Flex className="tab-bar">
-                        <Flex.Item  onClick={()=>{}}>综合</Flex.Item>
-                        <Flex.Item onClick={()=>{this.setState({price:!this.state.price})}}>价格
-                            <img src={require("static/images/ite/up_icon.png")} alt="" className={`${this.state.price?'img-up':''}`}/>
-                        </Flex.Item>
+                        {leftBtnState===1&&<Flex.Item  onClick={()=>this._priceAll()}>综合</Flex.Item>}
+                        {leftBtnState===0&&<Flex.Item  onClick={()=>this._priceAll()} style={{color:"gray"}}>综合</Flex.Item>}
+                        {
+                            rightBtnState===1&& <Flex.Item onClick={()=>this._sortBtn()}>价格
+                                <img src={require("static/images/ite/up_icon.png")} alt="" className={`${price?'img-up':''}`}/>
+                            </Flex.Item>
+                        }
+                        {
+                            rightBtnState===0&& <Flex.Item onClick={()=>this._priceUp()} style={{color:"gray"}}>价格
+                                <img src={require("static/images/ite/pris.png")} alt="" className="ee"/>
+                            </Flex.Item>
+                        }
                     </Flex>
                     {
                         list[id] && list[id].dataList&& list[id].dataList.length > 0?

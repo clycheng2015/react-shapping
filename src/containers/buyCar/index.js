@@ -29,13 +29,14 @@ export default class BuyCar extends React.Component {
         this.user = AppLocalStorage.Cache.get('user')
 
     }
-
     componentDidMount() {
         const {fetchCarList, pagesize, pagenum} = this.props
-        fetchCarList({
-            pagesize: pagesize,
-            pagenum: pagenum
-        })
+        if(this.user){
+            fetchCarList({
+                pagesize: pagesize,
+                pagenum: pagenum
+            })
+        }
     }
 
     componentWillReceiveProps(nextProps) {

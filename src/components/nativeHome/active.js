@@ -79,22 +79,22 @@ class Active extends React.Component {
                             ))
                         }
 
-                        <li className="more swiper-slide">
+                        {/*<li className="more swiper-slide">*/}
 
-                            <div className="box" onClick={() => nativeClick(
-                                {
-                                    type:1,
-                                    url:'http://test.meilungo.com/#/doubleActive',
-                                    id:'',
-                                    name:'秒杀活动',
-                                    activeType:''
-                                }
+                            {/*<div className="box" onClick={() => nativeClick(*/}
+                                {/*{*/}
+                                    {/*type:1,*/}
+                                    {/*url:'http://mlg.vo01.cn/nativeHome/index.html/#/doubleActive',*/}
+                                    {/*id:'',*/}
+                                    {/*name:'秒杀活动',*/}
+                                    {/*activeType:''*/}
+                                {/*}*/}
 
-                            )}>
-                                查看更多
-                            </div>
+                            {/*)}>*/}
+                                {/*查看更多*/}
+                            {/*</div>*/}
 
-                        </li>
+                        {/*</li>*/}
 
 
                     </ul>

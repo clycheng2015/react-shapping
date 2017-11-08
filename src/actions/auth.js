@@ -39,9 +39,10 @@ const sendSmsCode = (data) => ({
 })
 
 
-export const fetchLogin = (data, history, toUrl) => {
+export const fetchLogin = (data, history, toUrl,openid) => {
     return (dispatch, getState) => {
-        instance.post(auth.loginUrl, qs.stringify(getSign(data)))
+
+        instance.post(auth.loginUrl, qs.stringify({...getSign(data),openid:openid}))
             .then(res => {
                 console.log(res)
                 if (res.data.code == 200) {
@@ -52,13 +53,14 @@ export const fetchLogin = (data, history, toUrl) => {
 
                     AppLocalStorage.Cache.put("user",{
                         userInfo:res.data.data,
-                        // openid:data.openid
-                        // openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
-
+                        openid:data.openid
                     },res.data.data.expires_in)
 
-                    history.push(`/${toUrl ? toUrl : ''}`)
+                    setTimeout(()=>(
 
+                        history.push(`/${toUrl ? toUrl : ''}`)
+
+                    ),1000)
                 }
                 else {
                     Toast.info(res.data.msg, 1)
@@ -66,7 +68,6 @@ export const fetchLogin = (data, history, toUrl) => {
             })
             .catch(error => {
                 Toast.fail("服务器错误，请稍后重试！", 1)
-                console.log('error: ', error)
             })
     }
 }

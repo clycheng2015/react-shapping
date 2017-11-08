@@ -115,7 +115,7 @@ class TabBarMain extends React.Component {
                     }
                     title="购物车"
                     key="购物车"
-                    // dot
+                    // badge={7}
                     selected={page === 'buyCar'}
                     onPress={() => {
                         changeTab('buyCar')
@@ -156,7 +156,10 @@ class TabBarMain extends React.Component {
                             history.push('/user')
                         }
                         else {
-                            history.push('/auth')
+                            let url=window.location.href
+                            url= url.match(/#(\S*)/)[1];
+                            url=url.replace('/','')
+                            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://app.meilungo.com/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
                         }
                     }}
                 >

@@ -3,6 +3,7 @@
  */
 import React from 'react'
 
+import {getPath} from '../../utils/tools'
 
 class ModelTree extends React.Component {
     constructor(props) {
@@ -13,32 +14,43 @@ class ModelTree extends React.Component {
     componentDidMount() {
 
     }
+    _click=(i,history)=>{
+
+        switch(i.type){
+            case 1:
+                history.push(getPath(i.linked_txt))
+                break;
+            case 2:
+
+                history.push(`/goodsDetail/${i.linked_txt}`)
+
+                break;
+            case 3:
+
+                history.push(`/itemList/${i.linked_txt}T${i.remark}`)
+
+                break;
+            default :
+                break
+        }
+    }
 
     render() {
-        const {history}=this.props
+        const {history,data}=this.props
         return (
 
 
             <div className="model-tree">
                 <ul>
-                    <li className="bg-img"
-                        onClick={() => history.push({
-                            pathname: `/imported`,
-
-                        })}><img src={require('static/images/home/i_A.png')} alt=""/></li>
-                    <li
-                        onClick={() => history.push({
-                            pathname: `/itemList/66`,
-                            state: {title: '酒水饮料'}
-
-                        })}><img src={require('static/images/home/i_1.png')} alt=""/></li>
-                    <li
-                        onClick={() => history.push({
-                            pathname: `/itemList/60`,
-                            state: {title: '厨卫清洁'}
-
-                        })}
-                    ><img src={require('static/images/home/i_2.png')} alt=""/></li>
+                    <li className="bg-img">
+                        <img src={data[0].iconpic} alt="" onClick={()=>this._click(data[0],history)}/>
+                    </li>
+                    <li>
+                        <img src={data[1].iconpic} alt="" onClick={()=>this._click(data[1],history)}/>
+                    </li>
+                    <li>
+                        <img src={data[2].iconpic} alt="" onClick={()=>this._click(data[2],history)}/>
+                    </li>
                 </ul>
             </div>
 

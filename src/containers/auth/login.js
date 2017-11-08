@@ -32,32 +32,12 @@ class Login extends React.Component {
             mobile: "",
             password: ""
         }
-
     }
-
     _login = () => {
         const {match, fetchLogin, form, history} = this.props
         const {getFieldValue} = form
-        let openid = getQueryString("openid");
+        let openid = getQueryString("openid")||'';
         let toUrl = getQueryString("toUrl")
-        if(isPro){
-            if (openid && openid.length > 0) {
-                let mobile = getFieldValue('number')
-                let pwd = getFieldValue('password')
-                if (mobile == undefined || pwd == undefined) {
-                    Toast.info('请输入账号或者密码！', 1);
-                }
-                else {
-                    let data = {
-                        mobile: mobile,
-                        password: pwd,
-                        // openid:openid ||''
-                    }
-                    fetchLogin(data, history, toUrl)
-                }
-            }
-        }
-        else {
             let mobile = getFieldValue('number')
             let pwd = getFieldValue('password')
             if (mobile == undefined || pwd == undefined) {
@@ -67,20 +47,22 @@ class Login extends React.Component {
                 let data = {
                     mobile: mobile,
                     password: pwd,
-                    // openid:'ocR4-0qtFtZ3VOn_mGrfMSrLtB64'
                 }
-                fetchLogin(data, history, toUrl)
+                fetchLogin(data, history, toUrl, openid)
             }
-        }
     }
+
     render() {
         const {history} = this.props
         const {getFieldProps} = this.props.form;
 
         return (
 
-            <div className="auth-login-container" style={{width: "100%", height: document.documentElement.clientHeight, background: "white"}}>
-                <div className="tab-nav"><Icon type="left" size="lg" onClick={() => {history.goBack()}} style={{color: 'black'}}/></div>
+            <div className="auth-login-container"
+                 style={{width: "100%", height: document.documentElement.clientHeight, background: "white"}}>
+                <div className="tab-nav"><Icon type="left" size="lg" onClick={() => {
+                    history.goBack()
+                }} style={{color: 'black'}}/></div>
                 <div>
                     <Flex justify="center" align="center">
                         <Flex.Item className="logo"><img src={require('static/image/ic_logo.png')} alt=""/></Flex.Item>
@@ -99,9 +81,11 @@ class Login extends React.Component {
                                 placeholder="输入密码"
                             />
                         </List>
-                        <div className="login-btn" onClick={() => {this._login()}}>登录</div>
+                        <div className="login-btn" onClick={() => this._login()}>登录</div>
                         <div className="forget">
-                            <span onClick={() => {history.push('/updatePwd')}}>忘记密码？</span>
+                            <span onClick={() => {
+                                history.push('/updatePwd')
+                            }}>忘记密码？</span>
                         </div>
                     </div>
                 </div>

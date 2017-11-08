@@ -56,7 +56,7 @@ export const endRefresh=()=>{
     let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
     if (isAndroid) {
-        window.android.H5Click(JSON.stringify({type:4}))
+        window.android.H5Click(JSON.stringify({type:6}))
 
     }
     if (isiOS) {

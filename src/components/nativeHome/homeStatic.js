@@ -152,10 +152,10 @@ export  default  class HomeStatic extends React.Component {
 
                 {/*更多商品列表--------------------------------------*/}
 
-                <div className="hot-list">
+                {/*<div className="hot-list">*/}
 
 
-                </div>
+                {/*</div>*/}
 
 
             </div>

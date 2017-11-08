@@ -2,13 +2,12 @@
 
 
 import React from 'react';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux';
+
 import {Icon, Flex} from 'antd-mobile'
 
 import './style/style.less';
 
-export default class Index extends React.Component{
+export default class HotGoods extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -363,27 +362,12 @@ export default class Index extends React.Component{
 
     }
     componentDidMount(){
-        // this.props.getActiveList({});
-        // this.props.getNameList({pagesize:0,pagenum:100,cid:12})
+
 
     }
 
     render(){
-        const {data,history} = this.props
-
-        // const classTitle = []
-        //
-        // if(data && data.length>0){
-        //     data.map(function (item,index) {
-        //         classTitle.push(item)
-        //
-        //
-        //     })
-        //
-        // }
-
-
-
+        const {history} = this.props
 
         return(
             <div className='new-exclusive'>

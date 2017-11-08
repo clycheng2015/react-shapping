@@ -24,7 +24,6 @@ export  const getSign=(data)=>{
 
     let signData = {
         ...newData,
-
         sign: hex_sha1(arr.join('') + keys.APP_SECRET)
     }
 

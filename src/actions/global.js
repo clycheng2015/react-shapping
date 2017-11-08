@@ -1,6 +1,6 @@
 
 import qs from 'qs'
-import wxaxios from '../utils/wxaxios'
+import instance from '../utils/instance'
 import {wxSdkConfig} from '../utils/api'
 import {Share} from '../utils/wx-sdk'
 
@@ -38,7 +38,7 @@ export const fetchWxConfig=(shareInfo)=>{
     href=encodeURIComponent(href)
 
         return (dispatch, getState) => {
-        wxaxios.get(wxSdkConfig.shareUrl+`?url=${href}` )
+            instance.get(wxSdkConfig.shareUrl+`?url=${href}` )
             .then(res => {
                 dispatch(updateShareUrl())
                 console.log(res)

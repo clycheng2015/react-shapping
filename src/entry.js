@@ -1,13 +1,12 @@
-
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
+import {createStore, applyMiddleware, combineReducers} from 'redux'
+import {Provider} from 'react-redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux'
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import { AppContainer } from 'react-hot-loader'
+import {AppContainer} from 'react-hot-loader'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
 import 'antd-mobile/dist/antd-mobile.less';
@@ -27,28 +26,35 @@ const middleware = routerMiddleware(history)
 const middlewares = [thunk, middleware]
 
 
-
-
-
 // import App from './native'
 // import App from './nativehome'
 
 import App from './App'
 
-export const store = createStore(
-    combineReducers({routing: routerReducer, ...rootReducer}),
+let store;
+if (isPro) {
+    store = createStore(
+        combineReducers({routing: routerReducer, ...rootReducer}),
+        composeWithDevTools(applyMiddleware(...middlewares))
+    )
+} else {
+    store = createStore(
+        combineReducers({routing: routerReducer, ...rootReducer}),
+        composeWithDevTools(applyMiddleware(...middlewares, createLogger()))
+    )
+}
 
+export {store}
 
-        // composeWithDevTools(applyMiddleware(...middlewares))
+/***
+ * 清空store
+ * @param Component
+ */
 
+// window.resetState = () => {
+//     store.dispatch(init());
+// }
 
-        composeWithDevTools(applyMiddleware(...middlewares,createLogger()))
-
-
-
-
-)
-// removeLocalItem('userInfo')
 const render = Component =>
     ReactDOM.render(
         <AppContainer>
@@ -61,7 +67,7 @@ const render = Component =>
 
 render(App)
 
-if(module.hot) {
+if (module.hot) {
     module.hot.accept('./App', () => {
         const NextRootContainer = require('./App').default
         render(NextRootContainer)

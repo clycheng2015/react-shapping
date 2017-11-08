@@ -20,11 +20,9 @@ class Active extends React.Component {
 
     }
     render() {
-        const {data}=this.props
+        const {data,history}=this.props
 
-        console.log(data)
-
-        const {history }=this.props
+        console.log(new Date(parseInt(data.endtime)).toISOString())
         return (
             <div className="active-info">
                 <div className="skill-head">
@@ -58,10 +56,10 @@ class Active extends React.Component {
                             data.goodsSimpleDtos.map((i, key) => (
 
                                 <li className="" key={key}
-                                    onClick={() => history.push(`/goodsDetail/${i.good_id}`)}>
+                                    onClick={() => history.push(`/activeDetail/${i.good_id}SECKILL`)}>
                                     <div className="img-info">
 
-                                        <img src={i.pic} alt=""/>
+                                        <img src={i.pic+'?imageMogr2/thumbnail/!30p'} alt=""/>
 
                                     </div>
                                     <div className="price-info">
@@ -72,13 +70,13 @@ class Active extends React.Component {
                             ))
                         }
 
-                        <li className="more swiper-slide">
+                        {/*<li className="more swiper-slide">*/}
 
-                            <div className="box" onClick={() => history.push('/seckill')}>
-                                查看更多
-                            </div>
+                            {/*<div className="box" onClick={() => history.push('/seckill')}>*/}
+                                {/*查看更多*/}
+                            {/*</div>*/}
 
-                        </li>
+                        {/*</li>*/}
 
 
                     </ul>

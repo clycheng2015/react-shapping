@@ -4,12 +4,7 @@
 import React from 'react'
 import {Carousel} from 'antd-mobile'
 
-const data = [
-
-    {img: require('static/images/home/banner.png')},
-    {img: require('static/images/home/banner1.jpg')},
-
-]
+import {getPath} from '../../utils/tools'
 class Banner extends React.Component {
     constructor(props) {
         super(props);
@@ -20,10 +15,29 @@ class Banner extends React.Component {
 
     }
 
+
+    _click=(i,history)=>{
+
+        switch(i.type){
+            case 1:
+                history.push(getPath(i.linked_txt))
+                break;
+            case 2:
+
+                history.push(`/goodsDetail/${i.linked_txt}`)
+
+                break;
+            case 3:
+
+                history.push(`/itemList/${i.linked_txt}T${i.title}`)
+
+                break;
+            default :
+                break
+        }
+    }
     render() {
-
         const {data,history} = this.props
-
         return (
             <Carousel
                 className="my-carousel"
@@ -41,7 +55,7 @@ class Banner extends React.Component {
                     <img key={key} src={i.iconpic} onLoad={() => {
                         this.setState({initialHeight: null,})
                     }}
-                         onClick={() => history.push('/')}
+                         onClick={() => this._click(i,history)}
                     />
 
                 ))}

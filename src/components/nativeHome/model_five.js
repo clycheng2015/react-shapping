@@ -9,8 +9,6 @@ class ModelFour extends React.Component {
     }
 
     componentDidMount() {
-
-
         const options = {
             scrollY: false,
             scrollX: true,
@@ -22,17 +20,18 @@ class ModelFour extends React.Component {
         const {history ,data,linkedDtos}=this.props
 
 
+
         return (
                 <div className="model-five" ref={el => this.shop = el} style={{width: "100%"}}>
-                    <ul style={{width: `${(data.length+3)*2}rem`}}>
+                    <ul style={{width: `${(data.length+2)*2}rem`}}>
                         {
                             data.map((i, index) => (
                                 <li className="" key={index}
                                     onClick={ ()=>{nativeClick({
-                                        type:i.type,
-                                        url:i.linked_txt,
-                                        id:i.linked_txt,
-                                        name:i.remark,
+                                        type:2,
+                                        url:i.good_id,
+                                        id:i.good_id,
+                                        name:i.name,
                                         activeType:''
                                     })}}
                                 >
@@ -54,10 +53,10 @@ class ModelFour extends React.Component {
 
                             <div className="box"
                                  onClick={ ()=>{nativeClick({
-                                     type:linkedDtos.type,
-                                     url:linkedDtos.linked_txt,
-                                     id:linkedDtos.linked_txt,
-                                     name:linkedDtos.remark,
+                                     type:linkedDtos[0].type,
+                                     url:linkedDtos[0].linked_txt,
+                                     id:linkedDtos[0].linked_txt,
+                                     name:linkedDtos[0].remark,
                                      activeType:''
                                  })}}>
                                 查看更多

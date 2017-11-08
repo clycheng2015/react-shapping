@@ -1,30 +1,26 @@
 /**
  * Created by bear on 2017/10/31.
  */
-import React, {ReactDom}from 'react';
+import React from 'react';
 import {ListView, PullToRefresh, Icon} from 'antd-mobile';
 import Timer from '../../components/Commons/timer'
+
 class OrderList extends React.Component {
     constructor(props) {
         super(props);
         const dataSource = new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
         });
-
         this.state = {
             dataSource,
             refreshing: false,
             isLoading: false,
         };
     }
-
-
     _delOrder = (id) => {
 
         const {uid, fetchDelOrder} = this.props
-
         fetchDelOrder({
-
             uid: uid,
             id: id
         })
@@ -45,18 +41,24 @@ class OrderList extends React.Component {
     }
 
 
-    _sum = (p) => {
-        const {list, history, savePayOrder, postageData} = this.props
-        let sum = 0
-        if (postageData && postageData.id) {
-            if (Number(p) > Number(postageData.free)) {
-                return sum = p
-            } else {
-                // sum = Number(p) + Number(postageData.value)
-                sum = Number(p)
-                return sum
-            }
+    _sum = (rowData) => {
+        const {postageData} = this.props
+        let sum = rowData.money
+        if (rowData.ispickup === 0 && rowData.money>Number(postageData.free)) {
+
+            sum=rowData.money
         }
+        if (rowData.ispickup === 0 && rowData.money<Number(postageData.free)) {
+
+            sum=rowData.money+Number(postageData.value)
+        }
+        if (rowData.ispickup === 1) {
+
+            sum=rowData.money
+        }
+
+        return Number(sum).toFixed(2)
+
     }
 
     _goDetail = (type, rowData) => {
@@ -67,11 +69,7 @@ class OrderList extends React.Component {
     _toPay = (rowData) => {
 
         const {savePayOrder, history} = this.props
-        history.push(
-            {
-                pathname: "/pay",
-                state: {count: this._sum(Number(rowData.money)).toFixed(2)}
-            });
+        history.push({pathname: `/pay/${this._sum(rowData)}`});
         savePayOrder({
             id: rowData.id,
             ordernum: rowData.ordernum
@@ -79,9 +77,13 @@ class OrderList extends React.Component {
 
     }
 
+    _timeEnd=(id)=>{
+        this._delOrder(id)
+    }
     render() {
         const {list, history, hasMore, isFetching, refresh, tabIndex} = this.props
         const row = (rowData, sectionID, rowID) => {
+
             return (
                 <div key={rowID}>
                     {rowData.goodsitems && rowData.goodsitems.map((i, key) => (
@@ -125,33 +127,31 @@ class OrderList extends React.Component {
                                     </div>
 
                                     {
-                                        rowData.leftTime ===0&&
+                                        rowData.leftTime >=0&&tabIndex===0&&
                                         <div className="time-info">
                                             <img src={require('static/images/order/ot.jpg')} alt=""/>
                                             <span>
                                                 剩余付款时间：
                                             </span>
                                             <div className="time">
-
                                                 <Timer
-                                                    date={new Date(parseInt(rowData.leftTime)).toISOString()}
-                                                    // date="2017-11-10T00:00:00+00:00"
+                                                    // date={new Date(Date.parse(new Date())+10*1000).toISOString()}
+                                                    date={new Date(Date.parse(new Date())+rowData.leftTime*1000).toISOString()}
                                                     days={{plural: 'Days ', singular: 'day '}}
                                                     hours=':'
                                                     mins=':'
                                                     segs=''
+                                                    onEnd={()=>this._timeEnd(rowData.id)}
                                                 />
                                             </div>
                                         </div>
                                     }
-
-
                                     <div className="bottom">
                                         {
                                             tabIndex === 0 &&
                                             <div className="btn">
                                                 <span
-                                                    className="countinfo">总额: ￥<span>{this._sum(Number(rowData.money), rowData.ispickup).toFixed(2)}</span></span>
+                                                    className="countinfo">总额: ￥<span>{this._sum(rowData)}</span></span>
                                                 <span className="cancel" onClick={() => this._delOrder(rowData.id) }>取消订单</span>
                                                 <span className="pay" onClick={() => this._toPay(rowData)}>去付款</span>
                                             </div>
@@ -161,8 +161,7 @@ class OrderList extends React.Component {
                                             tabIndex === 1 &&
                                             <div className="btn">
                                                 <span
-                                                    className="countinfo">总额: ￥<span>{this._sum(Number(rowData.money), rowData.ispickup).toFixed(2)}</span></span>
-                                                <a href={`tel:${rowData.goodsitems.telnum}`}
+                                                    className="countinfo">总额: ￥<span>{this._sum(rowData)}</span></span>                                                <a href={`tel:${rowData.goodsitems.telnum}`}
                                                    style={{textDecoration: "none"}}> <span
                                                     className="cancel">联系客服</span></a>
                                                 <span className="cancel" onClick={() => {
@@ -175,8 +174,7 @@ class OrderList extends React.Component {
                                             tabIndex === 2 &&
                                             <div className="btn">
                                                 <span
-                                                    className="countinfo">总额: ￥<span>{this._sum(Number(rowData.money), rowData.ispickup).toFixed(2)}</span></span>
-                                                <a href={`tel:${rowData.goodsitems.telnum}`}
+                                                    className="countinfo">总额: ￥<span>{this._sum(rowData)}</span></span>                                                <a href={`tel:${rowData.goodsitems.telnum}`}
                                                    style={{textDecoration: "none"}}> <span
                                                     className="cancel">联系客服</span></a>
                                                 <span className="cancel" onClick={() => this._comfirmOrder(rowData.id)}>确认收货</span>
@@ -188,8 +186,7 @@ class OrderList extends React.Component {
                                             tabIndex === 3 &&
                                             <div className="btn">
                                                 <span
-                                                    className="countinfo">总额: ￥<span>{this._sum(Number(rowData.money), rowData.ispickup).toFixed(2)}</span></span>
-                                                <a href={`tel:${rowData.goodsitems.telnum}`}
+                                                    className="countinfo">总额: ￥<span>{this._sum(rowData)}</span></span>                                                <a href={`tel:${rowData.goodsitems.telnum}`}
                                                    style={{textDecoration: "none"}}> <span
                                                     className="cancel">联系客服</span></a>
                                             </div>
@@ -201,8 +198,7 @@ class OrderList extends React.Component {
                                             tabIndex === 4 &&
                                             <div className="btn">
                                                 <span
-                                                    className="countinfo">总额: ￥<span>{this._sum(Number(rowData.money), rowData.ispickup).toFixed(2)}</span></span>
-                                                <a href={`tel:${rowData.goodsitems.telnum}`}
+                                                    className="countinfo">总额: ￥<span>{this._sum(rowData)}</span></span>                                                <a href={`tel:${rowData.goodsitems.telnum}`}
                                                    style={{textDecoration: "none"}}> <span
                                                     className="cancel">联系客服</span></a>
                                             </div>
@@ -233,6 +229,7 @@ class OrderList extends React.Component {
                 renderRow={row}
                 style={{
                     height: document.documentElement.clientHeight,
+
                 }}
                 className="am-list"
                 initialListSize={list.orderList.length}

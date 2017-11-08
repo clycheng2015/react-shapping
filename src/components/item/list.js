@@ -18,21 +18,7 @@ class IndexList extends React.Component {
                 {list.map((i, index) => (
                     <div key={index} className="new-item">
                         <div className="head">
-                            {
-                                i.name==='美妆个护' && <img src={require('static/images/user/meizhuang.png')} alt=""/>
-                            }
-                            {
-                                i.name==='食品酒水' && <img src={require('static/images/user/ship.png')} alt=""/>
-                            }
-                            {
-                                i.name==='母婴用品' && <img src={require('static/images/user/muyin.png')} alt=""/>
-                            }
-                            {
-                                i.name==="家居家纺" && <img src={require('static/images/user/jiaju.png')} alt=""/>
-                            }
-                            {
-                                i.name==="保健养生" && <img src={require('static/images/user/baojian.png')} alt=""/>
-                            }
+                       <img src={i.icon_url+'?imageMogr2/thumbnail/!99p'} alt="" style={{maxHeight:"2.5rem"}}/>
                         </div>
 
                         <div className="list-info">
@@ -41,7 +27,7 @@ class IndexList extends React.Component {
                                     i.subcategories && i.subcategories.length > 0 &&
                                     i.subcategories.map((v,i)=>(
                                         <div key={i} className="list-item" onClick={()=>history.push({pathname: `/itemList/${v.id}T${v.name}`, state:{title:v.name}})}>
-                                             <div className="img-box"><div className="img-info"><img src={v.icon_url} alt=""/></div></div>
+                                             <div className="img-box"><div className="img-info"><img src={v.icon_url+'?imageMogr2/thumbnail/!99p'} alt=""/></div></div>
                                              <div className="title">{v.name}</div>
                                         </div>
                                     ))

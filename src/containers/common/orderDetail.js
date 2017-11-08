@@ -51,12 +51,11 @@ class OrderDetail extends React.Component {
      * @private
      */
     _gotoPay = () => {
-        const {fetchCarCreateOrder, address, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice} = this.props
+        const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice} = this.props
         const {pathList} = orderDetail
         const {remark} = orderDetail
         let defaultAds = this._getAds().id || '';
         let orderPrice = this._orderPice()
-        console.log(payState)
         let data = {
             address_id: defaultAds,
             orderdesc: remark,
@@ -210,7 +209,7 @@ class OrderDetail extends React.Component {
         const {getFieldProps} = this.props.form;
         const {pathList} = orderDetail
         const {remark} = orderDetail
-        console.log(payState)
+        console.log(this._getAds())
         return (
             <div className="orderDetail-container"
                  style={{
