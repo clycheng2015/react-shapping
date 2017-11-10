@@ -90,6 +90,18 @@ const getAdress = (data) => ({
 
 
 /**
+ * 订单选取地址
+ */
+export const chooseAddress = (data) => ({
+    type: 'CHOOSE_ADDRESS',
+    data
+})
+
+
+
+
+
+/**
  * 设置默认
  */
 const defaultAds = () => ({

@@ -30,8 +30,9 @@ export default class MyOrder extends React.Component {
     }
 
     _tabChange = (tab, index) => {
-        const {orderTabChange} = this.props
+        const {orderTabChange,fetchOrderList, pagesize,pagenum} = this.props
         orderTabChange(tab.title, tab.state, index)
+        fetchOrderList(tab.title, {state: tab.state, pagesize: pagesize, pagenum: pagenum})
 
     }
 
@@ -39,7 +40,7 @@ export default class MyOrder extends React.Component {
         const {fetchOrderList, order} = this.props
         const {orderState, pagesize, pagenum, tab} = order
         //邮费
-        fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: 0})
+        fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: 1})
 
     }
 
@@ -48,11 +49,11 @@ export default class MyOrder extends React.Component {
         const {fetchOrderList, order,} = nextProps
 
         const {tab, isFetching, orderState, pagesize, pagenum, orderListInfo, isHandle} = order
-
-        if ((!isFetching && tab != this.props.tab && !orderListInfo[tab])) {
-
-            fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
-        }
+        //
+        // if ((!isFetching && tab != this.props.tab && !orderListInfo[tab])) {
+        //
+        //     fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
+        // }
         if (isHandle) {
             fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
@@ -63,7 +64,7 @@ export default class MyOrder extends React.Component {
         const {order, history, fetchDelOrder, savePayOrder, postageData, fetchComfirm} = this.props
         const {tab, tabs, tabIndex, orderListInfo} = order
 
-        console.log(orderListInfo[tab])
+        // console.log(orderListInfo[tab])
 
         return (
             <div className="myOrder-container"

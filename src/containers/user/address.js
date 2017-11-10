@@ -29,16 +29,27 @@ export default class Address extends React.Component {
         fetchGetAds({uid: uid})
     }
 
-    _updateDefault = (id) => {
-        const {uid, fetchDefAds} = this.props
+    _updateDefault = (i) => {
+        const {uid, fetchDefAds,match,history,chooseAddress} = this.props
+        const {params}=match
+        const id=i.id
+        if(params.id==='0'){
+            const alertInstance = alert('提示', '设为默认地址？', [
+                {text: '取消', onPress: () => console.log('取消'), style: 'default'},
+                {text: '确定', onPress: () => fetchDefAds({uid: uid, id: id})},
+            ]);
+            setTimeout(() => {
+                alertInstance.close();
+            }, 5000)
+        }
 
-        const alertInstance = alert('提示', '设为默认地址？', [
-            {text: '取消', onPress: () => console.log('取消'), style: 'default'},
-            {text: '确定', onPress: () => fetchDefAds({uid: uid, id: id})},
-        ]);
-        setTimeout(() => {
-            alertInstance.close();
-        }, 5000)
+        if(params.id==='1'){
+            chooseAddress(i)
+            setTimeout(() => {
+                history.goBack()
+            }, 100)
+
+        }
 
     }
     _delAddress = (id) => {
@@ -84,7 +95,7 @@ export default class Address extends React.Component {
                         <div className="list-info">
                             {data.map((i, key) => (
                                 <div key={key} className="item">
-                                    <div onClick={() => this._updateDefault(i.id)}>
+                                    <div onClick={() => this._updateDefault(i)}>
                                         <div className="head">
                                             <span>{i.realname}</span><span>{i.mobile}</span></div>
                                         <div className="ads">
@@ -96,7 +107,7 @@ export default class Address extends React.Component {
                                     </div>
                                     <div className="btn">
                                         <Radio className="my-radio" checked={i.isdefault} value={i.id}
-                                               onChange={e => this._updateDefault(i.id)}>
+                                               onChange={e => this._updateDefault(i)}>
                                             <span className="name">默认地址</span>
                                         </Radio>
                                         <span className="right">

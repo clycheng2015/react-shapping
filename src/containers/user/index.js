@@ -157,7 +157,7 @@ export default class User extends React.Component {
                         <div className="other-list">
                             <List.Item
                                 extra={<img src={require('static/images/user/ads_icon.png')} alt=""/>}
-                                onClick={() => history.push({pathname:`/address`})}
+                                onClick={() => history.push({pathname:`/address/${0}`})}
                             >收货地址</List.Item>
                             <List.Item
                                 extra={<img src={require('static/images/user/ser_icon.png')} alt=""/>}

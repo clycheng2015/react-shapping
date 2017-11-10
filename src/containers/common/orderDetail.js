@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import { Icon, Flex, TextareaItem, List} from 'antd-mobile'
+import {Icon, Flex, TextareaItem, List} from 'antd-mobile'
 import {createForm} from 'rc-form';
 import * as user from 'actions/user'
 import * as saveParams from 'actions/saveParams'
@@ -22,6 +22,7 @@ class OrderDetail extends React.Component {
         super(props)
         this.state = {}
     }
+
     componentDidMount() {
         const {fetchGetAds, savePath, location, getUserInfo, fetchGetPostage, savePayParams} = this.props
         if (location.state && location.state.data) {
@@ -46,6 +47,7 @@ class OrderDetail extends React.Component {
 
     componentWillReceiveProps(np, ns) {
     }
+
     /***
      * 支付
      * @private
@@ -189,23 +191,24 @@ class OrderDetail extends React.Component {
      * @private
      */
     _getAds = () => {
-        const {address} = this.props
+        const {address, chooseAddressData} = this.props
         const {data} = address
         let defaultAds = {}
-        if (data && data.length > 0) {
-            data.forEach(i => {
-                if (i.isdefault === 1) {
-                    defaultAds = i
-                }
-            })
+        if (chooseAddressData && chooseAddressData.id){
+            defaultAds=chooseAddressData
+        }else {
+            if (data && data.length > 0) {
+                data.forEach(i => {
+                    if (i.isdefault === 1) {
+                        defaultAds = i
+                    }
+                })
+            }
         }
-
         return defaultAds
     }
-
-
     render() {
-        const {history, orderDetail,payState, userInfo, orderRemark, postageData, savePostData, saveInvoice} = this.props
+        const {history, orderDetail, payState, userInfo, orderRemark, postageData, savePostData, saveInvoice, chooseAddressData} = this.props
         const {getFieldProps} = this.props.form;
         const {pathList} = orderDetail
         const {remark} = orderDetail
@@ -229,11 +232,11 @@ class OrderDetail extends React.Component {
                 {
                     postageData && postageData.free && pathList && pathList.length > 0 &&
                     <div>
-                        <div className="ads-info" onClick={() => history.push({pathname:`/address`})}>
+                        <div className="ads-info">
                             {
                                 this._getAds() && this._getAds().id ?
                                     <List.Item className="yes-ads" arrow="horizontal"
-                                               onClick={ () => history.push('/address')}>
+                                               onClick={ () => history.push('/address/1')}>
                                         <p className="name"> {this._getAds().realname}
                                             <span>{this._getAds().mobile}</span></p>
                                         <div className="ads-dl">
@@ -248,7 +251,7 @@ class OrderDetail extends React.Component {
                                         thumb={require('../../static/images/order/order_icon.png')}
                                         arrow="horizontal"
                                         onClick={() => {
-                                            history.push({pathname:`/address`})
+                                            history.push({pathname: `/address/1`})
                                         }}
                                     >请添加收货地址
                                     </List.Item>
