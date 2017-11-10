@@ -30,6 +30,7 @@ export default class Active extends React.Component {
     }
 
     componentDidMount() {
+        document.title = '活动中心';
 
     }
 

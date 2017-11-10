@@ -1,15 +1,67 @@
-
+html,body{
+  width: 100%;
+  height: 100%;
+}
 .double-content{
   width: 7.5rem;
+  height: 100%;
   margin: 0 auto;
-  overflow: hidden;
+  //padding-top: 0.9rem;
+  overflow: scroll;
+  background: #f2234e;
+  //padding-top: 0.9rem;
+  //background: -webkit-linear-gradient( #f11e49, #fa4a7b); /* Safari 5.1 - 6.0 */
+  //background: -o-linear-gradient( #f11e49, #fa4a7b); /* Opera 11.1 - 12.0 */
+  //background: -moz-linear-gradient( #f11e49, #fa4a7b); /* Firefox 3.6 - 15 */
+  //background: linear-gradient( #f11e49, #fa4a7b); /* 标准的语法 */
+  .nav-tab-hide{
+    display: none;
+  }
+  .nav-tab {
+    z-index: 111111;
+    height: .9rem;
+    width: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid #eaeae8;
+    text-align: center;
+    line-height: .9rem;
+    .set-icon {
+      width: .35rem;
 
+    }
+    .left {
+      text-align: left;
+      padding-top: .1rem;
+      padding-left: .1rem;
+    }
 
+    .center {
+      line-height: .6rem;
+      padding-bottom: .2rem;
+      text-align: center;
+
+    }
+    .right {
+
+      text-align: right;
+      padding-right: .3rem;
+      padding-bottom: .1rem;
+    }
+    .item-head {
+      //text-align: center;
+      line-height: .8rem;
+      overflow: hidden;
+
+    }
+  }
 
   .double-box{
+
       .banner{
         width: 7.5rem;
-        height: 4rem;
+        height: 4.2rem;
         img{
           width: 100%;
           height: 100%;
@@ -17,18 +69,192 @@
       }
       .recharge{
         width: 6.8rem;
-        background: #532b8c;
         padding: 0.2rem 0.35rem;
        overflow: hidden;
         img{
           width: 100%;
-          float: left;
+          display: block;
           margin-top: 0.15rem;
         }
-        img:first-child{
-          margin-top: 0;
+      }
+
+      .activeName{
+        margin: 0 auto;
+        margin-top: 0.25rem;
+        width: 7.14rem;
+        border-radius: 0.2rem;
+        overflow: hidden;
+        li{
+          float: left;
+          background: #fff;
+          width: 1.75rem;
+          text-align: center;
+          height: 0.8rem;
+          line-height: 0.8rem;
+          margin-right: 2px;
+          margin-top: 2px;
+          font-size: 0.25rem;
+          color: #333333;
         }
+        li:nth-child(4n+0){
+          margin-right: 0;
+
+        }
+        li:last-child{
+          width: 7.14rem;
+        }
+      }
+
+
+      .active-list{
+        overflow: hidden;
+          width: 7.5rem;
+          //padding: 0 0.18rem;
+          background: transparent;
+        .am-list-body{
+          border: none;
+          background: transparent;
+        }
+        .am-whitespace{
+          height: 0 !important;
+          overflow: hidden;
+        }
+        .am-tabs-default-bar-underline{
+          border:none;
+        }
+        .am-tabs-default-bar-tab{
+          color:#808080;
+          border:none;
+          font-size: 0.25rem;
+        }
+        .am-tabs-default-bar-tab-active{
+          color:#ca2f3d;
+          border-bottom: 1px solid #ca2f3d !important;
+        }
+
+        .sticky-container{
+
+            width: 100%;
+            overflow: hidden;
+            padding-bottom: 15px;
+
+          .am-list-content{
+              padding: 0;
+            }
+            .am-list-item-middle{
+              background: transparent;
+              border: none;
+            }
+            .am-indexed-list-section-header{
+              margin: 0 auto;
+              margin-top: 20px;
+              height: 0.9rem;
+
+            }
+            .am-list-line{
+              padding: 0;
+            }
+            .am-list-item{
+              padding: 0;
+            }
+          .am-indexed-list-section-body{
+            width: 7.14rem;
+            padding: 0 0.18rem;
+            .double-goods-box{
+              float: left;
+              margin-right: 0.1rem;
+              margin-top: 5px;
+              .double-goods{
+                box-shadow: 0 0.02rem 0.04rem #452d46;
+                width: 2.3rem;
+                height: 3.3rem;
+                background: #fff;
+                overflow: hidden;
+                .title{
+                  width: 2.1rem;
+                  padding: 0.1rem;
+                  height: 0.4rem;
+                  font-size: 0.2rem;
+                  overflow: hidden;
+                  line-height: 0.25rem;
+                  text-align: justify;
+                }
+                .image{
+                  width: 2.3rem;
+                  height: 2.27rem;
+                  img{
+                    width: 100%;
+                    height: 100%;
+                  }
+                }
+                .box{
+                  margin: 0 auto;
+                  width: 2.16rem;
+                  overflow: hidden;
+                  .price{
+                    text-align: center;
+                    float: left;
+                    width: 1.2rem;
+                    height: 0.34rem;
+                    background: #ff003f;
+                    position: relative;
+                    color: #fff;
+                    font-size: 0.24rem;
+                    line-height: 0.34rem;
+
+                  }
+                  .price:after{
+                    content: "";
+                    display: block;
+                    height: 0;
+                    border-top: 0.05rem solid transparent;
+                    border-left: 0.05rem solid #ff003f;
+                    border-bottom: 0.05rem solid transparent;
+                    position: absolute;
+                    right: -0.05rem;
+                    top: 50%;
+                    margin-top: -0.03rem;
+                  }
+                  .button{
+                    font-size: 0.18rem;
+                    color: #464646;
+                    float: left;
+                    text-align: center;
+
+                    width: 0.96rem;
+                    background: #ffcb05;
+                    height: 0.34rem;
+                    line-height: 0.34rem;
+                    vertical-align: middle;
+                  }
+                }
+              }
+            }
+          }
+
+            .double-goods-box:nth-child(3n+0){
+              margin-right: 0;
+            }
+          }
+        .am-indexed-list-quick-search-bar{
+          display: none;
+          opacity: 0.9;
+          color: #ebebeb;
+          font-size: 0.24rem;
+          text-align: center;
+          width: 1.4rem;
+          background: #850e28;
+          border: 2px solid #53363c;
+          li{
+            line-height: 0.6rem;
+          }
+
+        }
+
+
+
       }
   }
 }
+
 

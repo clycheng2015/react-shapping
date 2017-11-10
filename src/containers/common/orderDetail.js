@@ -209,7 +209,6 @@ class OrderDetail extends React.Component {
         const {getFieldProps} = this.props.form;
         const {pathList} = orderDetail
         const {remark} = orderDetail
-        console.log(this._getAds())
         return (
             <div className="orderDetail-container"
                  style={{
@@ -230,7 +229,7 @@ class OrderDetail extends React.Component {
                 {
                     postageData && postageData.free && pathList && pathList.length > 0 &&
                     <div>
-                        <div className="ads-info" onClick={ () => history.push('/address')}>
+                        <div className="ads-info" onClick={() => history.push({pathname:`/address`})}>
                             {
                                 this._getAds() && this._getAds().id ?
                                     <List.Item className="yes-ads" arrow="horizontal"
@@ -249,7 +248,7 @@ class OrderDetail extends React.Component {
                                         thumb={require('../../static/images/order/order_icon.png')}
                                         arrow="horizontal"
                                         onClick={() => {
-                                            history.push('/address')
+                                            history.push({pathname:`/address`})
                                         }}
                                     >请添加收货地址
                                     </List.Item>

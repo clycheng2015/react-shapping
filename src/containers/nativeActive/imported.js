@@ -253,6 +253,8 @@ export default class Imported extends React.Component {
         // this.props.getAllList({pagesize:3,pagenum:3,cid:3,id:2})
         window.addEventListener('scroll', this.handleScroll);
 
+        document.title = '进口食品';
+
     }
     componentWillUnmount () {
         window.removeEventListener('scroll', this.handleScroll);

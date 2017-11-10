@@ -8,7 +8,7 @@ import * as home from '../../actions/home'
 import HomePage from '../../components/nativeHome/homePage'
 import HomeStatic from '../../components/nativeHome/homeStatic'
 import {getSize} from '../../utils/getSize'
-import {endRefresh} from '../../utils/native-sdk'
+
 require('./styles/index.less')
 @connect(
     state => {
@@ -24,7 +24,7 @@ export default class Home extends React.Component {
     componentDidMount() {
         const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
 
-        fetchHome()
+        fetchHome('refresh')
         if (dataList.length === 0) {
             fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
         }
@@ -44,14 +44,10 @@ export default class Home extends React.Component {
     }
 
     H5Refresh = () => {
+
         const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
-        fetchHome()
+        fetchHome('refresh')
         fetchHomeList({pagesize: pagesize, pagenum: 0,})
-
-
-        setTimeout(()=>(
-            endRefresh()
-        ),1000)
     }
 
     render() {

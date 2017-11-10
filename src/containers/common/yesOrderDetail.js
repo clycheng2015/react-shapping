@@ -112,8 +112,6 @@ export default class YesOrderDetail extends React.Component {
     render() {
         const {history, yesOrderDetail, postageData,match} = this.props
         let arr=match.params.id.split('T')
-
-        console.log(arr)
         return (
             <div className="yesOrderDetail-container"
 
@@ -134,7 +132,6 @@ export default class YesOrderDetail extends React.Component {
                     </Flex>
                 </div>
 
-
                 {
                     postageData && yesOrderDetail && yesOrderDetail.id &&
                     <div>
@@ -153,8 +150,6 @@ export default class YesOrderDetail extends React.Component {
 
                             <img src={require('static/image/color_line.png')} alt="" className="line"/>
                         </div>
-
-
                         <div className="goods-list">
                             <div className="head">
                                 订单号：{yesOrderDetail.ordernum}
@@ -168,7 +163,16 @@ export default class YesOrderDetail extends React.Component {
                                 {yesOrderDetail.state === 8 && <span className="state">退款完成</span>}
                             </div>
                             {yesOrderDetail.goodsitems.map((i, k) => (
-                                <div key={k} className="goods-info" onClick={()=>history.push(`/goodsDetail/${i.goods_id}`)}>
+                                <div key={k} className="goods-info" onClick={()=>
+                                {
+                                    if(yesOrderDetail.ordertype==='SECKILL'||yesOrderDetail.ordertype==='DISCOUNT'){
+                                        history.push(`/activeDetail/${i.goods_id}${yesOrderDetail.ordertype}`)
+                                    }else { history.push(`/goodsDetail/${i.goods_id}`)}
+
+                                }
+
+
+                                }>
                                     <div className="img">
                                         <img src={i.goods_smallpic} alt=""/>
                                     </div>
@@ -176,7 +180,10 @@ export default class YesOrderDetail extends React.Component {
                                         <p className="name">{i.goods_title}</p>
                                         <p className="bom">
                                             <span
-                                                className="price">￥<span>{Number(i.goods_price).toFixed(2)}</span></span>
+                                                className="price">￥<span>
+                                                {yesOrderDetail.ordertype==='SECKILL'||yesOrderDetail.ordertype==='DISCOUNT'&&yesOrderDetail.money}
+                                                {Number(i.goods_price).toFixed(2)}
+                                                </span></span>
                                             <span className="count">数量: <span>{i.goods_num}</span></span>
 
                                         </p>

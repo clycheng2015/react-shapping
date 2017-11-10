@@ -986,6 +986,7 @@ export const fetchIcBaner = () => {
             .then(res => {
                 console.log(res)
                 if (res.data.code == 200) {
+
                     dispatch(getIcBanner(res.data.data))
                 }
             })

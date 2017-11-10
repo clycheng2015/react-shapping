@@ -12,7 +12,7 @@ const Share = (config) => {
         signature: config.signature, // 必填，签名，见附录1
         jsApiList: [
             'onMenuShareAppMessage', 'onMenuShareTimeline',
-            'onMenuShareQQ', 'onMenuShareQZone'
+            'onMenuShareQQ', 'onMenuShareQZone','chooseImage','uploadImage'
         ]
     });
 

@@ -5,8 +5,7 @@ import instance from '../utils/instance'
 import {home} from '../utils/api'
 import * as types from '../utils/const'
 import qs from 'qs'
-
-
+import {endRefresh} from '../utils/native-sdk'
 export const severError=(data)=>({
 
 
@@ -44,20 +43,36 @@ export const headChange =(headState)=>({
     type:types.HEAD_STATE,headState
 })
 
-export const fetchHome = () => {
+export const fetchHome = (type) => {
     return (dispatch, getState) => {
         instance.get(home.homeUrl)
 
             .then(res => {
-
-                // console.log(res)
                if(res.data.code===200){
                    let result=res.data.data
                    dispatch(receiveHome(result))
+
+                   if(type==='refresh'){
+                       endRefresh()
+                   }
+
+
+               }else {
+
+                   if(type==='refresh'){
+                       endRefresh()
+                   }
+
                }
+
+
+
             })
             .catch(error => {
                 console.log('error: ', error)
+                if(type==='refresh'){
+                    endRefresh()
+                }
             })
     }
 }

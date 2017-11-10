@@ -21,6 +21,8 @@ export default class ImportedClass extends React.Component{
 
         this.props.feachAndroid({pagesize:3,pagenum:3,cid:3,id:2})
 
+        document.title = '进口食品';
+
     }
 
 

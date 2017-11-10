@@ -28,7 +28,7 @@ export default class Ranking extends React.Component{
 
         this.props.feachAndroid({pagesize:8,pagenum:3,cid:5})
 
-
+        document.title = '排行榜';
     }
 
 

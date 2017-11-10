@@ -12,6 +12,7 @@ let init = {
     pagenum: 1,
     checkData: [],
     ckeckAllState:true,
+    banner:{}
 
 
 }
@@ -46,6 +47,10 @@ export const car = (state = init, action) => {
         case types.DEL_CAR_LIST:
 
             return {...state, isFetching: true}
+
+        case 'CAR_BANNER':
+
+            return {...state, banner: action.data}
 
         case types.UPDATE_CAR_NUM:
 

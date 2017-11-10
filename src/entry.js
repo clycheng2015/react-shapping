@@ -25,7 +25,7 @@ const history = createHistory()
 const middleware = routerMiddleware(history)
 const middlewares = [thunk, middleware]
 
-
+//
 // import App from './native'
 // import App from './nativehome'
 

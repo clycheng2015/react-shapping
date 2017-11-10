@@ -27,6 +27,7 @@ export default class Active extends React.Component {
         }
     }
     componentDidMount() {
+        document.title = '美纶购秒杀活动';
     }
     render() {
         return (

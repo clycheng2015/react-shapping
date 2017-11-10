@@ -41,7 +41,6 @@ export const fetchWxConfig=(shareInfo)=>{
             instance.get(wxSdkConfig.shareUrl+`?url=${href}` )
             .then(res => {
                 dispatch(updateShareUrl())
-                console.log(res)
                     const share = new Share({
                         appid: res.data.data.appId, // 必填，公众号的唯一标识
                         timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳

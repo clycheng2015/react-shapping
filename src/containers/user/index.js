@@ -58,21 +58,7 @@ export default class User extends React.Component {
     }
 
     componentWillMount() {
-        // document.title = '个人中心';
-        // const iframe = document.createElement('iframe');
-        // iframe.style.cssText = 'display: none; width: 0; height: 0;';
-        // iframe.src = 'http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/05/0F/ChMkJ1erCriIJ_opAAY8rSwt72wAAUU6gMmHKwABjzF444.jpg';
-        //
-        // const listener = () => {
-        //     setTimeout(() => {
-        //         iframe.removeEventListener('load', listener);
-        //         setTimeout(() => {
-        //             document.body.removeChild(iframe);
-        //         }, 0);
-        //     }, 0);
-        // };
-        // iframe.addEventListener('load', listener);
-        // document.body.appendChild(iframe);
+
     }
 
     componentDidMount() {
@@ -171,7 +157,7 @@ export default class User extends React.Component {
                         <div className="other-list">
                             <List.Item
                                 extra={<img src={require('static/images/user/ads_icon.png')} alt=""/>}
-                                onClick={() => {history.push('/address')}}
+                                onClick={() => history.push({pathname:`/address`})}
                             >收货地址</List.Item>
                             <List.Item
                                 extra={<img src={require('static/images/user/ser_icon.png')} alt=""/>}

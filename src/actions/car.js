@@ -38,6 +38,13 @@ export const carCheck=(id)=>({
     type:"CAR_CHECK",id
 })
 
+ const getBanner=(data)=>({
+
+    type:"CAR_BANNER",data
+})
+
+
+
 export const fetchCarList = (data) => {
     return (dispatch, getState) => {
         instance.get(car.carList+"?"+qs.stringify(data))
@@ -84,6 +91,24 @@ export const fetchUpdateCarNum = (data) => {
 
                 if (res.data.code == 200) {
                     dispatch(updateCarNum())
+                }
+
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+            })
+    }
+}
+
+export const fetchCarBanner = () => {
+
+    return (dispatch, getState) => {
+        instance.get(car.banner)
+            .then(res => {
+
+                if (res.data.code == 200) {
+                    dispatch(getBanner(res.data.data))
                 }
 
             })

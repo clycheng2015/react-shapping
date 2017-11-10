@@ -367,7 +367,7 @@ export default class Seckill extends React.Component{
 
     }
     componentDidMount(){
-
+        document.title = '秒杀';
 
     }
 

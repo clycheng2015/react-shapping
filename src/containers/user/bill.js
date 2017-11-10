@@ -101,7 +101,7 @@ export default class Bill extends React.Component {
                                                 >
                                                     充值
                                                     <List.Item.Brief>
-                                                        {ymd(i.addtime,'+',':')}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 
@@ -112,9 +112,9 @@ export default class Bill extends React.Component {
                                             return (
 
                                                 <List.Item arrow=""
-                                                           thumb={ require('static/image/icon_bill_blue.png')}
+                                                           thumb={ require('static/image/icon_bill_red.png')}
                                                            key={key}
-                                                           extra={"+" + i.money}
+                                                           extra={"-" + i.money}
                                                 >
                                                     消费
                                                     <List.Item.Brief>
@@ -135,7 +135,7 @@ export default class Bill extends React.Component {
                                                 >
                                                     提现退款
                                                     <List.Item.Brief>
-                                                        {ymd(i.addtime,'+',':')}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 
@@ -151,7 +151,7 @@ export default class Bill extends React.Component {
                                                 >
                                                     退款
                                                     <List.Item.Brief>
-                                                        {ymd(i.addtime,'+',':')}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 

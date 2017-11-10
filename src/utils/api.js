@@ -92,6 +92,8 @@ export const car = {
     delCarList: '/app/cart/delcart',//删除购物车
     updateCarNum: '/app/cart/editnum', //修改购物数量
 
+    banner:"/app/cart/open/cartsd"
+
 
 }
 

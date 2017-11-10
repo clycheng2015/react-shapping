@@ -22,347 +22,895 @@ export default class NewDay extends React.Component{
             modal2: false,
 
         }
-        this.titleList = ['美妆个护','保健养生','食品酒水','母婴用品','家居家纺'];
+        this.titleList =['美妆个护','食品酒水','保健养生','母婴用品','家居家纺'];
         this.goods = [
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019141111.jpg",
-                    flashpic:null,
-                    id:1575,
-                    price:"95.50",
-                    standard:"/瓶",
-                    stitle:" 德国爱姬玛琳经典香水沐浴露/Perfume Shower Gel   ",
-                    title:" 德国爱姬玛琳经典香水沐浴露/Perfume Shower Gel   ",
-                    vipprice:"93.50",
-                    zkprice:"93.50"
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/1510035193772.jpg",
+                    category:
+                        "28",
+                    gdesc:
+                        null,
+                    good_id:
+                        1603,
+                    gorder:
+                        1,
+                    gtitle:
+                        "菲诗小铺大米调理持久保湿水-大米系列150ml【预售】",
+                    id:
+                        1603,
+                    price:
+                        59,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "菲诗小铺大米调理持久保湿水-大米系列150ml【预售】",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        39,
+                    zkprice:
+                        39
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019154610.jpg",
-                    flashpic:null,
-                    id:1592,
-                    price:"158.00",
-                    standard:"/瓶",
-                    stitle:" 日本Nursery娜诗丽卸妆洁面啫喱-香橙 180ml",
-                    title:" 日本Nursery娜诗丽卸妆洁面啫喱-香橙 180ml",
-                    vipprice:"138.00",
-                    zkprice:"138.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013183821.jpg",
+                    category:
+                        "28",
+                    gdesc:
+                        null,
+                    good_id:
+                        1348,
+                    gorder:
+                        1,
+                    gtitle:
+                        "爱姬玛琳（Algemarin）经典香水沐浴露300ml",
+                    id:
+                        1348,
+                    price:
+                        95.5,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "爱姬玛琳（Algemarin）经典香水沐浴露300ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        82.3,
+                    zkprice:
+                        82.3
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171013153109.jpg",
-                    flashpic:null,
-                    id:1381,
-                    price:"27.00",
-                    standard:"/个",
-                    stitle:"Eventan日本进口瑷微丹净爽洗面奶120g 平衡油脂祛痘去黑头洁面乳 ",
-                    title:"Eventan日本进口瑷微丹净爽洗面奶120g 平衡油脂祛痘去黑头洁面乳 ",
-                    vipprice:"25.00",
-                    zkprice:"25.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018110414.jpg",
+                    category:
+                        "21",
+                    gdesc:
+                        null,
+                    good_id:
+                        1343,
+                    gorder:
+                        1,
+                    gtitle:
+                        "花缪蕾智能芯超长立体护围夜用卫生巾350mm4片",
+                    id:
+                        1343,
+                    price:
+                        27.9,
+                    standard:
+                        "/袋",
+                    stitle:
+                        "花缪蕾智能芯超长立体护围夜用卫生巾350mm4片",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        20.1,
+                    zkprice:
+                        20.1
+                }  ,
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018110101.jpg",
+                    category:
+                        "21",
+                    gdesc:
+                        null,
+                    good_id:
+                        1345,
+                    gorder:
+                        1,
+                    gtitle:
+                        "花缪蕾智能芯超薄夜用卫生巾280mm8片",
+                    id:
+                        1345,
+                    price:
+                        27.9,
+                    standard:
+                        "/袋",
+                    stitle:
+                        "花缪蕾智能芯超薄夜用卫生巾280mm8片",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        20.1,
+                    zkprice:
+                        20.1
                 },
                 {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011161231.jpg",
-                    flashpic:null,
-                    id:1383,
-                    price:"56.90",
-                    standard:"/瓶",
-                    stitle:"Eventan日本进口瑷微丹 舒妍润肤卸妆水 300ml ",
-                    title: "Eventan日本进口瑷微丹 舒妍润肤卸妆水 300ml ",
-                    vipprice:"54.90",
-                    zkprice:"54.90"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018135750.jpg",
+                    category:
+                        "28",
+                    gdesc:
+                        null,
+                    good_id:
+                        278,
+                    gorder:
+                        1,
+                    gtitle:
+                        "虹克林畔 足部清洁香皂100g",
+                    id:
+                        278,
+                    price:
+                        13.8,
+                    standard:
+                        "/盒",
+                    stitle:
+                        "虹克林畔 足部清洁香皂100g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        7.7,
+                    zkprice:
+                        7.7
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011185245.jpg",
-                    flashpic: null,
-                    id:1429,
-                    price:"149.00",
-                    standard:"/支",
-                    stitle:"谜尚魅力 润颜靓白柔护霜 SPF30+ PA+++ 23# 50ml",
-                    title: "谜尚魅力 润颜靓白柔护霜 SPF30+ PA+++ 23# 50ml",
-                    vipprice:"129.00",
-                    zkprice:"129.00"
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018142416.jpg",
+                    category:
+                        "28",
+                    gdesc:
+                        null,
+                    good_id:
+                        1342,
+                    gorder:
+                        1,
+                    gtitle:
+                        "德国爱姬玛琳海洋清爽沐浴露/Freshness Shower Gel",
+                    id:
+                        1342,
+                    price:
+                        104,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "德国爱姬玛琳海洋清爽沐浴露/Freshness Shower Gel",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        87.1,
+                    zkprice:
+                        87.1
+                },
+
+
+            ],
+            [
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013165042.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        499,
+                    gorder:
+                        0,
+                    gtitle:
+                        "名屋红甘蔗汁500ml",
+                    id:
+                        499,
+                    price:
+                        14,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "名屋红甘蔗汁500ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        10.6,
+                    zkprice:
+                        10.6
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011151426.png",
-                    flashpic: null,
-                    id:1430,
-                    price:"149.00",
-                    standard:"/支",
-                    stitle:"谜尚魅力 润颜嫩白柔护霜 SPF30+ PA+++ 21#  50ml",
-                    title:"谜尚魅力 润颜嫩白柔护霜 SPF30+ PA+++ 21#  50ml",
-                    vipprice:"129.00",
-                    zkprice:"129.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013152751.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        852,
+                    gorder:
+                        0,
+                    gtitle:
+                        "蜜儿沃克1.5%脂肪 超高温半脱脂牛奶 1L",
+                    id:
+                        852,
+                    price:
+                        18.9,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "蜜儿沃克1.5%脂肪 超高温半脱脂牛奶 1L",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        9.9,
+                    zkprice:
+                        9.9
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017162759.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        539,
+                    gorder:
+                        0,
+                    gtitle:
+                        "斐济斐泉天然矿泉水500ml",
+                    id:
+                        539,
+                    price:
+                        23,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "斐济斐泉天然矿泉水500ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        18.5,
+                    zkprice:
+                        18.5
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019134220.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        1565,
+                    gorder:
+                        0,
+                    gtitle:
+                        "台湾原装进口饮料 名屋芒果汁500ml ",
+                    id:
+                        1565,
+                    price:
+                        14,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "台湾原装进口饮料 名屋芒果汁500ml ",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        10.6,
+                    zkprice:
+                        10.6
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017164252.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        1569,
+                    gorder:
+                        0,
+                    gtitle:
+                        "巴黎天然有气矿泉水330ml",
+                    id:
+                        1569,
+                    price:
+                        19,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "巴黎天然有气矿泉水330ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        15,
+                    zkprice:
+                        15
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012165444.jpg",
+                    category:
+                        "58",
+                    gdesc:
+                        null,
+                    good_id:
+                        1547,
+                    gorder:
+                        0,
+                    gtitle:
+                        "趣味泰国进口特色风味饮品果蔬饮料葡萄味瓶装果汁饮料（含椰果）320ml",
+                    id:
+                        1547,
+                    price:
+                        13,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "趣味泰国进口特色风味饮品果蔬饮料葡萄味瓶装果汁饮料（含椰果）320ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        9.7,
+                    zkprice:
+                        9.7
                 }
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171010144616.jpg",
-                    flashpic:null,
-                    id:1415,
-                    price:"398.00",
-                    standard: "/瓶",
-                    stitle:"康力士牌三文鱼油维生素E软胶囊300粒",
-                    title:"康力士牌三文鱼油维生素E软胶囊300粒",
-                    vipprice:"388.00",
-                    zkprice:"388.00"
+                bigpic:
+                    "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011162113.jpg",
+                category:
+                    "33",
+                gdesc:
+                    null,
+                good_id:
+                    958,
+                gorder:
+                    1,
+                gtitle:
+                    "康力士牌纤维康片60片",
+                id:
+                    958,
+                price:
+                    173,
+                standard:
+                    "/瓶",
+                stitle:
+                    "康力士牌纤维康片60片",
+                tags:
+                    "",
+                type:
+                    "0",
+                vipprice:
+                    84,
+                zkprice:
+                    84
+            },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011170623.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        964,
+                    gorder:
+                        1,
+                    gtitle:
+                        "康鹰牌多种维生素片60片",
+                    id:
+                        964,
+                    price:
+                        193,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "康鹰牌多种维生素片60片",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        94,
+                    zkprice:
+                        94
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011173705.jpg",
-                    flashpic: null,
-                    id:1425,
-                    price:"218.00",
-                    standard:"/瓶",
-                    stitle:"天美健牌维生素Ｅ软胶囊60粒",
-                    title:"天美健牌维生素Ｅ软胶囊60粒",
-                    vipprice:"188.00",
-                    zkprice:"188.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020162847.jpg",
+                    category:
+                        "39",
+                    gdesc:
+                        null,
+                    good_id:
+                        1112,
+                    gorder:
+                        1,
+                    gtitle:
+                        "冈本纯10只",
+                    id:
+                        1112,
+                    price:
+                        48.9,
+                    standard:
+                        "/盒",
+                    stitle:
+                        "冈本纯10只",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        38.6,
+                    zkprice:
+                        38.6
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011154326.jpg",
-                    flashpic: null,
-                    id:1037,
-                    price: "178.00",
-                    standard:"/瓶",
-                    stitle:"立安降脂灵胶囊60粒ｘ500mg",
-                    title:"立安降脂灵胶囊60粒ｘ500mg",
-                    vipprice:"158.00",
-                    zkprice:"158.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020161800.jpg",
+                    category:
+                        "39",
+                    gdesc:
+                        null,
+                    good_id:
+                        1117,
+                    gorder:
+                        1,
+                    gtitle:
+                        "冈本至尊10只",
+                    id:
+                        1117,
+                    price:
+                        59.5,
+                    standard:
+                        "/盒",
+                    stitle:
+                        "冈本至尊10只",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        48,
+                    zkprice:
+                        48
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011172644.jpg",
-                    flashpic: null,
-                    id:1050,
-                    price:"208.00",
-                    standard:"/瓶",
-                    stitle:"好健牌牛乳钙片",
-                    title: "好健牌牛乳钙片",
-                    vipprice:"198.00",
-                    zkprice: "198.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010144616.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        1415,
+                    gorder:
+                        0,
+                    gtitle:
+                        "康力士牌三文鱼油维生素E软胶囊300粒",
+                    id:
+                        1415,
+                    price:
+                        393,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "康力士牌三文鱼油维生素E软胶囊300粒",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        194,
+                    zkprice:
+                        194
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011120257.jpg",
-                    flashpic: null,
-                    id:1358,
-                    price:"168.00",
-                    standard:"/瓶",
-                    stitle: "康力士®磷脂胶囊100粒",
-                    title:"康力士®磷脂胶囊100粒",
-                    vipprice:"158.00",
-                    zkprice: "158.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011172242.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        961,
+                    gorder:
+                        1,
+                    gtitle:
+                        "康力士乳清蛋白粉(香草味)400g",
+                    id:
+                        961,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "康力士乳清蛋白粉(香草味)400g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        350.2,
+                    zkprice:
+                        350.2
+                },
+
+            ],
+            [
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023100130.jpg",
+                    category:
+                        "37",
+                    gdesc:
+                        null,
+                    good_id:
+                        1102,
+                    gorder:
+                        1,
+                    gtitle:
+                        "AMOS-吸管杯300ml",
+                    id:
+                        1102,
+                    price:
+                        44,
+                    standard:
+                        "/个",
+                    stitle:
+                        "AMOS-吸管杯300ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        34.3,
+                    zkprice:
+                        34.3
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924151606.jpg",
-                    flashpic:null,
-                    id:1103,
-                    price:"65.00",
-                    standard:"/盒",
-                    stitle:"冈本0.03白金超薄3只0.03Platinum",
-                    title:"冈本0.03白金超薄3只0.03Platinum",
-                    vipprice:"60.00",
-                    zkprice:"60.00"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023115102.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1074,
+                    gorder:
+                        1,
+                    gtitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美1段婴幼儿奶粉900g",
+                    id:
+                        1074,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美1段婴幼儿奶粉900g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        350.2,
+                    zkprice:
+                        350.2
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171030162949.jpg",
+                    category:
+                        "24",
+                    gdesc:
+                        null,
+                    good_id:
+                        423,
+                    gorder:
+                        1,
+                    gtitle:
+                        "Bambo自然系列婴儿纸尿裤6号大包",
+                    id:
+                        423,
+                    price:
+                        204,
+                    standard:
+                        "/袋",
+                    stitle:
+                        "Bambo自然系列婴儿纸尿裤6号大包",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        175.1,
+                    zkprice:
+                        175.1
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923134749.png",
+                    category:
+                        "24",
+                    gdesc:
+                        null,
+                    good_id:
+                        913,
+                    gorder:
+                        1,
+                    gtitle:
+                        "日本花王妙而舒婴儿纸尿裤特大号(XL)44片",
+                    id:
+                        913,
+                    price:
+                        163,
+                    standard:
+                        "/袋",
+                    stitle:
+                        "日本花王妙而舒婴儿纸尿裤特大号(XL)44片",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        109,
+                    zkprice:
+                        109
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018144953.jpg",
+                    category:
+                        "37",
+                    gdesc:
+                        "奶瓶 奶嘴",
+                    good_id:
+                        460,
+                    gorder:
+                        50,
+                    gtitle:
+                        "优觅yoomi慢流奶嘴(两个装)",
+                    id:
+                        460,
+                    price:
+                        104,
+                    standard:
+                        "/个",
+                    stitle:
+                        "优觅yoomi慢流奶嘴(两个装)",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        87.1,
+                    zkprice:
+                        87.1
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171101151514.jpg",
+                    category:
+                        "37",
+                    gdesc:
+                        null,
+                    good_id:
+                        456,
+                    gorder:
+                        50,
+                    gtitle:
+                        "NUK夜光硅胶安抚奶嘴成长",
+                    id:
+                        456,
+                    price:
+                        64,
+                    standard:
+                        "/个",
+                    stitle:
+                        "NUK夜光硅胶安抚奶嘴成长",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        51.9,
+                    zkprice:
+                        51.9
                 }
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019141351.jpg",
-                    flashpic: null,
-                    id: 1536,
-                    price:"41.50",
-                    standard:"/瓶",
-                    stitle:"全罗道蜂蜜花梨茶510g",
-                    title:"全罗道蜂蜜花梨茶510g",
-                    vipprice:"39.50",
-                    zkprice:"39.50"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017160906.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        1315,
+                    gorder:
+                        1,
+                    gtitle:
+                        "土耳其原装进口正品ViKing 蔚净免洗搓手液 芦荟味 100ml ",
+                    id:
+                        1315,
+                    price:
+                        15.9,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "土耳其原装进口正品ViKing 蔚净免洗搓手液 芦荟味 100ml ",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        9.6,
+                    zkprice:
+                        9.6
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171016143100.jpg",
-                    flashpic:null,
-                    id: 1537,
-                    price:"17.30",
-                    standard: "/盒",
-                    stitle:"丽芝士纳宝帝奶酪威化饼干200克",
-                    title:"丽芝士纳宝帝奶酪威化饼干200克",
-                    vipprice:"15.30",
-                    zkprice:"15.30"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012180723.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        1316,
+                    gorder:
+                        1,
+                    gtitle:
+                        "土耳其原装进口正品ViKing 蔚净洗手液 铃兰&香柏树味 500ml   ",
+                    id:
+                        1316,
+                    price:
+                        17.9,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "土耳其原装进口正品ViKing 蔚净洗手液 铃兰&香柏树味 500ml  ",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        11.3,
+                    zkprice:
+                        11.3
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012160255.jpg",
-                    flashpic:null,
-                    id:1538,
-                    price:"39.20",
-                    standard:"/盒",
-                    stitle:"丽芝士纳宝帝奶酪威化饼干350克",
-                    title:"丽芝士纳宝帝奶酪威化饼干350克",
-                    vipprice:"37.20",
-                    zkprice:"37.20"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020095039.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        1323,
+                    gorder:
+                        1,
+                    gtitle:
+                        "香蔓林鲜花洗衣液3000ml",
+                    id:
+                        1323,
+                    price:
+                        94,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "香蔓林鲜花洗衣液3000ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        78.3,
+                    zkprice:
+                        78.3
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012162615.jpg",
-                    flashpic: null,
-                    id:1539,
-                    price:"12.30",
-                    standard: "/瓶",
-                    stitle:"穆达王子桃子味茶饮料200ml",
-                    title: "穆达王子桃子味茶饮料200ml",
-                    vipprice:"10.30",
-                    zkprice:"10.30"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017145154.jpg",
+                    category:
+                        "60",
+                    gdesc:
+                        null,
+                    good_id:
+                        1095,
+                    gorder:
+                        1,
+                    gtitle:
+                        "Kitchen-art 不粘炒锅28cm",
+                    id:
+                        1095,
+                    price:
+                        164,
+                    standard:
+                        "/个",
+                    stitle:
+                        "Kitchen-art 不粘炒锅28cm",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        139.9,
+                    zkprice:
+                        139.9
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012163033.jpg",
-                    flashpic: null,
-                    id:1540,
-                    price:"37.80",
-                    standard:"/盒",
-                    stitle: "巴卡尔兰水果干可可牛奶味谷物棒240g",
-                    title:"巴卡尔兰水果干可可牛奶味谷物棒240g",
-                    vipprice:"35.80",
-                    zkprice: "35.80"
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002155201.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        369,
+                    gorder:
+                        0,
+                    gtitle:
+                        "西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
+                    id:
+                        369,
+                    price:
+                        42.8,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        33.3,
+                    zkprice:
+                        33.3
                 },
-                {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012163345.jpg",
-                    flashpic: null,
-                    id:1541,
-                    price:"37.80",
-                    standard:"/盒",
-                    stitle:"巴卡尔兰热带水果干谷物棒(冷加工糕点）240g ",
-                    title:"巴卡尔兰热带水果干谷物棒(冷加工糕点）240g ",
-                    vipprice: "35.80",
-                    zkprice:"35.80"
-                }
-            ],
-            [
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019164336.jpg",
-                    flashpic: null,
-                    id:1479,
-                    price:"35.00",
-                    standard:"/瓶",
-                    stitle:"德露宝 洗发沐浴二合一（缤纷水果味）300ml",
-                    title:"德露宝 洗发沐浴二合一（缤纷水果味）300ml",
-                    vipprice:"33.00",
-                    zkprice:"33.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171013184032.jpg",
-                    flashpic:null,
-                    id:1024,
-                    price:"37.00",
-                    standard:"/支",
-                    stitle:"LION狮王牙膏牙刷 婴儿儿童防龋齿预防蛀牙天然木糖醇牙膏 龋克菲防蛀 葡萄味60G ",
-                    title:"LION狮王牙膏牙刷 婴儿儿童防龋齿预防蛀牙天然木糖醇牙膏 龋克菲防蛀 葡萄味60G ",
-                    vipprice:"35.00",
-                    zkprice:"35.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924111743.jpg",
-                    flashpic:null,
-                    id: 1026,
-                    price:"209.00",
-                    standard: "/袋",
-                    stitle:"日本原装进口MOONY尤妮佳纸尿裤/S84片小号",
-                    title:"日本原装进口MOONY尤妮佳纸尿裤/S84片小号",
-                    vipprice:"189.00",
-                    zkprice:"189.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924113522.png",
-                    flashpic: null,
-                    id: 1029,
-                    price:"178.00",
-                    standard:"/袋",
-                    stitle:"日本原装花王纸尿裤NB90片",
-                    title:"日本原装花王纸尿裤NB90片",
-                    vipprice:"109.00",
-                    zkprice:"109.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171017113517.jpg",
-                    flashpic:null,
-                    id:1030,
-                    price:"178.00",
-                    standard:"/袋",
-                    stitle:"日本花王妙而舒婴儿学步裤 特大号(XL) 38片",
-                    title: "日本花王妙而舒婴儿学步裤 特大号(XL) 38片",
-                    vipprice:"158.00",
-                    zkprice: "158.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170926163614.png",
-                    flashpic:null,
-                    id:1295,
-                    price:"159.00",
-                    standard: "/个",
-                    stitle: "迪士尼维尼PP喝水杯300ml",
-                    title: "迪士尼维尼PP喝水杯300ml",
-                    vipprice:"149.00",
-                    zkprice:"149.00"
-                }
-            ],
-            [
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171002155201.jpg",
-                    flashpic: null,
-                    id:369,
-                    price:"37.80",
-                    standard:"/瓶",
-                    stitle:"西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
-                    title:"西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
-                    vipprice:"29.00",
-                    zkprice:"29.00"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171002154754.jpg",
-                    flashpic:"http://worldwideapp.chinazjtc.com/upload/img/170923174805.png",
-                    id: 978,
-                    price:"37.80",
-                    standard:"/瓶",
-                    stitle:"西班牙原装进口玛玉浓缩马赛皂液洗衣液洗衣粉超大量3L",
-                    title:"西班牙原装进口玛玉浓缩马赛皂液洗衣液洗衣粉超大量3L",
-                    vipprice:"24.90",
-                    zkprice:"24.90"
-                },
-                {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171002113111.jpg",
-                    flashpic: null,
-                    id:980,
-                    price:"15.80",
-                    standard:"/瓶",
-                    stitle: "西班牙原装进口MAYOR DOMO/玛玉厨房清洁浓缩型洗洁精600ml",
-                    title:"西班牙原装进口MAYOR DOMO/玛玉厨房清洁浓缩型洗洁精600ml",
-                    vipprice:"12.80",
-                    zkprice: "12.80"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171020110651.jpg",
-                    flashpic:null,
-                    id:1299,
-                    price:"51.90",
-                    standard:"/瓶",
-                    stitle:"御衣坊生態濃縮橘油洗衣精100%天然橘2000ml",
-                    title:"御衣坊生態濃縮橘油洗衣精100%天然橘2000ml",
-                    vipprice:"49.90",
-                    zkprice: "49.90"
-                },
-                {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012172058.jpg",
-                    flashpic: null,
-                    id:1555,
-                    price:"15.50",
-                    standard:"/瓶",
-                    stitle:"蔚净玻璃清洗剂 500ml",
-                    title:"蔚净玻璃清洗剂 500ml",
-                    vipprice:"12.30",
-                    zkprice:"12.30"
-                },
-                {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171017150008.jpg",
-                    flashpic:null,
-                    id: 1300,
-                    price:"189.00",
-                    standard:"/个",
-                    stitle:"Kitchen-art 钻石涂层不粘炒锅28cm",
-                    title:"Kitchen-art 钻石涂层不粘炒锅28cm",
-                    vipprice:"169.00",
-                    zkprice:"169.00"
-                }
             ]
         ];
         this.getData = this.goods[0];
@@ -428,7 +976,7 @@ export default class NewDay extends React.Component{
                                     <img src={item.bigpic} alt=""  />
                                 </div>
                                 <div className='box'>
-                                    <p className='name'>{item.title} </p>
+                                    <p className='name'>{item.gtitle} </p>
                                     <p className='price'>
                                         ￥{item.zkprice}<span>￥{item.price}</span>
                                         {/*<button>马上抢</button>*/}

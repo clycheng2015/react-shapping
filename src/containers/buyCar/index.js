@@ -9,6 +9,7 @@ import {AppLocalStorage} from '../../utils/cookie'
 import {Icon, Flex} from 'antd-mobile'
 
 import * as car from 'actions/car'
+
 require('./styles/index.less')
 
 
@@ -29,13 +30,16 @@ export default class BuyCar extends React.Component {
         this.user = AppLocalStorage.Cache.get('user')
 
     }
+
     componentDidMount() {
-        const {fetchCarList, pagesize, pagenum} = this.props
-        if(this.user){
+        const {fetchCarList, pagesize, pagenum, fetchCarBanner} = this.props
+        if (this.user) {
             fetchCarList({
                 pagesize: pagesize,
                 pagenum: pagenum
             })
+
+            fetchCarBanner()
         }
     }
 
@@ -50,7 +54,8 @@ export default class BuyCar extends React.Component {
     }
 
     render() {
-        const {data, history, match} = this.props
+        const {data, history, match, banner} = this.props
+
         return (
             <div className="car-container"
                  style={{
@@ -76,7 +81,7 @@ export default class BuyCar extends React.Component {
                             <div>
                                 <div className="banner-info">
                                     <img src={require('static/images/user/car_icon.png')} alt=""/>
-                                    全场满88包邮！
+                                    {banner && banner.id && banner.name}
                                     {/*<img src={require('static/images/user/close_icon.png')} alt=""/>*/}
                                 </div>
                                 <CarList {...this.props}/>

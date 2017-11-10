@@ -56,30 +56,19 @@ class MoreList extends React.Component {
 
             return (
                 <div key={rowID} className="goods" onClick={() =>
-
-                    nativeClick({
-                        type:2,
-                        url:'',
-                        id:rowData.id,
-                        name:rowData.stitle,
-                        activeType:'0'
-                    })}>
+                    nativeClick({type:2, url:'', id:rowData.id, name:rowData.stitle, activeType:'0'})}>
 
                     <div className="img-info">
-
-                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
-
-
+                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!60p'} alt="" ref={(el)=>this.imgH=el}/>
                     </div>
-
                     <div className="txt-info">
-                        <p className="title">
-                            {rowData.stitle}
+                        <p className="title">{rowData.stitle}</p>
+                        <p className="price">
+                            ￥{Number(rowData.zkprice).toFixed(2)}
+                            <span> ￥{Number(rowData.price).toFixed(2)}</span>
                         </p>
-                        <p className="price">￥{Number(rowData.zkprice).toFixed(2)}</p>
+
                     </div>
-
-
                 </div>
             );
         };
@@ -88,8 +77,6 @@ class MoreList extends React.Component {
                 ref={el => this.lv = el}
                 dataSource={this.state.dataSource.cloneWithRows(list)}
                 renderFooter={() => (<div style={{padding: 30, textAlign: 'center', lineHeight: "1rem"}}>
-
-
                     { hasMore && isFetching && <span style={{marginTop:".3rem"}}><Icon type="loading"/></span>}
 
                     { hasMore && !isFetching && <span style={{marginTop:".3rem"}}><Icon type="loading"/></span>}

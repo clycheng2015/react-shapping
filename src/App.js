@@ -92,6 +92,8 @@ const VipActive = asyncComponent(() => import( './containers/active/vipActive'))
 const HotGoods = asyncComponent(() => import( './containers/active/hotGoods'));
 const JoinUs = asyncComponent(() => import( './containers/active/joinUs'));
 
+const DoubleActive = asyncComponent(() => import( './containers/active/doubleActive'));
+
 
 
 
@@ -183,7 +185,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/userCenter" component={UserCenter}/>
                             <Route location={location} path="/myOrder/:id" component={MyOrder}/>
                             <Route location={location} path="/bill/:id" component={Bill}/>
-                            <Route location={location} path="/address" component={Address}/>
+                            <Route location={location} path="/address/:state" component={Address}/>
                             <Route location={location} path="/newAds" component={NewAds}/>
                             <Route location={location} path="/phone" component={UpdatePhone}/>
                             <Route location={location} path="/orderDetail" component={OrderDetail}/>
@@ -216,6 +218,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/joinUs" component={JoinUs}/>
 
                             <Route location={location} path="/protocol/:id" component={Protocol}/>
+                            <Route location={location} path="/doubleActive" component={DoubleActive}/>
 
 
 

@@ -19,8 +19,8 @@ export default class JoinUs extends React.Component{
 
     }
     componentDidMount(){
-        // this.props.getActiveList({});
-        // this.props.getNameList({pagesize:0,pagenum:100,cid:12})
+
+        document.title = '加盟店专区';
 
     }
 

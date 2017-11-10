@@ -12,7 +12,8 @@ let init = {
     isFetching:false,
     disIsFetching:false,
     skillHasMore:true,
-    disHasMore:true
+    disHasMore:true,
+    scrollT:0
 }
 
 
@@ -21,9 +22,16 @@ export const active = (state = init, action) => {
 
     switch (action.type) {
 
+        case 'ACTIVE_SCROLL':
+
+            return {...state,scrollT:action.scrollT}
+
+
         case types.REQUEST_ACTIVE_LIST:
 
             return {...state,isFetching:true}
+
+
 
         case types.RECIEVE_ACTIVE_LIST:
 
