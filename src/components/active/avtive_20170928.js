@@ -9,7 +9,6 @@ import {Link} from 'react-router-dom'
 import {Carousel, Progress} from 'antd-mobile'
 
 
-import Scroller from '../../utils/Scroller/src/Scroller';
 
 let banner = [
     {
