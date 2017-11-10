@@ -328,7 +328,7 @@ const CustomChildren = props => {
                 }}>{props.children}</div>
                 <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
                     <input type="text" disabled
-                           style={{width: "100%"}}
+                           style={{width: "100%",border:'none',outline:"none"}}
                            value={props.extra}/></div>
             </div>
         </div>
