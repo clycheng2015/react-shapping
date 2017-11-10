@@ -139,6 +139,7 @@ class UpdatePwd extends React.Component {
             <div className="auth-update-container" style={{
                 width: "100%",
                 height: document.documentElement.clientHeight,
+                background:"white"
                 // background: 'url(' + require('static/image/login_bg.png') + ') center center /  100%  100%  no-repeat'
             }}>
 

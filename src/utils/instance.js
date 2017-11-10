@@ -2,45 +2,62 @@
  * Created by admin on 2016/10/10.
  */
 import axios from 'axios';
+import createHistory from 'history/createHashHistory'
+const history = createHistory()
+import {Modal} from 'antd-mobile'
+
+const alert=Modal.alert
+
+
 import {AppLocalStorage} from './cookie'
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
-let url = ''
-if (isPro) {
+let url = '',xToken = ''
+if (isPro) {url = 'http://app.meilungo.com'} else {url = 'http://localhost:3011'}
+axios.defaults.baseURL = url;
+axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
-    url = 'http://test.meilungo.com'
+// http request 拦截器
 
-    // url = 'http://localhost:80/app'
-
-
-} else {
-
-    url = 'http://localhost:3011'
-}
-
-//封装好的get和post接口，调用方法情况action文件
-let options = {
-    baseURL: url, //设置默认api路径
-    timeout: 5000, //设置超时时间
-    headers: {},
-}
-let user = AppLocalStorage.Cache.get('user')
-let xToken = '';
-if (user && user.userInfo) {
-
-    xToken = user.userInfo.access_token
-
-    options = {
-        ...options, headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Bearer' + xToken
+axios.interceptors.request.use(
+    config => {
+        if(config.url.indexOf('open')<0){
+            console.log("添加token")
+            let user = AppLocalStorage.Cache.get('user')
+            if (user && user.userInfo) {
+                xToken = user.userInfo.access_token
+                config.headers.Authorization = `Bearer${xToken}`;
+            }
         }
-    }
+        return config;
+    },
+    err => {
+        return Promise.reject(err);
+    });
 
-}
+// http response 拦截器
+axios.interceptors.response.use(
+    response => {
+        return response;
+    },
+    error => {
+        if (error.response) {
+            switch (error.response.status) {
+                case 401:
+                    // 返回 401 清除token信息并跳转到登录页面
+                    alert('提示', '网络状态改变，请重新登录！', [
+                        { text: '取消', onPress: () =>history.goBack(), style: 'default' },
+                        { text: '前往登录', onPress: () => {
+                            let url=window.location.href
+                            url= url.match(/#(\S*)/)[1];
+                            url=url.replace('/','')
+                            window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfeeca20eb6657e60&redirect_uri=http://app.meilungo.com/wxgetopenid?url=auth_${url}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+                        }},
+                    ]);
+            }
+        }
+        return Promise.reject(error.response)   // 返回接口返回的错误信息
+    });
 
 
-const instance = axios.create(options);
-
-
-export default instance;
+export default axios;

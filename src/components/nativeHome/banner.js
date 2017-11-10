@@ -2,7 +2,9 @@
  * Created by bear on 2017/9/9.
  */
 import React from 'react'
-import {Carousel} from 'antd-mobile'
+import {Carousel,Toast} from 'antd-mobile'
+
+import {nativeClick} from '../../utils/native-sdk'
 
 const data = [
 
@@ -21,9 +23,12 @@ class Banner extends React.Component {
 
     }
 
+
     render() {
 
         const {data}=this.props
+
+
 
         return(
             <Carousel
@@ -38,10 +43,20 @@ class Banner extends React.Component {
                 }}
             >
                 {data.map((i, key) => (
-
-                    <img key={key} src={i.iconpic} onLoad={() => {
-                        this.setState({initialHeight: null,})
-                    }}
+                    <img key={key} src={i.iconpic} onClick={()=>{nativeClick({
+                        type:i.type,
+                        url:i.linked_txt,
+                        id:i.linked_txt,
+                        name:i.title,
+                        activeType:''
+                    })}}
+                         onLoad={() => {
+                             // fire window resize event to change height
+                             window.dispatchEvent(new Event('resize'));
+                             this.setState({
+                                 initialHeight: null,
+                             });
+                         }}
                     />
 
                 ))}

@@ -13,7 +13,7 @@ let init = {
         pagenum: 1,
         tab: "待付款",
         tabIndex: 0,
-        orderState: "1",
+        orderState:1,
         orderList: [],
         orderListInfo: {},
         tabs:
@@ -25,7 +25,7 @@ let init = {
     },
     bill: {
         pagesize: 100,
-        pagenum: 1,
+        pagenum: 0,
         data: {}
     },
     address: {
@@ -33,7 +33,8 @@ let init = {
         data: {},
     },
     orderDetail: {
-        pathList: []
+        pathList: [],
+        remark:""
     },
     yesOrderDetail:{},
     topUp:{},
@@ -41,8 +42,10 @@ let init = {
     payData:{},
     newPayOrder:{},
     postageData:{},
-
-    jinfuList:[]
+    jinfuData:{},
+    helpData:{},
+    kefuTel:{},
+    IcBanner:{}
 
 
 }
@@ -77,14 +80,7 @@ export const user = (state = init, action) => {
             }
         case types.REQUEST_ORDER_LIST:
             return {...state, order: {...state.order, isFetching: true,isHandle:false,}}
-
-        case types.GET_BILL_LIST:
-            return {
-                ...state,
-                bill: {...state.bill, pagesize: action.pagesize, pagenum: action.pagenum, data: action.data}
-            }
-
-        case types.GET_ORDER_LIST:
+        case types.RECEIVE_ORDER_LIST:
 
             return {
                 ...state,
@@ -109,6 +105,12 @@ export const user = (state = init, action) => {
 
                 }
             }
+        case types.GET_BILL_LIST:
+            return {
+                ...state,
+                bill: {...state.bill, pagesize: action.pagesize, pagenum: action.pagenum, data: action.data}
+            }
+
         case types.ADD_ADDRESS:
 
             return {...state, address: {...state.address,}}
@@ -175,6 +177,15 @@ export const user = (state = init, action) => {
                 }
             }
 
+        case types.ORDER_REMARK:
+
+            return {
+                ...state, orderDetail: {
+                    ...state.orderDetail,
+                    remark: action.data,
+                }
+            }
+
 
 
 
@@ -207,32 +218,37 @@ export const user = (state = init, action) => {
                 ...state,payData:action.data,newPayOrder:{}
             }
 
-
         case types.SAVE_PAY_ORDER:
-
             return {
                 ...state,newPayOrder:action.data
             }
-
         case types.GET_POSTAGE:
-
             return {
                 ...state,postageData:action.data
             }
-
         case types.GOODS_ACTIVE_ORDER:
-
             return {
                 ...state,newPayOrder:action.data
             }
-
-
         case types.GET_JINFU_PRO:
-
             return {
-                ...state,jinfuList:action.data
+                ...state,jinfuData:action.data
             }
 
+        case types.GET_HELP:
+            return {
+                ...state,helpData:action.data
+            }
+
+        case types.GET_Tel:
+            return {
+                ...state,kefuTel:action.data
+            }
+
+        case types.GET_IC_BANNER:
+            return {
+                ...state,IcBanner:action.data
+            }
 
 
         default:

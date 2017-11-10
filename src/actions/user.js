@@ -4,12 +4,10 @@
 
 import qs from 'qs'
 import instance from '../utils/instance'
-import wxaxios from '../utils/wxaxios'
 import {user} from '../utils/api'
 import * as types from '../utils/const'
 import {Toast} from 'antd-mobile'
 import {pay} from '../utils/weipay'
-
 
 const userInfo = (userInfo) => ({
     type: types.GET_USERINFO,
@@ -36,9 +34,9 @@ const requestOrderList = (tab) => ({
     tab,
 });
 
-const orderList = (tab, orderState, datalist, pagenum, pagesize, success) => ({
+const receiveOrderList = (tab, orderState, datalist, pagenum, pagesize, success) => ({
 
-    type: types.GET_ORDER_LIST,
+    type: types.RECEIVE_ORDER_LIST,
     tab,
     orderState,
     pagenum,
@@ -306,6 +304,30 @@ export  const refundRemark = (data) => ({
 
 })
 
+/**
+ * 获取帮助中心
+ */
+
+export  const getHelp = (data) => ({
+
+    type: types.GET_HELP,
+
+    data
+
+})
+
+/**
+ * 获取客服电话
+ */
+
+export  const getTel = (data) => ({
+
+    type: types.GET_Tel,
+
+    data
+
+})
+
 
 /**
  *
@@ -319,6 +341,37 @@ export  const refundRemark = (data) => ({
     data
 
 })
+
+
+
+/**
+ *
+ * @param data
+ * @returns {function(*, *)}
+ *
+ *
+ */
+ export const orderRemark = (data) => ({
+    type: types.ORDER_REMARK,
+    data
+
+})
+
+
+
+/**
+ *
+ * @param data
+ * @returns {function(*, *)}
+ *
+ *
+ */
+ export const getIcBanner = (data) => ({
+    type: types.GET_IC_BANNER,
+    data
+
+})
+
 
 
 
@@ -343,28 +396,18 @@ export const getUserInfo = (data) => {
 
 export const fetchUpdateName = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.updateNameUrl, qs.stringify(data))
-
-
+        instance.post(user.updateNameUrl,qs.stringify(data))
             .then(res => {
-
                 if (res.data.code == 200) {
                     Toast.info('修改成功！', 1)
                     dispatch(updateName())
-                    dispatch(getUserInfo({uid: data.uid}))
-
-
+                    dispatch(getUserInfo({uid: data.uid,version:'1.1.0'}))
                 }
                 else {
-
                     Toast.info(res.data.msg, 1)
-
                 }
-
-
             })
             .catch(error => {
-
                 console.log('error: ', error)
             })
     }
@@ -374,11 +417,21 @@ export const fetchOrderList = (tab, data) => {
     return (dispatch, getState) => {
 
         dispatch(requestOrderList(tab))
-        instance.post(user.orderListUrl, qs.stringify(data))
+
+        instance.get(user.orderListUrl+"?"+ qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
 
-                    dispatch(orderList(tab, data.state, res.data.data.datalist, data.pagenum, data.pagesize, true))
+                    console.log(res)
+
+                    if(res.data.data==null){
+                        dispatch(receiveOrderList(tab, data.state, [], data.pagenum, data.pagesize, true))
+                    }
+                    else {
+
+                        dispatch(receiveOrderList(tab, data.state, res.data.data.datalist, data.pagenum, data.pagesize, true))
+
+                    }
                 }
                 else {
 
@@ -563,14 +616,7 @@ export const fetchCarCreateOrder = (data, history, count) => {
                     // Toast.info(res.data.msg, 1)
                     Toast.success("创建成功！", 1)
                     dispatch(carCreateOrder(res.data.data))
-
-                    history.push({
-
-                        pathname: "/pay",
-
-                        state: {count: count}
-
-                    })
+                    history.push(`/pay/${count}`)
                 } else {
 
                     Toast.info(res.data.msg, 1)
@@ -597,14 +643,7 @@ export const fetchGsCreateOrder = (data, history, count) => {
                     // Toast.info(res.data.msg, 1)
                     Toast.success("创建成功！", 1)
                     dispatch(goodsCreateOrder(res.data.data))
-
-                    history.push({
-
-                        pathname: "/pay",
-
-                        state: {count: count}
-
-                    })
+                    history.push(`/pay/${count}`)
                 } else {
 
                     Toast.info(res.data.msg, 1)
@@ -632,13 +671,7 @@ export const fetchActiveOrder = (data, history, count) => {
                     Toast.success("创建成功！", 1)
                     dispatch( activeOrder(res.data.data))
 
-                    history.push({
-
-                        pathname: "/pay",
-
-                        state: {count: count}
-
-                    })
+                    history.push(`/pay/${count}`)
                 } else {
 
                     Toast.info(res.data.msg, 1)
@@ -665,7 +698,7 @@ export const fetchDelOrder = (data, history, type) => {
 
         // Toast.loading("创建订单中，请稍后！",1)
 
-        instance.post(user.delOrder, qs.stringify(data))
+        instance.get(user.delOrder+'?'+ qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     // Toast.info(res.data.msg, 1)
@@ -694,7 +727,7 @@ export const fetchOrderDetai = (data) => {
     return (dispatch, getState) => {
 
 
-        instance.post(user.getOrderDetail, qs.stringify(data))
+        instance.get(user.getOrderDetail+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
 
@@ -721,22 +754,11 @@ export const fetchOrderDetai = (data) => {
 
 export const fetchTopUp = (data,history) => {
     return (dispatch, getState) => {
-        instance.post(user.topUpUrl, qs.stringify(data))
+        instance.get(user.topUpUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
-
-                    // console.log(res.data)
-
                     dispatch(topUp(res.data.data))
-
-                    history.push({
-
-                        pathname:"/pay",
-                        state:{
-                            count:data.money,
-                            topup:'topup'
-                        }
-                    })
+                    dispatch(fetchPay({order_id:res.data.data.id,paytype:"H5"},history))
 
                 } else {
 
@@ -754,10 +776,9 @@ export const fetchTopUp = (data,history) => {
 
 export const fetchWithDraw = (data,history) => {
     return (dispatch, getState) => {
-        instance.post(user.drawMoneyUrl, qs.stringify(data))
+        instance.get(user.drawMoneyUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
-
                     dispatch(withDraw(res.data.data))
                     Toast.success(res.data.data.msg,1)
                     history.push({
@@ -785,12 +806,10 @@ export const fetchWithDraw = (data,history) => {
 
 export const fetchPay = (data,history) => {
     return (dispatch, getState) => {
-        wxaxios.post(user.payUrl, qs.stringify(data))
+        instance.get(user.payUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
-
                     dispatch(gopay(res.data.data))
-
                     pay(res.data.data,history)
 
                 } else {
@@ -814,37 +833,27 @@ export const fetchPay = (data,history) => {
 
 export const fetchExpPay = (data,history) => {
     return (dispatch, getState) => {
-        instance.post(user.expPayUrl, qs.stringify(data))
+        instance.get(user.expPayUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
-                    dispatch(goMoneyPay(res.data.data))
                     Toast.success("支付成功!",1)
-
+                    dispatch(goMoneyPay(res.data.data))
                     setTimeout(()=>{
-                        // "use strict";
                         history.push('/')
-
-                    },600)
-
-
+                    },1000)
                 } else {
                     Toast.fail(res.data.msg, 1)
                 }
-
             })
             .catch(error => {
-
                 console.log('error: ', error)
             })
     }
 }
 
-
-
-
 export const fetchGetPostage = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.postage, qs.stringify(data))
+        instance.get(user.postage+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(getPostage(res.data.data))
@@ -868,7 +877,7 @@ export const fetchRefund = (data,history) => {
 
     return (dispatch, getState) => {
 
-        instance.post(user.refundUrl, qs.stringify(data))
+        instance.get(user.refundUrl+"?"+qs.stringify(data))
             .then(res => {
 
                 if (res.data.code == 200) {
@@ -895,7 +904,7 @@ export const fetchRefund = (data,history) => {
 
 export const fetchComfirm = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.comfirmUrl, qs.stringify(data))
+        instance.get(user.comfirmUrl+"?"+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(comfirmOreder(res.data.data))
@@ -916,10 +925,69 @@ export const fetchComfirm = (data) => {
 
 export const fetchJinfu = (data) => {
     return (dispatch, getState) => {
-        instance.post(user.jinfuUrl, qs.stringify(data))
+        instance.get(user.jinfuUrl+'?'+qs.stringify(data))
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(getJinfu(res.data.data))
+                }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+
+
+export const fetchHelp = () => {
+    return (dispatch, getState) => {
+        instance.get(user.helpUrl)
+            .then(res => {
+                if (res.data.code == 200) {
+                    dispatch(getHelp(res.data.data))
+                }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+export const fetchTel = () => {
+    return (dispatch, getState) => {
+        instance.get(user.telUrl)
+            .then(res => {
+                if (res.data.code == 200) {
+                    dispatch(getTel(res.data.data))
+                }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+
+
+
+
+export const fetchIcBaner = () => {
+    return (dispatch, getState) => {
+        instance.get(user.icbannerUrl)
+            .then(res => {
+                console.log(res)
+                if (res.data.code == 200) {
+
+                    dispatch(getIcBanner(res.data.data))
                 }
             })
             .catch(error => {

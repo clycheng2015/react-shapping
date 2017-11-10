@@ -4,17 +4,17 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Icon,Flex,List} from 'antd-mobile'
+import {Icon, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
-import * as global from 'actions/global'
+import {AppLocalStorage} from '../../utils/cookie'
 require('./styles/jinfu.less')
 
 @connect(
     state => {
         return {...state.user}
     },
-    dispatch => bindActionCreators({...user, ...global}, dispatch)
+    dispatch => bindActionCreators({...user}, dispatch)
 )
 export default class Jinfu extends React.Component {
 
@@ -25,50 +25,44 @@ export default class Jinfu extends React.Component {
             modal1: false,
             modal2: false,
         }
-
-
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
-     const {fetchJinfu}=this.props
-
-
-        fetchJinfu({})
-
-
+        const {fetchJinfu, getUserInfo} = this.props
+        fetchJinfu({pagesize: 20, pagenum: 0})
+        let user = AppLocalStorage.Cache.get('user')
+        if (user && user.userInfo) {
+            getUserInfo({
+                uid: user.userInfo.id,
+                version: "1.1.0"
+            })
+        }
     }
+
     render() {
-        const { history,jinfuList,userInfo} = this.props
+        const {history, jinfuData, userInfo} = this.props
 
-
-        console.log(userInfo)
         return (
             <div className="jinfu-container" ref='wrapper'
-
-                 style={{
-                     minHeight: document.documentElement.clientHeight,
-                     background: "#f3f3f1"
-                 }}
-            >
-
+                 style={{minHeight: document.documentElement.clientHeight, background: "#f3f3f1"}}>
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
                         <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
                             history.goBack()
                         }}/></Flex.Item>
                         <Flex.Item className="item-head center">金凤金服</Flex.Item>
-                        <Flex.Item className="item-head right"><span style={{color:"#999999"}}>协议</span></Flex.Item>
+                        <Flex.Item className="item-head right"><span style={{color: "#999999"}} onClick={()=>history.push('/protocol/5')}>协议</span></Flex.Item>
                     </Flex>
                 </div>
-                <div style={{height:".9rem"}}>
+                <div style={{height: ".9rem"}}>
 
                 </div>
                 <div className="count-info" style={{
-                    background:'url('+require('static/images/user/jin_bg.png')+') center center /  100%  100%  no-repeat'
+                    background: 'url(' + require('static/images/user/jin_bg.png') + ') center center /  100%  100%  no-repeat'
                 }}>
 
-                    <div className="bill-box" onClick={()=>history.push("/bill")}>
+                    <div className="bill-box" onClick={() => history.push(`/bill/${1}`)}>
                         <img src={require('static/images/user/bill.png')} alt=""/>
                         账单
 
@@ -88,64 +82,23 @@ export default class Jinfu extends React.Component {
 
                     </div>
                 </div>
-
-
-
                 <div className="img-info">
 
+                    {
+                        jinfuData && jinfuData.datalist && jinfuData.datalist.length > 0 && jinfuData.datalist.map((i, k) => (
 
-                {
-                    jinfuList && jinfuList.length>0&&jinfuList.map((i,k)=>(
+                            <div key={k}>{
+                                i.list.map((i, index) => (
+                                    <img  key={index} src={i.smallpic} alt=""   onClick={()=>history.push(`/jinTopUp/${i.id}`)}/>
+                                ))}
 
-                        <img  key={k} src={i.smallpic} alt="" onClick={()=>history.push(`/jinTopUp/${i.id}`)}/>
-                    ))
-                }
+                            </div>
+                        ))
+                    }
                 </div>
-
-
-                <div className={`${userInfo.istixian==1?'draw-btn':"no-draw"}`}
-
-                onClick={()=>{if(userInfo.istixian==1){history.push('/jinDraw')}else {return}}}
-                >
-                    提现
+                <div className={`${userInfo.istixian == 1 ? 'draw-btn' : "no-draw"}`} onClick={() => {if (userInfo.istixian == 1) {history.push('/jinDraw')} else {return}}}>
+                    提现 (每周二可提现)
                 </div>
-
-
-
-
-                {/*<List.Item*/}
-                    {/*thumb={require('../../static/images/user/top_icon.png')} arrow="horizontal"*/}
-                    {/*onClick={() => {*/}
-
-                        {/*history.push('/jinTopUp')*/}
-                    {/*}}*/}
-                {/*>充值</List.Item>*/}
-
-                {/*<List.Item*/}
-                    {/*thumb={require('../../static/images/user/top_icon.png')} arrow="horizontal"*/}
-                    {/*onClick={() => {*/}
-
-                        {/*history.push('/jinDraw')*/}
-                    {/*}}*/}
-                {/*>提现</List.Item>*/}
-
-
-                {/*<List.Item*/}
-                    {/*thumb={require('../../static/images/user/record_icon.png')}*/}
-                    {/*arrow="horizontal"*/}
-                    {/*onClick={() => {*/}
-
-                        {/*history.push('/bill')*/}
-                    {/*}}*/}
-
-                {/*>资金记录</List.Item>*/}
-
-
-                {/*<div className="msg-info">*/}
-                    {/*<p>温馨提示</p>*/}
-                    {/*<p>1、开业大酬宾：充值500送100。</p>*/}
-                    {/*<p> 2、VIP：余额与金凤余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格。</p>*/}
-                {/*</div>*/}
 
             </div>
         )

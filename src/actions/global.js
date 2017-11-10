@@ -1,6 +1,6 @@
 
 import qs from 'qs'
-import wxaxios from '../utils/wxaxios'
+import instance from '../utils/instance'
 import {wxSdkConfig} from '../utils/api'
 import {Share} from '../utils/wx-sdk'
 
@@ -38,10 +38,9 @@ export const fetchWxConfig=(shareInfo)=>{
     href=encodeURIComponent(href)
 
         return (dispatch, getState) => {
-        wxaxios.get(wxSdkConfig.shareUrl+`?url=${href}` )
+            instance.get(wxSdkConfig.shareUrl+`?url=${href}` )
             .then(res => {
                 dispatch(updateShareUrl())
-                console.log(res)
                     const share = new Share({
                         appid: res.data.data.appId, // 必填，公众号的唯一标识
                         timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳

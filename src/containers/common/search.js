@@ -52,18 +52,38 @@ export default class Search extends React.Component {
 
 
     _search = (v) => {
-        const {getSearchList, pagesize, pagenum} = this.props
+        const {getSearchList} = this.props
 
         getSearchList({
-            pagesize: pagesize,
-            pagenum: pagenum,
+            pagesize: 20,
+            pagenum: 0,
             word: v
         })
     }
 
+    _updownMore = () => {
+        const {pagenum, isFetching, hasMore, getSearchList, pagesize, word} = this.props
+
+        if (isFetching || !hasMore) {
+            return;
+        }
+        let num = pagenum
+        let data = {
+            pagesize: pagesize, pagenum: ++num,
+
+        }
+
+        if (word !== '') {
+
+            data = {...data, word: word}
+
+        }
+        getSearchList(data)
+
+    }
+
     render() {
-        const {list, history} = this.props
-        console.log(list)
+        const {list, history, isFetching, hasMore} = this.props
         return (
             <div className="search-list-container">
                 <div className="nav-tab">
@@ -95,9 +115,17 @@ export default class Search extends React.Component {
                 </div>
 
                 <div className="list">
+                    {
+                        list && list.length > 0 &&
+                        <GoodsList
+                            list={list}
+                            history={history}
+                            isFetching={isFetching}
+                            hasMore={hasMore}
+                            loadMore={this._updownMore}
 
-                    {list && list.length > 0 &&
-                    <GoodsList {...this.props}/>}
+                        />
+                    }
 
                 </div>
 

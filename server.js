@@ -9,34 +9,19 @@ const webpackServerConfig = require('./webpackServerConfig')
 
 
 const proxy = [
-    // {
-    // path: '/app',
-    // target: 'http://worldwideapp.chinazjtc.com',
-    // secure: false,
-    // changeOrigin: true
-    // },
-    // {
-    // path: '/app',
-    // target: 'http://cjynapp.chinazjtc.com',
-    // secure: false,
-    // changeOrigin: true
-    // },
     {
     path: '/app',
-    target: 'http://test.meilungo.com',
+    target: 'http://app.meilungo.com',
     secure: false,
     changeOrigin: true
     },
 
     {
     path: '/v2',
-    target: 'http://test.meilungo.com',
+    target: 'http://app.meilungo.com',
     secure: false,
     changeOrigin: true
     },
-
-
-
 
 
 ];

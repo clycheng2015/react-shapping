@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeLocalItem, localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
 
 import {createForm} from 'rc-form';
 import {InputItem, Modal, Icon, Flex, Toast, List} from 'antd-mobile'
@@ -33,66 +33,35 @@ class WithDraw extends React.Component {
 
     }
 
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
+    componentWillMount(){
+        const { getUserInfo} = this.props
+        let user = AppLocalStorage.Cache.get('user')
+        if (user && user.userInfo) {
+            getUserInfo({
+                uid: user.userInfo.id,
+                version: "1.1.0"
+            })
+        }
     }
-
-    componentDidMount() {
-        // const {getUserInfo} = this.props
-        //
-        // let userInfo = localItem('userInfo')
-        //
-        // if (typeof userInfo == 'string') {
-        //     // console.log(JSON.parse(userInfo))
-        //     getUserInfo({uid: JSON.parse(userInfo).id})
-        // }
-    }
-
 
     _withdraw = () => {
 
-        const {uid, fetchWithDraw, history, location} = this.props
+        const {uid, fetchWithDraw, history, userInfo} = this.props
 
-        console.log(uid)
         const {getFieldsValue} = this.props.form;
 
-        // if (this.state.value > location.state.expCount) {
-        //
-        //     Toast.info("可提现金额为" + location.state.expCount, 1)
-        //     return false
-        // }
         let data = getFieldsValue(["bankname", "bankCard", "username", "phone"])
 
-        if (data.bankname == '') {
+        if (data.bankname === '') {Toast.info("请输入银行名称！", 1);return false}
+        if (data.username === '') {Toast.info("请输入银行名称！", 1);return false}
+        if (data.bankCard === '' || (data.bankCard.replace(/\s/g, '').length < 15)) {Toast.info("请输入正确的银行卡号！", 1);return false}
+        if (data.phone === '' || (data.phone.replace(/\s/g, '').length < 11)) {Toast.info("请输入正确的手机号！", 1);return false}
 
-            Toast.info("请输入银行名称！", 1)
-            return false
-
-        }
-        if (data.username == '') {
-
-            Toast.info("请输入银行名称！", 1)
-            return false
-
-        }
-        if (data.bankCard == '' || (data.bankCard.replace(/\s/g, '').length < 15)) {
-
-            Toast.info("请输入正确的银行卡号！", 1)
-            return false
-
-        }
-        if (data.phone == '' || (data.phone.replace(/\s/g, '').length < 11)) {
-
-            Toast.info("请输入正确的手机号！", 1)
-            return false
-
-        }
-
+        if(this.state.value>userInfo.jftomoney){Toast.info("可提现金额不足！", 1);return false}
         let newdata={
             uid:uid,
             tiqumoney:this.state.value,
-            money:location.state.expCount,
+            money:userInfo.jftomoney,
             bankname:data.bankname,
             banknum:data.bankCard.replace(/\s/g, ''),
             bankusername:data.username,
@@ -104,53 +73,34 @@ class WithDraw extends React.Component {
     }
 
     render() {
-        const {history, topUp, location} = this.props
+        const {history, userInfo} = this.props
         const {getFieldProps} = this.props.form;
         return (
-            <div className="jinwithdraw-container"
-
-                 style={{
-                     minHeight: document.documentElement.clientHeight,
-                     background: "#f3f3f1"
-                 }}
-            >
+            <div className="jinwithdraw-container" style={{minHeight: document.documentElement.clientHeight, background: "#f3f3f1"}}>
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
-                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                            history.goBack()
-                        }}/></Flex.Item>
+                        <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {history.goBack()}}/></Flex.Item>
                         <Flex.Item className="item-head center">提现</Flex.Item>
                         <Flex.Item className="item-head right"><span></span></Flex.Item>
                     </Flex>
                 </div>
-                <div className="top-info">
-                    <div className="title">
-                        提现金额：
+                {
+                    userInfo&&userInfo.id&&
+                    <div><div className="top-info-wl">
+                            <div className="title">提现金额：</div>
+                            <div className="cnt">
+                                <InputItem type="'number"
+                                           {...getFieldProps('number')}
+                                           value={this.state.value}
+                                           onChange={(v) => this.setState({
+                                               value: v
+                                           })}
+                                           placeholder={ userInfo.jftomoney}>￥</InputItem>
+                            </div>
+                        </div>
+                        <p className="more">最多可提现：{userInfo.jftomoney}元<span onClick={() => this.setState({value:userInfo.jftomoney})}>全部使用</span></p>
                     </div>
-                    <div className="cnt">
-                        <InputItem type="'number"
-                                   {...getFieldProps('number')}
-                                   value={this.state.value}
-
-                                   onChange={(v) => this.setState({
-
-                                       value: v
-                                   })}
-                                   placeholder="12.80">￥</InputItem>
-                    </div>
-                </div>
-
-                {/*<p className="more">*/}
-                    {/*最多可提现：*/}
-                    {/*{*/}
-                        {/*location.state && location.state.expCount ? location.state.expCount : 0.00*/}
-                    {/*}*/}
-                    {/*元*/}
-                    {/*<span onClick={() => this.setState({*/}
-
-                        {/*value: location.state && location.state.expCount ? location.state.expCount : 0*/}
-                    {/*})}>全部使用</span>*/}
-                {/*</p>*/}
+                }
 
                 <List className="form">
                     <InputItem
@@ -199,6 +149,4 @@ class WithDraw extends React.Component {
         )
     }
 }
-
-
 export  default createForm()(WithDraw)

@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeLocalItem, localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
 
 
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
@@ -18,7 +18,7 @@ const prompt = Modal.prompt;
     state => {
         return {...state.user}
     },
-    dispatch => bindActionCreators({...user, ...global}, dispatch)
+    dispatch => bindActionCreators({...user}, dispatch)
 )
 
 export default class UserCenter extends React.Component {
@@ -26,50 +26,30 @@ export default class UserCenter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: '',
-            modal1: false,
-            modal2: false,
         }
-    }
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
     }
 
     componentDidMount() {
 
         const {getUserInfo} = this.props
+        let user = AppLocalStorage.Cache.get('user')
 
-        let userInfo = localItem('userInfo')
-
-        if (typeof userInfo == 'string') {
-            // console.log(JSON.parse(userInfo))
-            getUserInfo({uid: JSON.parse(userInfo).id})
+        if (user) {
+            getUserInfo({uid: user.userInfo.id,version:'1.1.0'})
         }
 
     }
-
     _updateName = (value, uid) => {
-
-        console.log(value,uid)
-
         const {fetchUpdateName} = this.props
-
         if (value == '') {
             Toast.info("昵称不能为空", 1)
-
         }
         else {
-
             fetchUpdateName({
                 realname: value,
                 uid: uid
             })
-
-
         }
-
-
     }
 
     render() {

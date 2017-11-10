@@ -19,16 +19,18 @@ class ModelFour extends React.Component {
         new BScroll(this.shop, options)
     }
     render() {
-        const {history ,data}=this.props
+        const {history ,data,linkedDtos}=this.props
+
+        console.log(linkedDtos)
         return (
                 <div className="model-five" ref={el => this.shop = el} style={{width: "100%"}}>
-                    <ul style={{width: `${(data.length+3)*2}rem`}}>
+                    <ul style={{width: `${(data.length+2)*2}rem`}}>
                         {
                             data.map((i, index) => (
                                 <li className="" key={index}
-                                    onClick={() => history.push(`/goodsDetail/${i.goods_id}`)}>
+                                    onClick={() => history.push(`/goodsDetail/${i.good_id}`)}>
                                     <div className="img-info">
-                                        <img src={i.pic} alt=""/>
+                                        <img src={i.pic+'?imageMogr2/thumbnail/!30p'} alt=""/>
                                     </div>
 
                                     <div className="txt-info">
@@ -42,12 +44,9 @@ class ModelFour extends React.Component {
                             ))
                         }
                         <li className="more">
-
                             <div className="box"
                                  onClick={() => history.push({
-                                     pathname: `/itemList/36`,
-                                     state: {title: '商场推荐'}
-
+                                     pathname: `/itemList/${linkedDtos[0].linked_txt}T${linkedDtos[0].remark}`
                                  })}>
                                 查看更多
                             </div>

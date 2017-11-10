@@ -2,10 +2,8 @@
 
 
 import React from 'react';
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux';
-import { ListView , Tabs, WhiteSpace, PullToRefresh, Button} from 'antd-mobile';
-import { StickyContainer, Sticky } from 'react-sticky';
+
+
 import {Icon, Flex} from 'antd-mobile'
 
 import './style/seckill.less';
@@ -13,7 +11,7 @@ import './style/seckill.less';
 
 
 
-export default class Special extends React.Component{
+export default class Seckill extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -454,7 +452,7 @@ export default class Special extends React.Component{
 
                         {this.data.map(function (item,index) {
                             return(
-                                <ul>
+                                <ul key={index}>
                                     {item.map((item,key)=>{
 
                                         return(

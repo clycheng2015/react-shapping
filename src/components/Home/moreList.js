@@ -46,7 +46,7 @@ class MoreList extends React.Component {
 
         let num = pagenum
 
-        if (isFetching && !hasMore) {
+        if (isFetching || !hasMore) {
             return;
         }
 
@@ -73,7 +73,10 @@ class MoreList extends React.Component {
                         <p className="title">
                             {rowData.stitle}
                         </p>
-                        <p className="price">￥{Number(rowData.zkprice).toFixed(2)}</p>
+                        <p className="price">
+                            ￥{Number(rowData.zkprice).toFixed(2)}
+                            <span> ￥{Number(rowData.price).toFixed(2)}</span>
+                        </p>
                     </div>
 
 

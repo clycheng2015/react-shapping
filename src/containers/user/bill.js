@@ -5,7 +5,8 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {removeLocalItem, localItem} from '../../utils/cookie'
+import {AppLocalStorage} from '../../utils/cookie'
+import {ymd} from '../../utils/tools'
 
 
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
@@ -18,7 +19,7 @@ const alert = Modal.alert;
     state => {
         return {...state.user}
     },
-    dispatch => bindActionCreators({...user, ...global}, dispatch)
+    dispatch => bindActionCreators({...user}, dispatch)
 )
 
 export default class Bill extends React.Component {
@@ -30,21 +31,15 @@ export default class Bill extends React.Component {
     }
 
     componentDidMount() {
-        const {fetchMyBill, bill, uid} = this.props
-
-        console.log(this.props)
-
-
+        const {fetchMyBill, bill,match} = this.props
+       const {params}=match
         const {pagesize, pagenum} = bill
-
         fetchMyBill({
             pagesize: pagesize,
             pagenum: pagenum,
-            uid: uid
+            type:params.id
         })
     }
-
-
     render() {
         const {bill, history} = this.props
         const {data} = bill
@@ -85,11 +80,11 @@ export default class Bill extends React.Component {
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_red.png')}
                                                            key={key}
-                                                           extra={"-" + i.usermoney}
+                                                           extra={"-" + i.money}
                                                 >
                                                     提现
                                                     <List.Item.Brief>
-                                                        {i.addtime}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 
@@ -102,11 +97,11 @@ export default class Bill extends React.Component {
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_blue.png')}
                                                            key={key}
-                                                           extra={"+" + i.usermoney}
+                                                           extra={"+" + i.money}
                                                 >
                                                     充值
                                                     <List.Item.Brief>
-                                                        {i.addtime}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 
@@ -117,30 +112,46 @@ export default class Bill extends React.Component {
                                             return (
 
                                                 <List.Item arrow=""
-                                                           thumb={ require('static/image/icon_bill_blue.png')}
+                                                           thumb={ require('static/image/icon_bill_red.png')}
                                                            key={key}
-                                                           extra={"+" + i.usermoney}
+                                                           extra={"-" + i.money}
                                                 >
-                                                    商品抵消
+                                                    消费
                                                     <List.Item.Brief>
-                                                        {i.addtime}
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 
                                             )
 
-                                        case 'FAN':
+                                        case 'TXTUI':
 
                                             return (
 
                                                 <List.Item arrow=""
                                                            thumb={ require('static/image/icon_bill_blue.png')}
                                                            key={key}
-                                                           extra={"+" + i.usermoney}
+                                                           extra={"+" + i.money}
                                                 >
-                                                    返现
+                                                    提现退款
                                                     <List.Item.Brief>
-                                                        {i.addtime}
+                                                        {ymd(i.addtime,'-',':')}
+                                                    </List.Item.Brief>
+                                                </List.Item>
+
+                                            )
+                                        case 'TUI':
+
+                                            return (
+
+                                                <List.Item arrow=""
+                                                           thumb={ require('static/image/icon_bill_blue.png')}
+                                                           key={key}
+                                                           extra={"+" + i.money}
+                                                >
+                                                    退款
+                                                    <List.Item.Brief>
+                                                        {ymd(i.addtime,'-',':')}
                                                     </List.Item.Brief>
                                                 </List.Item>
 

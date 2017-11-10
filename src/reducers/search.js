@@ -6,7 +6,7 @@ let init = {
     pagenum: 0,
     list: [],
     isFetching: false,
-    hamMore: true,
+    hasMore: true,
     word:''
 
 
@@ -34,7 +34,7 @@ export function search(state = init, action) {
             else if (action.pagenum === 0) {
                 dataList = action.data.datalist
             }
-            return {...state,hamMore:hasMore, isFetching: false, list: dataList,pagesize:action.pagesize,pagenum:action.pagenum,word:action.word}
+            return {...state,hasMore:hasMore, isFetching: false, list: dataList,pagesize:action.pagesize,pagenum:action.pagenum,word:action.word}
 
 
         default:

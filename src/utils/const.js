@@ -38,7 +38,7 @@ export const UPDATE_NAME = 'UPDATE_NAME' //修改名称
 
 export const REQUEST_ORDER_LIST = 'REQUEST_ORDER_LIST'
 
-export const GET_ORDER_LIST = 'GET_ORDER_LIST' //获取订单列表
+export const RECEIVE_ORDER_LIST = 'RECEIVE_ORDER_LIST' //获取订单列表
 
 export const ORDER_TAB_CHANGE = 'ORDER_TAB_CHANGE' //订单选选项卡改变
 
@@ -102,6 +102,13 @@ export  const SAVE_PAY_ORDER='SAVE_PAY_ORDER' //保存支付订单
 export  const GET_POSTAGE='GET_POSTAGE' //获取邮费
 
 
+export  const GET_HELP='GET_HELP' //获取帮助中心
+
+export  const GET_Tel='GET_Tel' //获取客服电话
+
+export  const GET_IC_BANNER='GET_IC_BANNER' //获取登陆后的banner
+
+
 
 
 export  const REQUEST_ACTIVE_LIST='REQUEST_ACTIVE_LIST' //
@@ -162,6 +169,9 @@ export const SAVE_INVOICE_TYPE='SAVE_INVOICE_TYPE'
 //
 
 export const GET_JINFU_PRO='GET_JINFU_PRO'
+
+
+export const ORDER_REMARK='ORDER_REMARK'
 
 
 

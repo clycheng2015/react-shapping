@@ -1,41 +1,7 @@
 import React ,{ReactDom}from 'react';
 import {ListView, Icon} from 'antd-mobile';
+import {nativeClick} from '../../utils/native-sdk'
 
-const data = [
-    {
-        img: require("static/images/d1.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900gasdasdasdsadasdasdsadasd',
-        price: 199,
-    },
-    {
-        img: require("static/images/d2.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-    {
-        img: require("static/images/d3.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-    {
-        img: require("static/images/d4.png"),
-        title: ' 澳洲可瑞康(Karicare)婴幼儿羊奶粉1段900g',
-        price: 199,
-    },
-];
-let index = data.length - 1;
-
-const NUM_ROWS = 20;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-    const dataBlob = {};
-    for (let i = 0; i < NUM_ROWS; i++) {
-        const ii = (pIndex * NUM_ROWS) + i;
-        dataBlob[`${ii}`] = `row - ${ii}`;
-    }
-    return dataBlob;
-}
 
 class MoreList extends React.Component {
     constructor(props) {
@@ -52,8 +18,6 @@ class MoreList extends React.Component {
     componentDidMount() {
 
         const {scrollT} =this.props
-
-
             this.lv.scrollTo(0,scrollT-this.imgH.offsetHeight);
 
         // console.log(  window.getComputedStyle((this.imgH).height))
@@ -77,7 +41,7 @@ class MoreList extends React.Component {
 
         let num = pagenum
 
-        if (isFetching && !hasMore) {
+        if (isFetching || !hasMore) {
             return;
         }
 
@@ -91,23 +55,20 @@ class MoreList extends React.Component {
         const row = (rowData, sectionID, rowID) => {
 
             return (
-                <div key={rowID} className="goods" onClick={() => history.push(`/goodsDetail/${rowData.id}`)}>
+                <div key={rowID} className="goods" onClick={() =>
+                    nativeClick({type:2, url:'', id:rowData.id, name:rowData.stitle, activeType:'0'})}>
 
                     <div className="img-info">
-
-                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
-
-
+                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!60p'} alt="" ref={(el)=>this.imgH=el}/>
                     </div>
-
                     <div className="txt-info">
-                        <p className="title">
-                            {rowData.stitle}
+                        <p className="title">{rowData.stitle}</p>
+                        <p className="price">
+                            ￥{Number(rowData.zkprice).toFixed(2)}
+                            <span> ￥{Number(rowData.price).toFixed(2)}</span>
                         </p>
-                        <p className="price">￥{Number(rowData.zkprice).toFixed(2)}</p>
+
                     </div>
-
-
                 </div>
             );
         };
@@ -116,8 +77,6 @@ class MoreList extends React.Component {
                 ref={el => this.lv = el}
                 dataSource={this.state.dataSource.cloneWithRows(list)}
                 renderFooter={() => (<div style={{padding: 30, textAlign: 'center', lineHeight: "1rem"}}>
-
-
                     { hasMore && isFetching && <span style={{marginTop:".3rem"}}><Icon type="loading"/></span>}
 
                     { hasMore && !isFetching && <span style={{marginTop:".3rem"}}><Icon type="loading"/></span>}

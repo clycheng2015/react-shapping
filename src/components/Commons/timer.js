@@ -65,11 +65,9 @@ class Timer extends Component {
 
     getDateData(endDate) {
         let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date)) / 1000;
-
         if (diff <= 0) {
             return false;
         }
-
         const timeLeft = {
             years: 0,
             days: 0,

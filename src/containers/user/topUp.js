@@ -38,32 +38,17 @@ export default class TopUP extends React.Component {
             id: '',
             modal1: false,
             modal2: false,
-            value:null
+            value:null,
+            bannerState:1
         }
 
     }
-
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
-    }
-
-    componentDidMount() {
-        // const {getUserInfo} = this.props
-        //
-        // let userInfo = localItem('userInfo')
-        //
-        // if (typeof userInfo == 'string') {
-        //     // console.log(JSON.parse(userInfo))
-        //     getUserInfo({uid: JSON.parse(userInfo).id})
-        // }
-    }
-
-
     _topUp=()=>{
 
-        const {uid,fetchTopUp,history}=this.props
-        console.log(localItem('userInfo'))
+        const {fetchTopUp,history}=this.props
+
+        console.log("1323")
+
         if(this.state.value==null){
 
             Toast.info("请输入充值金额！",1)
@@ -77,21 +62,12 @@ export default class TopUP extends React.Component {
 
             return false
         }
-        fetchTopUp({
-
-            uid:uid?uid:JSON.parse(localItem('userInfo')).id,
-            money:this.state.value
-        },history)
+        fetchTopUp({money:this.state.value},history)
 
     }
     render() {
 
-        const { history,topUp,userInfo} = this.props
-
-
-
-        let user=userInfo||JSON.parse(localItem('userInfo'))
-
+        const { history,userInfo} = this.props
 
         return (
             <div className="topUp-container"
@@ -111,21 +87,27 @@ export default class TopUP extends React.Component {
                     </Flex>
                 </div>
 
+                <div style={{height:"1rem"}}>
 
-                <div className="banner-info">
+                </div>
+
+                {
+                    this.state.bannerState===888&&
+                    <div className="banner-info">
 
                     <img src={require('static/images/user/ban_icon.png')} alt=""/>
                     {
-                        Number(user.money)>=500 && '充值500元以上，享受专享优惠'
+                        Number(userInfo.mymoney)>=500 && '充值500元以上，享受专享优惠'
                     }
 
                     {
-                        Number(user.money)<500 && `您还差${500-Number(user.money).toFixed(2)}元，享受专享优惠`
+                        Number(userInfo.mymoney)<500 && `您还差${(500-Number(userInfo.mymoney)).toFixed(2)}元，享受专享优惠`
                     }
 
-                    <img src={require('static/images/user/close_icon.png')} alt=""/>
+                    <img src={require('static/images/user/close_icon.png')} alt="" onClick={()=>this.setState({bannerState:0})}/>
 
-                </div>
+                    </div>
+                }
 
                 <div className="count-info">
                     <p className="title">
@@ -162,7 +144,7 @@ export default class TopUP extends React.Component {
                 <Flex  className="deal-info">
                     <Flex.Item style={{ padding: '15px 0', color: '#888', flex: 'none' }}>
                         <Radio className="my-radio"  checked={true} onChange={e => console.log('checkbox', e)}> &nbsp;选择勾选，</Radio>
-                        则代表您同意 <span style={{color:"#2aa2e2"}}>《美纶购充值协议》</span></Flex.Item>
+                        则代表您同意 <span style={{color:"#2aa2e2"}} onClick={()=>history.push('/protocol/2')}>《美纶购充值协议》</span></Flex.Item>
                 </Flex>
                 <div className="up-btn"
                 onClick={()=>this._topUp()}

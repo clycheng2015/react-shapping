@@ -5,6 +5,13 @@ import instance from '../utils/instance'
 import {active} from '../utils/api'
 import * as types from '../utils/const'
 
+export const recordScrollT=(scrollT)=>({
+
+    type: 'ACTIVE_SCROLL',scrollT
+
+})
+
+
 
 const requestAcList = () => ({
     type: types.REQUEST_ACTIVE_LIST,
@@ -24,6 +31,8 @@ const receiveDisAcList = (list,pagesize,pagenum) => ({
     type: types.RECIEVE_DSIACTIVE_LIST,
     list,pagesize,pagenum
 })
+
+
 
 export const fetchAcList = (data,resolve,reject) => {
     return (dispatch, getState) => {

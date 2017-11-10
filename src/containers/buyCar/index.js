@@ -4,12 +4,11 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import {localItem} from '../../utils/cookie'
-import {Icon, Flex} from 'antd-mobile'
-/*actions*/
-import * as car from 'actions/car'
 
+import {AppLocalStorage} from '../../utils/cookie'
+import {Icon, Flex} from 'antd-mobile'
+
+import * as car from 'actions/car'
 
 require('./styles/index.less')
 
@@ -28,61 +27,50 @@ export default class BuyCar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.userInfo = localItem('userInfo')
+        this.user = AppLocalStorage.Cache.get('user')
 
     }
-    componentDidMount() {
-        const {fetchCarList, pagesize, pagenum} = this.props
-        let userInfo = this.userInfo
-        if ((typeof userInfo) == 'string') {
 
+    componentDidMount() {
+        const {fetchCarList, pagesize, pagenum, fetchCarBanner} = this.props
+        if (this.user) {
             fetchCarList({
-                uid: JSON.parse(userInfo).id,
+                pagesize: pagesize,
+                pagenum: pagenum
+            })
+
+            fetchCarBanner()
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {fetchCarList, pagesize, pagenum, isFetching} = nextProps
+        if (isFetching) {
+            fetchCarList({
                 pagesize: pagesize,
                 pagenum: pagenum
             })
         }
     }
-    componentWillReceiveProps(nextProps) {
-        const {fetchCarList, pagesize, pagenum, isFetching} = nextProps
 
-        console.log(isFetching)
-        if (isFetching) {
-            let userInfo = this.userInfo
-            if ((typeof userInfo) == 'string') {
-
-                fetchCarList({
-                    uid: JSON.parse(userInfo).id,
-                    pagesize: pagesize,
-                    pagenum: pagenum
-                })
-            }
-
-
-        }
-    }
     render() {
-        const {data, history, fetchDelCar, fetchUpdateCarNum, match} = this.props
-
+        const {data, history, match, banner} = this.props
 
         return (
             <div className="car-container"
                  style={{
-                     // minHeight: document.documentElement.clientHeight,
+                     height: document.documentElement.clientHeight,
                      background: "#f7f6f6"
                  }}>
                 <div key={this.props.location.pathname}>
                     <div className="nav-tab">
                         <Flex justify="center" align="center">
-
                             {
-                                match.params.state == 'dltocar' ?
+                                match.params.state === 'dltocar' ?
                                     <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
                                         history.goBack()
                                     }}/></Flex.Item> : <Flex.Item className="item-head left"><span></span></Flex.Item>
                             }
-
-
                             <Flex.Item className="item-head center">购物车</Flex.Item>
                             <Flex.Item className="item-head right"><span></span></Flex.Item>
                         </Flex>
@@ -90,18 +78,14 @@ export default class BuyCar extends React.Component {
 
                     {
                         data && data.datalist && data.datalist.length > 0 ?
-
                             <div>
-
                                 <div className="banner-info">
-
                                     <img src={require('static/images/user/car_icon.png')} alt=""/>
-                                    全场满88包邮！
+                                    {banner && banner.id && banner.name}
                                     {/*<img src={require('static/images/user/close_icon.png')} alt=""/>*/}
-
                                 </div>
-                                <CarList history={history} list={data.datalist} fetchDelCar={fetchDelCar}
-                                         fetchUpdateCarNum={fetchUpdateCarNum} match={match}/>
+                                <CarList {...this.props}/>
+
                             </div>
                             :
                             <div className="empty-info"
@@ -110,7 +94,6 @@ export default class BuyCar extends React.Component {
                                      background: "#f7f6f6"
                                  }}
                             >
-
                                 <img src={require('static/images/empty/noads_icon.png')} alt=""/>
                                 <p> 您的购物车空空如也</p>
                                 <p onClick={() => {
@@ -120,8 +103,7 @@ export default class BuyCar extends React.Component {
                     }
                 </div>
                 {
-                    match.params.state == 'dltocar' ?'' :
-                        <TabBarMain history={history} page="buyCar"/>
+                    match.params.state !== 'dltocar' && <TabBarMain history={history} page="buyCar"/>
                 }
             </div>
         )

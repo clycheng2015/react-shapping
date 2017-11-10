@@ -334,7 +334,7 @@ class ActiveContent extends React.Component {
                             {/*/>*/}
                         {/*))}*/}
                     {/*</Carousel>*/}
-                    <img  src={require("static/image/open.png")} onLoad={() => {
+                    <img  src={require("static/image/1031banenr.jpg")} onLoad={() => {
                         this.setState({initialHeight: null,})
                     }}
 

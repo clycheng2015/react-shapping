@@ -20,9 +20,9 @@ class Active extends React.Component {
 
     }
     render() {
-        const {data}=this.props
+        const {data,history}=this.props
 
-        const {history }=this.props
+        console.log(new Date(parseInt(data.endtime)).toISOString())
         return (
             <div className="active-info">
                 <div className="skill-head">
@@ -34,8 +34,8 @@ class Active extends React.Component {
                         <span className="title">活动结束时间</span>
                         <div className="count-info">
                             <Timer
-                                date={new Date(parseInt(data.endtime)).toISOString()}
-                                // date="2017-11-10T00:00:00+00:00"
+                                date={data.endtime?new Date(parseInt(data.endtime)).toISOString():"2017-11-10T00:00:00+00:00"}
+                                 // date="2017-11-10T00:00:00+00:00"
                                 days={{plural: 'Days ', singular: 'day '}}
                                 hours=':'
                                 mins=':'
@@ -56,10 +56,10 @@ class Active extends React.Component {
                             data.goodsSimpleDtos.map((i, key) => (
 
                                 <li className="" key={key}
-                                    onClick={() => history.push(`/goodsDetail/${i.good_id}`)}>
+                                    onClick={() => history.push(`/activeDetail/${i.good_id}SECKILL`)}>
                                     <div className="img-info">
 
-                                        <img src={i.pic} alt=""/>
+                                        <img src={i.pic+'?imageMogr2/thumbnail/!30p'} alt=""/>
 
                                     </div>
                                     <div className="price-info">
@@ -70,13 +70,13 @@ class Active extends React.Component {
                             ))
                         }
 
-                        <li className="more swiper-slide">
+                        {/*<li className="more swiper-slide">*/}
 
-                            <div className="box" onClick={() => history.push('/seckill')}>
-                                查看更多
-                            </div>
+                            {/*<div className="box" onClick={() => history.push('/seckill')}>*/}
+                                {/*查看更多*/}
+                            {/*</div>*/}
 
-                        </li>
+                        {/*</li>*/}
 
 
                     </ul>

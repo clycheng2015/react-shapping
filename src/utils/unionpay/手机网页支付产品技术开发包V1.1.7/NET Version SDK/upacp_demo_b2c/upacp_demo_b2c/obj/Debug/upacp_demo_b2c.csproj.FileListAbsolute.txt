@@ -1,0 +1,5 @@
+D:\svn\全渠道相关\37-开发包\01-网关、wap\NET Version SDK\upacp_demo_b2c\upacp_demo_b2c\bin\upacp_demo_b2c.dll
+D:\svn\全渠道相关\37-开发包\01-网关、wap\NET Version SDK\upacp_demo_b2c\upacp_demo_b2c\bin\upacp_demo_b2c.pdb
+D:\svn\全渠道相关\37-开发包\01-网关、wap\NET Version SDK\upacp_demo_b2c\upacp_demo_b2c\obj\Debug\upacp_demo_b2c.csprojResolveAssemblyReference.cache
+D:\svn\全渠道相关\37-开发包\01-网关、wap\NET Version SDK\upacp_demo_b2c\upacp_demo_b2c\obj\Debug\upacp_demo_b2c.dll
+D:\svn\全渠道相关\37-开发包\01-网关、wap\NET Version SDK\upacp_demo_b2c\upacp_demo_b2c\obj\Debug\upacp_demo_b2c.pdb

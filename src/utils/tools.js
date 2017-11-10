@@ -62,3 +62,82 @@ export const setTitle=(title)=>{
 
 
 }
+
+/***
+ * 截取首页跳转路由
+ * @param str
+ * @returns {*}
+ */
+
+export function getPath(str) {
+    if(str.indexOf('#')<0){
+        return str
+    }else {
+        str=str.replace(str.substring(0,str.indexOf('#')+1),'')
+        return str
+    }
+}
+
+
+
+
+let newDate = new Date();
+Date.prototype.format = function(format) {
+    var date = {
+        "M+": this.getMonth() + 1,
+        "d+": this.getDate(),
+        "h+": this.getHours(),
+        "m+": this.getMinutes(),
+        "s+": this.getSeconds(),
+        "q+": Math.floor((this.getMonth() + 3) / 3),
+        "S+": this.getMilliseconds()
+    };
+    if (/(y+)/i.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    for (var k in date) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+        }
+    }
+    return format;
+}
+// console.log(newDate.format('yyyy-MM-dd h:m:s'));
+
+
+
+
+/*
+ * 得到此格式的时间
+ */
+function dateAddZero(number) {
+    return (number < 10 ? '0' + number : number);
+}
+
+export function ymd(val,dateGapSign,timeGapSign){
+    var valType = typeof (val);
+    if (valType == "string"){
+        val = parseInt(val);
+    }
+    var date = new Date(val);
+    var formatDate = date.getFullYear()+dateGapSign+dateAddZero(date.getMonth()+1)+dateGapSign+dateAddZero(date.getDate())+" "+dateAddZero(date.getHours())+timeGapSign+dateAddZero(date.getMinutes())+timeGapSign+dateAddZero(date.getSeconds());
+    return formatDate;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

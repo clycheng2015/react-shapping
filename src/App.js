@@ -51,7 +51,7 @@ const NewAds = asyncComponent(() => import( './containers/user/newAds'))
 const UpdatePhone = asyncComponent(() => import( './containers/user/phone'))
 const OrderDetail = asyncComponent(() => import( './containers/common/orderDetail'))
 const Pay = asyncComponent(() => import( './containers/common/pay'))
-const Ceshi = asyncComponent(() => import( './containers/common/ceshi'))
+
 const YesOrderDetail = asyncComponent(() => import( './containers/common/yesOrderDetail'))
 const TopUp = asyncComponent(() => import( './containers/user/topUp'))
 const WithDraw = asyncComponent(() => import( './containers/user/withdraw'))
@@ -60,10 +60,14 @@ const Wallet = asyncComponent(() => import( './containers/user/wallet'))
 const Jinfu = asyncComponent(() => import( './containers/user/jinfu'))
 const JinTopUp = asyncComponent(() => import( './containers/user/jinTopUp'))
 const JinDraw = asyncComponent(() => import( './containers/user/jinDraw'))
+const Help = asyncComponent(() => import( './containers/user/help'))
+const WebTxt = asyncComponent(() => import( './containers/user/webTxt'))
 
 
 const PostType = asyncComponent(() => import( './containers/common/postType'))
 const Invoice = asyncComponent(() => import( './containers/common/invoice'))
+
+const Protocol = asyncComponent(() => import( './containers/common/protocol'))
 
 
 
@@ -87,6 +91,8 @@ const ImportedClass = asyncComponent(() => import( './containers/active/imported
 const VipActive = asyncComponent(() => import( './containers/active/vipActive'));
 const HotGoods = asyncComponent(() => import( './containers/active/hotGoods'));
 const JoinUs = asyncComponent(() => import( './containers/active/joinUs'));
+
+const DoubleActive = asyncComponent(() => import( './containers/active/doubleActive'));
 
 
 
@@ -116,44 +122,33 @@ export default class App extends React.Component {
             }
 
             if(href.indexOf('?')>0){
-
                 let url= href.match(/\?(\S*)#/)[0]
-
                 href=href.replace(url,'#')
             }
-
             this.props.fetchWxConfig({
-
-                imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
+                imgUrl: 'http://app.meilungo.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
             });
 
         }
-        window.addEventListener('hashchange', () => {
+        window.addEventListener('hashchange', (el) => {
 
             // this.props.currentAnimate('normal')
-
-
             let href=window.location.href
-
-
             if(href.indexOf('from=singlemessage&isappinstalled=0')>0){
-
                 href= href.replace('from=singlemessage&isappinstalled=0','')
                 window.location.href=href
                 return
             }
             if(href.indexOf('?')>0){
-
                 let url= href.match(/\?(\S*)#/)[0]
-
                 href=href.replace(url,'#')
             }
+            if(href.indexOf('goodsDetail')>0||href.indexOf('activeDetail')>0){
+                return
+            }
             if (isPro) {
-
-
                 this.props.fetchWxConfig({
-
-                    imgUrl: 'http://worldwideapp.chinazjtc.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
+                    imgUrl: 'http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
                 });
 
             }
@@ -189,14 +184,16 @@ export default class App extends React.Component {
                             <Route location={location} path="/about" component={About}/>
                             <Route location={location} path="/userCenter" component={UserCenter}/>
                             <Route location={location} path="/myOrder/:id" component={MyOrder}/>
-                            <Route location={location} path="/bill" component={Bill}/>
+                            <Route location={location} path="/bill/:id" component={Bill}/>
                             <Route location={location} path="/address" component={Address}/>
                             <Route location={location} path="/newAds" component={NewAds}/>
                             <Route location={location} path="/phone" component={UpdatePhone}/>
                             <Route location={location} path="/orderDetail" component={OrderDetail}/>
-                            <Route location={location} path="/pay" component={Pay}/>
-                            <Route location={location} path="/ceshi" component={Ceshi}/>
-                            <Route location={location} path="/yesOrder/:count" component={YesOrderDetail}/>
+                            <Route location={location} path="/pay/:id" component={Pay}/>
+                            <Route location={location} path="/help" component={Help}/>
+                            <Route location={location} path="/webTxt" component={WebTxt}/>
+
+                            <Route location={location} path="/yesOrder/:id" component={YesOrderDetail}/>
                             <Route location={location} path="/topUp" component={TopUp}/>
                             <Route location={location} path="/withdraw" component={WithDraw}/>
                             <Route location={location} path="/active" component={Active}/>
@@ -219,6 +216,9 @@ export default class App extends React.Component {
                             <Route location={location} path="/vipActive" component={VipActive}/>
                             <Route location={location} path="/hotGoods" component={HotGoods}/>
                             <Route location={location} path="/joinUs" component={JoinUs}/>
+
+                            <Route location={location} path="/protocol/:id" component={Protocol}/>
+                            <Route location={location} path="/doubleActive" component={DoubleActive}/>
 
 
 

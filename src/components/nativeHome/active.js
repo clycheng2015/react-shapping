@@ -2,6 +2,8 @@
 import React from 'react'
 import Timer from '../Commons/timer'
 import BScroll from 'better-scroll'
+import {nativeClick} from '../../utils/native-sdk'
+
 
 class Active extends React.Component {
     constructor(props) {
@@ -21,8 +23,6 @@ class Active extends React.Component {
     }
     render() {
         const {data}=this.props
-
-        const {history,turn }=this.props
         return (
             <div className="active-info">
                 <div className="skill-head">
@@ -56,10 +56,13 @@ class Active extends React.Component {
                             data.goodsSimpleDtos.map((i, key) => (
 
                                 <li className="" key={key}
-                                    onClick={() =>turn(
+                                    onClick={() =>nativeClick(
                                         {
-                                            type:"active",
-                                            id:i.good_id
+                                            type:2,
+                                            url:'',
+                                            id:i.good_id,
+                                            name:i.name,
+                                            activeType:i.type
                                         }
 
                                     )}>
@@ -76,13 +79,22 @@ class Active extends React.Component {
                             ))
                         }
 
-                        <li className="more swiper-slide">
+                        {/*<li className="more swiper-slide">*/}
 
-                            <div className="box" onClick={() => history.push('/seckill')}>
-                                查看更多
-                            </div>
+                            {/*<div className="box" onClick={() => nativeClick(*/}
+                                {/*{*/}
+                                    {/*type:1,*/}
+                                    {/*url:'http://mlg.vo01.cn/nativeHome/index.html/#/doubleActive',*/}
+                                    {/*id:'',*/}
+                                    {/*name:'秒杀活动',*/}
+                                    {/*activeType:''*/}
+                                {/*}*/}
 
-                        </li>
+                            {/*)}>*/}
+                                {/*查看更多*/}
+                            {/*</div>*/}
+
+                        {/*</li>*/}
 
 
                     </ul>

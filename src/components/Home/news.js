@@ -15,8 +15,7 @@ class News extends React.Component {
     }
 
     render() {
-        const {data}=this.props
-
+        const {data,history}=this.props
         return (
             <div className="news">
                 <div className="left"><span className="title">美纶购<span className="exp">公告</span></span></div>
@@ -35,7 +34,15 @@ class News extends React.Component {
                         {
                             data.headLineDtoItems.map((i,k)=>(
 
-                                <div className="v-item" key={k}>{i.linked_txt}</div>
+                                <div className="v-item" key={k}
+                                     onClick={()=>history.push({
+                                         pathname:"/webTxt",
+                                         state:{
+                                             cnt:i.linked_txt,
+                                             name:i.title,
+                                         }
+                                     })}
+                                >{i.title}</div>
 
                             ))
                         }
@@ -45,12 +52,7 @@ class News extends React.Component {
                 {/*<span>丨 更多</span>*/}
                 {/*</div>*/}
             </div>
-
-
         )
-
     }
-
 }
-
 export  default News

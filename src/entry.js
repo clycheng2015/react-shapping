@@ -1,12 +1,10 @@
-// import 'babel-polyfill';
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
+import {createStore, applyMiddleware, combineReducers} from 'redux'
+import {Provider} from 'react-redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux'
 import thunk from 'redux-thunk';
-// import {getQueryString} from './utils/tools'
 import createLogger from 'redux-logger';
 
 import { AppContainer } from 'react-hot-loader'
@@ -23,6 +21,7 @@ import { AppContainer } from 'react-hot-loader'
 
 import App from './App'
 
+import {AppContainer} from 'react-hot-loader'
 
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
@@ -32,34 +31,46 @@ import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import debounce from 'lodash/debounce'
 import isArray from 'lodash/isArray'
-import {removeLocalItem} from './utils/cookie'
-const nodeEnv = process.env.NODE_ENV || 'development'
-
-const isPro = nodeEnv === 'production'
-
-// if (isPro) {
-//     console.log("获取openid")
-//     require('./utils/openId')
-// }
-// removeLocalItem("userInfo")
 window.isEmpty = isEmpty
 window.isEqual = isEqual
 window.debounce = debounce
 window.isArray = isArray
-
+const nodeEnv = process.env.NODE_ENV || 'development'
+const isPro = nodeEnv === 'production'
 const history = createHistory()
 const middleware = routerMiddleware(history)
-
-//解决移动端300毫秒延迟
-// FastClick.attach(document.body)
 const middlewares = [thunk, middleware]
 
-const store = createStore(
-    combineReducers({routing: routerReducer, ...rootReducer}),
+//
+// import App from './native'
+// import App from './nativehome'
 
-    composeWithDevTools(applyMiddleware(...middlewares,createLogger()))
-)
-// removeLocalItem('userInfo')
+import App from './App'
+
+let store;
+if (isPro) {
+    store = createStore(
+        combineReducers({routing: routerReducer, ...rootReducer}),
+        composeWithDevTools(applyMiddleware(...middlewares))
+    )
+} else {
+    store = createStore(
+        combineReducers({routing: routerReducer, ...rootReducer}),
+        composeWithDevTools(applyMiddleware(...middlewares, createLogger()))
+    )
+}
+
+export {store}
+
+/***
+ * 清空store
+ * @param Component
+ */
+
+// window.resetState = () => {
+//     store.dispatch(init());
+// }
+
 const render = Component =>
     ReactDOM.render(
         <AppContainer>
@@ -72,7 +83,7 @@ const render = Component =>
 
 render(App)
 
-if(module.hot) {
+if (module.hot) {
     module.hot.accept('./App', () => {
         const NextRootContainer = require('./App').default
         render(NextRootContainer)
