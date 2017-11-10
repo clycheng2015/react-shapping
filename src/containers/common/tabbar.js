@@ -2,6 +2,7 @@ import React, {PropTypes}from "react";
 import {Icon, TabBar} from 'antd-mobile';
 import {connect} from 'react-redux'
 
+require('./styles/tabbar.less')
 import {AppLocalStorage} from '../../utils/cookie'
 class TabBarMain extends React.Component {
 
@@ -24,6 +25,8 @@ class TabBarMain extends React.Component {
         const {changeTab, page, history} = this.props;
 
         return (
+
+            <div className="tab-bar-container">
             <TabBar
                 unselectedTintColor="#949494"
                 tintColor="black"
@@ -165,6 +168,7 @@ class TabBarMain extends React.Component {
                 >
                 </TabBar.Item>
             </TabBar>
+            </div>
         )
     }
 }
