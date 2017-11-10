@@ -52,7 +52,7 @@ export default class Address extends React.Component {
 
 
     _updateDefault = (id) => {
-        const {uid, fetchDefAds} = this.props
+        const {uid, fetchDefAdsge} = this.props
 
         fetchDefAds({
             uid: uid,
