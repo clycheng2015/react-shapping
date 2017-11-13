@@ -6,23 +6,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux'
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-
-
-
-////测试
-// import App from './test'
-
-
-//原生
-//
-// import App from './native'
-
-////商城入口
-
-import App from './App'
-
 import {AppContainer} from 'react-hot-loader'
-
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './reducers/index'
 import 'antd-mobile/dist/antd-mobile.less';
@@ -41,10 +25,9 @@ const history = createHistory()
 const middleware = routerMiddleware(history)
 const middlewares = [thunk, middleware]
 
-//
 // import App from './native'
 // import App from './nativehome'
-
+import App from './App'
 
 
 let store;
