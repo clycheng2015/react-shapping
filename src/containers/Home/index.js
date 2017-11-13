@@ -42,16 +42,15 @@ export default class Home extends React.Component {
         window.onscroll = null;
     }
 
-    _toRefresh=()=>{
+    _toRefresh = () => {
         const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
         fetchHome()
-        if (dataList.length === 0) {
-            fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
-        }
+        fetchHomeList({pagesize: pagesize, pagenum: 1,})
+
     }
 
     render() {
-        const {history, homeData, errorData, isFetching,headState} = this.props
+        const {history, homeData, errorData, isFetching, headState} = this.props
         return (
             <div className="home-container">
 

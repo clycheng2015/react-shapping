@@ -3,7 +3,7 @@ import * as types from '../utils/const'
 let init = {
 
     pagesize: 20,
-    pagenum: 0,
+    pagenum: 1,
     scrollT: 0,
     hasMore: true,
     isFetching: false,
@@ -52,7 +52,7 @@ export const home = (state = init, action) => {
                 dataList = dataList.concat(action.data.datalist)
             }
 
-            else if(action.pagenum===0){
+            else if(action.pagenum===1){
 
                 dataList=action.data.datalist
 
