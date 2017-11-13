@@ -18,6 +18,7 @@ export default class VipActive extends React.Component{
         this.goods = [
             [
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012163610.jpg",
                     category:
@@ -43,11 +44,12 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        31.5,
+                        35.8,
                     zkprice:
-                        31.5
+                        35.8
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012164027.jpg",
                     category:
@@ -73,11 +75,12 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        31.5,
+                        35.8,
                     zkprice:
-                        31.5
+                        35.8
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017161054.jpg",
                     category:
@@ -103,99 +106,477 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        33.4,
+                        38,
                     zkprice:
-                        33.4
+                        38
                 },
                 {
+
                     bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171024151155.jpg",
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017151451.jpg",
                     category:
-                        "66",
+                        "56",
                     gdesc:
                         null,
                     good_id:
-                        799,
+                        1566,
                     gorder:
-                        1,
+                        0,
                     gtitle:
-                        "卡萨布兰卡酒庄天逸珍藏系列赤霞珠750ml",
+                        "爱时乐香草牛奶味威化卷心酥 150g罐装",
                     id:
-                        799,
+                        1566,
                     price:
-                        258,
+                        25,
                     standard:
                         "/瓶",
                     stitle:
-                        "卡萨布兰卡酒庄天逸珍藏系列赤霞珠750ml",
+                        "爱时乐香草牛奶味威化卷心酥 150g罐装",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        23,
+                    zkprice:
+                        23
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010152306.jpg",
+                    category:
+                        "56",
+                    gdesc:
+                        null,
+                    good_id:
+                        1422,
+                    gorder:
+                        0,
+                    gtitle:
+                        "丽芝士纳宝帝奶酪威化饼干290克",
+                    id:
+                        1422,
+                    price:
+                        16,
+                    standard:
+                        "/盒",
+                    stitle:
+                        "丽芝士纳宝帝奶酪威化饼干290克",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        14.9,
+                    zkprice:
+                        14.9
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019142412.jpg",
+                    category:
+                        "56",
+                    gdesc:
+                        null,
+                    good_id:
+                        1535,
+                    gorder:
+                        0,
+                    gtitle:
+                        "好乔牌台湾好味道咸紫菜方酥500g",
+                    id:
+                        1535,
+                    price:
+                        44.6,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "好乔牌台湾好味道咸紫菜方酥500g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        42.6,
+                    zkprice:
+                        42.6
+                }
+            ],
+            [
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010144616.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        1415,
+                    gorder:
+                        0,
+                    gtitle:
+                        "康力士牌三文鱼油维生素E软胶囊300粒",
+                    id:
+                        1415,
+                    price:
+                        393,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "康力士牌三文鱼油维生素E软胶囊300粒",
                     tags:
                         "",
                     type:
                         "0",
                     vipprice:
-                        209.4,
+                        194,
                     zkprice:
-                        209.4
+                        194
                 },
                 {
+
                     bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/1510044879827.jpg",
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025142138.jpg",
                     category:
-                        "66",
+                        "33",
                     gdesc:
                         null,
                     good_id:
-                        1634,
+                        1425,
                     gorder:
-                        50,
+                        0,
                     gtitle:
-                        "西班牙 霓梦の幻灭重生 起泡酒（柠檬味）750ML-预售",
+                        "天美健牌维生素Ｅ软胶囊500mg",
                     id:
-                        1634,
+                        1425,
+                    price:
+                        193,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "天美健牌维生素Ｅ软胶囊500mg",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        188,
+                    zkprice:
+                        188
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011174841.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        708,
+                    gorder:
+                        1,
+                    gtitle:
+                        "康力士儿童水果口味糖果60粒",
+                    id:
+                        708,
                     price:
                         132,
                     standard:
                         "/瓶",
                     stitle:
-                        "西班牙 霓梦の幻灭重生 起泡酒（柠檬味）750ML-预售",
+                        "康力士儿童水果口味糖果60粒",
                     tags:
-                        "",
+                        null,
                     type:
                         "0",
                     vipprice:
-                        68,
+                        128,
                     zkprice:
-                        68
+                        128
                 },
                 {
+
                     bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/1510136032831.jpg",
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163426.jpg",
                     category:
-                        "66",
+                        "33",
                     gdesc:
                         null,
                     good_id:
-                        1656,
+                        944,
                     gorder:
-                        50,
+                        1,
                     gtitle:
-                        "瓦伦丁小麦啤酒（500ml听装）",
+                        "康力士®鲨鱼软骨粉胶囊100粒",
                     id:
-                        1656,
+                        944,
                     price:
-                        19,
+                        303,
                     standard:
-                        "/厅",
+                        "/瓶",
                     stitle:
-                        "瓦伦丁小麦啤酒（500ml听装）",
+                        "康力士®鲨鱼软骨粉胶囊100粒",
                     tags:
                         "",
                     type:
                         "0",
                     vipprice:
-                        19,
+                        149,
                     zkprice:
-                        19
+                        149
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011162758.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        953,
+                    gorder:
+                        1,
+                    gtitle:
+                        "康力士牌牛初乳片60片",
+                    id:
+                        953,
+                    price:
+                        203,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "康力士牌牛初乳片60片",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        99,
+                    zkprice:
+                        99
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011160143.jpg",
+                    category:
+                        "33",
+                    gdesc:
+                        null,
+                    good_id:
+                        930,
+                    gorder:
+                        1,
+                    gtitle:
+                        "康力士®红太胶囊60粒",
+                    id:
+                        930,
+                    price:
+                        303,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "康力士®红太胶囊60粒",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        149,
+                    zkprice:
+                        149
+                }
+            ],
+            [
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023113540.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1082,
+                    gorder:
+                        1,
+                    gtitle:
+                        "澳洲贝拉米（Bellamys）3段有机婴儿奶粉(1-3岁)900g 原装进口奶粉",
+                    id:
+                        1082,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "澳洲贝拉米（Bellamys）3段有机婴儿奶粉(1-3岁)900g 原装进口奶粉",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        229,
+                    zkprice:
+                        229
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023110615.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1090,
+                    gorder:
+                        1,
+                    gtitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美2段婴幼儿奶粉900g",
+                    id:
+                        1090,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美2段婴幼儿奶粉900g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        398,
+                    zkprice:
+                        398
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023114048.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1081,
+                    gorder:
+                        1,
+                    gtitle:
+                        "澳洲贝拉米（Bellamys）2段有机婴儿奶粉(6-12个月)900g 原装进口奶粉",
+                    id:
+                        1081,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "澳洲贝拉米（Bellamys）2段有机婴儿奶粉(6-12个月)900g 原装进口奶粉",
+                    tags:
+                        "",
+                    type:
+                        "0",
+                    vipprice:
+                        239,
+                    zkprice:
+                        239
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023114855.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1078,
+                    gorder:
+                        1,
+                    gtitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美4段婴幼儿奶粉900g",
+                    id:
+                        1078,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美4段婴幼儿奶粉900g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        398,
+                    zkprice:
+                        398
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023112349.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1085,
+                    gorder:
+                        1,
+                    gtitle:
+                        "澳洲可瑞康（Karicare）婴幼儿羊奶粉1段900g ",
+                    id:
+                        1085,
+                    price:
+                        403,
+                    standard:
+                        "/桶",
+                    stitle:
+                        "澳洲可瑞康（Karicare）婴幼儿羊奶粉1段900g ",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        398,
+                    zkprice:
+                        398
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023115102.jpg",
+                    category:
+                        "36",
+                    gdesc:
+                        null,
+                    good_id:
+                        1074,
+                    gorder:
+                        1,
+                    gtitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美1段婴幼儿奶粉900g",
+                    id:
+                        1074,
+                    price:
+                        403,
+                    standard:
+                        "/罐",
+                    stitle:
+                        "新西兰澳洲(Aptamil)可瑞康爱他美1段婴幼儿奶粉900g",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        398,
+                    zkprice:
+                        398
                 }
             ],
             [
@@ -225,39 +606,9 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        113.5,
+                        129,
                     zkprice:
-                        113.5
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011184755.jpg",
-                    category:
-                        "26",
-                    gdesc:
-                        "面膜",
-                    good_id:
-                        1526,
-                    gorder:
-                        0,
-                    gtitle:
-                        "丽得姿美蒂优氨基酸收缩毛孔面膜",
-                    id:
-                        1526,
-                    price:
-                        90,
-                    standard:
-                        "/盒",
-                    stitle:
-                        "丽得姿美蒂优氨基酸收缩毛孔面膜",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        74.8,
-                    zkprice:
-                        74.8
+                        129
                 },
                 {
                     bigpic:
@@ -281,15 +632,47 @@ export default class VipActive extends React.Component{
                     stitle:
                         "丽得姿美蒂优氨基酸净肤面膜",
                     tags:
-                        "",
+                        null,
                     type:
                         "0",
                     vipprice:
-                        74.8,
+                        85,
                     zkprice:
-                        74.8
+                        85
                 },
                 {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011184755.jpg",
+                    category:
+                        "26",
+                    gdesc:
+                        "面膜",
+                    good_id:
+                        1526,
+                    gorder:
+                        0,
+                    gtitle:
+                        "丽得姿美蒂优氨基酸收缩毛孔面膜",
+                    id:
+                        1526,
+                    price:
+                        90,
+                    standard:
+                        "/盒",
+                    stitle:
+                        "丽得姿美蒂优氨基酸收缩毛孔面膜",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        85,
+                    zkprice:
+                        85
+                },
+                {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011184644.jpg",
                     category:
@@ -311,15 +694,16 @@ export default class VipActive extends React.Component{
                     stitle:
                         "丽得姿美蒂优氨基酸深层补水面膜10片装",
                     tags:
-                        "",
+                        null,
                     type:
                         "0",
                     vipprice:
-                        74.8,
+                        85,
                     zkprice:
-                        74.8
+                        85
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011185245.jpg",
                     category:
@@ -345,9 +729,9 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        113.5,
+                        129,
                     zkprice:
-                        113.5
+                        129
                 },
                 {
                     bigpic:
@@ -382,430 +766,7 @@ export default class VipActive extends React.Component{
             ],
             [
                 {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010144616.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        1415,
-                    gorder:
-                        0,
-                    gtitle:
-                        "康力士牌三文鱼油维生素E软胶囊300粒",
-                    id:
-                        1415,
-                    price:
-                        393,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "康力士牌三文鱼油维生素E软胶囊300粒",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        194,
-                    zkprice:
-                        194
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025142138.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        1425,
-                    gorder:
-                        0,
-                    gtitle:
-                        "天美健牌维生素Ｅ软胶囊500mg",
-                    id:
-                        1425,
-                    price:
-                        193,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "天美健牌维生素Ｅ软胶囊500mg",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        165.4,
-                    zkprice:
-                        165.4
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011174841.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        708,
-                    gorder:
-                        1,
-                    gtitle:
-                        "康力士儿童水果口味糖果60粒",
-                    id:
-                        708,
-                    price:
-                        132,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "康力士儿童水果口味糖果60粒",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        112.6,
-                    zkprice:
-                        112.6
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011160143.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        930,
-                    gorder:
-                        1,
-                    gtitle:
-                        "康力士®红太胶囊60粒",
-                    id:
-                        930,
-                    price:
-                        303,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "康力士®红太胶囊60粒",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        149,
-                    zkprice:
-                        149
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163426.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        944,
-                    gorder:
-                        1,
-                    gtitle:
-                        "康力士®鲨鱼软骨粉胶囊100粒",
-                    id:
-                        944,
-                    price:
-                        303,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "康力士®鲨鱼软骨粉胶囊100粒",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        149,
-                    zkprice:
-                        149
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011162758.jpg",
-                    category:
-                        "33",
-                    gdesc:
-                        null,
-                    good_id:
-                        953,
-                    gorder:
-                        1,
-                    gtitle:
-                        "康力士牌牛初乳片60片",
-                    id:
-                        953,
-                    price:
-                        203,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "康力士牌牛初乳片60片",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        99,
-                    zkprice:
-                        99
-                },
-            ],
-            [
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019165236.jpg",
-                    category:
-                        "27",
-                    gdesc:
-                        null,
-                    good_id:
-                        1371,
-                    gorder:
-                        1,
-                    gtitle:
-                        "韩国菡琉儿童草莓味牙膏  60g",
-                    id:
-                        1371,
-                    price:
-                        28,
-                    standard:
-                        "/盒",
-                    stitle:
-                        "韩国菡琉儿童草莓味牙膏  60g",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        20.2,
-                    zkprice:
-                        20.2
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027164827.jpg",
-                    category:
-                        "27",
-                    gdesc:
-                        null,
-                    good_id:
-                        1627,
-                    gorder:
-                        50,
-                    gtitle:
-                        "土耳其原装进口正品ViKing  蔚净儿童固齿牙膏75ml【预售】",
-                    id:
-                        1627,
-                    price:
-                        15.9,
-                    standard:
-                        "/支",
-                    stitle:
-                        "土耳其原装进口正品ViKing 蔚净儿童固齿牙膏75ml【预售】",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        10.9,
-                    zkprice:
-                        10.9
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019171124.jpg",
-                    category:
-                        "27",
-                    gdesc:
-                        null,
-                    good_id:
-                        1370,
-                    gorder:
-                        1,
-                    gtitle:
-                        "韩国菡琉儿童苹果味牙膏  60g",
-                    id:
-                        1370,
-                    price:
-                        28,
-                    standard:
-                        "/盒",
-                    stitle:
-                        "韩国菡琉儿童苹果味牙膏  60g",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        20.2,
-                    zkprice:
-                        20.2
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171101112207.jpg",
-                    category:
-                        "22",
-                    gdesc:
-                        null,
-                    good_id:
-                        739,
-                    gorder:
-                        50,
-                    gtitle:
-                        "安诺尼摩德纳黑醋250ml",
-                    id:
-                        739,
-                    price:
-                        40,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "安诺尼摩德纳黑醋250ml",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        30.8,
-                    zkprice:
-                        30.8
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171102103123.jpg",
-                    category:
-                        "22",
-                    gdesc:
-                        null,
-                    good_id:
-                        740,
-                    gorder:
-                        50,
-                    gtitle:
-                        "安诺尼葡萄酒醋调味酱250ml",
-                    id:
-                        740,
-                    price:
-                        40,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "安诺尼葡萄酒醋调味酱250ml",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        30.8,
-                    zkprice:
-                        30.8
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171104103919.jpg",
-                    category:
-                        "52",
-                    gdesc:
-                        null,
-                    good_id:
-                        672,
-                    gorder:
-                        50,
-                    gtitle:
-                        "歌娜腰果 227G（盐焗味）",
-                    id:
-                        672,
-                    price:
-                        56,
-                    standard:
-                        "/袋",
-                    stitle:
-                        "歌娜腰果 227G（盐焗味）",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        48.3,
-                    zkprice:
-                        48.3
-                }
-            ],
-            [
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017145154.jpg",
-                    category:
-                        "60",
-                    gdesc:
-                        null,
-                    good_id:
-                        1095,
-                    gorder:
-                        1,
-                    gtitle:
-                        "Kitchen-art 不粘炒锅28cm",
-                    id:
-                        1095,
-                    price:
-                        164,
-                    standard:
-                        "/个",
-                    stitle:
-                        "Kitchen-art 不粘炒锅28cm",
-                    tags:
-                        null,
-                    type:
-                        "0",
-                    vipprice:
-                        139.9,
-                    zkprice:
-                        139.9
-                },
-                {
-                    bigpic:
-                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/1510048856531.jpg",
-                    category:
-                        "60",
-                    gdesc:
-                        null,
-                    good_id:
-                        1646,
-                    gorder:
-                        50,
-                    gtitle:
-                        "德国 爱慕莎MAMBO原装进口玻璃内胆保温壶家用热水瓶1000ML红色【预售】",
-                    id:
-                        1646,
-                    price:
-                        210,
-                    standard:
-                        "/瓶",
-                    stitle:
-                        "德国 爱慕莎MAMBO原装进口玻璃内胆保温壶家用热水瓶1000ML红色【预售】",
-                    tags:
-                        "",
-                    type:
-                        "0",
-                    vipprice:
-                        119,
-                    zkprice:
-                        119
-                },
-                {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002155201.jpg",
                     category:
@@ -831,11 +792,12 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        33.3,
+                        37.8,
                     zkprice:
-                        33.3
+                        37.8
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002113111.jpg",
                     category:
@@ -866,6 +828,7 @@ export default class VipActive extends React.Component{
                         9.9
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002154754.jpg",
                     category:
@@ -896,6 +859,7 @@ export default class VipActive extends React.Component{
                         24.9
                 },
                 {
+
                     bigpic:
                         "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170927131632.png",
                     category:
@@ -921,9 +885,70 @@ export default class VipActive extends React.Component{
                     type:
                         "0",
                     vipprice:
-                        18.3,
+                        20.8,
                     zkprice:
-                        18.3
+                        20.8
+                },
+                {
+
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020104019.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        1309,
+                    gorder:
+                        1,
+                    gtitle:
+                        "土耳其原装进口正品ViKing 蔚净厨房清洁喷雾 清新型 750ml",
+                    id:
+                        1309,
+                    price:
+                        25.8,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "土耳其原装进口正品ViKing 蔚净厨房清洁喷雾 清新型 750ml",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        20.8,
+                    zkprice:
+                        20.8
+                },
+                {
+                    bigpic:
+                        "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020095815.jpg",
+                    category:
+                        "61",
+                    gdesc:
+                        null,
+                    good_id:
+                        1313,
+                    gorder:
+                        1,
+                    gtitle:
+                        "土耳其原装进口正品ViKing 蔚净手用碗碟洗洁精 经典味 750ml   ",
+                    id:
+                        1313,
+                    price:
+                        18.8,
+                    standard:
+                        "/瓶",
+                    stitle:
+                        "土耳其原装进口正品ViKing 蔚净手用碗碟洗洁精 经典味 750ml  ",
+                    tags:
+                        null,
+                    type:
+                        "0",
+                    vipprice:
+                        13.8,
+                    zkprice:
+                        13.8
                 }
             ]
 

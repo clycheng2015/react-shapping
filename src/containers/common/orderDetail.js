@@ -137,7 +137,7 @@ class OrderDetail extends React.Component {
         const {postageData, savePostData} = this.props
         let postType = ''
         let sum = this._priceTol()
-        if (savePostData.type === 0 && sum > Number(postageData.free)) {
+        if (savePostData.type === 0 && sum >= Number(postageData.free)) {
 
             postType = '包邮'
 
