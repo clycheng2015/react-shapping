@@ -7,20 +7,6 @@ import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-red
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import { AppContainer } from 'react-hot-loader'
-
-////测试
-// import App from './test'
-
-
-//原生
-//
-// import App from './native'
-
-////商城入口
-
-import App from './App'
-
 import {AppContainer} from 'react-hot-loader'
 
 import createHistory from 'history/createBrowserHistory'
