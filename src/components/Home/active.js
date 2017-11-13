@@ -22,7 +22,6 @@ class Active extends React.Component {
     render() {
         const {data,history}=this.props
 
-        console.log(new Date(parseInt(data.endtime)).toISOString())
         return (
             <div className="active-info">
                 <div className="skill-head">

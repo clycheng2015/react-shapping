@@ -95,7 +95,7 @@ export  default  class ListIndex extends React.Component {
 
     render() {
         const {history, homeData, dataList, pagenum, isFetching, hasMore, fetchHomeList, pagesize, scrollT, headState} = this.props
-        console.log(homeData)
+
 
         return (
             <div>

@@ -21,7 +21,7 @@ class ModelFour extends React.Component {
     render() {
         const {history ,data,linkedDtos}=this.props
 
-        console.log(linkedDtos)
+
         return (
                 <div className="model-five" ref={el => this.shop = el} style={{width: "100%"}}>
                     <ul style={{width: `${(data.length+2)*2}rem`}}>

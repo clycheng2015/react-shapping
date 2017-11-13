@@ -2,9 +2,9 @@
  * Created by bear on 2017/10/31.
  */
 import React from 'react';
-import {ListView, PullToRefresh, Icon} from 'antd-mobile';
+import {ListView, PullToRefresh, Icon,Modal} from 'antd-mobile';
 import Timer from '../../components/Commons/timer'
-
+const alert=Modal.alert
 class OrderList extends React.Component {
     constructor(props) {
         super(props);
@@ -18,13 +18,18 @@ class OrderList extends React.Component {
         };
     }
     _delOrder = (id) => {
-
-        const {uid, fetchDelOrder} = this.props
-        fetchDelOrder({
-            uid: uid,
-            id: id
-        })
-
+        const { fetchDelOrder} = this.props
+        const alertInstance = alert('提示', '确定删除订单吗？', [
+            {text: '取消', onPress: () => console.log('取消'), style: 'default'},
+            {text: '确定', onPress: () => fetchDelOrder({id: id})},
+        ]);
+        setTimeout(() => {
+            alertInstance.close();
+        }, 5000)
+    }
+    _enddelOrder = (id) => {
+        const { fetchDelOrder} = this.props
+        fetchDelOrder({ id: id},'end')
     }
 
     _comfirmOrder = (oid) => {
@@ -74,20 +79,18 @@ class OrderList extends React.Component {
             id: rowData.id,
             ordernum: rowData.ordernum
         })
-
     }
-
     _timeEnd=(id)=>{
-        this._delOrder(id)
+
+        this._enddelOrder(id)
+
     }
     render() {
         const {list, history, hasMore, isFetching, refresh, tabIndex} = this.props
         const row = (rowData, sectionID, rowID) => {
-
             return (
                 <div key={rowID}>
-                    {rowData.goodsitems && rowData.goodsitems.map((i, key) => (
-                        <div key={key}>
+                    {rowData.goodsitems &&
                             <div className="top-box">
                                 <div className="box">
                                     <div className="odd-info">
@@ -208,9 +211,6 @@ class OrderList extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    ))
                     }
                 </div>
             );
