@@ -14,9 +14,7 @@ const alert = Modal.alert;
 let areaTxt = ''
 
 const CustomChildren = props => {
-
     areaTxt = props.extra
-
     return (
         <div
             onClick={props.onClick}
@@ -48,6 +46,43 @@ const CustomChildren = props => {
     )
 
 };
+
+const CustomChildrenInit = props => {
+    areaTxt = props.extra
+    return (
+        <div
+            onClick={props.onClick}
+            style={{backgroundColor: '#fff',}}
+        >
+            <div style={{
+                display: 'flex',
+                height: '45px',
+                paddingLift: 15,
+                paddingRight: 15,
+                lineHeight: '45px',
+                borderBottom: '1PX solid #f3f3f1'
+            }}>
+                <div style={{
+                    marginLeft: 15,
+                    fontSize: ".25rem",
+                    color: '#4b4b49',
+                    width: 90,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                }}>{props.children}</div>
+                <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
+                    <input type="text" disabled
+                           style={{width: "100%",border:'none',outline:"none"}}
+                           value={initTxt||props.extra}/></div>
+            </div>
+        </div>
+    )
+
+};
+
+
+
 
 @connect(
     state => {
@@ -83,7 +118,6 @@ class NewAds extends React.Component {
         // let area = this.state.area
         let address = this.state.areaText
         let area =[]
-        console.log(areaTxt,getFieldValue('area'))
         if (realname === undefined) {
             Toast.info("收件人不能为空！", 1)
             return
@@ -132,6 +166,18 @@ class NewAds extends React.Component {
                 value: data.mobile,
                 areaText:data.address
             })
+            let province = data.province === '/' ? '' : data.province
+            let city = data.city === '/' ? '' : data.city
+            let county = data.county === '/' ? '' : data.county
+            let exp = ''
+            if (county !== '') {
+                exp = province + "," + city + "," + county
+            }
+            else {
+                exp = province + "," + city
+            }
+
+
         }
 
     }

@@ -102,6 +102,14 @@ let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终
 let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
+//
+//     <CSSTransitionGroup
+// transitionName={animateCls}
+// transitionEnter={true}
+// transitionLeave={true}
+// transitionEnterTimeout={400}
+// transitionLeaveTimeout={400}
+//     >
 @connect(
     state => {
         return {...state.global}
@@ -129,7 +137,9 @@ export default class App extends React.Component {
                 imgUrl: 'http://app.meilungo.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
             });
 
+
         }
+
         window.addEventListener('hashchange', (el) => {
 
             // this.props.currentAnimate('normal')
@@ -167,7 +177,6 @@ export default class App extends React.Component {
 
                         <div key={location.pathname}>
                             <Route location={location} exact path="/" component={Home}/>
-
                             <Route location={location} path="/home" component={Home}/>
                             <Route location={location} path="/user" component={User}/>
                             <Route location={location} path="/item" component={Item}/>
@@ -219,8 +228,6 @@ export default class App extends React.Component {
 
                             <Route location={location} path="/protocol/:id" component={Protocol}/>
                             <Route location={location} path="/doubleActive" component={DoubleActive}/>
-
-
 
                         </div>
                     )

@@ -1,145 +1,157 @@
 /*全局css样式*/
 * {
-    margin: 0;
-    padding: 0;
-}
-a ,ul ,li  {
-    text-decoration: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-a[title="站长统计"]{
-
-    display: none;
+  margin: 0;
+  padding: 0;
 }
 
-body ,html{
-    min-height: 100%;
-    background: #f7f6f6;
+a, ul, li {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a[title="站长统计"] {
+
+  display: none;
+}
+
+body, html {
+  min-height: 100%;
+  background: #f7f6f6;
 }
 
 /*隐藏文本*/
 .textOverflow-hidden {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
 /*现价*/
 .now-price {
-    color: #f43;
+  color: #f43;
 }
+
 /*原价*/
 .old-price {
-    text-decoration: line-through;
-    margin-left: 0.5rem;
-    color: #a0a0a0;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+  color: #a0a0a0;
 }
 
 /*路由切换动画——改变透明度*/
 .normal-enter {
-    opacity: 0;
-    z-index: 10000;
+  opacity: 1;
+  z-index: 10000;
 }
 
 .normal-enter.normal-enter-active {
-    opacity: 1;
-    transition: all 0.4s ease-in;
+  opacity: 1;
+  transition: all 0.4s ease-in;
 }
 
 .normal-leave {
-    opacity: 1;
+  opacity: 1;
 }
 
 .normal-leave.normal-leave-active {
-    opacity: 0;
-    transition: all .4s ease-out;
+  opacity: 1;
+  transition: all .4s ease-out;
 }
 
 /*路由切换动画——左移动*/
 .left-enter {
-    position: absolute;
-    top: 0;
-    background: #fff;
-    z-index: 10000;
-    opacity: 1;
-    transform: translateX(100%);
+  position: absolute;
+  top: 0;
+  background: #fff;
+  z-index: 10000;
+  opacity: 1;
+  transform: translateX(100%);
+
+
 }
 
 .left-enter.left-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 0.4s ease-out;
+  opacity: 1;
+  transform: translateX(0) ;
+  transition: all 0.4s ease-out;
+  box-sizing: border-box;
 }
 
 .left-leave {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0) scale(1,1);
 }
 
 .left-leave.left-leave-active {
-    opacity: 1;
-    transform: translateX(-100%);
-    transition: all 0.4s ease-out;
+  opacity: 0.8;
+  transform: translateX(-100%) scale(0.95,0.95);
+  box-shadow: -2px 0 2px #c8c7c7,0 -2px 2px #c8c7c7,0 2px 2px #c8c7c7,2px 0 2px #c8c7c7;
+
+  transition: all 0.4s ease-out;
+  box-sizing: border-box;
+
 }
 
 /*路由切换动画——右移动*/
 .right-enter {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .right-enter.right-enter-active {
-    transform: translateX(0);
-    transition: all 0.4s ease-out;
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
 }
 
 .right-leave {
-    position: absolute;
-    top: 0;
-background: #fff;
-z-index: 10000;
-opacity: 1;
-transform: translateX(0);
+  position: absolute;
+  top: 0;
+  background: #fff;
+  z-index: 10000;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .right-leave.right-leave-active {
-    opacity: 1;
-    transform: translateX(100%);
-    transition: all 0.4s ease-out;
+  opacity: 0.8;
+  transform: translateX(100%) scale(0.95,0.95);
+  box-shadow: -2px 0 2px #c8c7c7,0 -2px 2px #c8c7c7,0 2px 2px #c8c7c7,2px 0 2px #c8c7c7;
+  transition: all 0.4s ease-out;
+  box-sizing: border-box;
 }
-
 
 //空页面提示
-.empty-info{
-    width: 7.5rem;
-    //height: 100%;
-    text-align: center;
-    display:table-cell;
+.empty-info {
+  width: 7.5rem;
+  //height: 100%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  img {
+    width: 45%;
     vertical-align: middle;
-    img{
-        width: 45%;
-        vertical-align: middle;
-    }
-    p{
-        font-size: .26rem;
+  }
+  p {
+    font-size: .26rem;
 
-    }
-    :last-child{
-        color: #fb8707;
-        padding-top: .2rem;
-        font-size: .3rem;
-    }
+  }
+  :last-child {
+    color: #fb8707;
+    padding-top: .2rem;
+    font-size: .3rem;
+  }
 
 }
 
+.am-badge-text {
 
-.am-badge-text{
-
-    height: 16px !important;
-    line-height: 16px !important;
-    font-size: 10px !important;
-    background: red !important;
+  height: 16px !important;
+  line-height: 16px !important;
+  font-size: 10px !important;
+  background: red !important;
 }
+
 //.am-tabs-horizontal .am-tabs-pane-wrap-active{
 //    display: none;
 //}

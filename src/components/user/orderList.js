@@ -18,14 +18,18 @@ class OrderList extends React.Component {
         };
     }
     _delOrder = (id) => {
-        const {uid, fetchDelOrder} = this.props
+        const { fetchDelOrder} = this.props
         const alertInstance = alert('提示', '确定删除订单吗？', [
             {text: '取消', onPress: () => console.log('取消'), style: 'default'},
-            {text: '确定', onPress: () => fetchDelOrder({uid: uid, id: id})},
+            {text: '确定', onPress: () => fetchDelOrder({id: id})},
         ]);
         setTimeout(() => {
             alertInstance.close();
         }, 5000)
+    }
+    _enddelOrder = (id) => {
+        const { fetchDelOrder} = this.props
+        fetchDelOrder({ id: id},'end')
     }
 
     _comfirmOrder = (oid) => {
@@ -77,7 +81,9 @@ class OrderList extends React.Component {
         })
     }
     _timeEnd=(id)=>{
-        this._delOrder(id)
+
+        this._enddelOrder(id)
+
     }
     render() {
         const {list, history, hasMore, isFetching, refresh, tabIndex} = this.props

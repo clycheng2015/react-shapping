@@ -705,7 +705,7 @@ export const fetchActiveOrder = (data, history, count) => {
 
 
 
-export const fetchDelOrder = (data, history, type) => {
+export const fetchDelOrder = (data, type) => {
     return (dispatch, getState) => {
 
         // Toast.loading("创建订单中，请稍后！",1)
@@ -714,13 +714,12 @@ export const fetchDelOrder = (data, history, type) => {
             .then(res => {
                 if (res.data.code == 200) {
                     // Toast.info(res.data.msg, 1)
-                    Toast.success("删除成功！",1)
+
+                    if(!type){
+                        Toast.success("删除成功！",1)
+                    }
                     dispatch(delOrder())
 
-                    if (history && type) {
-
-                        history.goBack()
-                    }
                 } else {
 
                     Toast.info(res.data.msg, 1)

@@ -77,7 +77,7 @@ export default class User extends React.Component {
         history.push(`/myOrder/${userInfo.id}`);
     }
     render() {
-        const {userInfo, history} = this.props
+        const {userInfo, history,currentAnimate} = this.props
         return (
             <div className="user-container"
                  style={{
@@ -105,7 +105,7 @@ export default class User extends React.Component {
                                             {/*<span className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '' : "vip"}</span>*/}
                                         </p>
                                         <div className="wallet-info" onClick={() => {
-                                            history.push("/wallet")
+                                            history.push("/wallet");
                                         }}>
                                             <p className="title">我的钱包</p>
                                             <p className="count">￥{Number(userInfo.mymoney).toFixed(2)}</p>
@@ -149,7 +149,7 @@ export default class User extends React.Component {
                             <List.Item
                                 extra={<img src={require('static/images/user/jin_icon.jpg')} alt=""
                                             style={{width: '.64rem', height: ".36rem"}}/>}
-                                onClick={() => {history.push(`/jinfu`)}}
+                                onClick={() => {history.push(`/jinfu`);currentAnimate('left')}}
                             >
                                 金凤金服 <span className="count">￥{Number(userInfo.money).toFixed(2)}</span>
                             </List.Item>

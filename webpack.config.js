@@ -19,10 +19,6 @@ const svgDirs = [
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: function (module) {
-            // 该配置假定你引入的 vendor 存在于 node_modules 目录中
-            return module.context && module.context.indexOf('node_modules') !== -1
-        }
     }),
     new webpack.DefinePlugin({
         // 定义全局变量
@@ -36,23 +32,12 @@ var plugins = [
 var app = ['./entry']
 if (isPro) {
     plugins.push(
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin({filename: 'styles.css'}),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.LoaderOptionsPlugin({
-            // minimize: true,
-            // debug: false,
-            options: {
-                postcss: function () {
-                    return [
-                        require('postcss-pxtorem')({
-                            // rootValue: 100,
-                            // propWhiteList: []
-                        }),
-                        require('autoprefixer')
-                    ]
-                }
-            }
+            minimize: true,
+            debug: false
         }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
@@ -66,21 +51,6 @@ if (isPro) {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            // // minimize: true,
-            // debug: false,
-            options: {
-                postcss: function () {
-                    return [
-                        require('postcss-pxtorem')({
-                            // rootValue: 100,
-                            // propWhiteList: []
-                        }),
-                        require('autoprefixer')
-                    ]
-                }
-            }
-        }),
     )
 }
 
@@ -89,6 +59,7 @@ module.exports = {
     devtool: isPro ? '' : 'inline-source-map',
     // devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
+        vendor: ['react', 'react-dom'],
         app: app
     },
     output: {
@@ -127,13 +98,6 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'less-loader']
 
             },
-            // {
-            //     test: /\.scss$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: "style-loader",
-            //         use: ['css-loader', 'postcss-loader', 'sass-loader']
-            //     })
-            // },
             {
                 test: /\.(svg)$/i,
                 use: 'svg-sprite-loader',
