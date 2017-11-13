@@ -1104,6 +1104,8 @@ export default class NewPer extends React.Component{
                                         ...style,
                                         zIndex: 3,
                                         color: 'white',
+                                        background: '-webkit-linear-gradient(left, #ab9af6, #fc6f71)',
+
 
                                     }}
                                 >{`${sectionID}`}</div>

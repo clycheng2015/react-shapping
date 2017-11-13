@@ -47,14 +47,20 @@ export default class TopUP extends React.Component {
 
         const {fetchTopUp,history}=this.props
 
-        console.log("1323")
 
-        if(this.state.value==null){
 
-            Toast.info("请输入充值金额！",1)
+
+        let  exp = /^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/;
+
+
+
+        if(!exp.test(this.state.value) || this.state.value<1){
+
+            Toast.info("请输入正确的金额！",1)
             return false
 
         }
+
 
         if(this.state.value>10000){
 
