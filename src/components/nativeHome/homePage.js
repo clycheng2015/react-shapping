@@ -177,11 +177,8 @@ export  default  class HomePage extends React.Component {
 
 
                 {
-<<<<<<< HEAD
-                    homeData && homeData.activityDto &&homeData.activityDto!==null&&
-=======
+
                     homeData && homeData.activityDto && homeData.activityDto.type !== null &&
->>>>>>> v1.50
 
                     <div className="area-active">
                         <Active hitory={history} data={homeData.activityDto}/>
