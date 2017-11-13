@@ -29,10 +29,7 @@ export default class Address extends React.Component {
         fetchGetAds({uid: uid})
     }
 
-<<<<<<< HEAD
-    _updateDefault = (id) => {
-        const {uid, fetchDefAdsge} = this.props
-=======
+
     _updateDefault = (i) => {
         const {uid, fetchDefAds,match,history,chooseAddress} = this.props
         const {params}=match
@@ -46,8 +43,6 @@ export default class Address extends React.Component {
                 alertInstance.close();
             }, 5000)
         }
->>>>>>> v1.50
-
         if(params.id==='1'){
             chooseAddress(i)
             setTimeout(() => {
