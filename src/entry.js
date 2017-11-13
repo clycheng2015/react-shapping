@@ -7,7 +7,7 @@ import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-red
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import { AppContainer } from 'react-hot-loader'
+
 
 ////测试
 // import App from './test'
@@ -45,7 +45,7 @@ const middlewares = [thunk, middleware]
 // import App from './native'
 // import App from './nativehome'
 
-import App from './App'
+
 
 let store;
 if (isPro) {

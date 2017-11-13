@@ -23,51 +23,51 @@ import Home from './containers/Home/index'
 // import Login from './containers/auth/login'
 // import UpdatePwd from './containers/auth/updatePwd'
 
-const Auth = asyncComponent(() => import( './containers/auth/index'))
-const Reg = asyncComponent(() => import( './containers/auth/reg'))
-const Login = asyncComponent(() => import( './containers/auth/login'))
-const UpdatePwd = asyncComponent(() => import( './containers/auth/updatePwd'))
+const Auth = asyncComponent(() => import( /* webpackChunkName: "auth" */'./containers/auth/index'))
+const Reg = asyncComponent(() => import(  /* webpackChunkName: "reg" */'./containers/auth/reg'))
+const Login = asyncComponent(() => import( /* webpackChunkName: "login" */'./containers/auth/login'))
+const UpdatePwd = asyncComponent(() => import( /* webpackChunkName: "updatePwd" */'./containers/auth/updatePwd'))
 
 
-const User = asyncComponent(() => import( './containers/user/index'))
-const Item = asyncComponent(() => import( './containers/item/index'))
-const BuyCar = asyncComponent(() => import( './containers/buyCar/index'))
+const User = asyncComponent(() => import( /* webpackChunkName: "user" */'./containers/user/index'))
+const Item = asyncComponent(() => import( /* webpackChunkName: "item" */'./containers/item/index'))
+const BuyCar = asyncComponent(() => import( /* webpackChunkName: "buyCar" */'./containers/buyCar/index'))
 
 
-const GoodsDetail = asyncComponent(() => import( './containers/common/goodsDetail'))
-const ItemList = asyncComponent(() => import( './containers/common/itemList'))
-const MoreList = asyncComponent(() => import( './containers/common/moreList'))
-const Search = asyncComponent(() => import( './containers/common/search'))
+const GoodsDetail = asyncComponent(() => import(/* webpackChunkName: "goodsDetail" */ './containers/common/goodsDetail'))
+const ItemList = asyncComponent(() => import( /* webpackChunkName: "itemList" */'./containers/common/itemList'))
+const MoreList = asyncComponent(() => import( /* webpackChunkName: "moreList" */'./containers/common/moreList'))
+const Search = asyncComponent(() => import( /* webpackChunkName: "search" */'./containers/common/search'))
 
 
 //user
-const Setting = asyncComponent(() => import( './containers/user/setting'))
-const About = asyncComponent(() => import( './containers/user/about'))
-const UserCenter = asyncComponent(() => import( './containers/user/userCenter'))
-const MyOrder = asyncComponent(() => import( './containers/user/myOrder'))
-const Bill = asyncComponent(() => import( './containers/user/bill'))
-const Address = asyncComponent(() => import( './containers/user/address'))
-const NewAds = asyncComponent(() => import( './containers/user/newAds'))
-const UpdatePhone = asyncComponent(() => import( './containers/user/phone'))
-const OrderDetail = asyncComponent(() => import( './containers/common/orderDetail'))
-const Pay = asyncComponent(() => import( './containers/common/pay'))
+const Setting = asyncComponent(() => import(/* webpackChunkName: "setting" */ './containers/user/setting'))
+const About = asyncComponent(() => import(/* webpackChunkName: "about" */ './containers/user/about'))
+const UserCenter = asyncComponent(() => import(/* webpackChunkName: "userCenter" */ './containers/user/userCenter'))
+const MyOrder = asyncComponent(() => import(/* webpackChunkName: "myOrder" */ './containers/user/myOrder'))
+const Bill = asyncComponent(() => import( /* webpackChunkName: "bill" */'./containers/user/bill'))
+const Address = asyncComponent(() => import(/* webpackChunkName: "address" */ './containers/user/address'))
+const NewAds = asyncComponent(() => import(/* webpackChunkName: "newAds" */ './containers/user/newAds'))
+const UpdatePhone = asyncComponent(() => import( /* webpackChunkName: "phone" */'./containers/user/phone'))
+const OrderDetail = asyncComponent(() => import(/* webpackChunkName: "orderDetail" */ './containers/common/orderDetail'))
+const Pay = asyncComponent(() => import( /* webpackChunkName: "pay" */'./containers/common/pay'))
 
-const YesOrderDetail = asyncComponent(() => import( './containers/common/yesOrderDetail'))
-const TopUp = asyncComponent(() => import( './containers/user/topUp'))
-const WithDraw = asyncComponent(() => import( './containers/user/withdraw'))
-const Remark = asyncComponent(() => import( './containers/user/remark'))
-const Wallet = asyncComponent(() => import( './containers/user/wallet'))
-const Jinfu = asyncComponent(() => import( './containers/user/jinfu'))
-const JinTopUp = asyncComponent(() => import( './containers/user/jinTopUp'))
-const JinDraw = asyncComponent(() => import( './containers/user/jinDraw'))
-const Help = asyncComponent(() => import( './containers/user/help'))
-const WebTxt = asyncComponent(() => import( './containers/user/webTxt'))
+const YesOrderDetail = asyncComponent(() => import(/* webpackChunkName: "yesOrderDetail" */ './containers/common/yesOrderDetail'))
+const TopUp = asyncComponent(() => import(/* webpackChunkName: "topUp" */ './containers/user/topUp'))
+const WithDraw = asyncComponent(() => import(/* webpackChunkName: "withdraw" */ './containers/user/withdraw'))
+const Remark = asyncComponent(() => import( /* webpackChunkName: "remark" */'./containers/user/remark'))
+const Wallet = asyncComponent(() => import(/* webpackChunkName: "wallet" */ './containers/user/wallet'))
+const Jinfu = asyncComponent(() => import( /* webpackChunkName: "jinfu" */'./containers/user/jinfu'))
+const JinTopUp = asyncComponent(() => import(/* webpackChunkName: "jinTopUp" */ './containers/user/jinTopUp'))
+const JinDraw = asyncComponent(() => import( /* webpackChunkName: "jinDraw" */'./containers/user/jinDraw'))
+const Help = asyncComponent(() => import( /* webpackChunkName: "help" */'./containers/user/help'))
+const WebTxt = asyncComponent(() => import(/* webpackChunkName: "webTxt" */ './containers/user/webTxt'))
 
 
-const PostType = asyncComponent(() => import( './containers/common/postType'))
-const Invoice = asyncComponent(() => import( './containers/common/invoice'))
+const PostType = asyncComponent(() => import( /* webpackChunkName: "postType" */'./containers/common/postType'))
+const Invoice = asyncComponent(() => import(/* webpackChunkName: "invoice" */ './containers/common/invoice'))
 
-const Protocol = asyncComponent(() => import( './containers/common/protocol'))
+const Protocol = asyncComponent(() => import( /* webpackChunkName: "protocol" */'./containers/common/protocol'))
 
 
 
@@ -77,22 +77,22 @@ const Protocol = asyncComponent(() => import( './containers/common/protocol'))
 
 //活动中心
 
-const Active = asyncComponent(() => import( './containers/active/index'))
-const ActiveDetail = asyncComponent(() => import( './containers/common/activeDetail'))
+const Active = asyncComponent(() => import( /* webpackChunkName: "active" */'./containers/active/index'))
+const ActiveDetail = asyncComponent(() => import(/* webpackChunkName: "activeDetail" */ './containers/common/activeDetail'))
 
 
-const NewPer = asyncComponent(() => import( './containers/active/newPer'));
-const Special = asyncComponent(() => import( './containers/active/special'));
-const NewDay = asyncComponent(() => import( './containers/active/newDay'));
-const Ranking = asyncComponent(() => import( './containers/active/ranking'));
-const Seckill = asyncComponent(() => import( './containers/active/seckill'));
-const Imported = asyncComponent(() => import( './containers/active/imported'));
-const ImportedClass = asyncComponent(() => import( './containers/active/importedClass'));
-const VipActive = asyncComponent(() => import( './containers/active/vipActive'));
-const HotGoods = asyncComponent(() => import( './containers/active/hotGoods'));
-const JoinUs = asyncComponent(() => import( './containers/active/joinUs'));
+const NewPer = asyncComponent(() => import( /* webpackChunkName: "newPer" */'./containers/active/newPer'));
+const Special = asyncComponent(() => import( /* webpackChunkName: "special" */'./containers/active/special'));
+const NewDay = asyncComponent(() => import( /* webpackChunkName: "newDay" */'./containers/active/newDay'));
+const Ranking = asyncComponent(() => import( /* webpackChunkName: "ranking" */'./containers/active/ranking'));
+const Seckill = asyncComponent(() => import( /* webpackChunkName: "seckill" */'./containers/active/seckill'));
+const Imported = asyncComponent(() => import( /* webpackChunkName: "imported" */'./containers/active/imported'));
+const ImportedClass = asyncComponent(() => import(/* webpackChunkName: "importedClass" */ './containers/active/importedClass'));
+const VipActive = asyncComponent(() => import(/* webpackChunkName: "vipActive" */ './containers/active/vipActive'));
+const HotGoods = asyncComponent(() => import(/* webpackChunkName: "hotGoods" */ './containers/active/hotGoods'));
+const JoinUs = asyncComponent(() => import(/* webpackChunkName: "joinUs" */ './containers/active/joinUs'));
 
-const DoubleActive = asyncComponent(() => import( './containers/active/doubleActive'));
+const DoubleActive = asyncComponent(() => import( /* webpackChunkName: "doubleActive" */'./containers/active/doubleActive'));
 
 
 
@@ -102,6 +102,14 @@ let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终
 let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
+//
+//     <CSSTransitionGroup
+// transitionName={animateCls}
+// transitionEnter={true}
+// transitionLeave={true}
+// transitionEnterTimeout={400}
+// transitionLeaveTimeout={400}
+//     >
 @connect(
     state => {
         return {...state.global}
@@ -129,7 +137,9 @@ export default class App extends React.Component {
                 imgUrl: 'http://app.meilungo.com/upload/defaultuser.png', title: '美纶购商城', description: "美纶购，无限购！", link: href
             });
 
+
         }
+
         window.addEventListener('hashchange', (el) => {
 
             // this.props.currentAnimate('normal')
@@ -167,7 +177,6 @@ export default class App extends React.Component {
 
                         <div key={location.pathname}>
                             <Route location={location} exact path="/" component={Home}/>
-
                             <Route location={location} path="/home" component={Home}/>
                             <Route location={location} path="/user" component={User}/>
                             <Route location={location} path="/item" component={Item}/>
@@ -185,7 +194,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/userCenter" component={UserCenter}/>
                             <Route location={location} path="/myOrder/:id" component={MyOrder}/>
                             <Route location={location} path="/bill/:id" component={Bill}/>
-                            <Route location={location} path="/address" component={Address}/>
+                            <Route location={location} path="/address/:id" component={Address}/>
                             <Route location={location} path="/newAds" component={NewAds}/>
                             <Route location={location} path="/phone" component={UpdatePhone}/>
                             <Route location={location} path="/orderDetail" component={OrderDetail}/>
@@ -219,8 +228,6 @@ export default class App extends React.Component {
 
                             <Route location={location} path="/protocol/:id" component={Protocol}/>
                             <Route location={location} path="/doubleActive" component={DoubleActive}/>
-
-
 
                         </div>
                     )

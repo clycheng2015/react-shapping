@@ -19,10 +19,6 @@ const svgDirs = [
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: function (module) {
-            // 该配置假定你引入的 vendor 存在于 node_modules 目录中
-            return module.context && module.context.indexOf('node_modules') !== -1
-        }
     }),
     new webpack.DefinePlugin({
         // 定义全局变量
@@ -36,23 +32,12 @@ var plugins = [
 var app = ['./entry']
 if (isPro) {
     plugins.push(
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin({filename: 'styles.css'}),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.LoaderOptionsPlugin({
-            // minimize: true,
-            // debug: false,
-            options: {
-                postcss: function () {
-                    return [
-                        require('postcss-pxtorem')({
-                            // rootValue: 100,
-                            // propWhiteList: []
-                        }),
-                        require('autoprefixer')
-                    ]
-                }
-            }
+            minimize: true,
+            debug: false
         }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
@@ -63,24 +48,10 @@ if (isPro) {
 } else {
     app.unshift('react-hot-loader/patch', `webpack-dev-server/client?http://${webpackServerConfig.host}:${webpackServerConfig.port}`, 'webpack/hot/only-dev-server')
     plugins.push(
+        new ExtractTextPlugin({filename: 'styles.css'}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            // // minimize: true,
-            // debug: false,
-            options: {
-                postcss: function () {
-                    return [
-                        require('postcss-pxtorem')({
-                            // rootValue: 100,
-                            // propWhiteList: []
-                        }),
-                        require('autoprefixer')
-                    ]
-                }
-            }
-        }),
     )
 }
 
@@ -89,6 +60,7 @@ module.exports = {
     devtool: isPro ? '' : 'inline-source-map',
     // devtool: isPro ? 'source-map' : 'inline-source-map',
     entry: {
+        vendor: ['react', 'react-dom','redux','react-redux','antd-mobile'],
         app: app
     },
     output: {
@@ -101,7 +73,7 @@ module.exports = {
     plugins,
     // alias是配置全局的路径入口名称，只要涉及到下面配置的文件路径，可以直接用定义的单个字母表示整个路径
     resolve: {
-        extensions: [' ', '.web.js', '.js', '.json', '.jsx', '.less', '.scss', '.css'],
+        extensions: [' ', '.web.js', '.js', '.json', '.jsx', '.less', '.sass', '.css'],
         modules: [
             path.resolve(__dirname, 'node_modules'),
             path.join(__dirname, './src')
@@ -122,18 +94,18 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 use: 'babel-loader'
             },
-            {
-                test: /\.(less|scss|css)$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
-
-            },
             // {
-            //     test: /\.scss$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: "style-loader",
-            //         use: ['css-loader', 'postcss-loader', 'sass-loader']
-            //     })
+            //     test: /\.(less|sass|css)$/,
+            //     use: ['style-loader', 'css-loader', 'less-loader']
+            //
             // },
+            {
+                test: /\.(less|css)$/,
+                use: isPro ? ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ["css-loader", "less-loader"]
+                }) : ["style-loader", "css-loader", "less-loader"]
+            },
             {
                 test: /\.(svg)$/i,
                 use: 'svg-sprite-loader',

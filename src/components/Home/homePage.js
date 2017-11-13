@@ -95,7 +95,7 @@ export  default  class ListIndex extends React.Component {
 
     render() {
         const {history, homeData, dataList, pagenum, isFetching, hasMore, fetchHomeList, pagesize, scrollT, headState} = this.props
-        console.log(homeData)
+
 
         return (
             <div>
@@ -146,11 +146,9 @@ export  default  class ListIndex extends React.Component {
 
                 {/*秒杀折扣活动开始******************************/}
                 {
-<<<<<<< HEAD
-                    homeData && homeData.activityDto && homeData.activityDto.type !== null &&
-=======
+
                     homeData && homeData.activityDto && homeData.activityDto.type!==null&&
->>>>>>> v1.50
+
 
                     <Active history={history} data={homeData.activityDto}/>
                 }

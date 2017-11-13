@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {Icon, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
+import * as global from 'actions/global'
 import {AppLocalStorage} from '../../utils/cookie'
 require('./styles/jinfu.less')
 
@@ -14,7 +15,7 @@ require('./styles/jinfu.less')
     state => {
         return {...state.user}
     },
-    dispatch => bindActionCreators({...user}, dispatch)
+    dispatch => bindActionCreators({...user,...global}, dispatch)
 )
 export default class Jinfu extends React.Component {
 
@@ -41,7 +42,7 @@ export default class Jinfu extends React.Component {
     }
 
     render() {
-        const {history, jinfuData, userInfo} = this.props
+        const {history, jinfuData, userInfo,currentAnimate} = this.props
 
         return (
             <div className="jinfu-container" ref='wrapper'
@@ -49,7 +50,7 @@ export default class Jinfu extends React.Component {
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
                         <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                            history.goBack()
+                            history.goBack();currentAnimate('right')
                         }}/></Flex.Item>
                         <Flex.Item className="item-head center">金凤金服</Flex.Item>
                         <Flex.Item className="item-head right"><span style={{color: "#999999"}} onClick={()=>history.push('/protocol/5')}>协议</span></Flex.Item>

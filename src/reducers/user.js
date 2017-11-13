@@ -25,7 +25,7 @@ let init = {
     },
     bill: {
         pagesize: 100,
-        pagenum: 0,
+        pagenum: 1,
         data: {}
     },
     address: {
@@ -45,7 +45,8 @@ let init = {
     jinfuData:{},
     helpData:{},
     kefuTel:{},
-    IcBanner:{}
+    IcBanner:{},
+    chooseAddress:{}
 
 
 }
@@ -250,6 +251,10 @@ export const user = (state = init, action) => {
                 ...state,IcBanner:action.data
             }
 
+        case 'CHOOSE_ADDRESS':
+            return {
+                ...state,chooseAddressData:action.data
+            }
 
         default:
             return state
