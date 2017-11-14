@@ -49,15 +49,18 @@ class WithDraw extends React.Component {
         const {uid, fetchWithDraw, history, userInfo} = this.props
 
         const {getFieldsValue} = this.props.form;
+        let exp =/^(0|[1-9]\d*)(\.\d{1,2})?$/
 
         let data = getFieldsValue(["bankname", "bankCard", "username", "phone"])
-
+        if(this.state.value>userInfo.jftomoney){Toast.info("可提现金额不足！", 1);return false}
+        if( this.state.value<=0){Toast.info("请输入正确的金额！",1);return false}
+        if(!exp.test(this.state.value)){Toast.info("请输入正确的金额！",1);return false}
         if (data.bankname === '') {Toast.info("请输入银行名称！", 1);return false}
         if (data.username === '') {Toast.info("请输入银行名称！", 1);return false}
         if (data.bankCard === '' || (data.bankCard.replace(/\s/g, '').length < 15)) {Toast.info("请输入正确的银行卡号！", 1);return false}
         if (data.phone === '' || (data.phone.replace(/\s/g, '').length < 11)) {Toast.info("请输入正确的手机号！", 1);return false}
 
-        if(this.state.value>userInfo.jftomoney){Toast.info("可提现金额不足！", 1);return false}
+
         let newdata={
             uid:uid,
             tiqumoney:this.state.value,
