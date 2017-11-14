@@ -14,7 +14,7 @@ import './style/doubleActive.less';
 const provinceData = {
     '面部护理': [
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171019153431.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019153431.jpg",
             gtitle: "日本莎娜豆乳美肤浓润化妆水200ml",
             id: 1460,
             price: "95.00",
@@ -24,7 +24,7 @@ const provinceData = {
             zkprice: "69.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171026103444.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026103444.jpg",
             gtitle: "花印乳液水漾润颜补水乳液150ml补水保湿温和不刺激日本进口 ",
             id: 1598,
             price: "189.00",
@@ -34,7 +34,7 @@ const provinceData = {
             zkprice: "149.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171026104303.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026104303.jpg",
             gtitle: "花印水漾润颜补水化妆水 补水保湿滋润 持续锁水190ml",
             id: 1599,
             price: "189.00",
@@ -44,7 +44,7 @@ const provinceData = {
             zkprice: "149.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171031131100.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031131100.jpg",
             gtitle: "印（HANAJIRUSHI）清新净肤卸妆水180ml(深层清洁 补水保湿 温和快速 眼唇可用） ",
             id: 1600,
             price: "99.00",
@@ -54,7 +54,7 @@ const provinceData = {
             zkprice: "79.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171026111912.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026111912.jpg",
             gtitle: "菲诗小铺大米调理持久保湿水-大米系列150ml",
             id: 1603,
             price: "59.00",
@@ -64,7 +64,7 @@ const provinceData = {
             zkprice: "39.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171031130323.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031130323.jpg",
             gtitle: "菲诗小铺大米调理保湿乳液大米系列150ml",
             id: 1604,
             price: "59.00",
@@ -74,7 +74,7 @@ const provinceData = {
             zkprice: "39.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171031112516.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031112516.jpg",
             gtitle: "花印汤村温泉补水套装（水漾洁面150g+99ml水+99ml乳液）（深层清洁滋养保湿温和护肤） ",
             id: 1605,
             price: "259.00",
@@ -85,7 +85,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026115523.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026115523.jpg",
             gtitle:
                 "Medius玫帝婀思保湿忍者面膜-提亮粉 33ml*5片",
             id:
@@ -103,7 +103,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031111510.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031111510.jpg",
             gtitle:
                 "Medius玫帝婀思保湿忍者面膜-水泉蓝",
             id:
@@ -121,7 +121,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031110304.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031110304.jpg",
             gtitle:
                 "Medius玫帝婀思保湿忍者面膜-净化黑(33ml*5片）",
             id:
@@ -140,7 +140,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026120952.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026120952.jpg",
             gtitle:
                 "banila芭妮兰卸妆膏zero致柔脸部温和深层卸妆膏100ml ",
             id:
@@ -158,7 +158,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026121528.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026121528.jpg",
             gtitle:
                 "自然共和国 Nature Republic芦荟胶舒缓保湿凝胶300ml  进口补水保湿舒缓晒后修复面膜 ",
             id:
@@ -176,7 +176,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022143752.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022143752.jpg",
             gtitle:
                 "韩国可莱丝 美迪惠尔 胶原蛋白面膜10片",
             id:
@@ -194,7 +194,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022143328.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022143328.jpg",
             gtitle:
                 "韩国可莱丝 美迪惠尔维生素面膜10片/盒(升级版）",
             id:
@@ -212,7 +212,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022140025.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022140025.jpg",
             gtitle:
                 "斯内普海洋燕窝补水安瓶精华面膜25ml*10",
             id:
@@ -230,7 +230,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022140912.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022140912.jpg",
             gtitle:
                 "斯内普黄金胶原蛋白精华面膜25ml*10",
             id:
@@ -248,7 +248,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022135121.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022135121.jpg",
             gtitle:
                 "斯内普虎形抗皱面膜(改善皱纹功能性产品)25ml*10",
             id:
@@ -266,7 +266,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022133801.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022133801.jpg",
             gtitle:
                 "斯内普熊猫形美白面膜(美白功能性产品)25ml*10",
             id:
@@ -284,7 +284,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171022134633.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171022134633.jpg",
             gtitle:
                 "斯内普龙形舒缓面膜25ml*10",
             id:
@@ -302,7 +302,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026135107.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026135107.jpg",
             gtitle:
                 "兰芝（Laneige） 气垫BB霜/防晒隔离霜 雪润无暇粉凝霜+替换装13号 15g",
             id:
@@ -320,7 +320,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031163517.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031163517.jpg",
             gtitle:
                 "韩国兰芝夜间保湿修护唇膜20g",
             id:
@@ -338,7 +338,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031165818.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031165818.jpg",
             gtitle:
                 "澳洲HOLA 茶树植物调理净痘面膜泥120g",
             id:
@@ -356,7 +356,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031164749.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031164749.jpg",
             gtitle:
                 "澳洲HOLA 茶树植物调理平衡水150ml",
             id:
@@ -374,7 +374,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031164511.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031164511.jpg",
             gtitle:
                 "澳洲HOLA 茶树植物调理卸妆油190ml",
             id:
@@ -392,7 +392,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171017172248.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017172248.jpg",
             gtitle:
                 "后天气丹花献光彩紧颜系列礼盒(308ml)6件套",
             id:
@@ -410,7 +410,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171017170951.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017170951.jpg",
             gtitle:
                 "后拱辰享气韵生系列(321ml)6件套",
             id:
@@ -428,7 +428,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171017171912.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017171912.jpg",
             gtitle:
                 "后津率享红华凝香系列礼盒(329ml)7件套",
             id:
@@ -446,7 +446,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031172557.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031172557.jpg",
             gtitle:
                 "后拱辰享水沄系列礼盒(309ml+2g)6件套",
             id:
@@ -467,7 +467,7 @@ const provinceData = {
     '休闲食品': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171101144131.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171101144131.jpg",
             gtitle:
                 "皇冠丹麦曲奇饼干 72g（原味）",
             id:
@@ -485,7 +485,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/170923174203.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923174203.jpg",
             gtitle:
                 "皇冠丹麦曲奇饼干 72g（葡萄）",
             id:
@@ -503,7 +503,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031151911.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031151911.jpg",
             gtitle:
                 "蓝钻石盐烤风味扁桃仁150g",
             id:
@@ -521,7 +521,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026101513.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026101513.jpg",
             gtitle:
                 "德国进口 Schogetten斯格登黑巧克力100g 美味夹心 纸盒装",
             id:
@@ -539,7 +539,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027102926.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027102926.jpg",
             gtitle:
                 "德国进口 Schogetten斯格登黑白配巧克力制品100g 美味夹心 纸盒装",
             id:
@@ -557,7 +557,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031100357.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031100357.jpg",
             gtitle:
                 "德国进口 Schogetten斯格登阿尔卑斯榛子巧克力制品100g美味夹心 纸盒装",
             id:
@@ -575,7 +575,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027105109.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027105109.jpg",
             gtitle:
                 "德国进口 Schogetten斯格登酸奶草莓味巧克力制品100g 美味夹心 纸盒装",
             id:
@@ -593,7 +593,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027111632.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027111632.jpg",
             gtitle:
                 "德国进口 Schogetten斯格登卡布奇诺巧克力制品100g 美味夹心 纸盒装",
             id:
@@ -611,7 +611,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031100735.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031100735.jpg",
             gtitle:
                 "斯格登可可粒巧克力制品100g ",
             id:
@@ -629,7 +629,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026135928.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026135928.jpg",
             gtitle:
                 "费列罗进口巧克力 婚庆喜糖零食生日礼物情人节礼物巧克力糖果 T24粒礼盒装 ",
             id:
@@ -650,7 +650,7 @@ const provinceData = {
     '冲调/咖啡': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026145637.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026145637.jpg",
             gtitle:
                 "超级牌 3合1 经典炭烧白咖啡（固体饮料）",
             id:
@@ -686,7 +686,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171018154800.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018154800.jpg",
             gtitle:
                 "Plantree保罗森水果麦片500g",
             id:
@@ -722,7 +722,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171018153942.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018153942.jpg",
             gtitle:
                 "Plantree保罗森坚果麦片500g",
             id:
@@ -740,7 +740,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171019140030.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019140030.jpg",
             gtitle:
                 "保罗森 德国进口经典麦片  谷物冲饮营养早餐麦片 500g",
             id:
@@ -758,7 +758,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171018152504.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171018152504.jpg",
             gtitle:
                 "Plantree保罗森五谷物麦片500g",
             id:
@@ -778,7 +778,7 @@ const provinceData = {
     '饮料/牛奶': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171031132811.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031132811.jpg",
             gtitle:
                 "蜜儿沃克3.5%脂肪 超高温全脂牛奶 200ml",
             id:
@@ -796,7 +796,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171013152751.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013152751.jpg",
             gtitle:
                 "蜜儿沃克1.5%脂肪 超高温半脱脂牛奶 1L",
             id:
@@ -814,7 +814,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171013162613.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013162613.jpg",
             gtitle:
                 "蜜儿沃克3.5%脂肪 超高温全脂牛奶 1L",
             id:
@@ -832,7 +832,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171016114613.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016114613.jpg",
             gtitle:
                 "贝利玛芒果汁1l",
             id:
@@ -850,7 +850,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171016114637.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016114637.jpg",
             gtitle:
                 "贝利玛复合果汁1l",
             id:
@@ -868,7 +868,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171016114717.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016114717.jpg",
             gtitle:
                 "贝利玛菠萝汁1l",
             id:
@@ -886,7 +886,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171016114737.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016114737.jpg",
             gtitle:
                 "贝利玛苹果汁1l",
             id:
@@ -905,7 +905,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171016114818.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016114818.jpg",
             gtitle:
                 "贝利玛橙子汁1l",
             id:
@@ -924,7 +924,7 @@ const provinceData = {
     ],
     '粮油米面': [
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012160322.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012160322.jpg",
             gtitle: "安达卢特级初榨橄榄油1L",
             id: 751,
             price: "110.00",
@@ -935,7 +935,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171103173323.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103173323.jpg",
             gtitle:
                 "易贝斯特特级初榨橄榄油1L",
             id:
@@ -952,7 +952,7 @@ const provinceData = {
                 "89.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012095610.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012095610.jpg",
             gtitle: "欧立味佳（Olivija ）佳葵花籽油 乌克兰原装进口 高品质健康食用油5L",
             id: 1392,
             price: "99.00",
@@ -965,7 +965,7 @@ const provinceData = {
     '婴儿奶粉': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171013145857.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013145857.jpg",
             gtitle:
                 "澳洲a2 Platinum 白金版婴幼儿奶粉1段 900g ( 0-6个月 )",
             id:
@@ -1019,7 +1019,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171023114654.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023114654.jpg",
             gtitle:
                 "澳洲Bellamys贝拉米奶粉1段(0-6个月)900g\罐",
             id:
@@ -1038,7 +1038,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171023114048.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023114048.jpg",
             gtitle:
                 "澳洲贝拉米（Bellamys）2段有机婴儿奶粉(6-12个月)900g",
             id:
@@ -1056,7 +1056,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171023113540.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171023113540.jpg",
             gtitle:
                 "澳洲贝拉米（Bellamys）3段有机婴儿奶粉(1-3岁)900g 原装进口奶粉",
             id:
@@ -1168,7 +1168,7 @@ const provinceData = {
     '婴儿尿不湿':[
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171025113910.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025113910.jpg",
             gtitle:
                 "日本原装花王纸尿裤NB90片",
             id:
@@ -1186,7 +1186,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171025111926.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025111926.jpg",
             gtitle:
                 "日本花王妙而舒婴儿纸尿裤小号(S) 82片",
             id:
@@ -1205,7 +1205,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/170923134749.png",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923134749.png",
             gtitle:
                 "日本花王妙而舒婴儿纸尿裤特大号(XL)44片",
             id:
@@ -1223,7 +1223,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027170026.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027170026.jpg",
             gtitle:
                 "日本花王妙而舒婴儿纸尿裤大号(L)54片",
             id:
@@ -1241,7 +1241,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027171400.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027171400.jpg",
             gtitle:
                 "日本花王妙而舒婴儿学步裤大号(L) 44 片",
             id:
@@ -1260,7 +1260,7 @@ const provinceData = {
         {
 
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171025115135.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025115135.jpg",
             gtitle:
                 "日本花王妙而舒婴儿学步裤 特大号(XL) 38片",
             id:
@@ -1278,7 +1278,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171025115528.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171025115528.jpg",
             gtitle:
                 "日本花王纸尿裤M64片",
             id:
@@ -1298,7 +1298,7 @@ const provinceData = {
     '婴儿护理': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171011184004.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011184004.jpg",
             gtitle:
                 "德国sanosan哈罗闪婴幼儿爽身粉/痱子粉100g",
             id:
@@ -1317,7 +1317,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171011182044.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011182044.jpg",
             gtitle:
                 "德国sanosan哈罗闪婴儿润肤霜150ML",
             id:
@@ -1335,7 +1335,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171011183036.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011183036.jpg",
             gtitle:
                 "德国sanosan哈罗闪婴儿无泪洗发水沐浴露二合一500ml",
             id:
@@ -1354,7 +1354,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026110510.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026110510.jpg",
             gtitle:
                 "施巴婴儿护面霜50ml ",
             id:
@@ -1373,7 +1373,7 @@ const provinceData = {
         {
 
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026111646.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026111646.jpg",
             gtitle:
                 "施巴婴儿护臀膏100ml ",
             id:
@@ -1395,7 +1395,7 @@ const provinceData = {
         {
 
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026112709.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026112709.jpg",
             gtitle:
                 "黄色小鸭婴幼儿指甲剪",
             id:
@@ -1414,7 +1414,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026113911.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026113911.jpg",
             gtitle:
                 "欧乐B多动向动力儿童牙刷（8岁以上）",
             id:
@@ -1434,7 +1434,7 @@ const provinceData = {
     '手部护理': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026154258.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026154258.jpg",
             gtitle:
                 "发希fascy（陆心媛）倍润手霜-草莓40ml",
             id:
@@ -1452,7 +1452,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026142406.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026142406.jpg",
             gtitle:
                 "发希fascy（陆心媛）倍润手霜-牛奶40ml",
             id:
@@ -1470,7 +1470,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171026120539.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171026120539.jpg",
             gtitle:
                 "发希fascy（陆心媛）倍润手霜-桃子40ml",
             id:
@@ -1490,7 +1490,7 @@ const provinceData = {
     '身体护理': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171103162054.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103162054.jpg",
             gtitle:
                 "LG安宝笛浪漫邂逅香水保湿身体乳（紫色百合）400g",
             id:
@@ -1508,7 +1508,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171103164629.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103164629.jpg",
             gtitle:
                 " LG安宝笛甜蜜爱恋香水保湿身体乳（粉色玫瑰）400g",
             id:
@@ -1526,7 +1526,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171103171321.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103171321.jpg",
             gtitle:
                 "LG安宝笛梦中诱惑香水美肌沐浴露500ml ",
             id:
@@ -1566,7 +1566,7 @@ const provinceData = {
     '头发护理': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171103172041.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103172041.jpg",
             gtitle:
                 "诺珊娜绿色溪谷柔炫丝滑去屑系列小套盒（480ml+280ml）",
             id:
@@ -1584,7 +1584,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027100421.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027100421.jpg",
             gtitle:
                 "吕含光耀护损伤修护洗发水400g",
             id:
@@ -1602,7 +1602,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171101155957.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171101155957.jpg",
             gtitle:
                 "吕舒盈清润舒缓去屑洗发水400g",
             id:
@@ -1620,7 +1620,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171101155517.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171101155517.jpg",
             gtitle:
                 "吕舒盈清润清爽控油洗发水400ml",
             id:
@@ -1642,7 +1642,7 @@ const provinceData = {
     '家庭清洁': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171002113111.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002113111.jpg",
             gtitle:
                 "西班牙原装进口MAYOR DOMO/玛玉厨房清洁浓缩型洗洁精600ml",
             id:
@@ -1660,7 +1660,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171002154754.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002154754.jpg",
             gtitle:
                 "西班牙原装进口玛玉浓缩马赛皂液洗衣液洗衣粉超大量3L",
             id:
@@ -1678,7 +1678,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171002121120.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002121120.jpg",
             gtitle:
                 "西班牙原装进口 玛玉亮采洗衣液",
             id:
@@ -1696,7 +1696,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027103852.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027103852.jpg",
             gtitle:
                 "米斯克林温和型内衣洗衣液400ml",
             id:
@@ -1714,7 +1714,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027110705.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027110705.jpg",
             gtitle:
                 "日本葆色 宠爱宝贝泡沫洗手液 250ML",
             id:
@@ -1732,7 +1732,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027113314.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027113314.jpg",
             gtitle:
                 "日本葆色 果园清新泡沫洗手液 250ML",
             id:
@@ -1750,7 +1750,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027113043.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027113043.jpg",
             gtitle:
                 "韩国恩牧思婴幼儿薰衣草香型洗衣液1L瓶装",
             id:
@@ -1768,7 +1768,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171017152145.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017152145.jpg",
             gtitle:
                 "韩国恩牧思婴幼儿玫瑰香型洗衣液1L瓶装",
             id:
@@ -1786,7 +1786,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171020113631.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020113631.jpg",
             gtitle:
                 "蔚净污渍清洗剂 花香型 1000ml",
             id:
@@ -1804,7 +1804,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/170927125040.png",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170927125040.png",
             gtitle:
                 "蔚净污渍清洗剂 清新型 1000ml",
             id:
@@ -1824,7 +1824,7 @@ const provinceData = {
     '口腔清洁': [
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027112330.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027112330.jpg",
             gtitle:
                 "蔚净植物护龈牙膏75ml",
             id:
@@ -1842,7 +1842,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027115436.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027115436.jpg",
             gtitle:
                 "蔚净清爽护齿牙膏75ml",
             id:
@@ -1878,7 +1878,7 @@ const provinceData = {
         },
         {
             bigpic:
-                "http://worldwideapp.chinazjtc.com/upload/img/171027164827.jpg",
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027164827.jpg",
             gtitle:
                 "蔚净儿童固齿牙膏75ml",
             id:
@@ -1897,7 +1897,7 @@ const provinceData = {
     ],
     '保健用品': [
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011135840.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011135840.jpg",
             gtitle: "康力士牌三文鱼油维生素E软胶囊100粒",
             id: 1426,
             price: "158.00",
@@ -1907,7 +1907,7 @@ const provinceData = {
             zkprice: "79.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011120257.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011120257.jpg",
             gtitle: "康力士®磷脂胶囊100粒",
             id: 1358,
             price: "158.00",
@@ -1917,7 +1917,7 @@ const provinceData = {
             zkprice: "79.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011141527.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011141527.jpg",
             gtitle: "康力士牌三文鱼油维生素E软胶囊200粒",
             id: 1427,
             price: "288.00",
@@ -1927,7 +1927,7 @@ const provinceData = {
             zkprice: "144.00",
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011163900.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163900.jpg",
             gtitle: "康力士®磷脂胶囊200粒",
             id: 1516,
             price: "288.00",
@@ -1937,7 +1937,7 @@ const provinceData = {
             zkprice: "144.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171010144616.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010144616.jpg",
             gtitle: "康力士牌三文鱼油维生素E软胶囊300粒",
             id: 1415,
             price: "388.00",
@@ -1947,7 +1947,7 @@ const provinceData = {
             zkprice: "194.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011164235.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011164235.jpg",
             gtitle: "康力士®磷脂胶囊300粒",
             id: 1518,
             price: "388.00",
@@ -1957,7 +1957,7 @@ const provinceData = {
             zkprice: "194.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011172029.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011172029.jpg",
             gtitle: "康力士牌褪黑素片60片",
             id: 955,
             price: "138.00",
@@ -1967,7 +1967,7 @@ const provinceData = {
             zkprice: "69.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011162758.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011162758.jpg",
             gtitle: "康力士牌牛初乳片60片",
             id: 953,
             price: "198.00",
@@ -1977,7 +1977,7 @@ const provinceData = {
             zkprice: "99.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011162113.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011162113.jpg",
             gtitle: "康力士牌纤维康片60片",
             id: 958,
             price: "168.00",
@@ -1987,7 +1987,7 @@ const provinceData = {
             zkprice: "84.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171002161321.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002161321.jpg",
             gtitle: "康力士牌钙维生素D胶囊90粒",
             id: 950,
             price: "188.00",
@@ -1997,7 +1997,7 @@ const provinceData = {
             zkprice: "94.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011161605.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011161605.jpg",
             gtitle: "银发族复合维生素片（营养素补充剂）500mg",
             id: 1023,
             price: "178.00",
@@ -2007,7 +2007,7 @@ const provinceData = {
             zkprice: "89.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011151702.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011151702.jpg",
             gtitle: "全家福复合维生素片（营养素补充剂）100片ｘ500mg",
             id: 218,
             price: "178.00",
@@ -2017,7 +2017,7 @@ const provinceData = {
             zkprice: "89.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011154326.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011154326.jpg",
             gtitle: "立安降脂灵胶囊60粒ｘ500mg",
             id: 1037,
             price: "158.00",
@@ -2027,7 +2027,7 @@ const provinceData = {
             zkprice: "50.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011172644.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011172644.jpg",
             gtitle: "好健牌牛乳钙片60片",
             id: 1050,
             price: "198.00",
@@ -2037,7 +2037,7 @@ const provinceData = {
             zkprice: "99.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011160143.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011160143.jpg",
             gtitle: "康力士®红太胶囊60粒",
             id: 930,
             price: "298.00",
@@ -2047,7 +2047,7 @@ const provinceData = {
             zkprice: "149.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011173343.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011173343.jpg",
             gtitle: "康力士®安迪胶囊60粒",
             id: 929,
             price: "298.00",
@@ -2057,7 +2057,7 @@ const provinceData = {
             zkprice: "149.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011163143.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163143.jpg",
             gtitle: "南求牌恒力片60片ｘ675mg",
             id: 223,
             price: "228.00",
@@ -2067,7 +2067,7 @@ const provinceData = {
             zkprice: "114.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011163426.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163426.jpg",
             gtitle: "康力士®鲨鱼软骨粉胶囊100粒",
             id: 944,
             price: "298.00",
@@ -2077,7 +2077,7 @@ const provinceData = {
             zkprice: "149.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011165058.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011165058.jpg",
             gtitle: "康鹰牌液体钙软胶囊100粒",
             id: 226,
             price: "138.00",
@@ -2087,7 +2087,7 @@ const provinceData = {
             zkprice: "69.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011165926.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011165926.jpg",
             gtitle: "康鹰牌液体钙软胶囊200粒",
             id: 1520,
             price: "258.00",
@@ -2097,7 +2097,7 @@ const provinceData = {
             zkprice: "129.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011170623.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011170623.jpg",
             gtitle: "康鹰牌多种维生素片60片",
             id: 964,
             price: "188.00",
@@ -2107,7 +2107,7 @@ const provinceData = {
             zkprice: "94.00"
         },
         {
-            bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011171721.jpg",
+            bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011171721.jpg",
             gtitle: "康鹰牌银杏胶囊60粒",
             id: 966,
             price: "198.00",

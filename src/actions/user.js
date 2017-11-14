@@ -791,10 +791,9 @@ export const fetchWithDraw = (data,history) => {
             .then(res => {
                 if (res.data.code == 200) {
                     dispatch(withDraw(res.data.data))
-                    Toast.success(res.data.data.msg,1)
-                    history.push({
-                        pathname:"/user",
-                    })
+                    history.goBack()
+
+                    Toast.success(res.data.msg,1)
 
                 } else {
 
