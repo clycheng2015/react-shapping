@@ -104,6 +104,7 @@ class NewAds extends React.Component {
         }
     }
     _save = () => {
+        console.log(areaTxt.indexOf('请选择'))
         const {uid, fetchAddAds, form, history, location} = this.props;
         let id = 0;
         let isdefault = 1
@@ -134,7 +135,7 @@ class NewAds extends React.Component {
             Toast.info('收货地址不能为空！', 1)
             return
         }
-        else if (areaTxt.indexOf('请选择')>0) {
+        else if (areaTxt.indexOf('请选择')>-1) {
             Toast.info('请选择所在地区', 1)
 
             return
@@ -325,7 +326,7 @@ class NewAds extends React.Component {
                             <Picker
 
                                 title="选择地区"
-                                extra="请选择(可选)"
+                                extra="请选择"
                                 data={area.data}
                                 value={this.state.area}
                                 onChange={v => this.setState({area: v})}
