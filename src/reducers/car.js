@@ -11,8 +11,8 @@ let init = {
     pagesize: 100,
     pagenum: 1,
     checkData: [],
-    ckeckAllState:true,
-    banner:{}
+    ckeckAllState: true,
+    banner: {}
 
 
 }
@@ -23,25 +23,60 @@ export const car = (state = init, action) => {
 
     switch (action.type) {
         case types.GET_CAR_LIST:
-            let list=state.checkData
+            let list = state.checkData;
+            let newList = []
+            let ckeckInitAll = state.ckeckAllState
 
-            if(action.data.datalist&&action.data.datalist.length>0){
+            let checkAllArr = []
+            if (action.data.datalist && action.data.datalist.length > 0) {
 
-                list=action.data.datalist.map((i,k)=>({
-                    list:i,
-                    checked: true
-                }))
+                if (list.length === 0) {
+                    newList = action.data.datalist.map((i, k) => ({list: i, checked: true}))
+                    ckeckInitAll = true
+                }
+                if (list.length > 0 && list.length >= action.data.datalist.length) {
+                    action.data.datalist.map((i, k) => {
+                        list.map((j, n) => {
+                            if (i.id === j.list.id) {
+                                checkAllArr.push(j.checked)
+                                newList.push({list: i, checked: j.checked})
+                            }
+                        })
+                    })
+
+                    let newArr = Array.from(new Set(checkAllArr))
+                    ckeckInitAll = (newArr.length === 1 && newArr[0] == true);
+
+
+                }
+
+                if (list.length > 0 && list.length < action.data.datalist.length) {
+                    newList = action.data.datalist.map((i, k) => ({list: i, checked: true}))
+
+                    list.map((j, m) => {
+                        newList.map((i, n) => {
+                            if (j.list.id === i.list.id) {
+                                newList[n].checked = list[m].checked
+
+                                checkAllArr.push(newList[n].checked)
+                            }
+                        })
+                    })
+
+                    let newArr = Array.from(new Set(checkAllArr))
+                    ckeckInitAll = (newArr.length === 1 && newArr[0] == true);
+                }
             }
 
 
-
-            return {...state,
+            return {
+                ...state,
                 pagesize: action.pagesize,
                 pagenum: action.pagenum,
                 data: action.data,
                 isFetching: false,
-                checkData:list,
-                ckeckAllState:true,
+                checkData: newList,
+                ckeckAllState: ckeckInitAll,
             }
 
         case types.DEL_CAR_LIST:
@@ -59,36 +94,36 @@ export const car = (state = init, action) => {
 
         case 'CAR_CHECK_ALL':
 
-            let ckeckAllState=state.ckeckAllState
-            let newData=state.checkData
+            let ckeckAllState = state.ckeckAllState
+            let newData = state.checkData
 
-            if(!ckeckAllState){
-                newData=newData.map((i,k)=>({...i,checked: true}))
+            if (!ckeckAllState) {
+                newData = newData.map((i, k) => ({...i, checked: true}))
             }
 
-            if(ckeckAllState){
-                newData=newData.map((i,k)=>({...i, checked: false}))
+            if (ckeckAllState) {
+                newData = newData.map((i, k) => ({...i, checked: false}))
             }
 
-            return {...state, ckeckAllState: !ckeckAllState,checkData:newData}
+            return {...state, ckeckAllState: !ckeckAllState, checkData: newData}
 
 
         case 'CAR_CHECK':
-            let id=action.id
-            let checkData=state.checkData
-            let checkArr=[]
-            checkData=checkData.map(i=>{
+            let id = action.id
+            let checkData = state.checkData
+            let checkArr = []
+            checkData = checkData.map(i => {
                 "use strict";
-                if(i.list.id===id){
-                    return {...i,checked:!i.checked}
+                if (i.list.id === id) {
+                    return {...i, checked: !i.checked}
                 }
                 return {...i}
             })
-            checkArr=checkData.map(i=>(i.checked))
+            checkArr = checkData.map(i => (i.checked))
             let newArr = Array.from(new Set(checkArr))
             let isAllEqual = (newArr.length === 1 && newArr[0] == true);
 
-            return {...state,checkData:checkData,ckeckAllState:isAllEqual}
+            return {...state, checkData: checkData, ckeckAllState: isAllEqual}
 
 
         default:

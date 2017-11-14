@@ -46,10 +46,7 @@ export default class BuyCar extends React.Component {
     componentWillReceiveProps(nextProps) {
         const {fetchCarList, pagesize, pagenum, isFetching} = nextProps
         if (isFetching) {
-            fetchCarList({
-                pagesize: pagesize,
-                pagenum: pagenum
-            })
+            fetchCarList({pagesize: pagesize, pagenum: pagenum})
         }
     }
 
