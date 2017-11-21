@@ -53,7 +53,7 @@ export default class Auth extends React.Component {
                 <div>
                     <Flex justify="center" align="center">
                         <Flex.Item className="logo">
-                            <img src={require('static/image/ic_logo.png')} alt="" style={{width:"1rem"}}/>
+                            <img src={require('static/image/ic_logo.png')} alt="" style={{width:"1.5rem"}}/>
                             <br/>
                             {/*<img src={require('static/image/ic_logo_name.png')} alt=""/>*/}
                         </Flex.Item>

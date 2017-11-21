@@ -18,7 +18,7 @@ class News extends React.Component {
     render() {
         const {data}=this.props
 
-        console.log(data)
+
 
         return (
             <div className="news">

@@ -19,6 +19,14 @@ export function postType(state = init, action) {
             return {...state,postData:action.data}
         case types.SAVE_POST_TYPE:
             return {...state,savePostData:action.data}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+        case 'CLEAR_POST_TYPE':
+
+            return{...init}
+
         default:
             return state
     }

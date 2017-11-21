@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 import {AppLocalStorage} from '../../utils/cookie'
 
 
-import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
+import { Icon, Toast, Modal, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
 import * as global from 'actions/global'
@@ -51,6 +51,42 @@ export default class UserCenter extends React.Component {
             })
         }
     }
+    _changeImg=()=>{
+        // let  images = {
+        //     localId: [],
+        //     serverId: []
+        // };
+        // wx.chooseImage({
+        //     success: function (res) {
+        //         images.localId = res.localIds;
+        //         Toast.info('已选择 ' + res.localIds.length + ' 张图片',1);
+        //     }
+        // });
+        // console.log('im')
+        // if (images.localId.length == 0) {
+        //     alert('请先使用 chooseImage 接口选择图片');
+        //     return;
+        // }
+        // var i = 0, length = images.localId.length;
+        // images.serverId = [];
+        // function upload() {
+        //     wx.uploadImage({
+        //         localId: images.localId[i],
+        //         success: function (res) {
+        //             i++;
+        //             alert('已上传：' + i + '/' + length);
+        //             images.serverId.push(res.serverId);
+        //             if (i < length) {
+        //                 upload();
+        //             }
+        //         },
+        //         fail: function (res) {
+        //             alert(JSON.stringify(res));
+        //         }
+        //     });
+        // }
+        // upload();
+    }
 
     render() {
         const {userInfo, history} = this.props
@@ -63,8 +99,7 @@ export default class UserCenter extends React.Component {
                 return (
                     <div>
                         <List style={{paddingTop: "1rem"}}>
-                            <List.Item arrow="horizontal"
-                                       extra={<img src={userInfo.headpic} alt="" className="headpic"/>}>头像</List.Item>
+                            <List.Item arrow="horizontal"  extra={<img src={userInfo.headpic} alt="" className="headpic" onClick={()=>this._changeImg()}/>}>头像</List.Item>
                         </List>
                         <List>
 

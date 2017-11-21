@@ -126,6 +126,10 @@ export const car = (state = init, action) => {
             return {...state, checkData: checkData, ckeckAllState: isAllEqual}
 
 
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

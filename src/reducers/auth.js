@@ -27,6 +27,11 @@ export const auth = (state = init, action) => {
             return {...state}
         case types.AUTH_UPDATE_PWD:
             return {...state,mobile:action.mobile,password:action.password}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

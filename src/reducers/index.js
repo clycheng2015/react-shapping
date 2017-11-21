@@ -13,7 +13,8 @@ import {search} from './search'
 import {goodsDetail} from './goodsDetail'
 import {postType} from './postType'
 import {invoice} from './invoice'
-import {global, myTabBarReducer} from './global'
+import {global} from './global'
+import {doubleActive} from './doubleActive'
 const rootReducer = {
     home,
     item,
@@ -31,6 +32,6 @@ const rootReducer = {
     goodsDetail,
     itemList,
     global,
-    myTabBarReducer
+    doubleActive
 }
 export default rootReducer

@@ -28,6 +28,11 @@ export const moreList = (state = init, action) => {
             return {...state,isFetching:false,data:action.data}
         case 'MORE_REMOVE':
             return {...state,data:{}}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

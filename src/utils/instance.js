@@ -13,7 +13,7 @@ import {AppLocalStorage} from './cookie'
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
 let url = '',xToken = ''
-if (isPro) {url = 'http://app.meilungo.com'} else {url = 'http://localhost:3011'}
+if (isPro) {url = 'http://app.meilungo.com'} else {url = 'http://192.168.1.156:3011'}
 axios.defaults.baseURL = url;
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -21,8 +21,17 @@ axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencod
 
 axios.interceptors.request.use(
     config => {
+
+        if(config.url.indexOf('/v2/pay/api')>0){
+
+            let user = AppLocalStorage.Cache.get('user')
+            if (user && user.userInfo) {
+                xToken = user.userInfo.access_token
+                config.headers.Authorization = `Bearer${xToken}`;
+            }
+        }
+
         if(config.url.indexOf('open')<0){
-            console.log("添加token")
             let user = AppLocalStorage.Cache.get('user')
             if (user && user.userInfo) {
                 xToken = user.userInfo.access_token

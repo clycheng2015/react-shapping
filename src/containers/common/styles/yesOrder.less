@@ -2,7 +2,6 @@
   //background: #f3f3f1;
   height: auto;
 
-
   .nav-tab {
 
     z-index: 1111111;
@@ -49,7 +48,8 @@
     width: 100%;
     min-height: 1.2rem;
     background: white;
-    padding-top: 1rem;
+    //padding-top: 1rem;
+    padding-top: .2rem;
     position: relative;
     .line {
       display: block;
@@ -64,6 +64,20 @@
       .mobile {
         margin-left: .5rem;
       }
+      .isPick{
+
+        border: 1px solid #fea203;
+        color: #fea203;
+        font-size: .2rem;
+        border-radius: .2rem;
+        height: .22rem;
+        display: inline-block;
+        padding: .02rem;
+        margin-left: .5rem;
+
+      }
+
+
     }
 
     .ads {
@@ -75,7 +89,7 @@
       .txt {
         display: inline-block;
         width: 94%;
-        font-size: .28rem;
+        font-size: .26rem;
         color: #333333;
         padding-bottom: .2rem;
 
@@ -96,8 +110,9 @@
       line-height: .4rem;
       font-size: .26rem;
 
+
       color: #333333;
-      .state{
+      .state {
         float: right;
         color: #fe4203;
         font-size: .26rem;
@@ -144,7 +159,7 @@
 
         }
 
-        .bom{
+        .bom {
           height: 1rem;
           line-height: 1.5rem;
         }
@@ -167,14 +182,11 @@
           font-size: .32rem;
           color: #fe4203;
 
-
         }
 
       }
 
     }
-
-
 
   }
   .tot-info {
@@ -200,45 +212,47 @@
   }
 
   .re-info {
-    width: 100%;
-    min-height: 1.5rem;
+    width: 7.5rem;
+    min-height: .5rem;
     background: white;
     margin-top: .2rem;
+    padding-bottom: .2rem;
+    padding-right: .2rem;
+    //float: left;
 
-    .title{
+    .title {
       font-size: .26rem;
-      color: #666666;
+      color: #333333;
       height: .6rem;
       line-height: .6rem;
       padding-left: .2rem;
-      border-bottom: 1px solid #f3f3f1;
-
+      width: 1rem;
+      //float: left;
+      display: table-cell;
+      //border-bottom: 1px solid #f3f3f1;
 
     }
-    .re-msg{
+    .re-msg {
+      width: 6.3rem;
+      display: table-cell;
+      word-break: break-all;
+      color: #333333;
+      font-size: .28rem;
+      //padding-left: .8rem;
+      padding-top: .15rem;
+
+    }
+    .re-ms {
 
       padding: .2rem;
       font-size: .3rem;
       word-break: break-all;
       color: #333333;
-
-
-    }
-    .re-ms{
-
-      padding: .2rem;
-      font-size: .3rem;
-      word-break: break-all;
-      color: #333333;
       border-bottom: 1px solid #f3f3f1;
 
-
-
     }
-
 
   }
-
 
   .fapiao {
 
@@ -270,32 +284,31 @@
       font-size: .22rem;
 
     }
-    .am-checkbox-inner{
+    .am-checkbox-inner {
       width: 18px;
       height: 18px;
     }
-    .am-list-content{
+    .am-list-content {
       font-size: .2rem;
     }
   }
 
-  .fapiao-info{
+  .fapiao-info {
     height: 1.1rem;
     margin-top: .2rem;
     width: 100%;
     background: white;
     padding-top: .2rem;
-    .top{
-      label{
+    .top {
+      label {
         font-size: .25rem;
       }
-      .per{
+      .per {
 
         padding-right: .5rem;
       }
 
-
-      .a{
+      .a {
 
         float: left;
       }
@@ -322,17 +335,17 @@
         width: 80px;
 
       }
-      .am-checkbox-inner{
+      .am-checkbox-inner {
         width: 18px;
         height: 18px;
       }
-      .am-list-content{
+      .am-list-content {
         font-size: .2rem;
       }
       width: 100%;
       height: .5rem;
       border-bottom: 1px solid #f3f3f1;
-      .title{
+      .title {
         font-size: .2rem;
         display: inline-block;
         width: 12%;
@@ -343,7 +356,7 @@
 
       }
     }
-    .bottom{
+    .bottom {
       .am-list-item .am-input-label.am-input-label-5 {
         width: 40px;
         font-size: .2rem;
@@ -351,7 +364,7 @@
       width: 100%;
       height: .6rem;
       border-bottom: 1px solid #f3f3f1;
-      .title{
+      .title {
         font-size: .2rem;
         display: inline-block;
         width: 15%;
@@ -397,51 +410,196 @@
   }
 
   .am-list-item .am-input-control input {
-  font-size: 12px;
+    font-size: 12px;
   }
 
-.btn-info{
+  .btn-info {
 
-  width: 100%;
-  height: .8rem;
-  position: fixed;
-  bottom: 0;
-  text-align: right;
-  //line-height: .8rem;
-  background: white;
+    width: 100%;
+    height: 1rem;
+    position: fixed;
+    bottom: 0;
+    text-align: right;
+    //line-height: .8rem;
+    background: white;
 
-  .del-btn{
-    display: inline-block;
-    width: 1.1rem;
-    height: .4rem;
-    border: 1px solid #949494;
-    color: #969696;
-    font-size: .2rem;
-    margin-top: .2rem;
-    margin-right: .1rem;
-    text-align: center;
-    line-height: .4rem;
-    border-radius:.05rem ;
+    .del-btn {
+      display: inline-block;
+      width: 2.4rem;
+      height: 1rem;
+      border-left: 1px solid #e7e7e7;
+      color: #676767;
+      font-size: .32rem;
+      text-align: center;
+      line-height: 1rem;
+
+
+    }
+    .gotobuy-btn {
+      display: inline-block;
+      width: 2.5rem;
+      height: 1rem;
+      color: white;
+      font-size: .32rem;
+      background: #fe4a21;
+      text-align: center;
+      line-height: 1rem;
+    }
+
+    .yeBtn{
+      display: inline-block;
+      width: 2.5rem;
+      height: 1rem;
+      color: white;
+      font-size: .32rem;
+      background: #fea203;
+      text-align: center;
+      line-height: 1rem;
+    }
+
+  }
+
+  .state-info {
+
+    padding-top: .9rem;
+    width: 7.5rem;
+    height: 1.8rem;
+    background: -webkit-linear-gradient(left, #ffc434, #ffdf5d); /* Safari 5.1 - 6.0 */
+    .left-ic {
+      width: 1.8rem;
+      height: 1.8rem;
+      //float: left;
+      box-sizing: border-box;
+      //border: 1px solid red;
+      overflow: hidden;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: right;
+      img {
+        width: 1rem;
+        vertical-align: middle;
+        margin-right: .3rem;
+
+      }
+    }
+    .right-tx {
+      width: 5.7rem;
+      height: 1.8rem;
+      display: table-cell;
+      //box-sizing: border-box;
+      //border: 1px solid red;
+      overflow: hidden;
+
+      .time {
+        width: 5.7rem;
+        height: .5rem;
+        text-align: right;
+
+        .box {
+          float: right;
+          height: .4rem;
+          //width: 2.8rem;
+          background: #fde472;
+          border-radius: .4rem;
+          font-size: .2rem;
+          color: #840303;
+          overflow: hidden;
+          line-height: .4rem;
+          margin-top: .3rem;
+          text-align: right;
+          padding-right: .2rem;
+          img{
+            width: .25rem;
+            float: left;
+            margin-top: .04rem;
+            margin-left: .15rem;
+          }
+          .timer{
+            width: 1rem;
+            float: right;
+          }
+        }
+      }
+
+      .msg{
+
+        :first-child{
+          font-size: .32rem;
+          color: #6c0000;
+          height: .5rem;
+          margin-top: .05rem;
+        }
+        :last-child{
+          font-size: .26rem;
+          color: #b85d05;
+
+
+        }
+
+
+      }
+
+    }
+
+  }
+
+  .am-list-item{
+    border-bottom: 1px solid #f3f3f1;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    .am-list-content{
+      font-size: .28rem;
+      color: #333333;
+    }
+    .am-list-extra{
+      flex-basis: 60%;
+      font-size: .26rem;
+      color: #333333;
+
+
+    }
+    .am-list-line{
+      padding: 0;
+    }
+
+  }
+  .is-fapiao{
+    background: white;
+    .am-list-item{
+      border: none;
+    }
+    .cmp-info{
+      width: 7.5rem;
+      min-height: 1rem;
+      text-align: right;
+      p{
+        padding-left: .2rem;
+        font-size: .26rem;
+        color: #333333;
+        word-wrap:break-word;
+        word-break:break-all;
+        padding-right: .2rem;
+      }
+      :last-child{
+        margin-top: .1rem;
+      }
+
+
+    }
+
+  }
+  .mey-info{
+
+    .am-list-extra{
+      color:#fe4203 ;
+    }
+    .money{
+      color: #fe4203 !important;
+      font-size: .28rem;
+    }
 
 
   }
-  .gotobuy-btn{
-    display: inline-block;
-    width: 1.1rem;
-    height: .4rem;
-    border: 1px solid #ed0041;
-    color: #ed0041;
-    font-size: .2rem;
-    margin-top: .2rem;
-    margin-right: .2rem;
-    text-align: center;
-    line-height: .4rem;
-    border-radius:.05rem ;
-
-  }
-
-}
-
 
 }
 

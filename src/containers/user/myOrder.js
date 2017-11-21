@@ -22,15 +22,16 @@ export default class MyOrder extends React.Component {
     componentDidMount() {
         const {fetchOrderList, order, match, fetchGetPostage} = this.props
         const {isFetching, orderState, pagesize, pagenum, tab} = order
-        //邮费
-        fetchGetPostage()
+        // //邮费
+        // fetchGetPostage()
         if (!isFetching) {
             fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
     }
 
     _tabChange = (tab, index) => {
-        const {orderTabChange,fetchOrderList, pagesize,pagenum} = this.props
+        const {orderTabChange,fetchOrderList,order} = this.props
+        const {pagesize, pagenum} = order
         orderTabChange(tab.title, tab.state, index)
         fetchOrderList(tab.title, {state: tab.state, pagesize: pagesize, pagenum: pagenum})
 
@@ -39,7 +40,7 @@ export default class MyOrder extends React.Component {
     _refresh = () => {
         const {fetchOrderList, order} = this.props
         const {orderState, pagesize, pagenum, tab} = order
-        //邮费
+
         fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: 1})
 
     }
@@ -49,11 +50,7 @@ export default class MyOrder extends React.Component {
         const {fetchOrderList, order,} = nextProps
 
         const {tab, isFetching, orderState, pagesize, pagenum, orderListInfo, isHandle} = order
-        //
-        // if ((!isFetching && tab != this.props.tab && !orderListInfo[tab])) {
-        //
-        //     fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
-        // }
+
         if (isHandle) {
             fetchOrderList(tab, {state: orderState, pagesize: pagesize, pagenum: pagenum})
         }
@@ -62,7 +59,7 @@ export default class MyOrder extends React.Component {
     render() {
 
         const {order, history, fetchDelOrder, savePayOrder, postageData, fetchComfirm} = this.props
-        const {tab, tabs, tabIndex, orderListInfo} = order
+        const {tab, tabs, tabIndex, orderListInfo,orderState} = order
 
         // console.log(orderListInfo[tab])
 
@@ -77,7 +74,7 @@ export default class MyOrder extends React.Component {
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
                         <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                            history.goBack()
+                            history.push('/user')
                         }}/></Flex.Item>
                         <Flex.Item className="item-head center">我的订单</Flex.Item>
                         <Flex.Item className="item-head right"><span></span></Flex.Item>
@@ -97,14 +94,14 @@ export default class MyOrder extends React.Component {
 
                                 }}>
                                     {
-                                        orderListInfo && orderListInfo[tab] && orderListInfo[tab].orderList.length > 0 && postageData ?
+                                        orderListInfo && orderListInfo[tab] && orderListInfo[tab].orderList.length > 0 ?
                                             <OrderList list={orderListInfo[tab]} fetchDelOrder={fetchDelOrder}
 
                                                        history={history} savePayOrder={savePayOrder}
-                                                       postageData={postageData}
+                                                       // postageData={postageData}
                                                        fetchComfirm={fetchComfirm}
                                                        refresh={this._refresh}
-                                                       tabIndex={tabIndex}
+                                                       orderState={orderState}
                                             /> :
                                             <div className="empty-info"
                                                  style={{

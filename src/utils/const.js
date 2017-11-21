@@ -80,6 +80,8 @@ export  const TOP_UP='TOP_UP' //充值
 
 export  const DRAW_MONET='DRAW_MONET' //提现
 
+export  const GET_BADGE='GET_BADGE' //获取角标
+
 
 
 export  const REQUEST_MORE_TYPE_LIST='REQUEST_MORE_TYPE_LIST' //
@@ -172,6 +174,7 @@ export const GET_JINFU_PRO='GET_JINFU_PRO'
 
 
 export const ORDER_REMARK='ORDER_REMARK'
+
 
 
 

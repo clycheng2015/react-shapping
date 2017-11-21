@@ -22,8 +22,6 @@ const proxy = [
     secure: false,
     changeOrigin: true
     },
-
-
 ];
 
 new WebpackDevServer(webpack(config), {

@@ -72,6 +72,11 @@ export const home = (state = init, action) => {
 
             return {...state,errorData:action.data}
 
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
+
         default:
             return {...state}
     }

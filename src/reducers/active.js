@@ -80,6 +80,9 @@ export const active = (state = init, action) => {
             }
 
             return {...state,disIsFetching:false,pagesize:action.pagesize,pagenum:action.pagenum,disList:dislist,disHasMore:disstate}
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
 
         default:
             return state

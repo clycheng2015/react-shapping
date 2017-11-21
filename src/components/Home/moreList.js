@@ -53,6 +53,19 @@ class MoreList extends React.Component {
         fetchHomeList({pagesize: pagesize, pagenum: ++num,})
     }
 
+    _goDetail=(rowData)=>{
+        const {history} =this.props
+        switch (rowData.type){
+
+            case '0':
+                history.push(`/goodsDetail/${rowData.good_id}`)
+                break;
+
+            case '1':
+                history.push(`/activeDetail/${rowData.good_id}SECKILL`)
+                break;
+        }
+    }
 
     render() {
         const {list, history, isFetching, hasMore} = this.props
@@ -60,7 +73,7 @@ class MoreList extends React.Component {
         const row = (rowData, sectionID, rowID) => {
 
             return (
-                <div key={rowID} className="goods" onClick={() => history.push(`/goodsDetail/${rowData.id}`)}>
+                <div key={rowID} className="goods" onClick={() =>this._goDetail(rowData)}>
 
                     <div className="img-info">
 

@@ -3,7 +3,7 @@ import * as types from '../utils/const'
 
 let init = {
     pagesize: 20,
-    pagenum: 0,
+    pagenum: 1,
     list: [],
     isFetching: false,
     hasMore: true,
@@ -31,11 +31,14 @@ export function search(state = init, action) {
             } else if (action.pagenum > state.pagenum) {
                 dataList = dataList.concat(action.data.datalist)
             }
-            else if (action.pagenum === 0) {
+            else if (action.pagenum === 1) {
                 dataList = action.data.datalist
             }
             return {...state,hasMore:hasMore, isFetching: false, list: dataList,pagesize:action.pagesize,pagenum:action.pagenum,word:action.word}
 
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
 
         default:
             return state

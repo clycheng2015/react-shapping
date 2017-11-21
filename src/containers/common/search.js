@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2016/7/1.
- */
+
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -12,8 +10,6 @@ import GoodsList from '../../components/Commons/goodsList'
 import * as global from 'actions/global'
 import * as search from 'actions/search'
 require('./styles/search.less')
-
-
 @connect(
     state => {
         return {...state.search}
@@ -24,62 +20,29 @@ export default class Search extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-
-            title: ''
+            title: '',
+            focused:false
         }
-
     }
-
-    componentDidMount() {
-        //
-        // const {match, getSearchList, location} = this.props
-        // const {params} = match
-        // getSearchList({
-        //     pagesize: 100,
-        //     pagenum: 1,
-        //     word: params.value
-        // })
-
-
-    }
-
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
-    }
-
-
     _search = (v) => {
         const {getSearchList} = this.props
-
         getSearchList({
             pagesize: 20,
-            pagenum: 0,
+            pagenum: 1,
             word: v
         })
     }
 
     _updownMore = () => {
         const {pagenum, isFetching, hasMore, getSearchList, pagesize, word} = this.props
-
         if (isFetching || !hasMore) {
             return;
         }
         let num = pagenum
-        let data = {
-            pagesize: pagesize, pagenum: ++num,
-
-        }
-
-        if (word !== '') {
-
-            data = {...data, word: word}
-
-        }
+        let data = {pagesize: pagesize, pagenum: ++num,}
+        if (word !== '') {data = {...data, word: word}}
         getSearchList(data)
-
     }
 
     render() {
@@ -87,48 +50,32 @@ export default class Search extends React.Component {
         return (
             <div className="search-list-container">
                 <div className="nav-tab">
-
-
-                    <Icon type="left" size="lg" onClick={() => {
-                        history.goBack()
-                    }} className='back-icon'/>
-
-
+                    <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/>
                     <div className="s-box">
-                        <SearchBar
-                            placeholder="搜索"
-                            focused={this.state.focused}
-                            // cancelText="确定"
-                            onFocus={() => {
-                                this.setState({
-                                    focused: false,
-                                });
-                            }}
-                            // showCancelButton={false}
-                            onSubmit={value =>
-                                this._search(value)
-                            }
+                        <SearchBar placeholder="搜索"
+                                   focused={this.state.focused}
+                                   onFocus={() => {
+                                       this.setState({
+                                           focused: false,
+                                       });
+                                   }}
+                                   onSubmit={value =>
+                                       this._search(value)
+                                   }
                         />
                     </div>
-
-
                 </div>
-
                 <div className="list">
-                    {
-                        list && list.length > 0 &&
-                        <GoodsList
-                            list={list}
-                            history={history}
-                            isFetching={isFetching}
-                            hasMore={hasMore}
-                            loadMore={this._updownMore}
-
-                        />
+                    {list && list.length > 0 &&
+                    <GoodsList
+                        list={list}
+                        history={history}
+                        isFetching={isFetching}
+                        hasMore={hasMore}
+                        loadMore={this._updownMore}
+                    />
                     }
-
                 </div>
-
             </div>
         )
     }

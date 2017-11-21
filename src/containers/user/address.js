@@ -31,7 +31,7 @@ export default class Address extends React.Component {
 
 
     _updateDefault = (i) => {
-        const {uid, fetchDefAds,match,history,chooseAddress} = this.props
+        const {uid, fetchDefAds,match,history,chooseAddress,fetchGetPostage} = this.props
         const {params}=match
         const id=i.id
         if(params.id==='0'){
@@ -46,10 +46,7 @@ export default class Address extends React.Component {
 
 
         if(params.id==='1'){
-            chooseAddress(i)
-            setTimeout(() => {
-                history.goBack()
-            }, 100)
+            fetchGetPostage({addressId:i.id},i,history)
 
         }
 

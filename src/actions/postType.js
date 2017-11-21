@@ -14,6 +14,14 @@ export const getPostType = (data) => ({
 
 export const savePost=(data)=>({
 
-
     type: types.SAVE_POST_TYPE,data
 })
+
+
+
+export const clearPostType=()=>({
+
+    type: 'CLEAR_POST_TYPE'
+})
+
+

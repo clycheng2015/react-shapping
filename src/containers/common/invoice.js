@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-import {Icon, Radio, List, Flex,InputItem} from 'antd-mobile'
+import {Icon, Radio, List, Flex,InputItem,Toast} from 'antd-mobile'
 
 const RadioItem = Radio.RadioItem;
 
@@ -60,30 +60,37 @@ export default class PostType extends React.Component {
         getInvoice(data)
     }
     InputChange=(t,v)=>{
-
         const {getInvoice,invoiceType} = this.props
-
         if(t===0){
             let data={...invoiceType,msg:{...invoiceType.msg,cpname:v}}
             getInvoice(data)
-
-        }else {
-
+        }
+        if(t===1) {
             let data={...invoiceType,msg:{...invoiceType.msg,number:v}}
             getInvoice(data)
+        }
+        if(t===2) {
+            let data={...invoiceType,msg:{...invoiceType.msg,username:v}}
 
+            getInvoice(data)
         }
 
 
     }
-
-
     _saveInv=()=>{
 
-        const {saveInvoice,invoiceType,history} = this.props
+        const {saveInvoices,invoiceType,history} = this.props
 
+        if(invoiceType.voiType===1&&invoiceType.msg.cpname===''){
+            Toast.info('亲，公司抬头不能为空哟',1)
+            return false
+        }
 
-        saveInvoice({...invoiceType})
+        if(invoiceType.voiType===1&&invoiceType.msg.number===''){
+            Toast.info('亲，公司识别号不能为空哟',1)
+            return false
+        }
+        saveInvoices({...invoiceType})
 
         history.goBack()
 
@@ -124,8 +131,6 @@ export default class PostType extends React.Component {
 
 
                     <div className="center">
-
-
                         {
                             invoiceType.type===1 && invoiceType.voiType===0&& ' 开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。'
                         }
@@ -182,7 +187,6 @@ export default class PostType extends React.Component {
                                     />
                                     <InputItem
 
-                                        type="number"
                                         placeholder="请填写纳税人识别号"
 
                                         onChange={(v)=>this.InputChange(1,v)}
@@ -190,6 +194,22 @@ export default class PostType extends React.Component {
 
                                 </div>
                             }
+
+
+                            {
+                                invoiceType.voiType===0&&
+                                <div className="cmp-msg">
+
+                                    <InputItem
+                                        // type="bankCard"
+                                        placeholder="（选填）默认为会员名"
+
+                                        onChange={(v)=>this.InputChange(2,v)}
+                                    />
+                                </div>
+                            }
+
+
 
                         </div>
 

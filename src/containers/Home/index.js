@@ -9,7 +9,9 @@ import HomePage from '../../components/Home/homePage'
 import Head from '../../components/Home/head'
 import TabBarMain from 'containers/common/tabbar'
 import {getSize} from '../../utils/getSize'
+
 import {Icon} from 'antd-mobile'
+
 require('./styles/index.less')
 @connect(
     state => {

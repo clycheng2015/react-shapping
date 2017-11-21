@@ -38,6 +38,11 @@ export const goodsDetail = (state = init, action) => {
                 count = 1
             }
             return {...state, count: count--}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

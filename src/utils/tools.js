@@ -14,7 +14,9 @@ export const getQueryString = (name) => {
 }
 
 
-export const  UrlSearch=()=> {
+
+
+export const UrlSearch = () => {
 
     var name, value;
     var str = location.href;
@@ -33,6 +35,8 @@ export const  UrlSearch=()=> {
 }
 
 
+
+
 function isPasswd(s) {
     var patrn = /^(\w){6,20}$/;
     if (!patrn.exec(s)) return false
@@ -40,9 +44,7 @@ function isPasswd(s) {
 }
 
 
-
-
-export const setTitle=(title)=>{
+export const setTitle = (title) => {
     document.title = title;
     const iframe = document.createElement('iframe');
     iframe.style.cssText = 'display: none; width: 0; height: 0;';
@@ -59,8 +61,6 @@ export const setTitle=(title)=>{
     document.body.appendChild(iframe);
 
 
-
-
 }
 
 /***
@@ -70,19 +70,17 @@ export const setTitle=(title)=>{
  */
 
 export function getPath(str) {
-    if(str.indexOf('#')<0){
+    if (str.indexOf('#') < 0) {
         return str
-    }else {
-        str=str.replace(str.substring(0,str.indexOf('#')+1),'')
+    } else {
+        str = str.replace(str.substring(0, str.indexOf('#') + 1), '')
         return str
     }
 }
 
 
-
-
 let newDate = new Date();
-Date.prototype.format = function(format) {
+Date.prototype.format = function (format) {
     var date = {
         "M+": this.getMonth() + 1,
         "d+": this.getDate(),
@@ -106,24 +104,48 @@ Date.prototype.format = function(format) {
 // console.log(newDate.format('yyyy-MM-dd h:m:s'));
 
 
-
-
-/*
- * 得到此格式的时间
+/***
+ * 格式化时间戳  传入参数如 （val,'-'，':'）
+ * @param number
+ * @returns {string}
  */
 function dateAddZero(number) {
     return (number < 10 ? '0' + number : number);
 }
 
-export function ymd(val,dateGapSign,timeGapSign){
+export function ymd(val, dateGapSign, timeGapSign) {
     var valType = typeof (val);
-    if (valType == "string"){
+    if (valType == "string") {
         val = parseInt(val);
     }
     var date = new Date(val);
-    var formatDate = date.getFullYear()+dateGapSign+dateAddZero(date.getMonth()+1)+dateGapSign+dateAddZero(date.getDate())+" "+dateAddZero(date.getHours())+timeGapSign+dateAddZero(date.getMinutes())+timeGapSign+dateAddZero(date.getSeconds());
+    var formatDate = date.getFullYear() + dateGapSign + dateAddZero(date.getMonth() + 1) + dateGapSign + dateAddZero(date.getDate()) + " " + dateAddZero(date.getHours()) + timeGapSign + dateAddZero(date.getMinutes()) + timeGapSign + dateAddZero(date.getSeconds());
     return formatDate;
 }
+
+
+/**
+ * 对数组类对象针对某个相同属性值进行过滤
+ * @param arr
+ * @returns {*}
+ */
+
+export const delRepeat = (arr) => {
+
+    let hash = {};
+    arr = arr.reduce((item, next) => {
+
+        if(! hash[next.id] ){
+            hash[next.id] = item.push(next)
+        }
+        return item
+
+    }, [])
+    return arr
+
+
+}
+
 
 
 

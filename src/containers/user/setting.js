@@ -5,7 +5,6 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import {store} from '../../entry'
 
 
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
@@ -33,20 +32,10 @@ export default class Setting extends React.Component {
 
     }
 
-    handleClick() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
     _loginOut = () => {
         const {loginOut, history} = this.props
         loginOut()
-        window.resetState = () => {
-            store.dispatch(init());
-        }
+        window.resetState()
         AppLocalStorage.Cache.clear()
         Toast.loading('正在退出...', 2, () => {
             history.push("/")
@@ -84,10 +73,10 @@ export default class Setting extends React.Component {
 
                     </List.Item>
 
-
-                    <List.Item arrow="" onClick={() => {
-                        history.push('/about')
-                    }}> 关于</List.Item>
+                    
+                    {/*<List.Item arrow="" onClick={() => {*/}
+                        {/*history.push('/about')*/}
+                    {/*}}> 关于</List.Item>*/}
                 </div>
                 <WhiteSpace/>
                 <div>

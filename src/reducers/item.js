@@ -23,6 +23,11 @@ export const item = (state = init, action) => {
             return {...state,isFetching:true}
         case types.RECIEVE_ITEM_LIST:
             return {...state,isFetching:false,page:action.page,num:action.num,list:action.list}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

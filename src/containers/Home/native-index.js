@@ -53,7 +53,6 @@ export default class Home extends React.Component {
     render() {
         const { homeData, errorData } = this.props
 
-        console.log(homeData)
         return (
             <div className="home-container">
 

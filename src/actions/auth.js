@@ -39,9 +39,10 @@ const sendSmsCode = (data) => ({
 })
 
 
-export const fetchLogin = (data, history, toUrl,openid) => {
-    return (dispatch, getState) => {
 
+export const fetchLogin = (data, history, toUrl,openid) => {
+
+    return (dispatch, getState) => {
         instance.post(auth.loginUrl, qs.stringify({...getSign(data),openid:openid}))
             .then(res => {
                 console.log(res)
@@ -53,7 +54,7 @@ export const fetchLogin = (data, history, toUrl,openid) => {
 
                     AppLocalStorage.Cache.put("user",{
                         userInfo:res.data.data,
-                        openid:data.openid
+                        openid:openid
                     },res.data.data.expires_in)
 
                     setTimeout(()=>(

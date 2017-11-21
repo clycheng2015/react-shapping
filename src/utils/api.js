@@ -67,7 +67,7 @@ export const user = {
     getOrderDetail:"/app/order/getgoodsorderdetail",//
     topUpUrl:"/app/order/createrechargeorder",//充值
     drawMoneyUrl:"/app/user/withdrawals",//提现
-    payUrl:'/app/pay/api',//支付接口
+    payUrl:'/v2/pay/api',//支付接口
     expPayUrl:'/app/order/successorder',//余额支付
     postage:"/app/findgoods/open/findyf",//获取邮费
     refundUrl:"/app/order/applyrefund",//申请退款
@@ -79,7 +79,9 @@ export const user = {
 
     icbannerUrl:"/app/ad/open/getadinfos",
 
-    protoUrl:"/app/user/open/getprotocol"
+    protoUrl:"/app/user/open/getprotocol",
+
+    badgeUrl:'/app/order/ordernum'
 
 
 

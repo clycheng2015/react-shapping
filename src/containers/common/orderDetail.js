@@ -9,12 +9,14 @@ import {Icon, Flex, TextareaItem, List} from 'antd-mobile'
 import {createForm} from 'rc-form';
 import * as user from 'actions/user'
 import * as saveParams from 'actions/saveParams'
+import * as invoice from 'actions/invoice'
+import * as postType from 'actions/postType'
 require('./styles/orderDetail.less')
 @connect(
     state => {
         return {...state.user, ...state.saveParams, ...state.postType, ...state.invoice}
     },
-    dispatch => bindActionCreators({...user, ...saveParams}, dispatch)
+    dispatch => bindActionCreators({...user, ...saveParams, ...invoice,...postType}, dispatch)
 )
 class OrderDetail extends React.Component {
 
@@ -24,17 +26,18 @@ class OrderDetail extends React.Component {
     }
 
     componentDidMount() {
-        const {fetchGetAds, savePath, location, getUserInfo, fetchGetPostage, savePayParams} = this.props
+        const {fetchGetAds, savePath, location, getUserInfo, chooseAddressData, savePayParams} = this.props
         if (location.state && location.state.data) {
             savePath(location.state.data)
         }
         if (location && location.state && location.state.state && location.state.state) {
             savePayParams(location.state.state)
         }
-        //获取邮费
-        fetchGetPostage()
-        //获取邮寄地址
-        fetchGetAds()
+
+        if (chooseAddressData && chooseAddressData.id) {
+        } else {
+            fetchGetAds()
+        }
         //获取用户信息
         let user = AppLocalStorage.Cache.get('user')
         if (user && user.userInfo) {
@@ -46,6 +49,7 @@ class OrderDetail extends React.Component {
     }
 
     componentWillReceiveProps(np, ns) {
+
     }
 
     /***
@@ -53,7 +57,7 @@ class OrderDetail extends React.Component {
      * @private
      */
     _gotoPay = () => {
-        const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice} = this.props
+        const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice, userInfo, orderRemark, clearInvoice,clearPostType} = this.props
         const {pathList} = orderDetail
         const {remark} = orderDetail
         let defaultAds = this._getAds().id || '';
@@ -63,11 +67,11 @@ class OrderDetail extends React.Component {
             orderdesc: remark,
             isinvoice: saveInvoice.type,
             invoicetype: saveInvoice.voiType,
-            invoicetitle: saveInvoice.msg.cpname,
+            invoicetitle: saveInvoice.voiType === 0 ? (saveInvoice.msg.username || userInfo.realname) : saveInvoice.msg.cpname,
             ispickup: savePostData.type,
             jifen: "",
             usermoney: '',
-            dutynum: '',
+            dutynum: saveInvoice.msg.number,
         }
         if (payState === 'det' && pathList[0].type) {
             data = {
@@ -107,6 +111,12 @@ class OrderDetail extends React.Component {
             }
             fetchCarCreateOrder(data, history, orderPrice)
         }
+
+        //清空留言和发票信息
+        orderRemark('')
+        clearInvoice()
+        clearPostType()
+
     }
 
     /***
@@ -135,14 +145,18 @@ class OrderDetail extends React.Component {
      */
     _postType = () => {
         const {postageData, savePostData} = this.props
+
         let postType = ''
+
         let sum = this._priceTol()
-        if (savePostData.type === 0 && sum >= Number(postageData.free)) {
+
+
+        if (savePostData.type === 0 && sum >= Number(postageData.free) && postageData.free !== '-1') {
 
             postType = '包邮'
 
         }
-        if (savePostData.type === 0 && sum < Number(postageData.free)) {
+        if ((savePostData.type === 0 && sum < Number(postageData.free)) || postageData.free === '-1') {
 
             postType = postageData.value
 
@@ -177,10 +191,14 @@ class OrderDetail extends React.Component {
 
     _postMsg = () => {
         const {postageData} = this.props
-        let post = this._postType()
-        if (Number(post) > 0) {
 
+        let post = this._postType()
+
+        if (Number(post) > 0 && postageData.free !== '-1') {
             post = '全场满' + postageData.free + '包邮'
+        }
+        if (postageData.free === '-1') {
+            post = '此地区不支持包邮'
         }
         return post
     }
@@ -194,9 +212,9 @@ class OrderDetail extends React.Component {
         const {address, chooseAddressData} = this.props
         const {data} = address
         let defaultAds = {}
-        if (chooseAddressData && chooseAddressData.id){
-            defaultAds=chooseAddressData
-        }else {
+        if (chooseAddressData && chooseAddressData.id) {
+            defaultAds = chooseAddressData
+        } else {
             if (data && data.length > 0) {
                 data.forEach(i => {
                     if (i.isdefault === 1) {
@@ -207,8 +225,13 @@ class OrderDetail extends React.Component {
         }
         return defaultAds
     }
+
     render() {
         const {history, orderDetail, payState, userInfo, orderRemark, postageData, savePostData, saveInvoice, chooseAddressData} = this.props
+
+        //
+        // console.log(saveInvoice)
+
         const {getFieldProps} = this.props.form;
         const {pathList} = orderDetail
         const {remark} = orderDetail
@@ -297,11 +320,17 @@ class OrderDetail extends React.Component {
                                 extra={
                                     <div>
                                         {saveInvoice.type === 0 && <span className="type-name">不开发票</span>}
+
                                         {saveInvoice.type === 1 && saveInvoice.voiType == 0 &&
-                                        <span className="type-name">个人|{userInfo.realname}</span>}
+                                        <span
+                                            className="type-name">个人|{ saveInvoice.msg.username || userInfo.realname }</span>}
+
                                         {saveInvoice.type === 1 && saveInvoice.voiType == 1 &&
-                                        <div><span className="type-name">企业</span><p
-                                            className="type-ads">{saveInvoice.msg.cpname}</p></div>}
+                                        <div><span className="type-name">企业</span>
+                                            <p className="type-ads">{saveInvoice.msg.cpname}</p>
+                                            <p className="type-ads">{saveInvoice.msg.number}</p>
+
+                                        </div>}
                                     </div>
                                 }
                                 onClick={() => {
@@ -309,17 +338,21 @@ class OrderDetail extends React.Component {
                                 }}
                             >发票：
                             </List.Item>
-                            <TextareaItem
-                                {...getFieldProps('delAds')}
-                                clear
-                                title="留言："
-                                // autoHeight
-                                placeholder="本次购物留言（选填，限50字）"
-                                ref={el => this.autoFocusInst = el}
-                                value={remark}
-                                maxLength={50}
-                                onChange={(v) => orderRemark(v)}
-                            />
+
+                            <div style={{position:"relative"}}>
+                                <TextareaItem
+                                    {...getFieldProps('delAds')}
+                                    clear
+                                    title="留言："
+                                    // autoHeight
+                                    placeholder="本次购物留言（选填，限50字）"
+                                    ref={el => this.autoFocusInst = el}
+                                    value={remark}
+                                    maxLength={50}
+                                    onChange={(v) => orderRemark(v)}
+                                />
+                            </div>
+
                         </div>
                         <div className="count-exp-info" style={{marginBottom: "1.5rem"}}>
                             <List.Item extra={<div><span className="type-name">￥{this._priceTol()}</span>

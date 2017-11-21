@@ -43,16 +43,21 @@ if (isPro) {
     )
 }
 
-export {store}
-
 /***
  * 清空store
- * @param Component
+ * @param
  */
 
-// window.resetState = () => {
-//     store.dispatch(init());
-// }
+const init=()=>({
+
+    type:'CLEAR_ALL_STATE'
+
+})
+
+window.resetState = () => {
+
+    store.dispatch(init());
+}
 
 const render = Component =>
     ReactDOM.render(

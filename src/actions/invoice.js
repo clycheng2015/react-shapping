@@ -12,11 +12,18 @@ export const getInvoice = (data) => ({
 
 });
 
-export const saveInvoice = (data) => ({
+export const saveInvoices = (data) => ({
 
     type: types.SAVE_INVOICE_TYPE,
 
     data,
 
 });
+
+export const clearInvoice=()=>({
+
+    type:"CLEAR_INVOICE"
+
+
+})
 

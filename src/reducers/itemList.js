@@ -90,6 +90,10 @@ export const itemList = (state = init, action) => {
 
         case 'ITEM_SORT_BTN':
             return {...state,price:!state.price}
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
 
         default:
             return state

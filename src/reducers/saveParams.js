@@ -22,6 +22,11 @@ export function saveParams(state = init, action) {
             return {...state,payState:action.data}
         case types.SAVE_ACTIVE_STATE:
             return {...state,activeState:action.data}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }
