@@ -91,7 +91,7 @@ export default class BuyCar extends React.Component {
                                      background: "#f7f6f6"
                                  }}
                             >
-                                <img src={require('static/images/empty/noads_icon.png')} alt=""/>
+                                <img src={require('static/images/empty/tmp_shopcar@2x.png')} alt=""/>
                                 <p> 您的购物车空空如也</p>
                                 <p onClick={() => {
                                     history.push("/")

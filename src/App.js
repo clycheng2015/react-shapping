@@ -34,7 +34,8 @@ const GoodsDetail = asyncComponent(() => import(/* webpackChunkName: "goodsDetai
 const ItemList = asyncComponent(() => import( /* webpackChunkName: "itemList" */'./containers/common/itemList'))
 const MoreList = asyncComponent(() => import( /* webpackChunkName: "moreList" */'./containers/common/moreList'))
 const Search = asyncComponent(() => import( /* webpackChunkName: "search" */'./containers/common/search'))
-const SearchList = asyncComponent(() => import( /* webpackChunkName: "SearchList" */'./containers/common/searchList'))
+const SearchList = asyncComponent(() => import( /* webpackChunkName: "searchList" */'./containers/common/searchList'))
+const QRCodeList = asyncComponent(() => import( /* webpackChunkName: "QRCodeList" */'./containers/common/QRCodeList'))
 
 
 //user
@@ -109,7 +110,7 @@ export default class App extends React.Component {
 
         const {currentAnimate} = this.props
 
-        if (isPro) {
+        if (true) {
             let href = window.location.href
             if (href.indexOf('?from=singlemessage&isappinstalled=0') > 0) {
 
@@ -200,6 +201,7 @@ export default class App extends React.Component {
                                 <Route location={location} path="/moreList/:id" component={MoreList}/>
                                 <Route location={location} path="/search" component={Search}/>
                                 <Route location={location} path="/searchList" component={SearchList}/>
+                                <Route location={location} path="/QRCodeList/:id" component={QRCodeList}/>
 
                                 <Route location={location} path="/auth" component={Auth}/>
                                 <Route location={location} path="/login" component={Login}/>

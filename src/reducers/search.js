@@ -33,7 +33,14 @@ export function search(state = init, action) {
             }
             else if (action.pagenum === 1) {
                 dataList = action.data.datalist
+
+
+                if(action.pagenum === pages){
+                    hasMore = false
+                }
             }
+
+
             return {...state,hasMore:hasMore, isFetching: false, list: dataList,pagesize:action.pagesize,pagenum:action.pagenum,word:action.word}
 
         case 'CLEAR_ALL_STATE':

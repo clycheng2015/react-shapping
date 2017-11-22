@@ -395,6 +395,17 @@ export const getIcBanner = (data) => ({
 
 })
 
+/**
+ *
+ * @returns {function(*, *)}
+ *
+ *
+ */
+ const updateImg = () => ({
+    type:'UPDATE_IMG'
+
+})
+
 
 
 
@@ -1017,6 +1028,29 @@ export const fetchBadge = () => {
 
                     dispatch(getBadge(res.data.data))
                 }
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+
+            })
+    }
+}
+
+
+
+
+
+export const fetchUpdateImg = (data,uid) => {
+    return (dispatch, getState) => {
+        instance.get(user.upLoadImgUrl+'?'+qs.stringify(data))
+            .then(res => {
+                // console.log(res)
+                if(res.data.data!==null){
+                    dispatch(updateImg())
+                    dispatch(getUserInfo({uid: uid, version: '1.1.0'}))
+                }
+
             })
             .catch(error => {
 

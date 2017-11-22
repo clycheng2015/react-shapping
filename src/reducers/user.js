@@ -266,6 +266,10 @@ export const user = (state = init, action) => {
 
             return{...init}
 
+        case 'UPDATE_IMG':
+
+            return{...state}
+
         default:
             return state
     }

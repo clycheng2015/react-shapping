@@ -81,7 +81,10 @@ export const user = {
 
     protoUrl:"/app/user/open/getprotocol",
 
-    badgeUrl:'/app/order/ordernum'
+    badgeUrl:'/app/order/ordernum',
+
+
+    upLoadImgUrl:"/app/my/open/wxuploadhead"
 
 
 

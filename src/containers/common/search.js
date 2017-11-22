@@ -48,7 +48,12 @@ export default class Search extends React.Component {
     render() {
         const {list, history, isFetching, hasMore} = this.props
         return (
-            <div className="search-list-container">
+            <div className="search-list-container"
+                 style={{
+                     height: document.documentElement.clientHeight - 100,
+                     background: "#f7f6f6"
+                 }}
+            >
                 <div className="nav-tab">
                     <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/>
                     <div className="s-box">

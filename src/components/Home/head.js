@@ -1,7 +1,7 @@
 import React from 'react'
-import {Badge, SearchBar} from 'antd-mobile'
+import {Toast, SearchBar} from 'antd-mobile'
 import {Link} from 'react-router-dom'
-
+import wx from 'weixin-js-sdk';
 class Head extends React.Component {
     constructor(props) {
         super(props)
@@ -10,6 +10,24 @@ class Head extends React.Component {
 
             focused: false,
         }
+    }
+
+    Qrcode = () => {
+        const {history} = this.props
+
+        wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function (res) {
+                if (res.resultStr) {
+                    if (res.resultStr.indexOf(',') > 0) {
+                        history.push(`/QRCodeList/${ res.resultStr.split(',')[1]}`)
+                    } else {
+                        history.push(`/QRCodeList/${res.resultStr}`)
+                    }
+                }
+            }
+        });
     }
 
     render() {
@@ -36,9 +54,8 @@ class Head extends React.Component {
                     </div>
                 </Link>
                 <div className="box msg">
+                    <img src={require('static/images/home/ic_scan.png')} alt="" onClick={() => this.Qrcode()}/>
 
-                    {/*<p><img src={type==1?require('static/images/wmsg.png'):require('static/images/msg.png')} alt=""/><Badge dot className="badge"/></p>*/}
-                    {/*<p>消息</p>*/}
                 </div>
             </div>
         )
