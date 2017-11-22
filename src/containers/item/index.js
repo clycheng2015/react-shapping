@@ -5,7 +5,7 @@ import {Icon, SearchBar} from 'antd-mobile'
 require('./styles/index.less')
 import * as item from 'actions/item'
 import TabBarMain from 'containers/common/tabbar'
-import IndexList from 'components/item/treList'
+import IndexList from 'components/item/list'
 @connect(
     state => {
         return {...state.item}

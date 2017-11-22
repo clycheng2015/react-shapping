@@ -110,7 +110,7 @@ export default class App extends React.Component {
 
         const {currentAnimate} = this.props
 
-        if (isPro) {
+        if (true) {
             let href = window.location.href
             if (href.indexOf('?from=singlemessage&isappinstalled=0') > 0) {
 

@@ -77,7 +77,6 @@ export default class DoubleActive extends React.Component {
         }
         aaa = scrollArr
     }
-
     componentWillUnmount() {
 
         let {scrollT} = getSize();
