@@ -80,11 +80,7 @@ export  default  class List extends React.Component {
                 ref={el => this.lv = el}
                 dataSource={this.state.dataSource}
                 renderFooter={() => (<div style={{ textAlign: 'center',width:'100%',height:'1rem',float:"left",marginTop:".4rem" }}>
-                    {
-
-                        this.state.isLoading ?  '加载完成': <Icon type="loading"/>
-
-                    }
+                    {this.state.isLoading ?  '加载完成': <Icon type="loading"/>}
                 </div>)}
                 renderRow={row}
                 style={{

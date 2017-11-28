@@ -27,15 +27,15 @@ const updateCarNum = () => ({
 
 
 
-export const carCheckAll=()=>({
+export const carCheckAll=(state)=>({
 
-    type:"CAR_CHECK_ALL"
+    type:"CAR_CHECK_ALL",state
 
 })
 
-export const carCheck=(id)=>({
+export const carCheck=(id,state)=>({
 
-    type:"CAR_CHECK",id
+    type:"CAR_CHECK",id,state
 })
 
  const getBanner=(data)=>({

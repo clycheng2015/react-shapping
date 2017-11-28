@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import {ymd} from '../../utils/tools'
+import {ymd,plusXing} from '../../utils/tools'
 import Timer from '../../components/Commons/timer'
 import {Radio, Modal, Icon, Flex, TextareaItem, Toast, InputItem, Checkbox, List} from 'antd-mobile'
 
@@ -141,6 +141,8 @@ export default class YesOrderDetail extends React.Component {
     render() {
         const {history, yesOrderDetail, match} = this.props
 
+        console.log(yesOrderDetail)
+
         return (
             <div className="yesOrderDetail-container"
                  style={{minHeight: document.documentElement.clientHeight, background: "#f3f3f1", overflow: "hidden",}}>
@@ -206,9 +208,21 @@ export default class YesOrderDetail extends React.Component {
 
                             <img src={require('static/image/color_line.png')} alt="" className="line"/>
                         </div>
+
+                        {
+                            (yesOrderDetail.state===3|| yesOrderDetail.state===4)&&
+
+                            <div className="express-info">
+                                <p className="id">快递单号：<span>{yesOrderDetail.numberoflogistics}</span></p>
+                                <p className="name">快递跟踪：<span>{yesOrderDetail.logisticscompany}</span></p>
+                            </div>
+
+                        }
+
+
                         <div className="goods-list">
                             <div className="head">
-                               商品列表
+                               商品列表 {yesOrderDetail.isown===2&&<span>海外直邮</span>}
                             </div>
                             {yesOrderDetail.goodsitems.map((i, k) => (
                                 <div key={k} className="goods-info" onClick={() => {
@@ -225,11 +239,27 @@ export default class YesOrderDetail extends React.Component {
                             ))}
                         </div>
                         <div style={{height: ".2rem"}}/>
+                        {
+                            yesOrderDetail.isown===2&& <div className="realName-info">
+
+                                <div className="name">
+                                    <span>收货人实名信息：</span>
+                                    <span>{yesOrderDetail.address.realname}</span>
+                                </div>
+
+                                <div className="card">
+                                   { plusXing(yesOrderDetail.address.idcard,4,4)}
+                                </div>
+                            </div>
+                        }
+
+
+                        <div style={{height: ".2rem"}}/>
                         <List.Item extra={yesOrderDetail.ordernum}>订单号:</List.Item>
                         <List.Item extra={ymd(yesOrderDetail.addtime,'-',':')}>下单时间:</List.Item>
                         <List.Item extra={yesOrderDetail.isinvoice===0?'否':'是'}>是否开发票:</List.Item>
                         {
-                            yesOrderDetail.isinvoice===1&&yesOrderDetail.invoicetype===1&&
+                            yesOrderDetail.isinvoice===1&&yesOrderDetail.invoicetype===2&&
                         <div className="is-fapiao">
                             <List.Item extra={'企业'}>发票:</List.Item>
                             <div className="cmp-info"><p>
@@ -239,7 +269,7 @@ export default class YesOrderDetail extends React.Component {
                         </div>
                         }
 
-                        {yesOrderDetail.isinvoice===1&&yesOrderDetail.invoicetype===0&& <List.Item extra={`个人|${yesOrderDetail.invoicetitle}`}>发票:</List.Item>}
+                        {yesOrderDetail.isinvoice===1&&yesOrderDetail.invoicetype===1&& <List.Item extra={`个人|${yesOrderDetail.invoicetitle}`}>发票:</List.Item>}
 
 
                         <div style={{height: ".2rem"}}/>

@@ -5,6 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {createForm} from 'rc-form';
+import {idcard} from '../../utils/tools'
 import {Modal, Icon, Flex, Switch, InputItem, List, Toast, Picker, Button, WhiteSpace, TextareaItem} from 'antd-mobile'
 let area = require('./json/area.json')
 import * as user from 'actions/user'
@@ -97,7 +98,8 @@ class NewAds extends React.Component {
             hasError: false,
             value: '',
             area: [],
-            areaText: ""
+            areaText: "",
+            card:''
         }
     }
 
@@ -114,11 +116,13 @@ class NewAds extends React.Component {
                 isdefault = data.isdefault
             }
         }
-        console.log(isdefault)
+        // console.log(isdefault)
         let realname = getFieldValue('receiveName')
         let mobile = this.state.value
         // let area = this.state.area
         let address = this.state.areaText
+
+        let card=this.state.card
         let area = []
         if (realname === undefined) {
             Toast.info("收件人不能为空！", 1)
@@ -141,6 +145,16 @@ class NewAds extends React.Component {
 
             return
         }
+
+        else if (card!=='') {
+            if(!idcard(card)){
+                Toast.info('您填写的身份证号码格式不正确！',1)
+                return
+            }
+        }
+
+
+
         else {
             area = areaTxt.split(",")
             let data = {
@@ -151,7 +165,8 @@ class NewAds extends React.Component {
                 city: area[1] ? area[1] : '/',
                 county: area[2] ? area[2] : '/',
                 address: address,
-                isdefault: isdefault
+                isdefault: isdefault,
+                idcard:card
             }
 
             fetchAddAds(data, history)
@@ -164,7 +179,8 @@ class NewAds extends React.Component {
             let data = location.state.data
             this.setState({
                 value: data.mobile,
-                areaText: data.address
+                areaText: data.address,
+                card:data.idcard
             })
             let province = data.province === '/' ? '' : data.province
             let city = data.city === '/' ? '' : data.city
@@ -194,6 +210,8 @@ class NewAds extends React.Component {
     render() {
         const {history, location} = this.props
         const {getFieldProps} = this.props.form;
+
+
         if (location.state !== undefined) {
             let data = location.state.data
 
@@ -247,6 +265,21 @@ class NewAds extends React.Component {
                                 onChange={this.onChange}
                                 value={this.state.value}
                             >联系电话</InputItem>
+
+
+                            <InputItem
+                                {...getFieldProps('card',{
+
+
+                                })}
+                                type="number"
+                                placeholder="购买海外直邮商品需填写身份信息"
+
+
+                                onChange={(v)=>this.setState({card: v})}
+                                value={this.state.card}
+                            >身份证号码</InputItem>
+
                             <div className="area-check">
                                 <Picker
                                     title="选择地区"
@@ -327,6 +360,16 @@ class NewAds extends React.Component {
                                 onChange={this.onChange}
                                 value={this.state.value}
                             >联系电话</InputItem>
+
+                            <InputItem
+                                {...getFieldProps('card')}
+                                type="number"
+                                placeholder="购买海外直邮商品需填写身份信息"
+
+
+                                onChange={(v)=>this.setState({card: v})}
+                                value={this.state.card}
+                            >身份证号码</InputItem>
 
                             <div className="area-check">
                                 <Picker

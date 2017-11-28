@@ -56,7 +56,7 @@ export default class BuyCar extends React.Component {
         return (
             <div className="car-container"
                  style={{
-                     height: document.documentElement.clientHeight,
+                     minHeight: document.documentElement.clientHeight,
                      background: "#f7f6f6"
                  }}>
                 <div key={this.props.location.pathname}>

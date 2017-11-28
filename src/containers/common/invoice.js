@@ -81,12 +81,12 @@ export default class PostType extends React.Component {
 
         const {saveInvoices,invoiceType,history} = this.props
 
-        if(invoiceType.voiType===1&&invoiceType.msg.cpname===''){
+        if(invoiceType.voiType===2&&invoiceType.msg.cpname===''){
             Toast.info('亲，公司抬头不能为空哟',1)
             return false
         }
 
-        if(invoiceType.voiType===1&&invoiceType.msg.number===''){
+        if(invoiceType.voiType===2&&invoiceType.msg.number===''){
             Toast.info('亲，公司识别号不能为空哟',1)
             return false
         }
@@ -132,14 +132,14 @@ export default class PostType extends React.Component {
 
                     <div className="center">
                         {
-                            invoiceType.type===1 && invoiceType.voiType===0&& ' 开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。'
+                            invoiceType.type===1 && invoiceType.voiType===1&& ' 开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。'
                         }
                         {
                             invoiceType.type===0&& ' 开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。'
                         }
 
                         {
-                            invoiceType.type===1 && invoiceType.voiType===1&& '开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。纳税人识别号是“统一社会信用代码”或“税务登记证号”。。'
+                            invoiceType.type===1 && invoiceType.voiType===2&& '开企业抬头发票，请准确填写对应的“纳税人识别号”，以免影响您的发票报销。纳税人识别号是“统一社会信用代码”或“税务登记证号”。。'
                         }
 
 
@@ -163,12 +163,12 @@ export default class PostType extends React.Component {
                             <div className="type-info">
 
                                 <label className="per">
-                                    <input type="radio" name="radiobutton" value="radiobutton" checked={  invoiceType.voiType===0}
-                                           onChange={() => this._delChange(0)}/> 个人
+                                    <input type="radio" name="radiobutton" value="radiobutton" checked={  invoiceType.voiType===1}
+                                           onChange={() => this._delChange(1)}/> 个人
                                 </label>
                                 <label className="comp">
-                                    <input type="radio" name="radiobutton" value="radiobutton"  checked={  invoiceType.voiType===1}
-                                           onChange={() =>  this._delChange(1)}
+                                    <input type="radio" name="radiobutton" value="radiobutton"  checked={  invoiceType.voiType===2}
+                                           onChange={() =>  this._delChange(2)}
                                     /> 公司
                                 </label>
 
@@ -176,7 +176,7 @@ export default class PostType extends React.Component {
                             </div>
 
                             {
-                                invoiceType.voiType===1&&
+                                invoiceType.voiType===2&&
                                 <div className="cmp-msg">
 
                                     <InputItem
@@ -197,7 +197,7 @@ export default class PostType extends React.Component {
 
 
                             {
-                                invoiceType.voiType===0&&
+                                invoiceType.voiType===1&&
                                 <div className="cmp-msg">
 
                                     <InputItem

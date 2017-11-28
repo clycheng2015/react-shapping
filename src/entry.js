@@ -22,7 +22,9 @@ window.isArray = isArray
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
 const history = createHistory()
+
 const middleware = routerMiddleware(history)
+
 const middlewares = [thunk, middleware]
 
 // import App from './native'

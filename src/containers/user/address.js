@@ -96,7 +96,7 @@ export default class Address extends React.Component {
                                 <div key={key} className="item">
                                     <div onClick={() => this._updateDefault(i)}>
                                         <div className="head">
-                                            <span>{i.realname}</span><span>{i.mobile}</span></div>
+                                            <span>{i.realname}</span> <span className="ph">{i.mobile}</span>{i.idcard!==''&&<span className="re-box">已实名</span>} </div>
                                         <div className="ads">
                                             {i.province === '/' ? '' : i.province}
                                             {i.city === '/' ? '' : i.city}

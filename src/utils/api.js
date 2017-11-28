@@ -9,7 +9,8 @@ export const home = {
 
 }
 export const item = {
-    itemListUrl: "/app/findgoods/open/categoryalllist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid 一级菜单目录
+    itemListUrl: "/app/findgoods/open/categoryall ",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid 一级菜单目录
+
 }
 export const goodsDetail = {
 
@@ -24,7 +25,7 @@ export const goodsDetail = {
 }
 export const itemList = {
 
-    detailUrl: "/app/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id
+    detailUrl: "/v2/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id
 
 }
 export const moreList = {

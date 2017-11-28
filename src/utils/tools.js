@@ -14,8 +14,6 @@ export const getQueryString = (name) => {
 }
 
 
-
-
 export const UrlSearch = () => {
 
     var name, value;
@@ -33,8 +31,6 @@ export const UrlSearch = () => {
         }
     }
 }
-
-
 
 
 function isPasswd(s) {
@@ -135,7 +131,7 @@ export const delRepeat = (arr) => {
     let hash = {};
     arr = arr.reduce((item, next) => {
 
-        if(! hash[next.id] ){
+        if (!hash[next.id]) {
             hash[next.id] = item.push(next)
         }
         return item
@@ -147,10 +143,40 @@ export const delRepeat = (arr) => {
 }
 
 
+function pollAdd(arr) {
+    let res = [];
+    let tmp = {};
+
+    arr.forEach((v) => {
+        if (!tmp.hasOwnProperty(v.code)) {
+            tmp[v.code] = res.length;
+            return res.push(Object.assign({}, v));
+        }
+        res[tmp[v.code]].poll += v.poll;
+    });
+
+    return res;
+}
 
 
+export function plusXing(str, frontLen, endLen) {
+    let len = str.length - frontLen - endLen;
+    let xing = '';
+    for (let i = 0; i < len; i++) {
+        xing += '*';
+    }
+    return str.substring(0, frontLen) + xing + str.substring(str.length - endLen);
+}
 
 
+export function idcard(card) {
+// 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    if (reg.test(card) === false) {
+        return false;
+    }
+
+}
 
 
 

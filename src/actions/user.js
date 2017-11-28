@@ -507,7 +507,10 @@ export const fetchAddAds = (data, history) => {
                 if (res.data.code == 200) {
                     Toast.info(res.data.msg, 1)
                     dispatch(addAdress())
-                    history.goBack()
+
+                    if(history){
+                        history.goBack()
+                    }
                 }
                 else {
 

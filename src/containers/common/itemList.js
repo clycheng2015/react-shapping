@@ -4,12 +4,19 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Button, Flex, Icon} from 'antd-mobile'
+import {Button, Flex, Icon,List, Radio} from 'antd-mobile'
 import * as itemList from 'actions/itemList'
 import GoodsList from '../../components/Commons/goodsList'
 import {getSize} from '../../utils/getSize'
+
 require('./styles/itemList.less')
 
+const data = [
+    { value: 0, label: '综合' },
+    { value: 1, label: '自营商品' },
+    { value: 2, label: '海外直邮' },
+];
+const RadioItem = Radio.RadioItem;
 @connect(
     state => {
         return {...state.itemList}
@@ -22,9 +29,11 @@ export default class ItemList extends React.Component {
         super(props);
 
         this.state = {
-
             title: '',
-            price:true
+            price:true,
+            value:0,
+            open:false,
+            itemTxt:"综合"
         }
     }
     componentDidMount() {
@@ -38,15 +47,17 @@ export default class ItemList extends React.Component {
                 pagesize: pagesize,
                 pagenum: pagenum,
                 cid: id,
-                sort:''
+                sort:'',
+                isown:0,
+
             })
         }else {
 
-            console.log(list)
             const {scrollT}=list[id]
-            console.log(scrollT)
             window.scrollTo(0,scrollT)
         }
+
+
     }
     componentWillUnmount() {
 
@@ -57,7 +68,6 @@ export default class ItemList extends React.Component {
         recordScrollT(id,scrollT);
         window.onscroll = null;
     }
-
 
     _updownMore = () => {
         const { isFetching,match,getItemGoodsList,list,price,rightBtnState} = this.props
@@ -78,12 +88,13 @@ export default class ItemList extends React.Component {
             pagesize: pagesize,
             pagenum: ++num,
             cid:id,
-            sort:type
+            sort:type,
+            isown:this.state.value
         }
         getItemGoodsList(data)
     }
 
-    _getList=(type,pagenum)=>{
+    _getList=(type,pagenum,l)=>{
         const {match, getItemGoodsList,pagesize} = this.props
         const {params} = match
         let id=params.id.split('T')[0]
@@ -91,7 +102,8 @@ export default class ItemList extends React.Component {
             pagesize: pagesize,
             pagenum: pagenum,
             cid: id,
-            sort:type
+            sort:type,
+            isown:l
         })
 
 
@@ -102,15 +114,16 @@ export default class ItemList extends React.Component {
      * @private
      */
 
-    _priceAll=()=>{
+    _priceAll=(type)=>{
 
         const {leftBtn}=this.props
         leftBtn()
-        this._getList('',1)
+        this._getList('',1,type)
         window.scrollTo(0,0)
     }
 
     _priceUp=()=>{
+        if(this.state.open){this._closeDrawer()}
         const {rightBtn,price}=this.props
         rightBtn()
         if(price===false){
@@ -122,6 +135,7 @@ export default class ItemList extends React.Component {
         window.scrollTo(0,0)
     }
     _sortBtn=()=>{
+        if(this.state.open){this._closeDrawer()}
         const {sortBtn,price}=this.props
         sortBtn()
         if(price===true){
@@ -134,6 +148,26 @@ export default class ItemList extends React.Component {
 
     }
 
+    onChange = (value,itemTxt) => {
+        this.setState({
+            value:value,
+            itemTxt:itemTxt,
+            open:false
+        });
+
+        this._priceAll(value)
+    };
+
+    _toggleDrawer=()=>{
+        this.setState({open:!this.state.open})
+    }
+
+    _closeDrawer=()=>{
+
+        this.setState({open:false})
+    }
+
+
 
     render() {
         const {list, history, isFetching,match,rightBtnState,leftBtnState,price} = this.props
@@ -141,17 +175,38 @@ export default class ItemList extends React.Component {
         let id=params.id.split('T')[0]
         let name=params.id.split('T')[1]
 
-        console.log(list)
-
         return (
             <div className="item-list-container">
-                <div className="nav-tab">
+                <div className="nav-tab" onClick={()=>{if(this.state.open){this._closeDrawer()}}}>
                     <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/><span>{name}</span>
                 </div>
                 <div key={this.props.location.pathname} className="list">
+
+                    {
+                        this.state.open&&
+                        <div className="mo-box">
+                            <div className="box-bg" style={ { height: document.documentElement.clientHeight}} onClick={()=>{if(this.state.open){this._closeDrawer()}}}/>
+
+                            <div className="ck-list">
+
+                                <List>
+                                    {data.map(i => (
+                                        <RadioItem key={i.value} checked={this.state.value === i.value} onClick={() => this.onChange(i.value,i.label)}>
+                                            {i.label}
+                                        </RadioItem>
+                                    ))}
+                                </List>
+
+                            </div>
+                        </div>
+                    }
                     <Flex className="tab-bar">
-                        {leftBtnState===1&&<Flex.Item  onClick={()=>this._priceAll()}>综合</Flex.Item>}
-                        {leftBtnState===0&&<Flex.Item  onClick={()=>this._priceAll()} style={{color:"gray"}}>综合</Flex.Item>}
+                        {<Flex.Item  onClick={()=>this._toggleDrawer()}>{this.state.itemTxt}
+                            <img src={require("static/images/ite/ite_d.png")} alt="" className="ee1"/>
+                        </Flex.Item>
+
+                        }
+
                         {
                             rightBtnState===1&& <Flex.Item onClick={()=>this._sortBtn()}>价格
                                 <img src={require("static/images/ite/up_icon.png")} alt="" className={`${price?'img-up':''}`}/>

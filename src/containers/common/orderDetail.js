@@ -5,18 +5,20 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import {Icon, Flex, TextareaItem, List} from 'antd-mobile'
+import {plusXing,idcard} from '../../utils/tools'
+import {Icon, Flex, TextareaItem, List, Modal,Toast} from 'antd-mobile'
 import {createForm} from 'rc-form';
 import * as user from 'actions/user'
 import * as saveParams from 'actions/saveParams'
 import * as invoice from 'actions/invoice'
 import * as postType from 'actions/postType'
 require('./styles/orderDetail.less')
+const prompt = Modal.prompt;
 @connect(
     state => {
         return {...state.user, ...state.saveParams, ...state.postType, ...state.invoice}
     },
-    dispatch => bindActionCreators({...user, ...saveParams, ...invoice,...postType}, dispatch)
+    dispatch => bindActionCreators({...user, ...saveParams, ...invoice, ...postType}, dispatch)
 )
 class OrderDetail extends React.Component {
 
@@ -46,6 +48,7 @@ class OrderDetail extends React.Component {
                 version: "1.1.0"
             })
         }
+
     }
 
     componentWillReceiveProps(np, ns) {
@@ -57,7 +60,7 @@ class OrderDetail extends React.Component {
      * @private
      */
     _gotoPay = () => {
-        const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice, userInfo, orderRemark, clearInvoice,clearPostType} = this.props
+        const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice, userInfo, orderRemark, clearInvoice, clearPostType} = this.props
         const {pathList} = orderDetail
         const {remark} = orderDetail
         let defaultAds = this._getAds().id || '';
@@ -67,7 +70,7 @@ class OrderDetail extends React.Component {
             orderdesc: remark,
             isinvoice: saveInvoice.type,
             invoicetype: saveInvoice.voiType,
-            invoicetitle: saveInvoice.voiType === 0 ? (saveInvoice.msg.username || userInfo.realname) : saveInvoice.msg.cpname,
+            invoicetitle: saveInvoice.voiType === 1 ? (saveInvoice.msg.username || userInfo.realname) : saveInvoice.msg.cpname,
             ispickup: savePostData.type,
             jifen: "",
             usermoney: '',
@@ -226,15 +229,66 @@ class OrderDetail extends React.Component {
         return defaultAds
     }
 
+    /***
+     * 海外直邮修改实名信息
+     * @param id
+     * @private
+     */
+
+    _upDateAds = (id, isHas) => {
+
+
+
+
+        if ( isHas !== '') {
+            return false
+        }
+        const {fetchAddAds, fetchGetAds, chooseAddressData, chooseAddress} = this.props
+        prompt(
+            '实名认证',
+            '海关要求购买跨境商品需提供实名信息！',
+            (name, card) => {
+
+                if(name===''){
+                    Toast.info('请填写真实姓名！',1)
+                    return
+                }
+                if(card===''){
+                    Toast.info('请填写身份证号码！',1)
+                    return
+                }
+
+                if(!idcard(card)){
+                    Toast.info('您填写的身份证号码格式不正确！',1)
+                    return
+
+                }
+                fetchAddAds({id: id, realname: name, idcard: card});
+
+                setTimeout(() => {
+                    if (chooseAddressData && chooseAddressData.id) {
+                        chooseAddress({...chooseAddressData, realname: name, idcard: card})
+                    }
+                    fetchGetAds()
+                }, 200)
+            },
+            'login-password',
+            null,
+            ['真实姓名', '身份证号码'],
+        )
+        document.getElementsByTagName('input')[1].type='text'
+
+    }
+
     render() {
         const {history, orderDetail, payState, userInfo, orderRemark, postageData, savePostData, saveInvoice, chooseAddressData} = this.props
 
-        //
-        // console.log(saveInvoice)
 
         const {getFieldProps} = this.props.form;
         const {pathList} = orderDetail
         const {remark} = orderDetail
+
+        console.log(pathList)
         return (
             <div className="orderDetail-container"
                  style={{
@@ -282,7 +336,7 @@ class OrderDetail extends React.Component {
                             <img src={require('static/image/color_line.png')} alt="" className="line"/>
                         </div>
                         <div className="goods-list">
-                            <div className="head">商品列表</div>
+                            <div className="head">商品列表 {pathList[0].isown === 2 && <span>海外直邮</span> }</div>
                             {
                                 pathList.map((i, k) => (
                                     <div key={k} className="goods-info">
@@ -297,23 +351,52 @@ class OrderDetail extends React.Component {
                                 ))
                             }
                         </div>
-                        <div className="post-type-info">
-                            <List.Item
-                                arrow="horizontal"
-                                extra={
-                                    <div>
-                                        {savePostData.type === 0 &&
-                                        <div><span>（可选上门自提）</span> <span className="type-name">邮寄快递</span></div>}
-                                        {savePostData.type === 1 && <div><span className="type-name">上门自提</span><p
-                                            className="type-ads">{savePostData.ads}</p></div>}
-                                    </div>
-                                }
-                                onClick={() => {
-                                    history.push('/postType')
-                                }}
-                            >配送方式：
-                            </List.Item>
-                        </div>
+
+                            {
+                                pathList[0].isown === 1 &&
+                                <div className="post-type-info">
+                                <List.Item
+                                    arrow="horizontal"
+                                    extra={
+                                        <div>
+                                            {savePostData.type === 0 &&
+                                            <div><span>（可选上门自提）</span> <span className="type-name">邮寄快递</span></div>}
+                                            {savePostData.type === 1 && <div><span className="type-name">上门自提</span><p
+                                                className="type-ads">{savePostData.ads}</p></div>}
+                                        </div>
+                                    }
+                                    onClick={() => {
+                                        history.push('/postType')
+                                    }}
+                                >配送方式：
+                                </List.Item>
+                                </div>
+                            }
+
+                            {
+                                this._getAds() && this._getAds().id && pathList[0].isown === 2 &&
+                                <div className="post-type-info">
+                                <List.Item
+                                    arrow="horizontal"
+                                    extra={
+                                        <div>
+                                            {  (this._getAds().idcard === null || this._getAds().idcard === '') &&
+
+                                            <div><span className="type-name">添加</span></div>}
+
+                                            { (this._getAds().idcard !== null && this._getAds().idcard !== '') &&
+                                            <div><span className="type-name">{this._getAds().realname}</span><p
+                                                className="type-ads">{plusXing(this._getAds().idcard, 4, 4)}</p></div>}
+                                        </div>
+                                    }
+                                    onClick={() => this._upDateAds(this._getAds().id, this._getAds().idcard)}
+                                >收货人实名信息：
+                                </List.Item>
+                                </div>
+                            }
+
+
+
                         <div className="more-exp-info">
                             <List.Item
                                 arrow="horizontal"
@@ -321,11 +404,11 @@ class OrderDetail extends React.Component {
                                     <div>
                                         {saveInvoice.type === 0 && <span className="type-name">不开发票</span>}
 
-                                        {saveInvoice.type === 1 && saveInvoice.voiType == 0 &&
+                                        {saveInvoice.type === 1 && saveInvoice.voiType === 1 &&
                                         <span
                                             className="type-name">个人|{ saveInvoice.msg.username || userInfo.realname }</span>}
 
-                                        {saveInvoice.type === 1 && saveInvoice.voiType == 1 &&
+                                        {saveInvoice.type === 1 && saveInvoice.voiType === 2 &&
                                         <div><span className="type-name">企业</span>
                                             <p className="type-ads">{saveInvoice.msg.cpname}</p>
                                             <p className="type-ads">{saveInvoice.msg.number}</p>
@@ -339,7 +422,7 @@ class OrderDetail extends React.Component {
                             >发票：
                             </List.Item>
 
-                            <div style={{position:"relative"}}>
+                            <div style={{position: "relative"}}>
                                 <TextareaItem
                                     {...getFieldProps('delAds')}
                                     clear

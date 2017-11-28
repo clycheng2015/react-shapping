@@ -4,7 +4,7 @@ import * as types from '../utils/const'
 let init = {
     invoiceType: {
         type: 0,
-        voiType: 0,
+        voiType: 1,
         msg: {
             cpname: '',
             number: "",
@@ -14,7 +14,7 @@ let init = {
 
     saveInvoice: {
         type: 0,
-        voiType: 0,
+        voiType: 1,
         msg: {
             cpname: '',
             number: "",
