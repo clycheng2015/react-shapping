@@ -5,8 +5,8 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import {plusXing,idcard} from '../../utils/tools'
-import {Icon, Flex, TextareaItem, List, Modal,Toast} from 'antd-mobile'
+import {plusXing, idcard} from '../../utils/tools'
+import {Icon, Flex, TextareaItem, List, Modal, Toast} from 'antd-mobile'
 import {createForm} from 'rc-form';
 import * as user from 'actions/user'
 import * as saveParams from 'actions/saveParams'
@@ -236,30 +236,32 @@ class OrderDetail extends React.Component {
      */
 
     _upDateAds = (id, isHas) => {
+        //
+        // console.log(isHas)
 
 
-
-
-        if ( isHas !== '') {
+        if (isHas !== '' && isHas !== null) {
             return false
         }
+
+
         const {fetchAddAds, fetchGetAds, chooseAddressData, chooseAddress} = this.props
         prompt(
             '实名认证',
             '海关要求购买跨境商品需提供实名信息！',
             (name, card) => {
 
-                if(name===''){
-                    Toast.info('请填写真实姓名！',1)
+                if (name === '') {
+                    Toast.info('请填写真实姓名！', 1)
                     return
                 }
-                if(card===''){
-                    Toast.info('请填写身份证号码！',1)
+                if (card === '') {
+                    Toast.info('请填写身份证号码！', 1)
                     return
                 }
 
-                if(!idcard(card)){
-                    Toast.info('您填写的身份证号码格式不正确！',1)
+                if (!idcard(card)) {
+                    Toast.info('您填写的身份证号码格式不正确！', 1)
                     return
 
                 }
@@ -276,7 +278,7 @@ class OrderDetail extends React.Component {
             null,
             ['真实姓名', '身份证号码'],
         )
-        document.getElementsByTagName('input')[1].type='text'
+        document.getElementsByTagName('input')[1].type = 'text'
 
     }
 
@@ -288,7 +290,7 @@ class OrderDetail extends React.Component {
         const {pathList} = orderDetail
         const {remark} = orderDetail
 
-        console.log(pathList)
+
         return (
             <div className="orderDetail-container"
                  style={{
@@ -352,9 +354,9 @@ class OrderDetail extends React.Component {
                             }
                         </div>
 
-                            {
-                                pathList[0].isown === 1 &&
-                                <div className="post-type-info">
+                        {
+                            pathList[0].isown !== 2 &&
+                            <div className="post-type-info">
                                 <List.Item
                                     arrow="horizontal"
                                     extra={
@@ -370,12 +372,12 @@ class OrderDetail extends React.Component {
                                     }}
                                 >配送方式：
                                 </List.Item>
-                                </div>
-                            }
+                            </div>
+                        }
 
-                            {
-                                this._getAds() && this._getAds().id && pathList[0].isown === 2 &&
-                                <div className="post-type-info">
+                        {
+                            this._getAds() && this._getAds().id && pathList[0].isown === 2 &&
+                            <div className="post-type-info">
                                 <List.Item
                                     arrow="horizontal"
                                     extra={
@@ -392,9 +394,8 @@ class OrderDetail extends React.Component {
                                     onClick={() => this._upDateAds(this._getAds().id, this._getAds().idcard)}
                                 >收货人实名信息：
                                 </List.Item>
-                                </div>
-                            }
-
+                            </div>
+                        }
 
 
                         <div className="more-exp-info">

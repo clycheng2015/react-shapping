@@ -44,7 +44,7 @@ class GoodsList extends React.Component {
 
                     <div className="txt-info">
                         <p className="title">
-                            {rowData.stitle}
+                            {rowData.isown===2&&<span>海外直邮</span>}  {rowData.stitle}
                         </p>
                         <p className="price">
                             ￥{Number(rowData.zkprice).toFixed(2)}

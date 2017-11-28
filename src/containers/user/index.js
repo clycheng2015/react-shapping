@@ -129,7 +129,7 @@ export default class User extends React.Component {
                                                     {userInfo.realname}
                                                     {/*<span className={userInfo.isvip == 0 ? 'uslVip' : 'lvVip'}>{userInfo.isvip == 0 ? '' : "vip"}</span>*/}
                                                 </p>
-                                                <p className="id">会员ID：{userInfo.id}</p>
+                                                <p className="id">会员ID：100{userInfo.id}</p>
                                                 <div style={{height: ".2rem"}}/>
                                                 <div className="wallet-info" onClick={() => {
                                                     history.push("/wallet");

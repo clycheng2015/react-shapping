@@ -107,7 +107,7 @@ export default class UserCenter extends React.Component {
                         </List>
                         <List>
                             <List.Item arrow="" extra={<span
-                                style={{paddingRight: '.4rem'}}>{userInfo.id}</span>}>美纶购ID</List.Item>
+                                style={{paddingRight: '.4rem'}}>100{userInfo.id}</span>}>美纶购ID</List.Item>
                         </List>
                     </div>
 
