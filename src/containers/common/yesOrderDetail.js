@@ -210,7 +210,7 @@ export default class YesOrderDetail extends React.Component {
                         </div>
 
                         {
-                            (yesOrderDetail.state===3|| yesOrderDetail.state===4)&&
+                            (yesOrderDetail.state===3|| yesOrderDetail.state===4)&&yesOrderDetail.ispickup===0&&
 
                             <div className="express-info">
                                 <p className="id">快递单号：<span>{yesOrderDetail.numberoflogistics}</span></p>
