@@ -47,11 +47,8 @@ export default class DoubleActive extends React.Component {
 
         }
     }
-
-
     componentDidMount() {
         // this.props.getDeadList(provinceData);
-
         const {scrollT} = this.props
         window.scrollTo(0, scrollT);
 

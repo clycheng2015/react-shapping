@@ -4,8 +4,9 @@
 import React from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
-import { ListView , Tabs, WhiteSpace, PullToRefresh, Button,Progress} from 'antd-mobile';
-import {Icon, Flex} from 'antd-mobile'
+import { Tabs, WhiteSpace,Icon, Flex} from 'antd-mobile';
+import { StickyContainer, Sticky } from 'react-sticky';
+
 import './style/newDay.less';
 import '../../utils/swiper/swiper.min.css';
 import '../../utils/swiper/swiper.min.js';
@@ -1452,7 +1453,11 @@ export default class NewDay extends React.Component{
             tabs.push({'title':item})
         })
 
-
+        function renderTabBar(props) {
+            return (<Sticky>
+                {({ style }) => <div style={{ ...style, zIndex: 1,paddingTop:"0.9rem" }}><Tabs.DefaultTabBar {...props} /></div>}
+            </Sticky>);
+        }
 
         return(
 
@@ -1492,10 +1497,16 @@ export default class NewDay extends React.Component{
                <div className='new-word'>
                    <p className='title'>今日新品到货 <br/> <span>每日17点准时更新</span></p>
                    <WhiteSpace />
-                       <Tabs tabs={tabs} swipeable={false}  onChange={this._change}>
+                   <StickyContainer>
+                       <Tabs tabs={tabs}
+                             swipeable={false}
+                             onChange={this._change}
+                             renderTabBar={renderTabBar}
+                       >
                            {this.renderContent}
 
                        </Tabs>
+                   </StickyContainer>
                    <WhiteSpace />
 
 

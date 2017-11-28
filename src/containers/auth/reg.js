@@ -2,7 +2,7 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Flex, Icon, InputItem, List, Toast} from 'antd-mobile'
+import {Flex, Icon, InputItem, List, Toast,Radio} from 'antd-mobile'
 import {createForm} from 'rc-form';
 import * as auth from 'actions/auth'
 require('./styles/reg.less')
@@ -80,7 +80,7 @@ class Reg extends React.Component {
 
             Toast.info('请输入您的账号信息！', 1);
         }
-        else if (password !== undefined && !test.exec(password)) {
+        else if (password !== undefined && !test.test(password)) {
 
 
             Toast.info('请输入6-12位数字或者字母密码！', 1);
@@ -129,6 +129,11 @@ class Reg extends React.Component {
                                 placeholder="请输入6-12位数字或者字母密码"
                             />
                         </List>
+                        <Flex  className="deal-info">
+                            <Flex.Item style={{ padding: '15px 0', color: '#888', flex: 'none' }}>
+                                <Radio className="my-radio"  checked={true} onChange={e => console.log('checkbox', e)}> &nbsp;我已经阅读并同意</Radio>
+                                 <span style={{color:"#2aa2e2"}} onClick={()=>history.push('/protocol/0')}>《用户服务协议》</span></Flex.Item>
+                        </Flex>
                         <div className="login-btn" onClick={()=>{this._submite()}}>完成</div>
                     </div>
                 </div>
