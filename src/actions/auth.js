@@ -45,7 +45,7 @@ export const fetchLogin = (data, history, toUrl,openid) => {
     return (dispatch, getState) => {
         instance.post(auth.loginUrl, qs.stringify({...getSign(data),openid:openid}))
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 if (res.data.code == 200) {
 
                     dispatch(login(res.data.data))
