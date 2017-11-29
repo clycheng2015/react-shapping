@@ -60,11 +60,17 @@ export default class YesOrderDetail extends React.Component {
         const {history, fetchDelOrder} = this.props
         const alertInstance = alert('提示', '确定删除订单吗？', [
             {text: '取消', onPress: () => console.log('取消'), style: 'default'},
-            {text: '确定', onPress: () => fetchDelOrder({id: id})},
+            {text: '确定', onPress: () =>
+
+            {
+                fetchDelOrder({id: id})
+                setTimeout(() => {
+                    history.goBack()
+                }, 1000)
+            }
+            },
         ]);
-        setTimeout(() => {
-            history.goBack()
-        }, 1000)
+
 
     }
 
