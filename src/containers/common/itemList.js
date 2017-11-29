@@ -103,7 +103,7 @@ export default class ItemList extends React.Component {
             pagenum: pagenum,
             cid: id,
             sort:type,
-            isown:l
+            isown:l || this.state.value
         })
 
 
@@ -152,7 +152,8 @@ export default class ItemList extends React.Component {
         this.setState({
             value:value,
             itemTxt:itemTxt,
-            open:false
+            open:false,
+
         });
 
         this._priceAll(value)

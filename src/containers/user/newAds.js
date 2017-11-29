@@ -146,16 +146,18 @@ class NewAds extends React.Component {
             return
         }
 
-        else if (card!=='') {
-            if(!idcard(card)){
-                Toast.info('您填写的身份证号码格式不正确！',1)
-                return
-            }
+        else if (card!=='' && !idcard(card)) {
+
+            Toast.info('您填写的身份证号码格式不正确！',1)
+            return
+
         }
 
 
 
+
         else {
+
             area = areaTxt.split(",")
             let data = {
                 id: id,
@@ -272,7 +274,7 @@ class NewAds extends React.Component {
 
 
                                 })}
-                                type="number"
+                                type="text"
                                 placeholder="购买海外直邮商品需填写身份信息"
 
 
@@ -363,7 +365,7 @@ class NewAds extends React.Component {
 
                             <InputItem
                                 {...getFieldProps('card')}
-                                type="number"
+                                type="text"
                                 placeholder="购买海外直邮商品需填写身份信息"
 
 

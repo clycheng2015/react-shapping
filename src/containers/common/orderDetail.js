@@ -250,12 +250,14 @@ class OrderDetail extends React.Component {
             '实名认证',
             '海关要求购买跨境商品需提供实名信息！',
             (name, card) => {
+                // console.log(name,card)
 
                 if (name === '') {
                     Toast.info('请填写真实姓名！', 1)
                     return
                 }
                 if (card === '') {
+
                     Toast.info('请填写身份证号码！', 1)
                     return
                 }
@@ -278,7 +280,7 @@ class OrderDetail extends React.Component {
             null,
             ['真实姓名', '身份证号码'],
         )
-        document.getElementsByTagName('input')[1].type = 'text'
+        // document.getElementsByTagName('input')[1].type = 'text'
 
     }
 
