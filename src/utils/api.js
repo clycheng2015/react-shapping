@@ -108,6 +108,7 @@ export const active = {
     activeList:"/app/findgoods/seckilllist",//列表
     activeDetail: "/app/findgoods/seckillgoodsinfo",//秒杀商品详情
     disList: "/app/findgoods/discountlist",//超值特惠
+    activeMoveMent:"/app/config/open/movement",//每日上新
 }
 
 
@@ -116,6 +117,7 @@ export const wxSdkConfig={
     shareUrl:"/app/share/open/fenxiang",
 
 }
+
 
 
 

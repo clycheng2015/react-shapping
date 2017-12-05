@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import { Tabs, WhiteSpace,Icon, Flex} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
+import * as movement from '../../actions/movement'
 
 import './style/newDay.less';
 import '../../utils/swiper/swiper.min.css';
@@ -13,7 +14,12 @@ import '../../utils/swiper/swiper.min.js';
 
 
 const goodsList = [];
-
+@connect(
+    state => {
+        return {...state.movement}
+    },
+    dispatch => bindActionCreators({...movement}, dispatch)
+)
 export default class NewDay extends React.Component{
     constructor(props) {
         super(props)
@@ -1362,6 +1368,9 @@ export default class NewDay extends React.Component{
 
     }
     componentDidMount(){
+        const { movement } = this.props;
+        movement();
+
         const {history} = this.props
         // this.props.getTitleList({pagesize:8,pagenum:3})
         // 轮播

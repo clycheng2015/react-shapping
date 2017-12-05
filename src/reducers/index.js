@@ -14,7 +14,9 @@ import {goodsDetail} from './goodsDetail'
 import {postType} from './postType'
 import {invoice} from './invoice'
 import {global} from './global'
+import {activeMoveMent} from './movement'
 import {doubleActive} from './doubleActive'
+
 const rootReducer = {
     home,
     item,
@@ -32,6 +34,8 @@ const rootReducer = {
     goodsDetail,
     itemList,
     global,
-    doubleActive
+    activeMoveMent,
+    doubleActive,
+
 }
 export default rootReducer
