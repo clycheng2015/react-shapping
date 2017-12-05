@@ -16,7 +16,8 @@ let init = {
     ckeckAllState: true,
     osCkeckAllState: false,
     owCkeckAllState: false,
-    banner: {}
+    banner: {},
+    activeInfo:{},
 
 
 }
@@ -133,6 +134,7 @@ export const car = (state = init, action) => {
                 osCheckData: newOsCheckData,
                 osCkeckAllState: osCkeckAllState,
                 owCkeckAllState: owCkeckAllState,
+                activeInfo: action.data.datalist.length>0?action.data.datalist[0].fullActivityDto:{}
             }
 
         case types.DEL_CAR_LIST:

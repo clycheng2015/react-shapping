@@ -51,7 +51,9 @@ export default class BuyCar extends React.Component {
     }
 
     render() {
-        const {data, history, match, banner} = this.props
+        const {data, history, match, banner,activeInfo} = this.props
+
+
 
         return (
             <div className="car-container"

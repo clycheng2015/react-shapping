@@ -3,6 +3,8 @@
  */
 import React from 'react'
 import {Modal, ListView, Checkbox, InputItem, List, Toast, Flex, SwipeAction} from 'antd-mobile'
+
+import {timeOut} from '../../utils/tools'
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
 export  default  class CarList extends React.Component {
@@ -107,8 +109,24 @@ export  default  class CarList extends React.Component {
 
     }
 
+    _activeTxt=(activeInfo)=>{
+
+
+        let tot=this._priceTol();
+
+        let html=''
+
+        html= Number(tot)>Number(activeInfo.datalist[0].man)?`可享减免${activeInfo.datalist[0].jian}`:``
+
+        html= Number(activeInfo.datalist[1].man)<Number(tot)<Number(activeInfo.datalist[0].man)?`可享减免${activeInfo.datalist[0].jian}`:``
+
+
+
+
+    }
+
     render() {
-        const {match, owCheckData, osCheckData, carCheckAll,osCkeckAllState,owCkeckAllState, carCheck, history} = this.props
+        const {match, owCheckData, osCheckData, carCheckAll,osCkeckAllState,owCkeckAllState, carCheck, history,activeInfo} = this.props
 
         return (
             <div>
@@ -234,17 +252,20 @@ export  default  class CarList extends React.Component {
                     </div>
                 }
 
-
                 <div style={{height: "2.5rem"}}/>
                 <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}>
+                    {
+                        activeInfo&&activeInfo.id&&timeOut(activeInfo.endtime)&&
+                        <div className="active-msg-info">
+                            活动：{this._activeTxt(activeInfo)}
+                        </div>
+                    }
+
                     <Flex>
                         <Flex.Item className="tot">合计:￥{ this._priceTol()}</Flex.Item>
                         <Flex.Item><span className="buy-btn" onClick={() => this._gotoBuy()}>去结算</span></Flex.Item>
                     </Flex>
-
-
                 </div>
-
             </div>
         );
     }

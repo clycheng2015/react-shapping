@@ -182,6 +182,25 @@ export function idcard(card) {
 }
 
 
+export const timeOut=(t)=>{
+    "use strict";
+
+    let date= Date.parse(new Date())
+
+    if(t>date){
+
+        return true
+
+    }
+    else  {
+        return false
+    }
+
+
+}
+
+
+
 
 
 
