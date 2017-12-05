@@ -11,14 +11,14 @@ const webpackServerConfig = require('./webpackServerConfig')
 const proxy = [
     {
     path: '/app',
-    target: 'http://app.meilungo.com',
+    target: 'http://test.meilungo.com',
     secure: false,
     changeOrigin: true
     },
 
     {
     path: '/v2',
-    target: 'http://app.meilungo.com',
+    target: 'http://test.meilungo.com',
     secure: false,
     changeOrigin: true
     },

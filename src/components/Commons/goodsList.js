@@ -35,7 +35,13 @@ class GoodsList extends React.Component {
             return (
                 <div key={rowID} className="goods" onClick={() =>this._goDetail(rowData)}>
 
-                    <div className="img-info">
+                    <div className="img-info list-goods-img-info">
+
+                        <div className="list-goods-img-icon">
+
+                            <img src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!30p'} alt="" />
+
+                        </div>
 
                         <img src={rowData.bigpic + '?imageMogr2/thumbnail/!30p'} alt="" ref={(el) => this.imgH = el}/>
 

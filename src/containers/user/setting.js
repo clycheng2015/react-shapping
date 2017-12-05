@@ -6,6 +6,10 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
 
+import Bubble from '../../components/scroll/bubble'
+import Starry from '../../components/scroll/Starry'
+
+
 
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
 
@@ -43,6 +47,8 @@ export default class Setting extends React.Component {
 
     }
 
+
+
     render() {
         const {history} = this.props
         return (
@@ -53,6 +59,8 @@ export default class Setting extends React.Component {
                      background: "#f3f3f1"
                  }}
             >
+
+
 
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
@@ -85,6 +93,7 @@ export default class Setting extends React.Component {
                         this._loginOut()
                     }}>安全退出</List.Item>
                 </div>
+                <Bubble/>
 
                 {/*<Button onClick={() => {*/}
                 {/*removeLocalItem("userInfo")*/}
