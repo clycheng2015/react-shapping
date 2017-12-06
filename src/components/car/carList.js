@@ -14,7 +14,7 @@ export  default  class CarList extends React.Component {
         this.state = {
 
             height: document.documentElement.clientHeight,
-            jian:0,
+            jian: 0,
         };
     }
 
@@ -66,8 +66,8 @@ export  default  class CarList extends React.Component {
      * @private
      */
     _priceTol = () => {
-        const {owCheckData,osCheckData} = this.props
-        let checkData=owCheckData.concat(osCheckData)
+        const {owCheckData, osCheckData} = this.props
+        let checkData = owCheckData.concat(osCheckData)
         let checkedArr = []
         checkData.map(i => {
             if (i.checked) {
@@ -88,8 +88,8 @@ export  default  class CarList extends React.Component {
      */
 
     _gotoBuy = () => {
-        const {history,owCheckData,osCheckData} = this.props
-        let checkData=owCheckData.concat(osCheckData)
+        const {history, owCheckData, osCheckData} = this.props
+        let checkData = owCheckData.concat(osCheckData)
         let checkedArr = []
         checkData.map(i => {
             if (i.checked) {
@@ -110,18 +110,18 @@ export  default  class CarList extends React.Component {
 
     }
 
-    _activeTxt=(activeInfo)=>{
+    _activeTxt = (activeInfo) => {
 
-        let tot=this._priceTol();
-        let html=''
+        let tot = this._priceTol();
+        let html = ''
 
-        if(Number(activeInfo.datalist[0].man)<Number(tot)){
+        if (Number(activeInfo.datalist[0].man) < Number(tot)) {
             html = `可享减免${activeInfo.datalist[0].jian}`
 
         }
-        for(let i=0; i < activeInfo.datalist.length; i++){
-            if(Number(activeInfo.datalist[i].man)>Number(tot)){
-               html = `还差￥${(Number(activeInfo.datalist[i].man)-Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}`
+        for (let i = 0; i < activeInfo.datalist.length; i++) {
+            if (Number(activeInfo.datalist[i].man) > Number(tot)) {
+                html = `还差￥${(Number(activeInfo.datalist[i].man) - Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}`
 
             }
         }
@@ -129,9 +129,38 @@ export  default  class CarList extends React.Component {
         return html
 
     }
+    /***
+     * 优惠价
+     * @private
+     */
+    _freePrice = () => {
+        const {activeInfo}=this.props
+        let tot = this._priceTol();
+        let free=0;
 
+
+
+
+        return Number(free)
+    }
+
+    /***
+     * 活动后总价
+     * @returns {XML}
+     */
+
+    _activeTot=()=>{
+        let tot = this._priceTol();
+        let free=this._freePrice();
+
+        let newTot=tot-free
+
+
+
+        return newTot
+    }
     render() {
-        const {match, owCheckData, osCheckData, carCheckAll,osCkeckAllState,owCkeckAllState, carCheck, history,activeInfo} = this.props
+        const {match, owCheckData, osCheckData, carCheckAll, osCkeckAllState, owCkeckAllState, carCheck, history, activeInfo} = this.props
 
         return (
             <div>
@@ -168,7 +197,7 @@ export  default  class CarList extends React.Component {
                                             <div className="left">
                                                 <CheckboxItem className="checkbox" key={rowID} value={rowID}
                                                               checked={data.checked}
-                                                              onChange={(e) => carCheck(rowData.id,owCheckData[0].type)}
+                                                              onChange={(e) => carCheck(rowData.id, owCheckData[0].type)}
                                                               activeStyle={{background: "none"}}/>
                                             </div>
                                             <div className="center"
@@ -231,7 +260,7 @@ export  default  class CarList extends React.Component {
                                             <div className="left">
                                                 <CheckboxItem className="checkbox" key={rowID} value={rowID}
                                                               checked={data.checked}
-                                                              onChange={(e) => carCheck(rowData.id,osCheckData[0].type)}
+                                                              onChange={(e) => carCheck(rowData.id, osCheckData[0].type)}
                                                               activeStyle={{background: "none"}}/>
                                             </div>
                                             <div className="center"
@@ -239,7 +268,7 @@ export  default  class CarList extends React.Component {
                                                 src={rowData.goods_smallpic} alt=""/></div>
                                             <div className="right">
 
-                                                <p className='title'> <span>海外直邮</span>{rowData.goods_title}阿斯加德；爱上了大家爱上；来得及啊；数量单价啊；类似的骄傲；来得及啊；来得及啊； </p>
+                                                <p className='title'><span>海外直邮</span>{rowData.goods_title} </p>
                                                 <div className="two">
                                                     <span className="price">￥{rowData.goods_price}</span>
                                                     <span className="count"><span className="lose box"
@@ -260,7 +289,7 @@ export  default  class CarList extends React.Component {
                 <div style={{height: "2.5rem"}}/>
                 <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}>
                     {
-                        activeInfo&&activeInfo.id&&timeOut(activeInfo.endtime)&&
+                        activeInfo && activeInfo.id && timeOut(activeInfo.endtime) &&
                         <div className="active-msg-info">
                             活动：{this._activeTxt(activeInfo)}
                         </div>
@@ -268,8 +297,16 @@ export  default  class CarList extends React.Component {
 
                     <Flex>
                         <Flex.Item className="tot">
-                            <p className='all'>合计:￥{ this._priceTol() - this.state.jian}</p>
-                            <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this.state.jian}</p>
+                            {
+                                activeInfo && activeInfo.id && timeOut(activeInfo.endtime) ?
+                                    <div>
+                                        <p className='all'>合计:￥{this._activeTot()}</p>
+                                        <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this._freePrice()}</p>
+                                    </div>:
+                                    <p className='all'>合计:￥{this._priceTol()}</p>
+                            }
+
+
                         </Flex.Item>
 
                         <Flex.Item><span className="buy-btn" onClick={() => this._gotoBuy()}>去结算</span></Flex.Item>
