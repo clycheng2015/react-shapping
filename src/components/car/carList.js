@@ -82,6 +82,7 @@ export  default  class CarList extends React.Component {
 
     }
 
+
     /***
      *  去结算
      * @returns {XML}
@@ -103,25 +104,34 @@ export  default  class CarList extends React.Component {
 
             history.push({
                 pathname: "/orderDetail",
-                state: {data: checkedArr, state: "car"}
+                state: {
+                    data: checkedArr,
+                    state: "car",
+                    mjprice:this._freePrice()
+
+                }
             })
         }
 
 
     }
 
+    /***
+     * 满减提示
+     * @private
+     */
     _activeTxt = (activeInfo) => {
 
         let tot = this._priceTol();
         let html = ''
 
         if (Number(activeInfo.datalist[0].man) < Number(tot)) {
-            html = `可享减免${activeInfo.datalist[0].jian}`
+            html = `可享减免${activeInfo.datalist[0].jian}!`
 
         }
         for (let i = 0; i < activeInfo.datalist.length; i++) {
             if (Number(activeInfo.datalist[i].man) > Number(tot)) {
-                html = `还差￥${(Number(activeInfo.datalist[i].man) - Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}`
+                html = `还差￥${(Number(activeInfo.datalist[i].man) - Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}!`
 
             }
         }
@@ -129,6 +139,7 @@ export  default  class CarList extends React.Component {
         return html
 
     }
+
     /***
      * 优惠价
      * @private
@@ -137,12 +148,18 @@ export  default  class CarList extends React.Component {
         const {activeInfo}=this.props
         let tot = this._priceTol();
         let free=0;
-
-
-
+        if (Number(activeInfo.datalist[0].man) < Number(tot)) {
+            free = activeInfo.datalist[0].jian
+        }
+        for (let i = 1; i < activeInfo.datalist.length; i++) {
+            if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) < Number(tot)) {
+                free = activeInfo.datalist[i].jian
+            }
+        }
 
         return Number(free)
     }
+
 
     /***
      * 活动后总价
@@ -155,9 +172,7 @@ export  default  class CarList extends React.Component {
 
         let newTot=tot-free
 
-
-
-        return newTot
+        return newTot.toFixed(2)
     }
     render() {
         const {match, owCheckData, osCheckData, carCheckAll, osCkeckAllState, owCkeckAllState, carCheck, history, activeInfo} = this.props

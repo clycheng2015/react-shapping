@@ -29,6 +29,7 @@ class OrderDetail extends React.Component {
 
     componentDidMount() {
         const {fetchGetAds, savePath, location, getUserInfo, chooseAddressData, savePayParams} = this.props
+
         if (location.state && location.state.data) {
             savePath(location.state.data)
         }
@@ -173,16 +174,35 @@ class OrderDetail extends React.Component {
     }
 
     /***
+     * 计算满减
+     * @private
+     */
+    _mjprice = () => {
+        const {location} = this.props
+        console.log(location)
+        let mjprice =location.state && location.state.mjprice || 0
+
+        return mjprice
+
+    }
+
+    /***
      * 计算订单总价
      * @private
      */
 
     _orderPice = () => {
+        const {location} = this.props
+        let mjprice =location.state && location.state.mjprice || 0
+
         let post = this._postType();
         let sum = Number(this._priceTol());
         if (Number(post) > 0) {
             sum += Number(post)
         }
+
+        sum -= mjprice
+
         return Number(sum).toFixed(2)
     }
 
@@ -445,6 +465,8 @@ class OrderDetail extends React.Component {
                             </div>}>商品总额：</List.Item>
                             <List.Item extra={<div><span className="type-name">{  this._postType()}</span>
                             </div>}>运费：</List.Item>
+                            <List.Item extra={<div><span className="type-name">-￥{  this._mjprice()}</span>
+                            </div>}>优惠金额：</List.Item>
                         </div>
                         <div className="buy-btn"><span className="tot-exp">￥{this._orderPice()} <span>（{this._postMsg()}）</span></span>
                             <span className="btn-exp" onClick={() => this._gotoPay() }>去支付

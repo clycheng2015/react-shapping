@@ -99,7 +99,7 @@ export default class GoodsDetail extends React.Component {
             drawerType: "buy",
         })
         let user = this.user
-        console.log(user)
+        // console.log(user)
         const {history} = this.props
         if (user && user.userInfo) {
             this.setState({
@@ -152,14 +152,13 @@ export default class GoodsDetail extends React.Component {
     _submite_gs = (id) => {
         const {fetchAddCar, history} = this.props
 
-        let user = this.user
 
+        let user = this.user
 
         if (this.state.addOrBuyState == 'add') {
 
             // console.log(userInfo)
             if (user && user.userInfo) {
-
 
                 this.setState({open: false});
                 fetchAddCar({
@@ -171,9 +170,7 @@ export default class GoodsDetail extends React.Component {
                     // uid: JSON.parse(userInfo).id
                 })
 
-
                 const {fetchCarList} = this.props
-
 
                 setTimeout(()=>{
                     fetchCarList({
@@ -181,12 +178,9 @@ export default class GoodsDetail extends React.Component {
                         pagenum: 1
                     })
 
-
                 },400)
 
-
             } else {
-
 
             }
 
@@ -194,11 +188,20 @@ export default class GoodsDetail extends React.Component {
 
         if (this.state.addOrBuyState == 'buy') {
 
-
             // console.log(userInfo)
             if (user && user.userInfo) {
 
-                const {data, history} = this.props
+                const {data, history ,carData} = this.props
+                let free = 0;
+                let allPrice = data.zkprice * this.state.inputValue;
+                if (Number(carData.activeInfo.datalist[0].man) < Number(allPrice)) {
+                    free = carData.activeInfo.datalist[0].jian
+                }
+                for (let i = 1; i < carData.activeInfo.datalist.length; i++) {
+                    if (Number(carData.activeInfo.datalist[i-1].man) > Number(allPrice) && Number(carData.activeInfo.datalist[i].man) < Number(allPrice)) {
+                        free = carData.activeInfo.datalist[i].jian
+                    }
+                }
 
                 // let price = ''
 
@@ -220,7 +223,8 @@ export default class GoodsDetail extends React.Component {
                     goods_title: data.gtitle,
                     id: data.id,
                     shareurl: data.shareurl,
-                    isown:data.isown
+                    isown:data.isown,
+
                     // user_id: JSON.parse(userInfo).id,
 
                 }]
@@ -229,7 +233,8 @@ export default class GoodsDetail extends React.Component {
                     pathname: "/orderDetail",
                     state: {
                         data: newData,
-                        state: "det"
+                        state: "det",
+                        mjprice:free
                     }
                 })
 
@@ -350,7 +355,6 @@ export default class GoodsDetail extends React.Component {
     render() {
         const {data, history,carData} = this.props
 
-        console.log(carData)
         return (
             <div className="goods-detail-container">
                 <div className="nav-tab">
@@ -369,10 +373,14 @@ export default class GoodsDetail extends React.Component {
 
                 <div className="detail-info">
 
-
                     {data && data.id &&
                     <div className="cnt-info">
-                        <div className="img-info"><img src={data.bigpic + '?imageMogr2/thumbnail/!99p'} alt=""/></div>
+                        <div className="img-info">
+                            <img src={data.bigpic + '?imageMogr2/thumbnail/!99p'} alt=""/>
+                            {carData && carData.activeInfo &&
+                                <img src={carData.activeInfo.info_bigpicafter} alt=""/>
+                            }
+                        </div>
                         <div className="msg-info">
                             <div className="title"><p>{data.isown===2&&<span className="owner">{'海外直邮'}</span>}{data.gtitle}</p></div>
                             <Flex >
