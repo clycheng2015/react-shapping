@@ -14,6 +14,7 @@ export  default  class CarList extends React.Component {
         this.state = {
 
             height: document.documentElement.clientHeight,
+            jian:0,
         };
     }
 
@@ -111,17 +112,21 @@ export  default  class CarList extends React.Component {
 
     _activeTxt=(activeInfo)=>{
 
-
         let tot=this._priceTol();
-
         let html=''
 
-        html= Number(tot)>Number(activeInfo.datalist[0].man)?`可享减免${activeInfo.datalist[0].jian}`:``
+        if(Number(activeInfo.datalist[0].man)<Number(tot)){
+            html = `可享减免${activeInfo.datalist[0].jian}`
 
-        html= Number(activeInfo.datalist[1].man)<Number(tot)<Number(activeInfo.datalist[0].man)?`可享减免${activeInfo.datalist[0].jian}`:``
+        }
+        for(let i=0; i < activeInfo.datalist.length; i++){
+            if(Number(activeInfo.datalist[i].man)>Number(tot)){
+               html = `还差￥${(Number(activeInfo.datalist[i].man)-Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}`
 
+            }
+        }
 
-
+        return html
 
     }
 
@@ -262,7 +267,11 @@ export  default  class CarList extends React.Component {
                     }
 
                     <Flex>
-                        <Flex.Item className="tot">合计:￥{ this._priceTol()}</Flex.Item>
+                        <Flex.Item className="tot">
+                            <p className='all'>合计:￥{ this._priceTol() - this.state.jian}</p>
+                            <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this.state.jian}</p>
+                        </Flex.Item>
+
                         <Flex.Item><span className="buy-btn" onClick={() => this._gotoBuy()}>去结算</span></Flex.Item>
                     </Flex>
                 </div>

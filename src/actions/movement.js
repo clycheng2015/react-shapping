@@ -16,24 +16,20 @@ const receiveDisAcList = (data) => ({
 
 })
 
-export const movement = (data,resolve,reject) =>{
+export const movement = () =>{
     return(dispatch, getState) =>{
         dispatch(requestDisAcList());
-        instance.get(active.activeMoveMent,data)
+        instance.get(active.activeMoveMent)
             .then(res =>{
                 if (res.data.code == 200) {
                     dispatch(receiveDisAcList(res.data.data))
-                    if(resolve){
-                        resolve()
-                    }
+
                 }
 
             })
             .catch(error =>{
                 console.log('error: ', error)
-                if(reject){
-                    reject()
-                }
+
             })
     }
 }
