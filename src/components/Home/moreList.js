@@ -75,9 +75,15 @@ class MoreList extends React.Component {
             return (
                 <div key={rowID} className="goods" onClick={() =>this._goDetail(rowData)}>
 
-                    <div className="img-info">
+                    <div className="img-info list-goods-img-info">
 
-                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
+                        <div className="list-goods-img-icon">
+
+                            <img src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!30p'} alt="" />
+
+                        </div>
+
+                        <img className='goods-bigpic' src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
 
 
                     </div>

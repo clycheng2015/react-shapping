@@ -478,7 +478,7 @@ class OrderDetail extends React.Component {
                         <div className="count-exp-info" style={{marginBottom: "1.5rem"}}>
                             <List.Item extra={<div><span className="type-name">￥{this._priceTol()}</span>
                             </div>}>商品总额：</List.Item>
-                            <List.Item extra={<div><span className="type-name">{  this._postType()}</span>
+                            <List.Item extra={<div><span className="type-name">￥{  this._postType()}</span>
                             </div>}>运费：</List.Item>
                             <List.Item extra={<div><span className="type-name">{  this._mjprice() === 0 ? '无优惠': `-￥${this._mjprice()}` }</span>
                             </div>}>优惠金额：</List.Item>
