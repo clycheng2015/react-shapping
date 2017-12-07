@@ -12,6 +12,8 @@ import * as car from 'actions/car'
 import ReactDrawer from '../../components/Commons/lib/react-drawer';
 
 import {AppLocalStorage} from '../../utils/cookie'
+import {timeOut} from '../../utils/tools'
+
 require('../../components/Commons/lib/react-drawer.less')
 require('./styles/goodsDetail.less')
 const nodeEnv = process.env.NODE_ENV || 'development'
@@ -377,9 +379,10 @@ export default class GoodsDetail extends React.Component {
                     <div className="cnt-info">
                         <div className="img-info">
                             <img src={data.bigpic + '?imageMogr2/thumbnail/!99p'} alt=""/>
-                            {carData && carData.activeInfo &&
-                                <img src={carData.activeInfo.info_bigpicafter} alt=""/>
-                            }
+
+                            {carData && carData.activeInfo &&timeOut( carData.activeInfo.endtime) &&<img src={carData.activeInfo.info_bigpicafter} alt=""/>}
+
+
                         </div>
                         <div className="msg-info">
                             <div className="title"><p>{data.isown===2&&<span className="owner">{'海外直邮'}</span>}{data.gtitle}</p></div>
