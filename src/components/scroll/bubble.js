@@ -9,8 +9,9 @@ class Bubble extends React.Component {
         super(props);
 
         this.state = {
-            width: 50,
-            height: 80
+            width: 100,
+            height: 160,
+            distance:0
         };
 
         this.ratio = window.devicePixelRatio
@@ -31,12 +32,21 @@ class Bubble extends React.Component {
         }
 
 
+
+
     }
     static defaultProps = {
         y: 0
     }
 
     componentDidMount(){
+
+        this.setState({
+
+            distance: Math.max(0, Math.min(this.props.y * this.ratio, this.maxDistance))
+
+        })
+
 
         this._draw()
     }
@@ -48,12 +58,15 @@ class Bubble extends React.Component {
 
     }
 
-    distance() {
-        return Math.max(0, Math.min(this.y * this.ratio, this.maxDistance))
-    }
+    // distance=()=> {
+    //
+    //     let dis= Math.max(0, Math.min(this.props.y * this.ratio, this.maxDistance))
+    //
+    //     return dis
+    // }
 
 
-    _draw() {
+    _draw=()=> {
         const bubble = this.bubble
 
 
@@ -67,10 +80,12 @@ class Bubble extends React.Component {
 
 
     }
-    _drawBubble(ctx) {
+    _drawBubble=(ctx)=> {
         ctx.save()
         ctx.beginPath()
-        const rate = this.distance / this.maxDistance
+        const rate = this.state.distance / this.maxDistance
+        // console.log(this.state.distance, this.maxDistance)
+
         const headRadius = this.initRadius - (this.initRadius - this.minHeadRadius) * rate
         this.headCenter.y = this.initCenterY - (this.initRadius - this.minHeadRadius) * rate
         // 画上半弧线
@@ -79,7 +94,7 @@ class Bubble extends React.Component {
         const tailRadius = this.initRadius - (this.initRadius - this.minTailRadius) * rate
         const tailCenter = {
             x: this.headCenter.x,
-            y: this.headCenter.y + this.distance
+            y: this.headCenter.y + this.state.distance
         }
         const tailPointL = {
             x: tailCenter.x - tailRadius,
@@ -87,7 +102,7 @@ class Bubble extends React.Component {
         }
         const controlPointL = {
             x: tailPointL.x,
-            y: tailPointL.y - this.distance / 2
+            y: tailPointL.y - this.state.distance / 2
         }
         ctx.quadraticCurveTo(controlPointL.x, controlPointL.y, tailPointL.x, tailPointL.y)
         // 画下半弧线
@@ -99,7 +114,7 @@ class Bubble extends React.Component {
         }
         const controlPointR = {
             x: tailCenter.x + tailRadius,
-            y: headPointR.y + this.distance / 2
+            y: headPointR.y + this.state.distance / 2
         }
         ctx.quadraticCurveTo(controlPointR.x, controlPointR.y, headPointR.x, headPointR.y)
         ctx.fillStyle = 'rgb(170,170,170)'
@@ -108,11 +123,14 @@ class Bubble extends React.Component {
         ctx.stroke()
         ctx.restore()
     }
-    _drawArrow(ctx) {
+
+
+
+    _drawArrow=(ctx)=> {
 
         ctx.save()
         ctx.beginPath()
-        const rate = this.distance / this.maxDistance
+        const rate = this.state.distance / this.maxDistance
         const arrowRadius = this.initArrowRadius - (this.initArrowRadius - this.minArrowRadius) * rate
         // 画内圆
         ctx.arc(this.headCenter.x, this.headCenter.y, arrowRadius - (this.arrowWidth - rate), -Math.PI / 2, 0, true)

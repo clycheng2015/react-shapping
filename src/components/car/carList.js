@@ -127,12 +127,11 @@ export  default  class CarList extends React.Component {
 
         if (Number(activeInfo.datalist[0].man) < Number(tot)) {
             html = `可享减免${activeInfo.datalist[0].jian}!`
-
         }
+
         for (let i = 0; i < activeInfo.datalist.length; i++) {
             if (Number(activeInfo.datalist[i].man) > Number(tot)) {
                 html = `还差￥${(Number(activeInfo.datalist[i].man) - Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}!`
-
             }
         }
 
@@ -148,16 +147,26 @@ export  default  class CarList extends React.Component {
         const {activeInfo}=this.props
         let tot = this._priceTol();
         let free=0;
-        if (Number(activeInfo.datalist[0].man) < Number(tot)) {
-            free = activeInfo.datalist[0].jian
-        }
-        for (let i = 1; i < activeInfo.datalist.length; i++) {
-            if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) < Number(tot)) {
-                free = activeInfo.datalist[i].jian
+
+        if(activeInfo.datalist!==null){
+
+
+            if (Number(activeInfo.datalist[0].man) < Number(tot)) {
+                free = activeInfo.datalist[0].jian
             }
+            for (let i = 1; i < activeInfo.datalist.length; i++) {
+                if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) < Number(tot)) {
+                    free = activeInfo.datalist[i].jian
+                }
+            }
+
+
         }
 
+
         return Number(free)
+
+
     }
 
 
@@ -304,7 +313,7 @@ export  default  class CarList extends React.Component {
                 <div style={{height: "2.5rem"}}/>
                 <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}>
                     {
-                        activeInfo && activeInfo.id && timeOut(activeInfo.endtime) &&
+                        activeInfo && activeInfo.id &&activeInfo.datalist!==null&& timeOut(activeInfo.endtime) &&
                         <div className="active-msg-info">
                             活动：{this._activeTxt(activeInfo)}
                         </div>
@@ -313,7 +322,7 @@ export  default  class CarList extends React.Component {
                     <Flex>
                         <Flex.Item className="tot">
                             {
-                                activeInfo && activeInfo.id && timeOut(activeInfo.endtime) ?
+                                activeInfo && activeInfo.id &&activeInfo.datalist!==null && timeOut(activeInfo.endtime) ?
                                     <div>
                                         <p className='all'>合计:￥{this._activeTot()}</p>
                                         <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this._freePrice()}</p>
