@@ -18,6 +18,7 @@ let init = {
     owCkeckAllState: false,
     banner: {},
     activeInfo:[],
+    mjprice:0,
 
 
 }

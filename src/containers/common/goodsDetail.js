@@ -4,7 +4,7 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Flex, Icon, List, InputItem, Toast, Modal,Badge} from 'antd-mobile'
+import {Flex, Icon, List, InputItem, Toast, Modal,Badge,Grid} from 'antd-mobile'
 const alert = Modal.alert;
 import * as goodsDetail from 'actions/goodsDetail'
 import * as global from 'actions/global'
@@ -196,14 +196,17 @@ export default class GoodsDetail extends React.Component {
                 const {data, history ,carData} = this.props
                 let free = 0;
                 let allPrice = data.zkprice * this.state.inputValue;
-                if (Number(carData.activeInfo.datalist[0].man) < Number(allPrice)) {
-                    free = carData.activeInfo.datalist[0].jian
-                }
-                for (let i = 1; i < carData.activeInfo.datalist.length; i++) {
-                    if (Number(carData.activeInfo.datalist[i-1].man) > Number(allPrice) && Number(carData.activeInfo.datalist[i].man) < Number(allPrice)) {
-                        free = carData.activeInfo.datalist[i].jian
+                if(carData.activeInfo !== null){
+                    if (Number(carData.activeInfo.datalist[0].man) < Number(allPrice)) {
+                        free = carData.activeInfo.datalist[0].jian
+                    }
+                    for (let i = 1; i < carData.activeInfo.datalist.length; i++) {
+                        if (Number(carData.activeInfo.datalist[i-1].man) > Number(allPrice) && Number(carData.activeInfo.datalist[i].man) < Number(allPrice)) {
+                            free = carData.activeInfo.datalist[i].jian
+                        }
                     }
                 }
+
 
                 // let price = ''
 
@@ -226,6 +229,7 @@ export default class GoodsDetail extends React.Component {
                     id: data.id,
                     shareurl: data.shareurl,
                     isown:data.isown,
+                    fullActivityDto:carData.activeInfo,
 
                     // user_id: JSON.parse(userInfo).id,
 
@@ -514,26 +518,17 @@ export default class GoodsDetail extends React.Component {
                                     :
                                     <div className="buy-info">
 
-                                        <div className="drawer-title">
-                                            <span className="title">请选择商品属性</span>
-                                            <span className='close-btn' onClick={this.closeDrawer}>x</span>
-                                        </div>
-
                                         <div className="drawer-body">
                                             <div className="drawer-img">
-
                                                 <img src={data.bigpic} alt=""/>
-
                                             </div>
-
                                             <div className="drawer-gs-title">
-                                                <p className="one"> { data.isown===2&&<span className="owner">海外直邮</span>} {data.gtitle}</p>
-
-
+                                                <Icon className='icon-cross' onClick={this.closeDrawer} type='cross'size='md' />
+                                                <p className='drawer-price'>￥{(data.zkprice * this.state.inputValue).toFixed(2)}</p>
+                                                <p className="one"> { data.isown===2&&<span className="owner">海外直邮</span>}</p>
                                                 <div className="two">
-
                                                     <div className="count">
-                                                        <span className="exp">最低购买数量:{data.minsalenum||1}件</span>
+                                                        <span className="exp">注：最低购买数量:{data.minsalenum||1}件</span>
                                                         <span className="lose box" onClick={this.lose}>-</span>
                                                         {/*<List >*/}
                                                             {/*<InputItem*/}

@@ -178,9 +178,24 @@ class OrderDetail extends React.Component {
      * @private
      */
     _mjprice = () => {
-        const {location} = this.props
-        console.log(location)
-        let mjprice =location.state && location.state.mjprice || 0
+        const { orderDetail } =this.props
+        const {pathList} = orderDetail
+        let allPrice = this._priceTol()
+
+        let mjprice = 0
+
+
+        if( pathList[0].fullActivityDto.datalist && pathList[0].fullActivityDto.datalist.length > 0){
+            let arr = pathList[0].fullActivityDto.datalist
+            if (Number(arr[0].man) < Number(allPrice)) {
+                mjprice = arr[0].jian
+            }
+            for (let i = 1; i < arr.length; i++) {
+                if (Number(arr[i-1].man) > Number(allPrice) && Number(arr[i].man) < Number(allPrice)) {
+                    mjprice = arr[i].jian
+                }
+            }
+        }
 
         return mjprice
 
@@ -465,7 +480,7 @@ class OrderDetail extends React.Component {
                             </div>}>商品总额：</List.Item>
                             <List.Item extra={<div><span className="type-name">{  this._postType()}</span>
                             </div>}>运费：</List.Item>
-                            <List.Item extra={<div><span className="type-name">-￥{  this._mjprice()}</span>
+                            <List.Item extra={<div><span className="type-name">{  this._mjprice() === 0 ? '无优惠': `-￥${this._mjprice()}` }</span>
                             </div>}>优惠金额：</List.Item>
                         </div>
                         <div className="buy-btn"><span className="tot-exp">￥{this._orderPice()} <span>（{this._postMsg()}）</span></span>

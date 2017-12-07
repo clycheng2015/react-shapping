@@ -125,7 +125,7 @@ export  default  class CarList extends React.Component {
         let tot = this._priceTol();
         let html = ''
 
-        if (Number(activeInfo.datalist[0].man) < Number(tot)) {
+        if (Number(activeInfo.datalist[0].man) <= Number(tot)) {
             html = `可享减免${activeInfo.datalist[0].jian}!`
         }
 
@@ -150,12 +150,11 @@ export  default  class CarList extends React.Component {
 
         if(activeInfo.datalist!==null){
 
-
-            if (Number(activeInfo.datalist[0].man) < Number(tot)) {
+            if (Number(activeInfo.datalist[0].man) <= Number(tot)) {
                 free = activeInfo.datalist[0].jian
             }
             for (let i = 1; i < activeInfo.datalist.length; i++) {
-                if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) < Number(tot)) {
+                if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) <= Number(tot)) {
                     free = activeInfo.datalist[i].jian
                 }
             }

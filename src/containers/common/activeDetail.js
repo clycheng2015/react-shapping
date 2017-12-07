@@ -94,6 +94,7 @@ export default class ActiveDetail extends React.Component {
 
     _submite = () => {
         const {match, history, data} = this.props
+
         const {params} = match
         let type = params.id.replace(/\d+/g, '');
 
@@ -135,7 +136,7 @@ export default class ActiveDetail extends React.Component {
             id: data.id,
             shareurl: data.shareurl,
             user_id: this.user.userInfo.id,
-            type: type
+            type: type,
 
         }]
 

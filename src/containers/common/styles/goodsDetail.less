@@ -477,27 +477,48 @@
 
   }
   .drawer-body {
+    width: 7.5rem;
     height: 2.2rem;
     border-bottom: 1px solid #f3f3f1;
+    padding-bottom: 0.8rem;
   }
   .drawer-img {
 
-    width: 35%;
+    width: 2rem;
     height: 2rem;
     //border: 1px solid red;
     float: left;
-    margin-left: .2rem;
+    margin-left: .3rem;
+    border-radius: .1rem;
+    overflow: hidden;
+    margin-top: -0.4rem;
     img {
       width: 100%;
-      height: 2rem;
+      height: 100%;
     }
 
+  }
+  .ReactDrawer__drawer-bottom___2f9G_{
+    min-height:0;
   }
   .drawer-gs-title {
     width: 59%;
     height: 2rem;
     //border: 1px solid red;
-    float: right;
+    float: left;
+    margin-left: 0.22rem;
+    position: relative;
+    .drawer-price{
+      font-size: 0.32rem;
+      color: #fe4203;
+      font-weight: 600;
+      margin-top: 0.4rem;
+    }
+    .icon-cross{
+      position: absolute;
+      top: 0.3rem;
+      right: 0;
+    }
     .owner {
       display: inline-block;
       width: 1.3rem;
@@ -515,9 +536,9 @@
     }
 
     .one {
-      padding-top: .2rem;
+
       font-size: .28rem;
-      height: .71rem;
+      height: .4rem;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
@@ -540,13 +561,9 @@
 
     }
     .two {
-
-      margin-top: .4rem;
       .count {
-        float: right;
-        padding-right: .3rem;
-        .exp{
 
+        .exp{
           font-size: .18rem;
           color: grey;
 
