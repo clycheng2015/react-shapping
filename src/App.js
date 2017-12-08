@@ -90,6 +90,11 @@ const PayFail = asyncComponent(() => import(/* webpackChunkName: "pay_fail" */ '
 const PaySuccess = asyncComponent(() => import( /* webpackChunkName: "pay_success" */'./containers/common/pay_success'));
 
 
+//test
+
+import ScrollTest from './components/scroll/scroll'
+
+
 
 
 let u = navigator.userAgent;
@@ -249,6 +254,7 @@ export default class App extends React.Component {
 
                                 <Route location={location} path="/paySuccess/:id" component={PaySuccess}/>
                                 <Route location={location} path="/payFail/:id" component={PayFail}/>
+                                <Route location={location} path="/scrollTest" component={ScrollTest}/>
 
                                 {/*<Redirect from="*" to='/'/>*/}
                             </div>

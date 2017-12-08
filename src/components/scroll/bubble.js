@@ -9,23 +9,23 @@ class Bubble extends React.Component {
         super(props);
 
         this.state = {
-            width: 100,
-            height: 160,
+            width: 80,
+            height: 128,
             distance:0
         };
 
         this.ratio = window.devicePixelRatio
         this.width *= this.ratio
         this.height *= this.ratio
-        this.initRadius = 18 * this.ratio
-        this.minHeadRadius = 12 * this.ratio
-        this.minTailRadius = 5 * this.ratio
-        this.initArrowRadius = 10 * this.ratio
-        this.minArrowRadius = 6 * this.ratio
+        this.initRadius = 14 * this.ratio
+        this.minHeadRadius = 9 * this.ratio
+        this.minTailRadius = 4 * this.ratio
+        this.initArrowRadius = 8 * this.ratio
+        this.minArrowRadius = 5 * this.ratio
         this.arrowWidth = 3 * this.ratio
-        this.maxDistance = 40 * this.ratio
-        this.initCenterX = 25 * this.ratio
-        this.initCenterY = 25 * this.ratio
+        this.maxDistance = 30 * this.ratio
+        this.initCenterX = 20 * this.ratio
+        this.initCenterY = 20 * this.ratio
         this.headCenter = {
             x: this.initCenterX,
             y: this.initCenterY
@@ -39,13 +39,17 @@ class Bubble extends React.Component {
         y: 0
     }
 
-    componentDidMount(){
-
+    componentWillMount(){
         this.setState({
 
             distance: Math.max(0, Math.min(this.props.y * this.ratio, this.maxDistance))
 
         })
+
+
+    }
+    componentDidMount(){
+
 
 
         this._draw()
@@ -78,7 +82,6 @@ class Bubble extends React.Component {
         this._drawArrow(ctx)
 
 
-
     }
     _drawBubble=(ctx)=> {
         ctx.save()
@@ -86,6 +89,8 @@ class Bubble extends React.Component {
         const rate = this.state.distance / this.maxDistance
         // console.log(this.state.distance, this.maxDistance)
 
+
+        console.log(this.state.distance)
         const headRadius = this.initRadius - (this.initRadius - this.minHeadRadius) * rate
         this.headCenter.y = this.initCenterY - (this.initRadius - this.minHeadRadius) * rate
         // 画上半弧线

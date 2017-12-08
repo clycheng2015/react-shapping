@@ -57,5 +57,8 @@ ios
 .babelrc
 npm-debug.log
 build/
+server.js
+webpackServerConfig.js
+src/utils/instance.js
 
 .idea/

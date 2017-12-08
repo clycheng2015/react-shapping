@@ -93,7 +93,7 @@ export default class Setting extends React.Component {
                         this._loginOut()
                     }}>安全退出</List.Item>
                 </div>
-                <Bubble/>
+
 
                 {/*<Button onClick={() => {*/}
                 {/*removeLocalItem("userInfo")*/}
