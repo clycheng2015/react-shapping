@@ -35,10 +35,12 @@ class GoodsList extends React.Component {
             return (
                 <div key={rowID} className="goods-code" onClick={() =>this._goDetail(rowData)}>
 
-                    <div className="img-info">
+                    <div className="img-info" style={{position:'relative'}}>
 
                         <img src={rowData.bigpic + '?imageMogr2/thumbnail/!30p'} alt="" ref={(el) => this.imgH = el}/>
-
+                        {
+                            rowData.type === '0' && rowData.list_smallpicafter && <img style={{width:'.7rem',height:'0.7rem',position:'absolute',top:'0',left:'0'}} src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!99p'} alt="" />
+                        }
 
                     </div>
 

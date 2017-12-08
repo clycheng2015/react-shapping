@@ -80,8 +80,9 @@ class MoreList extends React.Component {
                         <div className="list-goods-img-icon">
 
                             {
-                                rowData.type === '0' && <img src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!30p'} alt="" />
+                                rowData.type === '0' && rowData.list_smallpicafter && <img src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!99p'} alt="" />
                             }
+
 
                         </div>
 

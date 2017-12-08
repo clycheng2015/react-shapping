@@ -524,7 +524,7 @@ export default class GoodsDetail extends React.Component {
                                             </div>
                                             <div className="drawer-gs-title">
                                                 <Icon className='icon-cross' onClick={this.closeDrawer} type='cross'size='md' />
-                                                <p className='drawer-price'>￥{(data.zkprice * this.state.inputValue).toFixed(2)}</p>
+                                                <p className='drawer-price'>￥{data.zkprice}</p>
                                                 <p className="one"> { data.isown===2&&<span className="owner">海外直邮</span>}</p>
                                                 <div className="two">
                                                     <div className="count">

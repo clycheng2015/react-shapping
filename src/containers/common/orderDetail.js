@@ -207,8 +207,6 @@ class OrderDetail extends React.Component {
      */
 
     _orderPice = () => {
-        const {location} = this.props
-        let mjprice =location.state && location.state.mjprice || 0
 
         let post = this._postType();
         let sum = Number(this._priceTol());
@@ -216,7 +214,7 @@ class OrderDetail extends React.Component {
             sum += Number(post)
         }
 
-        sum -= mjprice
+        sum -= this._mjprice()
 
         return Number(sum).toFixed(2)
     }
