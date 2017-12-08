@@ -282,7 +282,7 @@ export default class YesOrderDetail extends React.Component {
                         <div className="mey-info">
                             <List.Item extra={<div className="money">￥{(Number(yesOrderDetail.money)+Number(yesOrderDetail.disPrice)).toFixed(2)}</div>}>商品金额:</List.Item>
                             <List.Item extra={this._postHtml()}>运费:</List.Item>
-                            <List.Item extra={<p>￥{Number(yesOrderDetail.disPrice)}</p>}>优惠金额:</List.Item>
+                            <List.Item extra={<p>-￥{Number(yesOrderDetail.disPrice)}</p>}>优惠金额:</List.Item>
                             <List.Item extra={<p>￥{this._tolPrice()}</p>}>实际付款:</List.Item>
                             <div className="re-info">
                                 <div className="title">留言：</div>
