@@ -4,6 +4,14 @@
   overflow: hidden;
   position: relative;
   background: #f7f6f6;
+  .my-carousel{
+    border-top-left-radius: 50% 0px;
+    border-top-right-radius: 50% 0px;
+    border-bottom-right-radius: 50% 7%;
+    border-bottom-left-radius: 50% 7%;
+    overflow: hidden;
+    z-index: 1111;
+  }
   .am-search-cancel {
     display: none;
   }
@@ -190,7 +198,8 @@
   .news {
     width: 7rem;
     height: .7rem;
-    margin: 0.3rem auto;
+    margin: 0 auto;
+    margin-bottom: 0.2rem;
     border-radius: .7rem;
     background: white;
     line-height: .7rem;
@@ -526,7 +535,8 @@
             -webkit-line-clamp: 2 !important;
             overflow: hidden !important;
             font-size: .26rem;
-            height: .58rem;
+            height: .6rem;
+            line-height: 0.3rem;
           }
           .price {
             color: red;

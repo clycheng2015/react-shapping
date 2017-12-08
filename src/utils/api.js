@@ -4,7 +4,7 @@
 
 export const home = {
     homeUrl: "/v2/circle/open/sechomelist", //POST
-    moreListUrl:"/app/findgoods/open/goodslist" // 参数 pagenum 页数  pagesize
+    moreListUrl:"/v2/findgoods/open/goodslist" // 参数 pagenum 页数  pagesize
 
 
 }

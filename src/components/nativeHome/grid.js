@@ -56,6 +56,7 @@ class HomeGrid extends React.Component {
             <Grid
                 data={newData}
                 hasLine={false}
+                columnNum={data.length >4 ? 5:4}
                 activeStyle={false}
                 onClick={(el) => nativeClick({
                     type:1,

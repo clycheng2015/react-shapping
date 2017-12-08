@@ -148,7 +148,7 @@ export  default  class CarList extends React.Component {
         let tot = this._priceTol();
         let free=0;
 
-        if(activeInfo.datalist!==null){
+        if(activeInfo.datalist && activeInfo.datalist.length>0){
 
             if (Number(activeInfo.datalist[0].man) <= Number(tot)) {
                 free = activeInfo.datalist[0].jian

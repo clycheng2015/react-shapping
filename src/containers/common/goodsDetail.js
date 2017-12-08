@@ -196,7 +196,7 @@ export default class GoodsDetail extends React.Component {
                 const {data, history ,carData} = this.props
                 let free = 0;
                 let allPrice = data.zkprice * this.state.inputValue;
-                if(carData.activeInfo !== null){
+                if(carData.activeInfo && carData.activeInfo.length>0){
                     if (Number(carData.activeInfo.datalist[0].man) < Number(allPrice)) {
                         free = carData.activeInfo.datalist[0].jian
                     }

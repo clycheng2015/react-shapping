@@ -185,7 +185,7 @@ class OrderDetail extends React.Component {
         let mjprice = 0
 
 
-        if( pathList[0].fullActivityDto.datalist && pathList[0].fullActivityDto.datalist.length > 0){
+        if( pathList[0].fullActivityDto && pathList[0].fullActivityDto.datalist && pathList[0].fullActivityDto.datalist.length > 0){
             let arr = pathList[0].fullActivityDto.datalist
             if (Number(arr[0].man) < Number(allPrice)) {
                 mjprice = arr[0].jian
