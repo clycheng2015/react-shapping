@@ -66,6 +66,11 @@ class OrderDetail extends React.Component {
         const {remark} = orderDetail
         let defaultAds = this._getAds().id || '';
         let orderPrice = this._orderPice()
+
+         if(defaultAds==''){
+          Toast.info('请先填写收货地址！',1)
+            return false
+         }
         let data = {
             address_id: defaultAds,
             orderdesc: remark,
@@ -187,11 +192,11 @@ class OrderDetail extends React.Component {
 
         if( pathList[0].fullActivityDto && pathList[0].fullActivityDto.datalist && pathList[0].fullActivityDto.datalist.length > 0){
             let arr = pathList[0].fullActivityDto.datalist
-            if (Number(arr[0].man) < Number(allPrice)) {
+            if (Number(arr[0].man) <= Number(allPrice)) {
                 mjprice = arr[0].jian
             }
             for (let i = 1; i < arr.length; i++) {
-                if (Number(arr[i-1].man) > Number(allPrice) && Number(arr[i].man) < Number(allPrice)) {
+                if (Number(arr[i-1].man) > Number(allPrice) && Number(arr[i].man) <= Number(allPrice)) {
                     mjprice = arr[i].jian
                 }
             }
