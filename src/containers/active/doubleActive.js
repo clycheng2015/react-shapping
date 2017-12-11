@@ -203,7 +203,7 @@ export default class DoubleActive extends React.Component {
                             <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
                                 history.goBack()
                             }}/></Flex.Item>
-                            <Flex.Item className="item-head center">双十一活动</Flex.Item>
+                            <Flex.Item className="item-head center">双十二活动</Flex.Item>
                             <Flex.Item className="item-head right"><span></span></Flex.Item>
                         </Flex>
                     </div>
@@ -212,12 +212,7 @@ export default class DoubleActive extends React.Component {
 
                 <div className='double-box'>
                     <div ref={(el) => this.Top = el}>
-                        <div className='banner'><img src={require('static/images/doubleActive/banner.jpg')} alt=""/> </div>
-                        <div className='recharge'>
-                            <img src={require('static/images/doubleActive/500.png')} alt=""
-                                 onClick={()=>this._turnTop()}
-                            />
-                        </div>
+                        <div className='banner'><img src={require('static/images/doubleActive/1212.png')} alt=""/> </div>
 
                         <ul className='activeName'>
                             {sectionIDs.map((i, index) => {
@@ -248,7 +243,6 @@ export default class DoubleActive extends React.Component {
                                 this.state.tabsShow &&
                                 <Tabs
                                     tabs={tabs}
-
                                     page={this.state.tabIndex}
                                     renderTabBar={renderTabBar}
                                     onTabClick={(title, index) => {
@@ -317,12 +311,12 @@ export default class DoubleActive extends React.Component {
                                                 width: "7.5rem",
                                                 height: ".9rem",
                                                 fontWeight: "600",
-                                                lineHeight: '0.86rem',
+                                                lineHeight: '1rem',
                                                 textAlign: "center",
                                                 color: "#fffefe",
-                                                fontSize: "0.4rem",
+                                                fontSize: "0.26rem",
                                                 zIndex: 3,
-                                                background: 'url(' + require('static/images/doubleActive/title-bg.png') + ') center center no-repeat #f2234e',
+                                                background: 'url(' + require('static/images/doubleActive/12-title1.png') + ') center center no-repeat',
                                                 backgroundSize: "90%",
                                                 position:'absolute',
                                                 top:0,
