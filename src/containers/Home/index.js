@@ -58,7 +58,7 @@ export default class Home extends React.Component {
 
                 {headState === 0 && <Head type={headState} history={history}/>}
 
-                {headState === 1 && <div className="white"><Head type={headState}/></div>}
+                {headState === 1 && <div className="white"><Head type={headState} history={history}/></div>}
 
 
                 { homeData && homeData.bannerDtoList && <HomePage {...this.props}/> }

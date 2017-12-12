@@ -30,15 +30,17 @@ class Head extends React.Component {
         });
     }
 
+    _click=()=>{
+        const { history} = this.props
+        history.push('/searchList')
+    }
+
     render() {
-        const {type, history} = this.props
+        const {type} = this.props
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
                 <div className="box name">美纶购</div>
-
-
-                    <div className="box s-btn" onClick={()=>history.push('/searchList')}>
-
+                    <div className="box s-btn"  onClick={()=>this._click()}>
                         <SearchBar
                             placeholder="上新1200商品"
                             focused={this.state.focused}
