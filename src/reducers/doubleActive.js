@@ -154,9 +154,9 @@ let datalist={
             type:
                 "0",
             vipprice:
-                68,
+                58,
             zkprice:
-                68,
+                58,
         },
         {
 
@@ -234,21 +234,21 @@ let datalist={
             "list_titlebefore": ""
         },
         {
-            "id": 1512353389239,
-            "good_id": 247,
+            "id": 241,
+            "good_id": 241,
             "gtitle": "韩国可莱丝 美迪惠尔水润保湿面膜10片/盒",
             "stitle": "韩国可莱丝 美迪惠尔水润保湿面膜10片/盒",
-            "gdesc": "",
+            "gdesc": "8809261550468",
             "tags": "",
-            "type": "1",
+            "type": "0",
             "category": "26 , 6",
             "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013154601.jpg",
+            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013154605.jpg",
             "zkprice": 99,
             "vipprice": 99,
             "price": 134,
             "standard": "/盒",
-            "gorder": 50,
+            "gorder": 0,
             "list_smallpicafter": "",
             "list_titlebefore": ""
         },
@@ -290,25 +290,6 @@ let datalist={
             "list_smallpicafter": "",
             "list_titlebefore": ""
         },
-        // {
-        //     "id": 1517,
-        //     "good_id": 1517,
-        //     "gtitle": "澳洲G&M柠檬茶树绵羊油身体乳 500g",
-        //     "stitle": "澳洲G&M柠檬茶树绵羊油身体乳 500g",
-        //     "gdesc": "9322316001481",
-        //     "tags": "",
-        //     "type": "0",
-        //     "category": "135 , 133",
-        //     "isown": 1,
-        //     "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011163743.jpg",
-        //     "zkprice": 58,
-        //     "vipprice": 58,
-        //     "price": 83,
-        //     "standard": "/瓶",
-        //     "gorder": 50,
-        //     "list_smallpicafter": "",
-        //     "list_titlebefore": ""
-        // },
         {
             "id": 1528,
             "good_id": 1528,
@@ -351,21 +332,21 @@ let datalist={
     ],
     '食品酒水':[
         {
-            "id": 1007,
-            "good_id": 1007,
-            "gtitle": "易贝斯特特级初榨橄榄油500ml",
-            "stitle": "易贝斯特特级初榨橄榄油500ml",
-            "gdesc": "8411356780249",
+            "id": 1633,
+            "good_id": 1633,
+            "gtitle": "易贝斯特特级初榨橄榄油1L",
+            "stitle": "易贝斯特特级初榨橄榄油1l",
+            "gdesc": "8411356780256",
             "tags": "",
             "type": "0",
             "category": "167 , 50",
             "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171027134428.jpg",
+            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171103173323.jpg",
             "zkprice": 89,
             "vipprice": 89,
-            "price": 88,
-            "standard": "/瓶",
-            "gorder": 1,
+            "price": 138,
+            "standard": "/罐",
+            "gorder": 50,
             "list_smallpicafter": "",
             "list_titlebefore": ""
         },
@@ -408,23 +389,57 @@ let datalist={
             "list_titlebefore": ""
         },
         {
-            "id": 957,
-            "good_id": 957,
-            "gtitle": "西班牙进口 公鸡（GALLO）三色螺丝形意大利面250g",
-            "stitle": "西班牙进口 公鸡（GALLO）三色螺丝形意大利面250g",
-            "gdesc": "8410069005588 面条",
-            "tags": "",
-            "type": "0",
-            "category": "168 , 50",
-            "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923161359.jpg",
-            "zkprice": 6.5,
-            "vipprice": 6.5,
-            "price": 18,
-            "standard": "/袋",
-            "gorder": 1,
-            "list_smallpicafter": "",
-            "list_titlebefore": ""
+            bigpic
+                :
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923152859.jpg",
+            category
+                :
+                "168 , 50",
+            gdesc
+                :
+                "8410069001597 面条",
+            good_id
+                :
+                960,
+            gorder
+                :
+                1,
+            gtitle
+                :
+                "西班牙进口 公鸡（GALLO）螺丝形意大利面250克",
+            id
+                :
+                960,
+            isown
+                :
+                1,
+            list_smallpicafter
+                :
+                "",
+            list_titlebefore
+                :
+                "",
+            price
+                :
+                12.8,
+            standard
+                :
+                "/袋",
+            stitle
+                :
+                "西班牙进口 公鸡（GALLO）螺丝形意大利面250克",
+            tags
+                :
+                "",
+            type
+                :
+                "0",
+            vipprice
+                :
+                6.5,
+            zkprice
+                :
+                6.5,
         },
         {
             "id": 956,
@@ -505,16 +520,16 @@ let datalist={
             "list_titlebefore": ""
         },
         {
-            "id": 1512353507406,
-            "good_id": 249,
+            "id": 1502,
+            "good_id": 1502,
             "gtitle": "德国进口 施巴婴儿洁肤浴露 400ml",
             "stitle": "德国进口 施巴婴儿洁肤浴露 400ml",
-            "gdesc": "",
+            "gdesc": "4103040180704",
             "tags": "",
-            "type": "1",
-            "category": "45 , 12",
+            "type": "0",
+            "category": "95 , 45",
             "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031134534.jpg",
+            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171031134540.jpg",
             "zkprice": 122,
             "vipprice": 122,
             "price": 163,

@@ -53,7 +53,7 @@ export default class DoubleActive extends React.Component{
         const {scrollT} = this.props
         window.scrollTo(0, scrollT);
 
-        document.title = '双十一狂欢节';
+        document.title = '双十二 再次狂欢';
     }
     componentDidUpdate(){
 

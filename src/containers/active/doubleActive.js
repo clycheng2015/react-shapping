@@ -199,12 +199,14 @@ export default class DoubleActive extends React.Component {
                 {
                     this.state.navShow &&
                     <div className='nav-tab' ref={(el) => this.nav = el}>
+
                         <Flex justify="center" align="center">
-                            <Flex.Item className="item-head left"><Icon type="left" size="lg" onClick={() => {
-                                history.goBack()
-                            }}/></Flex.Item>
-                            <Flex.Item className="item-head center">双十二活动</Flex.Item>
-                            <Flex.Item className="item-head right"><span></span></Flex.Item>
+                            {/*<Flex.Item className="item-head left"></Flex.Item>*/}
+                                <Icon type="left" style={{float: 'left',position: 'absolute',top:'0.1 rem',left:0}} size="lg" onClick={() => {
+                                    history.goBack()
+                                }}/>
+                            <Flex.Item className="item-head center">双十二再次狂欢</Flex.Item>
+                            {/*<Flex.Item className="item-head right"><span></span></Flex.Item>*/}
                         </Flex>
                     </div>
                 }
