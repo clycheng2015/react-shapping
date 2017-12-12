@@ -53,7 +53,7 @@ export default class DoubleActive extends React.Component{
         const {scrollT} = this.props
         window.scrollTo(0, scrollT);
 
-        document.title = '双十一狂欢节';
+        document.title = '双十二 再次狂欢';
     }
     componentDidUpdate(){
 
@@ -184,19 +184,7 @@ export default class DoubleActive extends React.Component{
 
                 <div className='double-box'>
                     <div ref={(el)=>this.Top=el}>
-                        <div className='banner'><img src={require('static/images/doubleActive/banner.jpg')} alt=""/></div>
-                        <div className='recharge'>
-                            <img src={require('static/images/doubleActive/500.png')} alt=""
-
-                                 onClick={ ()=>{nativeClick({
-                                     type:100,
-                                     url:'',
-                                     id:'',
-                                     name:'平台充值',
-                                     activeType:''
-                                 })}}
-                            />
-                        </div>
+                        <div className='banner'><img src={require('static/images/doubleActive/1212.png')} alt=""/> </div>
 
                         <ul className='activeName'>
                             {sectionIDs.map((i,index)=>{
@@ -297,12 +285,12 @@ export default class DoubleActive extends React.Component{
                                                 width:"7.5rem",
                                                 height:".9rem",
                                                 fontWeight:"600",
-                                                lineHeight:'0.9rem',
+                                                lineHeight: '1rem',
                                                 textAlign:"center",
                                                 color:"#fffefe",
-                                                fontSize:"0.4rem",
+                                                fontSize: "0.26rem",
                                                 zIndex: 3,
-                                                background:'url('+require('static/images/doubleActive/title-bg.png')+') center center no-repeat #f2234e',
+                                                background: 'url(' + require('static/images/doubleActive/12-title1.png') + ') center center no-repeat',
                                                 backgroundSize:"90%",
                                                 top:0,
                                                 left:0

@@ -32,7 +32,6 @@ class Head extends React.Component {
 
     render() {
         const {type, history} = this.props
-        console.log(history)
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
                 <div className="box name">美纶购</div>
