@@ -16,6 +16,7 @@ import {invoice} from './invoice'
 import {global} from './global'
 import {activeMoveMent} from './movement'
 import {doubleActive} from './doubleActive'
+import {inter} from './international'
 
 const rootReducer = {
     home,
@@ -36,6 +37,7 @@ const rootReducer = {
     global,
     activeMoveMent,
     doubleActive,
+    inter,
 
 }
 export default rootReducer

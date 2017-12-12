@@ -182,6 +182,12 @@ export const REQUEST_ACTIVE_MOVEMENT='REQUEST_ACTIVE_MOVEMENT'
 
 
 
+export const RECIEVE_INTER ='RECIEVE_INTER'  //美伦国际
+
+export const REQUEST_INTER ='REQUEST_INTER'
+
+
+
 
 
 

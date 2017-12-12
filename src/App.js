@@ -89,6 +89,8 @@ const DoubleActive = asyncComponent(() => import( /* webpackChunkName: "doubleAc
 const PayFail = asyncComponent(() => import(/* webpackChunkName: "pay_fail" */ './containers/common/pay_fail'));
 const PaySuccess = asyncComponent(() => import( /* webpackChunkName: "pay_success" */'./containers/common/pay_success'));
 
+const International = asyncComponent(() => import( /* webpackChunkName: "international" */'./containers/active/international'));
+
 
 //test
 
@@ -255,6 +257,8 @@ export default class App extends React.Component {
                                 <Route location={location} path="/paySuccess/:id" component={PaySuccess}/>
                                 <Route location={location} path="/payFail/:id" component={PayFail}/>
                                 <Route location={location} path="/scrollTest" component={ScrollTest}/>
+
+                                <Route location={location} path="/international" component={International}/>
 
                                 {/*<Redirect from="*" to='/'/>*/}
                             </div>
