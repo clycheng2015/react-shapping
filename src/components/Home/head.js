@@ -32,12 +32,13 @@ class Head extends React.Component {
 
     render() {
         const {type, history} = this.props
+        console.log(history)
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
                 <div className="box name">美纶购</div>
 
-                <Link to='/search'>
-                    <div className="box s-btn">
+
+                    <div className="box s-btn" onClick={()=>history.push('/searchList')}>
 
                         <SearchBar
                             placeholder="上新1200商品"
@@ -52,7 +53,7 @@ class Head extends React.Component {
                             disabled
                         />
                     </div>
-                </Link>
+
                 <div className="box msg">
                     <img src={require('static/images/home/ic_scan.png')} alt="" onClick={() => this.Qrcode()}/>
 

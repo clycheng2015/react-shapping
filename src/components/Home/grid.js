@@ -15,7 +15,6 @@ class HomeGrid extends React.Component {
     componentDidMount() {
 
     }
-
     _gridClick=(el)=>{
         const {history}=this.props
         history.push(el.path)

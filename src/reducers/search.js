@@ -18,9 +18,7 @@ export function search(state = init, action) {
     switch (action.type) {
 
         case types.REQUEST_SEARCH_LIST:
-
             return {...state, isFetching: true}
-
         case types.RECIEVE_SEARCH_LIST:
 
             let pages = action.data.pages
@@ -33,14 +31,10 @@ export function search(state = init, action) {
             }
             else if (action.pagenum === 1) {
                 dataList = action.data.datalist
-
-
                 if(action.pagenum === pages){
                     hasMore = false
                 }
             }
-
-
             if(action.data.datalist.length===0){
                 dataList=[]
             }

@@ -204,7 +204,7 @@ export default class App extends React.Component {
                                 <Route location={location} path="/goodsDetail/:id" component={GoodsDetail}/>
                                 <Route location={location} path="/itemList/:id" component={ItemList}/>
                                 <Route location={location} path="/moreList/:id" component={MoreList}/>
-                                <Route location={location} path="/search" component={Search}/>
+                                <Route location={location} path="/search/:word" component={Search}/>
                                 <Route location={location} path="/searchList" component={SearchList}/>
                                 <Route location={location} path="/QRCodeList/:id" component={QRCodeList}/>
 

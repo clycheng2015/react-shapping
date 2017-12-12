@@ -13,7 +13,7 @@ import {AppLocalStorage} from './cookie'
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
 let url = '',xToken = ''
-if (isPro) {url = 'http://app.meilungo.com'} else {url = 'http://192.168.1.41:3011'}
+if (isPro) {url = 'http://app.meilungo.com'} else {url = 'http://localhost:3011'}
 axios.defaults.baseURL = url;
 axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
 

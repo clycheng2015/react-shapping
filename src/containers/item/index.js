@@ -65,7 +65,7 @@ export default class Item extends React.Component {
 
         return (
             <div className="item-container">
-                <div className="nav" onClick={() => history.push('/search')}>
+                <div className="nav" onClick={() => history.push('/searchList')}>
                     <SearchBar placeholder="上新1200种商品" focused={this.state.focused} disabled/>
                 </div>
                 <div style={{height: "1rem", width: "100%"}}/>

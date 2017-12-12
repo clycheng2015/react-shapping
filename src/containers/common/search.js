@@ -25,14 +25,6 @@ export default class Search extends React.Component {
             focused:false
         }
     }
-    _search = (v) => {
-        const {getSearchList} = this.props
-        getSearchList({
-            pagesize: 20,
-            pagenum: 1,
-            word: v
-        })
-    }
 
     _updownMore = () => {
         const {pagenum, isFetching, hasMore, getSearchList, pagesize, word} = this.props
@@ -46,7 +38,8 @@ export default class Search extends React.Component {
     }
 
     render() {
-        const {list, history, isFetching, hasMore} = this.props
+        const {list, history, isFetching, hasMore,match} = this.props
+
         return (
             <div className="search-list-container"
                  style={{
@@ -56,30 +49,23 @@ export default class Search extends React.Component {
             >
                 <div className="nav-tab">
                     <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/>
-                    <div className="s-box">
-                        <SearchBar placeholder="搜索"
-                                   focused={this.state.focused}
-                                   onFocus={() => {
-                                       this.setState({
-                                           focused: false,
-                                       });
-                                   }}
-                                   onSubmit={value =>
-                                       this._search(value)
-                                   }
-                        />
+                    <div className="s-box" onClick={()=>history.replace('/searchList')}>
+                        <SearchBar placeholder={match.params.word} disabled/>
                     </div>
                 </div>
                 <div className="list">
-                    {list && list.length > 0 &&
-                    <GoodsList
-                        list={list}
-                        history={history}
-                        isFetching={isFetching}
-                        hasMore={hasMore}
-                        loadMore={this._updownMore}
-                    />
+                    {list && list.length > 0 ? <GoodsList list={list} history={history} isFetching={isFetching} hasMore={hasMore} loadMore={this._updownMore}/>:
+                        <div className="empty-info"
+                             style={{
+                                 height: document.documentElement.clientHeight - 130,
+                                 background: "#f7f6f6"
+                             }}
+                        >
+                            <img src={require('static/images/empty/tmp_shopcar@2x.png')} alt=""/>
+                            <p>未找到您的宝贝儿~</p>
+                        </div>
                     }
+
                 </div>
             </div>
         )
