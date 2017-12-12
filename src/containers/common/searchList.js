@@ -77,9 +77,10 @@ export default class Search extends React.Component {
     }
     _delOne = (v) => {
         let Harr = this.state.Harr
+
         Harr.forEach((i, k) => {
             if (i === v) {
-                Harr.splice(k)
+                Harr.splice(k,1)
             }
         })
         this.setState({Harr: Harr}, () => {
