@@ -30,12 +30,7 @@ export default class Item extends React.Component {
         window.scrollTo(0,scrollT)
         getItemList()
 
-        // const options = {
-        //     scrollY: true,
-        //     scrollX: false,
-        //     // eventPassthrough: 'vertical' // 因为scrollY默认为true，其实可以省略
-        // }
-        // new BScroll(this.indexList, options)
+
 
     }
 
@@ -72,9 +67,9 @@ export default class Item extends React.Component {
 
                 {list && list.categories && list.categories.length > 0 &&
                 <div>
-                    <div style={{height: document.documentElement.clientHeight - 100}} className="index-list-info">
+                    <div style={{height: document.documentElement.clientHeight - 100}} className="index-list-info" ref={el=>this.indexList=el}>
                         <div
-                            style={this._getTabs().length > 12 ? {height: document.documentElement.clientHeight - 100} : {height: `${this._getTabs().length}rem`}}
+                            style={this._getTabs().length > 12 ? {height: document.documentElement.clientHeight - 99} : {height: `${this._getTabs().length}rem`}}
                             className="index-list">
                             <Tabs.DefaultTabBar
                                 tabs={this._getTabs()}

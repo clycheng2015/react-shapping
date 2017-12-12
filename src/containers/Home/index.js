@@ -51,6 +51,7 @@ export default class Home extends React.Component {
 
     }
 
+
     render() {
         const {history, homeData, errorData, isFetching, headState} = this.props
         return (
