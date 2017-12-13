@@ -1427,7 +1427,7 @@ export default class Internation extends React.Component{
                                     <p className='name'>{item.gtitle} </p>
                                     <p className='price'>
                                         ￥{item.zkprice}<span>￥{item.price}</span>
-                                        {/*<button>马上抢</button>*/}
+                                        <button>加入购物车</button>
                                     </p>
                                 </div>
                             </li>
