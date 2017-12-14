@@ -10,6 +10,7 @@ import * as postType from 'actions/postType'
 import ReactDrawer from '../../components/Commons/lib/react-drawer';
 const RadioItem = Radio.RadioItem;
 require('./styles/postType.less')
+require('../../components/Commons/lib/react-drawer.less')
 
 @connect(
     state => {
