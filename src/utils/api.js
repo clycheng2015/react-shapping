@@ -4,7 +4,8 @@
 
 export const home = {
     homeUrl: "/v2/circle/open/sechomelist", //POST
-    moreListUrl:"/v2/findgoods/open/goodslist" // 参数 pagenum 页数  pagesize
+    moreListUrl:"/v2/findgoods/open/goodslist" ,// 参数 pagenum 页数  pagesize
+    msgCountUrl:'/app/my/unreadcount',
 
 
 }
@@ -85,7 +86,10 @@ export const user = {
     badgeUrl:'/app/order/ordernum',
 
 
-    upLoadImgUrl:"/app/my/open/wxuploadhead"
+    upLoadImgUrl:"/app/my/open/wxuploadhead",
+
+
+    storeAdsUrl:"/app/address/open/storeaddress",//门店地址列表
 
 
 
@@ -118,6 +122,15 @@ export const wxSdkConfig={
 
 }
 
+
+export  const msg={
+
+
+    countUrl:"/app/my/unreadcount",
+    tlmeUrl:"/app/my/tlmessages",
+    msgListurl:"/app/my/open/mymessage",
+    readUrl:"/app/my/readmessage"
+}
 
 
 

@@ -12,7 +12,6 @@ import {ymd} from '../../utils/tools'
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
-import * as global from 'actions/global'
 require('./styles/bill.less')
 const alert = Modal.alert;
 @connect(

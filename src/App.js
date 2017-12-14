@@ -67,6 +67,10 @@ const Invoice = asyncComponent(() => import(/* webpackChunkName: "invoice" */ '.
 
 const Protocol = asyncComponent(() => import( /* webpackChunkName: "protocol" */'./containers/common/protocol'))
 
+const Message = asyncComponent(() => import( /* webpackChunkName: "message" */'./containers/common/message'))
+const Logistics = asyncComponent(() => import( /* webpackChunkName: "logistics" */'./containers/common/logistics'))
+const WebIframe = asyncComponent(() => import( /* webpackChunkName: "webIframe" */'./containers/common/iframe'))
+
 
 //活动中心
 
@@ -120,12 +124,10 @@ export default class App extends React.Component {
         if (isPro) {
             let href = window.location.href
             if (href.indexOf('?from=singlemessage&isappinstalled=0') > 0) {
-
                 href = href.replace('?from=singlemessage&isappinstalled=0', '')
                 window.location.href = href
                 return
             }
-
             if (href.indexOf('?') > 0) {
                 let url = href.match(/\?(\S*)#/)[0]
                 href = href.replace(url, '#')
@@ -259,6 +261,9 @@ export default class App extends React.Component {
                                 <Route location={location} path="/scrollTest" component={ScrollTest}/>
 
                                 <Route location={location} path="/international" component={International}/>
+                                <Route location={location} path="/message" component={Message}/>
+                                <Route location={location} path="/logistics" component={Logistics}/>
+                                <Route location={location} path="/webIframe" component={WebIframe}/>
 
                                 {/*<Redirect from="*" to='/'/>*/}
                             </div>

@@ -11,7 +11,10 @@ let init = {
     moreData: {},
     dataList: [],
     headState:0,
-    errorData:{}
+    errorData:{},
+
+    msgCount:0
+
 
 }
 export const home = (state = init, action) => {
@@ -71,6 +74,10 @@ export const home = (state = init, action) => {
         case types.SEVER_ERROR:
 
             return {...state,errorData:action.data}
+
+        case types.GET_MSG_COUNT:
+
+            return {...state,msgCount:action.data}
 
         case 'CLEAR_ALL_STATE':
 

@@ -10,6 +10,12 @@ export const RECEIVE_HOME = 'RECEIVE_HOME' //获取首页列表
 export const REQUEST_HOME = 'REQUEST_HOME' //请求列表
 export const RECEIVE_HOME_MORE_LIST = 'RECEIVE_HOME_MORE_LIST' //底部列表
 export const REQUEST_HOME_MORE_LIST = 'REQUEST_HOME_MORE_LIST' //底部列表保存
+export const GET_MSG_COUNT = 'GET_MSG_COUNT' //获取是否有消息
+
+
+
+
+
 
 //item
 export const REQUEST_ITEM_LIST = 'REQUEST_ITEM_LIST' //请求列表
@@ -185,6 +191,18 @@ export const REQUEST_ACTIVE_MOVEMENT='REQUEST_ACTIVE_MOVEMENT'
 export const RECIEVE_INTER ='RECIEVE_INTER'  //美伦国际
 
 export const REQUEST_INTER ='REQUEST_INTER'
+
+
+export const GET_MESSAGE_LIST ='GET_MESSAGE_LIST'  //获取消息列表
+
+export const GRT_LOGISTICS_LIST ='GRT_LOGISTICS_LIST'  //获取物流列表
+
+
+
+export const GET_MSG_IS_READE ='GET_MSG_IS_READE'  //获取物流列表
+
+
+export const GET_STORE_ADS_LIST ='GET_STORE_ADS_LIST'  //获取门店列表
 
 
 

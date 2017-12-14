@@ -63,14 +63,28 @@ class OrderDetail extends React.Component {
     _gotoPay = () => {
         const {fetchCarCreateOrder, orderDetail, history, fetchGsCreateOrder, payState, fetchActiveOrder, savePostData, saveInvoice, userInfo, orderRemark, clearInvoice, clearPostType} = this.props
         const {pathList} = orderDetail
+
         const {remark} = orderDetail
+
         let defaultAds = this._getAds().id || '';
+
+
         let orderPrice = this._orderPice()
 
-         if(defaultAds==''){
+
+         if(savePostData.type===0&&defaultAds===''){
           Toast.info('请先填写收货地址！',1)
             return false
          }
+
+         if(savePostData.type===1){
+
+             defaultAds=savePostData.adsId
+         }
+
+
+
+
         let data = {
             address_id: defaultAds,
             orderdesc: remark,
@@ -481,7 +495,7 @@ class OrderDetail extends React.Component {
                         <div className="count-exp-info" style={{marginBottom: "1.5rem"}}>
                             <List.Item extra={<div><span className="type-name">￥{this._priceTol()}</span>
                             </div>}>商品总额：</List.Item>
-                            <List.Item extra={<div><span className="type-name">￥{  this._postType()}</span>
+                            <List.Item extra={<div><span className="type-name">{  this._postType().indexOf('上门自提')===0?this._postType():`￥${this._postType()}`}</span>
                             </div>}>运费：</List.Item>
                             <List.Item extra={<div><span className="type-name">{  this._mjprice() === 0 ? '无优惠': `-￥${this._mjprice()}` }</span>
                             </div>}>优惠金额：</List.Item>

@@ -23,6 +23,10 @@ const requestHomeList= () => ({
     type:types.REQUEST_HOME_MORE_LIST,
 });
 
+const getCount= (data) => ({
+    type:types.GET_MSG_COUNT,data
+});
+
 
 const receiveHomeList = (pagenum, pagesize, data) => ({
 
@@ -88,6 +92,24 @@ export  const fetchHomeList=(data)=>{
                 }
                 else {
                     dispatch(severError(res.data))
+                }
+            })
+            .catch(error => {
+                console.log('error: ', error)
+            })
+    }
+}
+
+
+export  const fetchMsgCount=()=>{
+    "use strict";
+    return (dispatch, getState) => {
+
+        instance.get(home.msgCountUrl)
+            .then(res => {
+                if(res.data.code===200){
+                    let result=res.data.data
+                    dispatch(getCount( result))
                 }
             })
             .catch(error => {

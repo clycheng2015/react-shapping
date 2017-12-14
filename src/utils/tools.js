@@ -138,15 +138,12 @@ export const delRepeat = (arr) => {
 
     }, [])
     return arr
-
-
 }
 
 
 function pollAdd(arr) {
     let res = [];
     let tmp = {};
-
     arr.forEach((v) => {
         if (!tmp.hasOwnProperty(v.code)) {
             tmp[v.code] = res.length;

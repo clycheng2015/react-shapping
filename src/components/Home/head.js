@@ -1,6 +1,8 @@
 import React from 'react'
-import {Toast, SearchBar} from 'antd-mobile'
+import {Toast, SearchBar,Badge} from 'antd-mobile'
 import {Link} from 'react-router-dom'
+
+import {AppLocalStorage} from '../../utils/cookie'
 import wx from 'weixin-js-sdk';
 class Head extends React.Component {
     constructor(props) {
@@ -10,6 +12,8 @@ class Head extends React.Component {
 
             focused: false,
         }
+
+        this.user=AppLocalStorage.Cache.get('user')
     }
 
     Qrcode = () => {
@@ -35,12 +39,24 @@ class Head extends React.Component {
         history.push('/searchList')
     }
 
+    _msgClick=()=>{
+
+        const {history} = this.props
+        if(! this.user){return false}
+
+        history.push('/message')
+
+    }
+
     render() {
-        const {type} = this.props
+        const {type,history,msgCount} = this.props
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
-                <div className="box name">美纶购</div>
-                    <div className="box s-btn"  onClick={()=>this._click()}>
+                <div className="box msg">
+                    <img src={require('static/images/home/ic_scan.png')} alt="" onClick={() => this.Qrcode()}/>
+
+                </div>
+                <div className="box s-btn"  onClick={()=>this._click()}>
                         <SearchBar
                             placeholder="上新1200商品"
                             focused={this.state.focused}
@@ -53,12 +69,16 @@ class Head extends React.Component {
                             }}
                             disabled
                         />
-                    </div>
-
-                <div className="box msg">
-                    <img src={require('static/images/home/ic_scan.png')} alt="" onClick={() => this.Qrcode()}/>
-
                 </div>
+                <div className="box msg">
+
+                    <span style={{position:'relative'}}>
+                            <img src={require('static/images/home/mesicon.png')} alt="" onClick={() =>this._msgClick()}/>
+                        {msgCount>0&& <span className="icon-bag" style={{position:'absolute',top:"-.3rem",right:0}}><Badge dot/></span>}
+
+                    </span>
+                </div>
+
             </div>
         )
 

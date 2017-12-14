@@ -17,6 +17,7 @@ import {global} from './global'
 import {activeMoveMent} from './movement'
 import {doubleActive} from './doubleActive'
 import {inter} from './international'
+import {message} from './message'
 
 const rootReducer = {
     home,
@@ -38,6 +39,7 @@ const rootReducer = {
     activeMoveMent,
     doubleActive,
     inter,
+    message
 
 }
 export default rootReducer

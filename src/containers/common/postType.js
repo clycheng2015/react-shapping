@@ -4,9 +4,11 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Icon, Flex, List} from 'antd-mobile'
+import {Icon, Flex, List,Radio} from 'antd-mobile'
 
 import * as postType from 'actions/postType'
+import ReactDrawer from '../../components/Commons/lib/react-drawer';
+const RadioItem = Radio.RadioItem;
 require('./styles/postType.less')
 
 @connect(
@@ -15,9 +17,6 @@ require('./styles/postType.less')
     },
     dispatch => bindActionCreators({...postType,}, dispatch)
 )
-
-
-
 export default class PostType extends React.Component {
 
     constructor(props) {
@@ -27,31 +26,58 @@ export default class PostType extends React.Component {
             modal1: false,
             modal2: false,
             tabState: true,
-        }
+            open: false,
+            copen: false,
+            position: 'bottom',
+            noOverlay: false,
+            value:0,
+            cvalue:0
 
+        }
+    }
+
+    componentDidMount(){
+
+        const {fetchStoreAds} =this.props
+
+        fetchStoreAds()
 
     }
 
+
+    onDrawerClose = () => {
+        this.setState({open: false});
+    }
+
+    onChange=(v)=>{
+
+
+        this.setState({value:v})
+
+    }
+    toggleDrawer=()=>{
+
+        this.setState({open: !this.state.open});
+
+    }
     _choose = (v) => {
-
-
-        const {getPostType,postData} = this.props
-
+        const {getPostType,postData,storeAds} = this.props
         if ((v === 0 || v === 1) && postData.type === v && this.state.tabState) {
-
             return false
-
         }
         else {
-
             this.setState({
                 tabState: true,
             })
-
             getPostType({
                 type:v,
-                ads:v===1?'四川省成都市武侯区航空路美纶购体验店':''
+                ads:v===1&&storeAds&&storeAds.length>0?storeAds[this.state.cvalue].ads.realname:'',
+                adsId:v===1&&storeAds&&storeAds.length>0?storeAds[this.state.cvalue].ads.id:'',
+                cvalue:postData.cvalue
+
             })
+
+
         }
     }
 
@@ -62,8 +88,22 @@ export default class PostType extends React.Component {
         history.goBack()
 
     }
+    _chooseStore=()=>{
+
+        const {getPostType,storeAds}=this.props
+        let v=1
+        this.setState({open: !this.state.open,cvalue:this.state.value},()=>{
+            getPostType({
+                type:v,
+                ads:v===1&&storeAds&&storeAds.length>0?storeAds[this.state.cvalue].ads.realname:'',
+                adsId:v===1&&storeAds&&storeAds.length>0?storeAds[this.state.cvalue].ads.id:'',
+                cvalue:this.state.cvalue
+            })
+        });
+    }
     render() {
-        const {history, postData} = this.props
+        const {history, postData,storeAds} = this.props
+
         return (
             <div className="post-container" ref='wrapper'
 
@@ -106,13 +146,8 @@ export default class PostType extends React.Component {
                             className={`${this.state.tabState && postData.type === 1 ? 'active' : ''}`}
                             onClick={() => this._choose(1)}
                         >上门自提</span>
-
-
                     </div>
-
                     <div className="msg-info">
-
-
                         {
                             postData.type === 0 && <div className="post">
                                 <p>中小件送货时间</p>
@@ -120,24 +155,53 @@ export default class PostType extends React.Component {
                             </div>
 
                         }
-
                         {
-
                             postData.type === 1 && <div className="door">
-                                <p>四川省成都市武侯区航空路美纶购体验店</p>
-                                <p>地址：四川省成都市武侯区航空路6号1栋1号附3号</p>
+
+                                {storeAds && storeAds.length > 0 &&
+                                <List.Item
+                                    onClick={() => this.toggleDrawer()}
+                                    platform="android"
+                                    arrow="horizontal"
+                                >
+                                    {storeAds[postData.cvalue].ads.realname}
+                                    <List.Item.Brief>{storeAds[postData.cvalue].ads.province+storeAds[postData.cvalue].ads.city+storeAds[postData.cvalue].ads.county+storeAds[postData.cvalue].ads.address}</List.Item.Brief>
+                                </List.Item>
+                                }
                             </div>
                         }
-
-
                     </div>
-
                 </div>
                 <div className="btn" onClick={() => {
                    this._save()
                 }}>
                     确定
                 </div>
+                <div>
+
+                </div>
+                <ReactDrawer
+                    open={this.state.open}
+                    position={this.state.position}
+                    onClose={this.onDrawerClose}
+                    noOverlay={this.state.noOverlay}
+                >
+                    <div className="s-title">
+                        门店列表
+                    </div>
+                    <List>
+                        {storeAds&&storeAds.length>0&&storeAds.map((i,k) => (
+                            <RadioItem key={k} checked={this.state.value === i.key} onChange={() => this.onChange(i.key)}>
+                                {i.ads.realname}
+                                <List.Item.Brief>{i.ads.province+i.ads.city+i.ads.county+i.ads.address}</List.Item.Brief>
+                            </RadioItem>
+                        ))}
+
+                    </List>
+
+                    <div style={{height:"1rem"}}/>
+                    <div className="cbtn" onClick={()=>this._chooseStore()}>确定</div>
+                </ReactDrawer>
             </div>
         )
     }
