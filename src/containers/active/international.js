@@ -1471,13 +1471,15 @@ export default class Internation extends React.Component{
                         history.goBack();
                     }} />
                     <img className='top-logo' src={require('static/images/doubleActive/inter.png')} alt=""/>
-                    <SearchBar
-                        placeholder="搜索"
-                        // ref={ref => this.manualFocusInst = ref}
-                        onSubmit ={
-                            value => console.log(value)
-                        }
-                    />
+                    <div onClick={()=>{
+                        history.push('/searchList');
+                    }}>
+                        <SearchBar
+                            placeholder="搜索"
+                            disabled
+                        />
+                    </div>
+
                 </div>
                 <div className='top-lun' style={{ background:'url('+require('static/images/doubleActive/inter-bg.png')+') no-repeat',
                     backgroundSize:'100%'}}>
