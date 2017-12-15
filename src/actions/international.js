@@ -1,6 +1,6 @@
 
 import instance from '../utils/instance'
-import {active} from '../utils/api'
+import {nation} from '../utils/api'
 import * as types from '../utils/const'
 
 
@@ -16,10 +16,10 @@ const receiveInter = () => ({
 export const getInter = () =>{
     return(dispatch, getState) =>{
         dispatch(requestInter());
-        instance.get(active.activeMoveMent)
+        instance.get(nation.nationList,data)
             .then(res =>{
                 if (res.data.code == 200) {
-                    dispatch(receiveInter(res.data.data))
+                    dispatch(receiveInter())
 
                 }
 

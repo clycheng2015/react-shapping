@@ -134,7 +134,7 @@ export  const msg={
 
 export const nation = {
 
-    nationList:'/v3/findgoods/open/goodslist'//美伦国际
+    nationList:'/v3/mlgj/open/config'//美伦国际
 
 }
 
