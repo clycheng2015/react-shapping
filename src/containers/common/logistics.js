@@ -68,7 +68,9 @@ export default class Logistics extends React.Component {
                                             <Item
                                                 onClick={() => {this._isRead(i)}}
                                                 platform="android"
-                                                extra={i.photo?<img src={i.photo} alt=""/>:''}
+                                                extra={i.photo?<img src={
+                                                    i.photo.indexOf(',') > -1 ? i.photo.split(',')[0] : i.photo
+                                                } alt=""/>:''}
                                             >
                                                 <span style={{color:`${i.isread>0?'#888':""}`}}> {i.title}</span>
                                                 <Brief><span style={{color:`${i.isread>0?'#888':"#333333"}`}}>{i.content}</span> <br/>{ymd(i.addtime,'-',':')}</Brief>
