@@ -5,7 +5,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {SearchBar, Flex, Icon, List, SwipeAction, Toast} from 'antd-mobile'
+import {SearchBar, Flex, Icon, List, SwipeAction, Toast, Popover} from 'antd-mobile'
 import GoodsList from '../../components/Commons/goodsList'
 import  BScroll from 'better-scroll'
 
@@ -26,7 +26,10 @@ export default class SearchList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            visible: false,
+            selected: 0,
             title: '',
+            text:"全部",
             focused: true,
             value: '',
             Harr: AppLocalStorage.Cache.get('Hsearch') && AppLocalStorage.Cache.get('Hsearch').data || [],
@@ -50,7 +53,7 @@ export default class SearchList extends React.Component {
     _search = (v) => {
 
         if (v === '') {
-            Toast.info('亲，请输入您要找的宝贝~',1)
+            Toast.info('亲，请输入您要找的宝贝~', 1)
             return false
         }
         const {getSearchList, history} = this.props;
@@ -61,8 +64,8 @@ export default class SearchList extends React.Component {
 
         this.setState({Harr: Harr}, () => {
             AppLocalStorage.Cache.put('Hsearch', {data: Harr}, 9999999999999999999999)
-            getSearchList({pagesize: 20, pagenum: 1, word: v})
-            history.replace(`/search/${v}`)
+            getSearchList({pagesize: 20, pagenum: 1, word: v,isown:this.state.selected})
+            history.replace(`/search/${this.state.selected}`)
         })
 
     }
@@ -80,7 +83,7 @@ export default class SearchList extends React.Component {
 
         Harr.forEach((i, k) => {
             if (i === v) {
-                Harr.splice(k,1)
+                Harr.splice(k, 1)
             }
         })
         this.setState({Harr: Harr}, () => {
@@ -93,28 +96,71 @@ export default class SearchList extends React.Component {
 
     }
 
+    onSelect = (opt) => {
+        this.setState({
+            visible: false,
+            selected: opt.props.value,
+            text: opt.props.children
+        });
+    };
+    handleVisibleChange = (visible) => {
+        this.setState({
+            visible,
+        });
+    };
+
     render() {
         const {list, history, isFetching, hasMore} = this.props
         return (
             <div className="search-list-container"
                  style={{backgroundColor: "white", minHeight: document.documentElement.clientHeight}}>
-                <div className="nav-s">
-                    <SearchBar
-                        placeholder={this._hotWord()}
-                        focused={this.state.focused}
-                        value={this.state.value}
-                        onSubmit={value => this._search(value)}
-                        onClear={value => () => this.setState({value: ''})}
-                        onFocus={() => {
-                            this.setState({focused: false,});
-                        }}
-                        onBlur={() => console.log('onBlur')}
-                        onCancel={() => this.setState({value: ''}, () => {
-                            history.goBack()
-                        })}
-                        showCancelButton
-                        onChange={this.onChange}
-                    />
+
+
+                <div className="nav-s-info">
+
+                    <div className="all-state">
+
+
+                        <Popover mask
+                                 overlayClassName="fortest"
+                                 overlayStyle={{color: 'currentColor'}}
+                                 visible={this.state.visible}
+                                 placement="bottomLeft"
+                                 overlay={[
+                                     (<Popover.Item key="4" value="0">全部</Popover.Item>),
+                                     (<Popover.Item key="5" value="1">自营</Popover.Item>),
+                                     (<Popover.Item key="6" value="2">美伦国际</Popover.Item>),
+                                 ]}
+                                 align={{
+                                     overflow: {adjustY: 0, adjustX: 0},
+                                 }}
+                                 onVisibleChange={this.handleVisibleChange}
+                                 onSelect={this.onSelect}
+                        >
+                            <div>
+                                {this.state.text}
+                            </div>
+                        </Popover>
+                    </div>
+
+                    <div className="nav-s">
+                        <SearchBar
+                            placeholder={this._hotWord()}
+                            focused={this.state.focused}
+                            value={this.state.value}
+                            onSubmit={value => this._search(value)}
+                            onClear={value => () => this.setState({value: ''})}
+                            onFocus={() => {
+                                this.setState({focused: false,});
+                            }}
+                            onBlur={() => console.log('onBlur')}
+                            onCancel={() => this.setState({value: ''}, () => {
+                                history.goBack()
+                            })}
+                            showCancelButton
+                            onChange={this.onChange}
+                        />
+                    </div>
                 </div>
                 <div className="hot-s">
                     <p>热搜</p>

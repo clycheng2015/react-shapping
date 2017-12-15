@@ -27,18 +27,22 @@ export default class Search extends React.Component {
     }
 
     _updownMore = () => {
-        const {pagenum, isFetching, hasMore, getSearchList, pagesize, word} = this.props
+        const {pagenum, isFetching, hasMore, getSearchList, pagesize, word,match} = this.props
         if (isFetching || !hasMore) {
             return;
         }
         let num = pagenum
-        let data = {pagesize: pagesize, pagenum: ++num,}
+        let data = {
+            pagesize: pagesize,
+            pagenum: ++num,
+            isown:match.params.id,
+        }
         if (word !== '') {data = {...data, word: word}}
         getSearchList(data)
     }
 
     render() {
-        const {list, history, isFetching, hasMore,match} = this.props
+        const {list, history, isFetching, hasMore,word} = this.props
 
         return (
             <div className="search-list-container"
@@ -50,7 +54,7 @@ export default class Search extends React.Component {
                 <div className="nav-tab">
                     <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/>
                     <div className="s-box" onClick={()=>history.replace('/searchList')}>
-                        <SearchBar placeholder={match.params.word} disabled/>
+                        <SearchBar placeholder={word} disabled/>
                     </div>
                 </div>
                 <div className="list">

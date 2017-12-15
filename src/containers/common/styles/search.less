@@ -57,18 +57,44 @@
 
   }
 
-  .nav-s{
+  .nav-s-info{
+
     position: fixed;
     width: 7.5rem;
     top:0;
     z-index: 99999;
     background: #f3f3f1;
+    border-bottom: 1px solid #f3f3f1;
+    box-sizing: border-box;
+
+    .all-state{
+      width: 1.5rem;
+      float: left;
+      background: white;
+      height: .9rem;
+      text-align: center;
+      font-size: .3rem;
+      line-height: .9rem;
+
+
+      .am-popover{
+        left: 0 !important;
+      }
+
+    }
+
+  }
+
+  .nav-s{
+
+    width: 6rem;
+    float: right;
     .am-search{
 
       background: white;
     }
 
-    border-bottom: 1px solid #f3f3f1;
+
     .am-search-input .am-search-synthetic-ph {
       z-index: 1;
       height: 28px;
