@@ -21,7 +21,7 @@ require('./styles/search.less')
     },
     dispatch => bindActionCreators({...search, ...global}, dispatch)
 )
-export default class Search extends React.Component {
+export default class SearchList extends React.Component {
 
     constructor(props) {
         super(props);
