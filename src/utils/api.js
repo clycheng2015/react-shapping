@@ -132,6 +132,12 @@ export  const msg={
     readUrl:"/app/my/readmessage"
 }
 
+export const nation = {
+
+    nationList:'/v3/findgoods/open/goodslist'//美伦国际
+
+}
+
 
 
 
