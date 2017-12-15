@@ -16,7 +16,7 @@ const receiveInter = () => ({
 export const getInter = () =>{
     return(dispatch, getState) =>{
         dispatch(requestInter());
-        instance.get(nation.nationList,data)
+        instance.get(nation.nationList)
             .then(res =>{
                 if (res.data.code == 200) {
                     dispatch(receiveInter())
