@@ -556,23 +556,23 @@ export default class GoodsDetail extends React.Component {
                                     </div>
                             }
                         </ReactDrawer>
+
+                        { data.issellout===1&& <div className="has-no-sell-info">暂时无货，非常抱歉!</div>}
+
+                        <div className="bottom">
+                            <Flex >
+                                <Flex.Item className="other">
+                                    <span><a href="tel:4001080305" style={{textDecoration: "none"}}><img src={require('static/image/ic_call_service_02.png')} alt=""/><p>客服咨询</p></a></span>
+                                    <span onClick={() => history.push(`/burCar/${'dltocar'}`)}><img src={require('static/image/ic_to_car_02.png')} alt=""/><p>购物车 </p> <Badge text={carData.data && carData.data.datalist && carData.data.datalist.length} overflowCount={99} /> </span>
+                                </Flex.Item>
+                                <Flex.Item className={`add-car-btn ${data.issellout===1&& 'has-no1'}`} onClick={() => {data.issellout===0&&this.toggleDrawer('add')}}>加入购物车</Flex.Item>
+                                <Flex.Item className={`buy-btn ${data.issellout===1&& 'has-no2'}`} onClick={() =>{data.issellout===0&& this.toggleDrawer('buy')}}>立即购买</Flex.Item>
+                            </Flex>
+
+                        </div>
                     </div>
                     }
-
-
                 </div>
-                <div className="bottom">
-                    <Flex >
-                        <Flex.Item className="other">
-                            <span><a href="tel:4001080305" style={{textDecoration: "none"}}><img src={require('static/image/ic_call_service_02.png')} alt=""/><p>客服咨询</p></a></span>
-                            <span onClick={() => history.push(`/burCar/${'dltocar'}`)}><img src={require('static/image/ic_to_car_02.png')} alt=""/><p>购物车 </p> <Badge text={carData.data && carData.data.datalist && carData.data.datalist.length} overflowCount={99} /> </span>
-                        </Flex.Item>
-                        <Flex.Item className="add-car-btn" onClick={() => this.toggleDrawer('add')}>加入购物车</Flex.Item>
-                        <Flex.Item className="buy-btn" onClick={() => this.toggleDrawer('buy')}>立即购买</Flex.Item>
-                    </Flex>
-
-                </div>
-
             </div>
 
         )
