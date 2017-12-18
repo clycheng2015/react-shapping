@@ -1,12 +1,15 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import * as getInter from '../../actions/international'
 
+import * as search from '../../actions/search'
+
 import { Icon ,SearchBar, WhiteSpace,Tabs } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
-
+import { getPath } from '../../utils/tools'
 
 import './style/international.less'
 import '../../utils/swiper/swiper.min.css';
@@ -15,9 +18,9 @@ import '../../utils/swiper/swiper.min.js';
 
 @connect(
     state => {
-        return {...state.getInter}
+        return {...state.inter,...state.search}
     },
-    dispatch => bindActionCreators({...getInter}, dispatch)
+    dispatch => bindActionCreators({...getInter,...search}, dispatch)
 )
 export default class Internation extends React.Component{
 
@@ -1369,14 +1372,15 @@ export default class Internation extends React.Component{
         const { getInter } = this.props;
         getInter();
 
-        // this.autoFocusInst.focus();
+    }
+    componentDidUpdate(){
 
-        const swiper = new Swiper(this.swiper, {
+        let swiper = new Swiper(this.swiper, {
             pagination: '.swiper-pagination',
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
-            autoplay : 3000,
+            autoplay : 5000,
             slidesPerView: 'auto',
             loop : true,
             coverflow: {
@@ -1388,34 +1392,15 @@ export default class Internation extends React.Component{
             }
         });
 
-        let lunbo1 = document.getElementsByClassName('lunbo1');
-        let lunbo2 = document.getElementsByClassName('lunbo2');
-        let lunbo3 = document.getElementsByClassName('lunbo3');
-
-        for(let i=0;i<lunbo1.length;i++){
-            lunbo1[i].addEventListener('click',()=>{
-                history.push(`/goodsDetail/1558`)
-            })
-        }
-        for(let i=0;i<lunbo2.length;i++){
-            lunbo2[i].addEventListener('click',()=>{
-                history.push(`/goodsDetail/241`)
-            })
-        }
-        for(let i=0;i<lunbo3.length;i++){
-            lunbo3[i].addEventListener('click',()=>{
-                history.push(`/goodsDetail/305`)
-            })
-        }
-
     }
 
     renderContent = tab =>{
-        const {history} = this.props
+        const {history,list} = this.props
+
         return(
             <div className='tab'>
                 <ul>
-                    {this.getData.map(function (item,index) {
+                    {list.map(function (item,index) {
                         return(
                             <li key={index} onClick={()=>{
                                 history.push(`/goodsDetail/${item.id}`)
@@ -1440,23 +1425,28 @@ export default class Internation extends React.Component{
     }
 
     _change = (tab, index) => {
-
-        // const {tabChange} = this.props
-        // tabChange(tab.title, tab.cid, index)
-        this.getData = this.goods[index];
-
+       const {getSearchList} = this.props
+        tab.id ===1 ?getSearchList({pagesize: 9999, pagenum: 1, ischoice: 1,isown:2}) : getSearchList({pagesize: 9999, pagenum: 1, cid: tab.category_id,isown:2})
 
     }
 
 
+    _gettab=()=>{
+        const  {data}=this.props
+
+         const tabs = [];
+        data.mlgjCategoryDto.map((item,index)=>{
+            tabs.push({'title':<div><p><img style={{width:'0.3rem',height:'0.3rem'}} src={item.iconpic} alt=""/></p><p>{item.name}</p></div>,...item})
+        })
+
+        return tabs
+
+    }
+
     render(){
 
-        const { history } = this.props
+        const { history,data,list } = this.props
 
-        const tabs = [];
-        this.titleList.map((item,index)=>{
-            tabs.push({'title':item})
-        })
 
         function renderTabBar(props) {
             return (<Sticky>
@@ -1483,12 +1473,20 @@ export default class Internation extends React.Component{
                 </div>
                 <div className='top-lun' style={{ background:'url('+require('static/images/doubleActive/inter-bg.png')+') no-repeat',
                     backgroundSize:'100%'}}>
-                    <div className="swiper-container" ref={(el)=>this.swiper=el}>
-                        <div className="swiper-wrapper">
+                    <div className="swiper-container" ref={(el)=>this.swiper=el} >
+                        <div className="swiper-wrapper" >
+                            {/*<div className='swiper-slide lunbo1'><img src={require('static/image/newDay1.jpg')} alt=""/></div>*/}
 
-                            <div className='swiper-slide lunbo1' ><img src={require('static/image/newDay1.jpg')} alt=""/></div>
-                            <div className='swiper-slide lunbo2' ><img src={require('static/image/newDay2.jpg')} alt=""/></div>
-                            <div className='swiper-slide lunbo3' ><img src={require('static/image/newDay3.jpg')} alt=""/></div>
+                            {
+                                data && data.mlgjBannerDto && data.mlgjBannerDto.length > 0 && data.mlgjBannerDto.map((item,key)=>{
+
+                                    return (
+                                        <div key={key}  className='swiper-slide'><Link to={getPath(item.linked_txt)}><img src={item.iconpic} alt=""/></Link></div>
+                                    )
+                                })
+                            }
+
+
 
                         </div>
                         {/*<div className="swiper-pagination">*/}
@@ -1504,14 +1502,21 @@ export default class Internation extends React.Component{
                 <div className='new-word'>
                     <WhiteSpace />
                     <StickyContainer>
-                        <Tabs tabs={tabs}
+                        {
+
+                        data&&data.mlgjCategoryDto&&
+                        <Tabs tabs={this._gettab()}
                               swipeable={false}
                               onChange={this._change}
                               renderTabBar={renderTabBar}
+                              animated={false}
                         >
                             {this.renderContent}
 
                         </Tabs>
+
+                    }
+
                     </StickyContainer>
                     <WhiteSpace />
                 </div>
