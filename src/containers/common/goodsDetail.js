@@ -392,7 +392,7 @@ export default class GoodsDetail extends React.Component {
                             <div className="title"><p>{data.isown===2&&<span className="owner">{'海外直邮'}</span>}{data.gtitle}</p></div>
                             <Flex >
                                 <Flex.Item className="sall">
-                                    <p>￥{data.zkprice}</p>
+                                    <p>￥{Number(data.zkprice).toFixed(2)}</p>
                                     {/*<p className="vip">￥{data.vipprice}*/}
                                     {/*<img style={{width: '.5rem'}} src={require('static/images/gs/vip_icon.png')}*/}
                                     {/*alt=""/>*/}
