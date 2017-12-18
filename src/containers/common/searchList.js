@@ -94,6 +94,7 @@ export default class SearchList extends React.Component {
 
         this.setState({value: v})
 
+
     }
 
     onSelect = (opt) => {
