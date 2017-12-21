@@ -321,7 +321,7 @@ export  default  class CarList extends React.Component {
                     <Flex>
                         <Flex.Item className="tot">
                             {
-                                activeInfo && activeInfo.id && activeInfo.datalist.length>0 && timeOut(activeInfo.endtime) ?
+                                activeInfo && activeInfo.datalist && activeInfo.datalist.length>0 && timeOut(activeInfo.endtime) ?
                                     <div>
                                         <p className='all'>合计:￥{this._activeTot()}</p>
                                         <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this._freePrice()}</p>
