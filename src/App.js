@@ -99,6 +99,7 @@ const International = asyncComponent(() => import( /* webpackChunkName: "interna
 //test
 
 import ScrollTest from './components/scroll/scroll'
+import LifeCycle from './components/scroll/lificycle'
 
 
 
@@ -259,6 +260,7 @@ export default class App extends React.Component {
                                 <Route location={location} path="/paySuccess/:id" component={PaySuccess}/>
                                 <Route location={location} path="/payFail/:id" component={PayFail}/>
                                 <Route location={location} path="/scrollTest" component={ScrollTest}/>
+                                <Route location={location} path="/lifeCycle" component={LifeCycle}/>
 
                                 <Route location={location} path="/international" component={International}/>
                                 <Route location={location} path="/message" component={Message}/>

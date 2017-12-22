@@ -35,7 +35,7 @@ export function search(state = init, action) {
                     hasMore = false
                 }
             }
-            if(action.data.datalist.length===0){
+            if(action.pagenum === 1&&action.data.datalist.length===0){
                 dataList=[]
             }
             return {...state,hasMore:hasMore, isFetching: false, list: dataList,pagesize:action.pagesize,pagenum:action.pagenum,word:action.word}

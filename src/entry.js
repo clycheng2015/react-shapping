@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 import {createStore, applyMiddleware, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
+
 import {ConnectedRouter, routerReducer, routerMiddleware} from 'react-router-redux'
+
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {AppContainer} from 'react-hot-loader'
