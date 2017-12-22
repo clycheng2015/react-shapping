@@ -29,7 +29,7 @@ export const getInter = () =>{
 
                     dispatch(receiveInter(res.data.data));
 
-                    res.data.data.mlgjCategoryDto[0].id ===1?dispatch(search.getSearchList({...data,ischoice:1})): dispatch(search.getSearchList({...data,cid:res.data.data.mlgjCategoryDto[0].category_id}))
+                    res.data.data.mlgjCategoryDto[0].id ===1?dispatch(search.getMlSearchList({...data,ischoice:1})): dispatch(search.getMlSearchList({...data,cid:res.data.data.mlgjCategoryDto[0].category_id}))
 
 
 

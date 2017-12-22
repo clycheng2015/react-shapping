@@ -28,6 +28,7 @@ const HotGoods = asyncComponent(() => import( './containers/nativeActive/hotGood
 
 const JoinUs = asyncComponent(() => import( './containers/nativeActive/joinUs'));
 const DoubleActive = asyncComponent(() => import( './containers/nativeActive/doubleActive'));
+const International = asyncComponent(() => import( './containers/nativeActive/international'));
 
 export default class App extends React.Component {
 
@@ -54,6 +55,7 @@ export default class App extends React.Component {
                             <Route location={location} path="/hotGoods" component={HotGoods}/>
                             <Route location={location} path="/joinUs" component={JoinUs}/>
                             <Route location={location} path="/doubleActive" component={DoubleActive}/>
+                            <Route location={location} path="/international" component={International}/>
 
 
 

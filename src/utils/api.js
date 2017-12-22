@@ -34,8 +34,8 @@ export const moreList = {
 }
 
 export const search = {
-    detailUrl: "/v3/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
-    // detailUrl: "/v3/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
+    detailUrl: "/v2/findgoods/open/goodsSearch",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
+    mlDetailUrl: "/v3/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
 }
 export const auth = {
     loginUrl: "/app/user/open/login",//POST   mobile   password

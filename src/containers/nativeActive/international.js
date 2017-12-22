@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import * as getInter from '../../actions/international'
-
 import * as search from '../../actions/search'
 
 import { Icon ,SearchBar, WhiteSpace,Tabs } from 'antd-mobile';
@@ -33,6 +32,7 @@ export default class Internation extends React.Component{
     }
 
     componentDidMount(){
+        document.title = '美伦国际';
         const { getInter } = this.props;
         getInter();
 
@@ -64,11 +64,15 @@ export default class Internation extends React.Component{
         return(
             <div className='tab'>
                 <ul>
-                    {list.map(function (item,index) {
+                    {list && list.map(function (item,index) {
                         return(
-                            <li key={index} onClick={()=>{
-                                history.push(`/goodsDetail/${item.id}`)
-                            }}>
+                            <li key={index} onClick={()=>{nativeClick({
+                                type:2,
+                                url:item.id,
+                                id:item.id,
+                                name:item.gtitle,
+                                activeType:''
+                            })}}>
                                 <div className='image'>
                                     <img src={item.bigpic} alt=""  />
                                 </div>
@@ -89,7 +93,7 @@ export default class Internation extends React.Component{
     }
 
     _change = (tab, index) => {
-       const {getMlSearchList} = this.props
+        const {getMlSearchList} = this.props
         tab.id ===1 ?getMlSearchList({pagesize: 9999, pagenum: 1, ischoice: 1,isown:2}) : getMlSearchList({pagesize: 9999, pagenum: 1, cid: tab.category_id,isown:2})
 
     }
@@ -98,8 +102,8 @@ export default class Internation extends React.Component{
     _gettab=()=>{
         const  {data}=this.props
 
-         const tabs = [];
-        data.mlgjCategoryDto.map((item,index)=>{
+        const tabs = [];
+        data.mlgjCategoryDto && data.mlgjCategoryDto.length>0 && data.mlgjCategoryDto.map((item,index)=>{
             tabs.push({'title':<div><p><img style={{width:'0.3rem',height:'0.3rem'}} src={item.iconpic} alt=""/></p><p>{item.name}</p></div>,...item})
         })
 
@@ -120,26 +124,11 @@ export default class Internation extends React.Component{
 
         return(
             <div className='inter-body'>
-                <div className='top-box'>
-                    <Icon type='left' size='md' color='white' onClick={()=>{
-                        history.goBack();
-                    }} />
-                    <img className='top-logo' src={require('static/images/doubleActive/inter.png')} alt=""/>
-                    <div onClick={()=>{
-                        history.push('/searchList');
-                    }}>
-                        <SearchBar
-                            placeholder="搜索"
-                            disabled
-                        />
-                    </div>
 
-                </div>
                 <div className='top-lun' style={{ background:'url('+require('static/images/doubleActive/inter-bg.png')+') no-repeat',
                     backgroundSize:'100%'}}>
                     <div className="swiper-container" ref={(el)=>this.swiper=el} >
                         <div className="swiper-wrapper" >
-                            {/*<div className='swiper-slide lunbo1'><img src={require('static/image/newDay1.jpg')} alt=""/></div>*/}
 
                             {
                                 data && data.mlgjBannerDto && data.mlgjBannerDto.length > 0 && data.mlgjBannerDto.map((item,key)=>{
@@ -150,12 +139,8 @@ export default class Internation extends React.Component{
                                 })
                             }
 
-
-
                         </div>
-                        {/*<div className="swiper-pagination">*/}
 
-                        {/*</div>*/}
                     </div>
                     <div className='lun-down'>
                         <p><img style={{width:'0.21rem'}} src={require('static/images/doubleActive/inter-1.png')} alt=""/>正品保证</p>
@@ -168,18 +153,18 @@ export default class Internation extends React.Component{
                     <StickyContainer>
                         {
 
-                        data&&data.mlgjCategoryDto&&
-                        <Tabs tabs={this._gettab()}
-                              swipeable={false}
-                              onChange={this._change}
-                              renderTabBar={renderTabBar}
-                              animated={false}
-                        >
-                            {this.renderContent}
+                            data&&data.mlgjCategoryDto&&
+                            <Tabs tabs={this._gettab()}
+                                  swipeable={false}
+                                  onChange={this._change}
+                                  renderTabBar={renderTabBar}
+                                  animated={false}
+                            >
+                                {this.renderContent}
 
-                        </Tabs>
+                            </Tabs>
 
-                    }
+                        }
 
                     </StickyContainer>
                     <WhiteSpace />

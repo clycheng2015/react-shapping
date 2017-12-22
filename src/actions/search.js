@@ -32,3 +32,17 @@ export const getSearchList = ( data) => {
     }
 }
 
+export const getMlSearchList = ( data) => {
+    return (dispatch, getState) => {
+        dispatch(requestSearchList());
+        instance.get(search.mlDetailUrl+'?'+ qs.stringify(data))
+            .then(res => {
+                dispatch(receiveSearchList(res.data.data,data.pagesize,data.pagenum,data.word))
+            })
+            .catch(error => {
+
+                console.log('error: ', error)
+            })
+    }
+}
+
