@@ -100,7 +100,7 @@ export default class Internation extends React.Component{
 
          const tabs = [];
         data.mlgjCategoryDto.map((item,index)=>{
-            tabs.push({'title':<div><p><img style={{width:'0.3rem',height:'0.3rem'}} src={item.iconpic} alt=""/></p><p>{item.name}</p></div>,...item})
+            tabs.push({'title':<div><p><img style={{width:'0.5rem',height:'0.5rem'}} src={item.iconpic} alt=""/></p><p>{item.name}</p></div>,...item})
         })
 
         return tabs
