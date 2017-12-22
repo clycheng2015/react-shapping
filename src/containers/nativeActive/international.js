@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux';
 import * as getInter from '../../actions/international'
 import * as search from '../../actions/search'
+import {nativeClick} from '../../utils/native-sdk'
 
 import { Icon ,SearchBar, WhiteSpace,Tabs } from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -118,7 +119,7 @@ export default class Internation extends React.Component{
 
         function renderTabBar(props) {
             return (<Sticky>
-                {({ style }) => <div style={{ ...style, zIndex: 1,paddingTop:"0.9rem" }}><Tabs.DefaultTabBar {...props} /></div>}
+                {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
             </Sticky>);
         }
 
@@ -134,7 +135,7 @@ export default class Internation extends React.Component{
                                 data && data.mlgjBannerDto && data.mlgjBannerDto.length > 0 && data.mlgjBannerDto.map((item,key)=>{
 
                                     return (
-                                        <div key={key}  className='swiper-slide'><Link to={getPath(item.linked_txt)}><img src={item.iconpic} alt=""/></Link></div>
+                                        <div key={key}  className='swiper-slide'><img src={item.iconpic} alt=""/></div>
                                     )
                                 })
                             }
