@@ -298,24 +298,60 @@ let datalist={
                 17.9
         },
         {
-            "id": 957,
-            "good_id": 957,
-            "gtitle": "西班牙进口 公鸡（GALLO）三色螺丝形意大利面250g",
-            "stitle": "西班牙进口 公鸡（GALLO）三色螺丝形意大利面250g",
-            "gdesc": "8410069005588 面条",
-            "tags": "",
-            "type": "0",
-            "category": "168 , 50",
-            "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923161359.jpg",
-            "zkprice": 7.8,
-            "vipprice": 15,
-            "price": 18,
-            "standard": "/袋",
-            "gorder": 1,
-            "list_smallpicafter": "",
-            "list_titlebefore": "",
-            "ischoice": null
+            bigpic
+                :
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923152859.jpg",
+            category
+                :
+                "168 , 50",
+            gdesc
+                :
+                "8410069001597 面条",
+            good_id
+                :
+                960,
+            gorder
+                :
+                1,
+            gtitle
+                :
+                "西班牙进口 公鸡（GALLO）螺丝形意大利面250克",
+            id
+                :
+                960,
+            ischoice
+                :
+                null,
+            isown
+                :
+                1,
+            list_smallpicafter
+                :
+                "",
+            list_titlebefore
+                :
+                "",
+            price
+                :
+                12.8,
+            standard
+                :
+                "/袋",
+            stitle
+                :
+                "西班牙进口 公鸡（GALLO）螺丝形意大利面250克",
+            tags
+                :
+                "",
+            type
+                :
+                "0",
+            vipprice
+                :
+                7.8,
+            zkprice
+                :
+                7.8
         },
         {
             "id": 1633,
@@ -648,26 +684,6 @@ let datalist={
             "ischoice": null
         },
         {
-            "id": 2539,
-            "good_id": 2539,
-            "gtitle": "澳大利亚G&M澳芝曼鸸鹋精油面霜 250g",
-            "stitle": "澳大利亚G&M澳芝曼鸸鹋精油面霜 250g",
-            "gdesc": null,
-            "tags": "",
-            "type": "0",
-            "category": "116 , 26",
-            "isown": 2,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/1513577756796.jpg",
-            "zkprice": 69,
-            "vipprice": 65,
-            "price": 75,
-            "standard": "/瓶",
-            "gorder": 0,
-            "list_smallpicafter": "",
-            "list_titlebefore": "",
-            "ischoice": 0
-        },
-        {
             "id": 1346,
             "good_id": 1346,
             "gtitle": "花缪蕾智能芯超薄日用卫生巾240mm16片",
@@ -971,24 +987,61 @@ let datalist={
     ],
     '家居用品':[
         {
-            "id": 978,
-            "good_id": 978,
-            "gtitle": "西班牙原装进口 玛玉浓缩马 赛皂液洗衣液洗衣粉超大量3L",
-            "stitle": "西班牙原装进口 玛玉浓缩马 赛皂液洗衣液洗衣粉超大量3L",
-            "gdesc": "8433295053246",
-            "tags": "",
-            "type": "0",
-            "category": "156 , 61",
-            "isown": 1,
-            "bigpic": "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002154754.jpg",
-            "zkprice": 29.8,
-            "vipprice": 37.8,
-            "price": 42,
-            "standard": "/瓶",
-            "gorder": 0,
-            "list_smallpicafter": "",
-            "list_titlebefore": "",
-            "ischoice": null
+
+            bigpic
+                :
+                "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002155201.jpg",
+            category
+                :
+                "156 , 61",
+            gdesc
+                :
+                "8433295053260",
+            good_id
+                :
+                369,
+            gorder
+                :
+                0,
+            gtitle
+                :
+                "西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
+            id
+                :
+                369,
+            ischoice
+                :
+                null,
+            isown
+                :
+                1,
+            list_smallpicafter
+                :
+                "",
+            list_titlebefore
+                :
+                "",
+            price
+                :
+                42.8,
+            standard
+                :
+                "/瓶",
+            stitle
+                :
+                "西班牙进口MAYOR DOMO 玛玉2合1洗衣液",
+            tags
+                :
+                "",
+            type
+                :
+                "0",
+            vipprice
+                :
+                29.8,
+            zkprice
+                :
+                29.8
         },
         {
             "id": 980,
