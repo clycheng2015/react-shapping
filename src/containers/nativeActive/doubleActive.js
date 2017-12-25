@@ -53,7 +53,7 @@ export default class DoubleActive extends React.Component{
         const {scrollT} = this.props
         window.scrollTo(0, scrollT);
 
-        document.title = '双十二 再次狂欢';
+        document.title = '圣诞狂欢节';
     }
     componentDidUpdate(){
 
@@ -165,7 +165,7 @@ export default class DoubleActive extends React.Component{
 
 
         return(
-            <div className='double-content'>
+            <div className='double-content' style={{background:'url(' + require('static/images/doubleActive/bg.png') + ')'}}>
 
 
                 <div  className='nav-tab'
@@ -184,7 +184,7 @@ export default class DoubleActive extends React.Component{
 
                 <div className='double-box'>
                     <div ref={(el)=>this.Top=el}>
-                        <div className='banner'><img src={require('static/images/doubleActive/1212.png')} alt=""/> </div>
+                        <div className='banner'><img src={require('static/images/doubleActive/shaungdan.jpg')} alt=""/> </div>
 
                         <ul className='activeName'>
                             {sectionIDs.map((i,index)=>{

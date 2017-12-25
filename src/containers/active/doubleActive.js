@@ -194,7 +194,7 @@ export default class DoubleActive extends React.Component {
 
         return (
 
-            <div className='double-content'>
+            <div className='double-content' style={{background:'url(' + require('static/images/doubleActive/bg.png') + ')'}}>
 
                 {
                     this.state.navShow &&
@@ -205,7 +205,7 @@ export default class DoubleActive extends React.Component {
                                 <Icon type="left" style={{float: 'left',position: 'absolute',top:'0.1 rem',left:0}} size="lg" onClick={() => {
                                     history.goBack()
                                 }}/>
-                            <Flex.Item className="item-head center">双十二再次狂欢</Flex.Item>
+                            <Flex.Item className="item-head center">圣诞狂欢节</Flex.Item>
                             {/*<Flex.Item className="item-head right"><span></span></Flex.Item>*/}
                         </Flex>
                     </div>
@@ -214,7 +214,7 @@ export default class DoubleActive extends React.Component {
 
                 <div className='double-box'>
                     <div ref={(el) => this.Top = el}>
-                        <div className='banner'><img src={require('static/images/doubleActive/1212.png')} alt=""/> </div>
+                        <div className='banner'><img src={require('static/images/doubleActive/shaungdan.jpg')} alt=""/> </div>
 
                         <ul className='activeName'>
                             {sectionIDs.map((i, index) => {
@@ -318,8 +318,8 @@ export default class DoubleActive extends React.Component {
                                                 color: "#fffefe",
                                                 fontSize: "0.26rem",
                                                 zIndex: 3,
-                                                background: 'url(' + require('static/images/doubleActive/12-title1.png') + ') center center no-repeat',
-                                                backgroundSize: "90%",
+                                                background: 'url(' + require('static/images/doubleActive/title.png') + ') center center no-repeat',
+                                                backgroundSize: "100%",
                                                 position:'absolute',
                                                 top:0,
                                                 left:0
