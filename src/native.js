@@ -15,20 +15,20 @@ import Home from './containers/Home/native-index'
 
 //活动中心
 
-const Active = asyncComponent(() => import( './containers/nativeActive/index'))
-const NewPer = asyncComponent(() => import( './containers/nativeActive/newPer'));
-const Special = asyncComponent(() => import( './containers/nativeActive/special'));
-const NewDay = asyncComponent(() => import( './containers/nativeActive/newDay'));
-const Ranking = asyncComponent(() => import( './containers/nativeActive/ranking'));
-const Seckill = asyncComponent(() => import( './containers/nativeActive/seckill'));
-const Imported = asyncComponent(() => import( './containers/nativeActive/imported'));
-const ImportedClass = asyncComponent(() => import( './containers/nativeActive/importedClass'));
-const VipActive = asyncComponent(() => import( './containers/nativeActive/vipActive'));
-const HotGoods = asyncComponent(() => import( './containers/nativeActive/hotGoods'));
+const Active = asyncComponent(() => import( /* webpackChunkName: "index" */'./containers/nativeActive/index'))
+const NewPer = asyncComponent(() => import( /* webpackChunkName: "newPer" */'./containers/nativeActive/newPer'));
+const Special = asyncComponent(() => import( /* webpackChunkName: "special" */'./containers/nativeActive/special'));
+const NewDay = asyncComponent(() => import( /* webpackChunkName: "newDay" */'./containers/nativeActive/newDay'));
+const Ranking = asyncComponent(() => import( /* webpackChunkName: "ranking" */'./containers/nativeActive/ranking'));
+const Seckill = asyncComponent(() => import( /* webpackChunkName: "seckill" */'./containers/nativeActive/seckill'));
+const Imported = asyncComponent(() => import( /* webpackChunkName: "imported" */'./containers/nativeActive/imported'));
+const ImportedClass = asyncComponent(() => import( /* webpackChunkName: "importedClass" */'./containers/nativeActive/importedClass'));
+const VipActive = asyncComponent(() => import( /* webpackChunkName: "vipActive" */'./containers/nativeActive/vipActive'));
+const HotGoods = asyncComponent(() => import( /* webpackChunkName: "hotGoods" */'./containers/nativeActive/hotGoods'));
 
-const JoinUs = asyncComponent(() => import( './containers/nativeActive/joinUs'));
-const DoubleActive = asyncComponent(() => import( './containers/nativeActive/doubleActive'));
-const International = asyncComponent(() => import( './containers/nativeActive/international'));
+const JoinUs = asyncComponent(() => import( /* webpackChunkName: "joinUs" */'./containers/nativeActive/joinUs'));
+const DoubleActive = asyncComponent(() => import( /* webpackChunkName: "doubleActive" */'./containers/nativeActive/doubleActive'));
+const International = asyncComponent(() => import( /* webpackChunkName: "international" */'./containers/nativeActive/international'));
 
 export default class App extends React.Component {
 
