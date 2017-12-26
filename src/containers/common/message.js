@@ -36,18 +36,49 @@ export default class Message extends React.Component {
     }
 
 
-
-    _isRead=(i)=>{
-
-    const {fetchIsRead,history}=this.props
+    _isRead = (i) => {
+        const {fetchIsRead, history} = this.props
         fetchIsRead(i.id)
-        history.push({pathname:"/webIframe",state:i})
+        switch (i.atype) {
+            case 'GOODS':
+                history.push(`/goodsDetail/${i.acid}`)
+                break;
+
+            case 'GOODS_SECKILL':
+                history.push(`/activeDetail/${i.acid}SECKILL`)
+
+                break;
+            case 'URL':
+
+                history.push({pathname: "/webIframe", state: i})
+                break;
+            case 'SECKILL':
+                history.push({pathname: `/yesOrder/${i.acid}T${1}`})
+
+                break;
+            case 'ORDER':
+                history.push({pathname: `/yesOrder/${i.acid}T${1}`})
+
+                break;
+            case 'TEXT':
+
+                break;
+            default :
+
+                break
+
+
+        }
+
+
+
     }
 
-    _allRead=()=>{
-        const {fetchIsRead,history}=this.props
-        fetchIsRead(0,this.user && this.user.userInfo.id || '')
+    _allRead = () => {
+        const {fetchIsRead, history} = this.props
+        fetchIsRead(0, this.user && this.user.userInfo.id || '')
     }
+
     render() {
         const {history, msgData} = this.props
         return (
@@ -59,11 +90,12 @@ export default class Message extends React.Component {
                             history.goBack()
                         }}/></Flex.Item>
                         <Flex.Item className="item-head center">消息中心</Flex.Item>
-                        <Flex.Item className="item-head right"><span onClick={()=>this._allRead()}>全部已读</span></Flex.Item>
+                        <Flex.Item className="item-head right"><span
+                            onClick={() => this._allRead()}>全部已读</span></Flex.Item>
                     </Flex>
                 </div>
                 {
-                    msgData&&msgData.datalist?
+                    msgData && msgData.datalist ?
                         < div >
                             < div style={{height: '1.1rem'}}/>
                             <div className="tmle-info">
@@ -81,17 +113,21 @@ export default class Message extends React.Component {
                             <div className="msg-list-info">
 
                                 {
-                                    msgData.datalist.datalist.length>0&&msgData.datalist.datalist.map((i,k)=>(
+                                    msgData.datalist.datalist.length > 0 && msgData.datalist.datalist.map((i, k) => (
                                         <div key={k}>
                                             <div style={{height: '.2rem'}}/>
                                             <Item
-                                                onClick={() => {this._isRead(i)}}
+                                                onClick={() => {
+                                                    this._isRead(i)
+                                                }}
                                                 platform="android"
-                                                extra={i.photo?<img src={i.photo} alt=""/>:''}
+                                                extra={i.photo ? <img src={i.photo} alt=""/> : ''}
                                             >
 
-                                                <span style={{color:`${i.isread>0?'#888':""}`}}> {i.title}</span>
-                                                <Brief><span style={{color:`${i.isread>0?'#888':"#333333"}`}}>{i.content}</span> <br/>{ymd(i.addtime,'-',':')}</Brief>
+                                                <span style={{color: `${i.isread > 0 ? '#888' : ""}`}}> {i.title}</span>
+                                                <Brief><span
+                                                    style={{color: `${i.isread > 0 ? '#888' : "#333333"}`}}>{i.content}</span>
+                                                    <br/>{ymd(i.addtime, '-', ':')}</Brief>
                                             </Item>
                                         </div>
                                     ))
