@@ -21,6 +21,7 @@ window.isEmpty = isEmpty
 window.isEqual = isEqual
 window.debounce = debounce
 window.isArray = isArray
+
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isPro = nodeEnv === 'production'
 const history = createHistory()

@@ -297,19 +297,14 @@ export default class GoodsDetail extends React.Component {
     }
 
     componentWillReceiveProps(np) {
-
         const {data} = np
-
         if (isPro && data && data.id) {
-
             let href = window.location.href
             if (href.indexOf('?from=singlemessage&isappinstalled=0') > 0) {
-
                 href = href.replace('?from=singlemessage&isappinstalled=0', '')
                 window.location.href = href
                 return
             }
-
             if (href.indexOf('?') > 0) {
                 let url = href.match(/\?(\S*)#/)[0]
                 href = href.replace(url, '#')
@@ -319,9 +314,6 @@ export default class GoodsDetail extends React.Component {
             });
             return
         }
-
-
-
 
 
     }
