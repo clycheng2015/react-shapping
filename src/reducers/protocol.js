@@ -43,6 +43,10 @@ export function protocol(state = init, action) {
                 [action.id]:action.data
             }}
 
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
 
         default:
             return state

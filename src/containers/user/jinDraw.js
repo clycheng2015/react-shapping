@@ -49,15 +49,24 @@ class WithDraw extends React.Component {
         const {uid, fetchWithDraw, history, userInfo} = this.props
 
         const {getFieldsValue} = this.props.form;
+        let exp =/^(0|[1-9]\d*)(\.\d{1,2})?$/
 
         let data = getFieldsValue(["bankname", "bankCard", "username", "phone"])
-
-        if (data.bankname === '') {Toast.info("请输入银行名称！", 1);return false}
-        if (data.username === '') {Toast.info("请输入银行名称！", 1);return false}
-        if (data.bankCard === '' || (data.bankCard.replace(/\s/g, '').length < 15)) {Toast.info("请输入正确的银行卡号！", 1);return false}
-        if (data.phone === '' || (data.phone.replace(/\s/g, '').length < 11)) {Toast.info("请输入正确的手机号！", 1);return false}
-
         if(this.state.value>userInfo.jftomoney){Toast.info("可提现金额不足！", 1);return false}
+        if( this.state.value<=0){Toast.info("请输入正确的金额！",1);return false}
+        if(!exp.test(this.state.value)){Toast.info("请输入正确的金额！",1);return false}
+
+        console.log(data.bankname)
+
+        if (data.bankname === undefined) {Toast.info("请输入银行名称！", 1);return false}
+
+        if (data.bankCard === undefined || (data.bankCard.replace(/\s/g, '').length < 15)) {Toast.info("请输入正确的银行卡号！", 1);return false}
+
+        if (data.username === undefined) {Toast.info("请输入卡主姓名！", 1);return false}
+
+        if (data.phone === undefined || (data.phone.replace(/\s/g, '').length < 11)) {Toast.info("请输入正确的手机号！", 1);return false}
+
+
         let newdata={
             uid:uid,
             tiqumoney:this.state.value,
@@ -89,12 +98,24 @@ class WithDraw extends React.Component {
                     <div><div className="top-info-wl">
                             <div className="title">提现金额：</div>
                             <div className="cnt">
-                                <InputItem type="'number"
-                                           {...getFieldProps('number')}
+                                <InputItem type="money"
+                                           {...getFieldProps('number', {
+                                               normalize: (v, prev) => {
+                                                   if (v && !/^(([1-9]\d*)|0)(\.\d{0,2}?)?$/.test(v)) {
+                                                       if (v === '.') {
+                                                           return '0.';
+                                                       }
+                                                       return prev;
+                                                   }
+                                                   return v;
+                                               },
+                                           })}
+                                           moneyKeyboardAlign="left"
                                            value={this.state.value}
                                            onChange={(v) => this.setState({
                                                value: v
                                            })}
+                                           clear
                                            placeholder={ userInfo.jftomoney}>￥</InputItem>
                             </div>
                         </div>
@@ -140,9 +161,8 @@ class WithDraw extends React.Component {
 
                 <div className="msg-info">
                     <p>温馨提示</p>
-                    <p> 1、余额与金凤余额充值累计达到500元，即可升级成为VIP，享受VIP专属价格;</p>
-                    <p> 2、若一次充值超过500元，立返20%。实际到账=充值金额+充值；</p>
-                    <p> 3、充值的金额，每天都由返的钱÷365进行返现，每周二进行提现。</p>
+                    <p> 1、请认真填写相关信息，若打款不成功，客服会通过联系电话联系您！</p>
+                    <p> 2、打卡仅支持储蓄卡。</p>
                 </div>
 
             </div>

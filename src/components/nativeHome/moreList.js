@@ -57,12 +57,22 @@ class MoreList extends React.Component {
             return (
                 <div key={rowID} className="goods" onClick={() =>
                     nativeClick({type:2, url:'', id:rowData.id, name:rowData.stitle, activeType:'0'})}>
+                    <div className="img-info list-goods-img-info">
 
-                    <div className="img-info">
+                        <div className="list-goods-img-icon">
+
+                            {
+                                rowData.type === '0' && rowData.list_smallpicafter && <img src={rowData.list_smallpicafter} alt="" />
+                            }
+
+                        </div>
+
                         <img src={rowData.bigpic+'?imageMogr2/thumbnail/!60p'} alt="" ref={(el)=>this.imgH=el}/>
+
                     </div>
                     <div className="txt-info">
-                        <p className="title">{rowData.stitle}</p>
+                        <p className="title">
+                            {rowData.isown===2&&<span>海外直邮</span>}{rowData.stitle}</p>
                         <p className="price">
                             ￥{Number(rowData.zkprice).toFixed(2)}
                             <span> ￥{Number(rowData.price).toFixed(2)}</span>

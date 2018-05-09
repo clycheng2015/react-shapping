@@ -3,23 +3,19 @@
  */
 import React from 'react'
 import {Modal, ListView, Checkbox, InputItem, List, Toast, Flex, SwipeAction} from 'antd-mobile'
+
+import {timeOut} from '../../utils/tools'
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
 export  default  class CarList extends React.Component {
     constructor(props) {
         super(props);
-        const dataSource = new ListView.DataSource({
-            rowHasChanged: (row1, row2) => row1 !== row2,
-        });
+
         this.state = {
-            dataSource,
+
             height: document.documentElement.clientHeight,
+            jian: 0,
         };
-    }
-
-
-    componentDidMount() {
-
     }
 
 
@@ -70,7 +66,8 @@ export  default  class CarList extends React.Component {
      * @private
      */
     _priceTol = () => {
-        const {checkData} = this.props
+        const {owCheckData, osCheckData} = this.props
+        let checkData = owCheckData.concat(osCheckData)
         let checkedArr = []
         checkData.map(i => {
             if (i.checked) {
@@ -85,14 +82,15 @@ export  default  class CarList extends React.Component {
 
     }
 
+
     /***
      *  去结算
      * @returns {XML}
      */
 
     _gotoBuy = () => {
-        const {history, checkData} = this.props
-
+        const {history, owCheckData, osCheckData} = this.props
+        let checkData = owCheckData.concat(osCheckData)
         let checkedArr = []
         checkData.map(i => {
             if (i.checked) {
@@ -106,93 +104,236 @@ export  default  class CarList extends React.Component {
 
             history.push({
                 pathname: "/orderDetail",
-                state: {data: checkedArr, state: "car"}
+                state: {
+                    data: checkedArr,
+                    state: "car",
+                    mjprice:this._freePrice()
+
+                }
             })
         }
 
 
     }
 
-    render() {
-        const {match, checkData, ckeckAllState, carCheckAll, carCheck,history} = this.props
-        const separator = (sectionID, rowID) => (
-            <div
-                key={`${sectionID}-${rowID}`}
-                style={{
-                    backgroundColor: '#f7f6f6',
-                    height: 8,
-                    borderTop: '1px solid #ECECED',
-                    borderBottom: '1px solid #ECECED',
-                }}
-            />
-        );
-        const row = (data, sectionID, rowID) => {
-            let rowData = data.list
-            return (
-                <div key={rowID}>
-                    <SwipeAction
-                        autoClose
-                        right={[
-                            {
-                                text: '取消',
-                                onPress: () => console.log('cancel'),
-                                style: {backgroundColor: '#ddd', color: 'white'},
-                            },
-                            {
-                                text: '删除',
-                                onPress: () => this._del(rowData.id),
-                                style: {backgroundColor: '#F4333C', color: 'white'},
-                            },
-                        ]}
+    /***
+     * 满减提示
+     * @private
+     */
+    _activeTxt = (activeInfo) => {
 
-                    >
-                        <div className="item">
-                            <div className="left">
-                                <CheckboxItem className="checkbox" key={rowID} value={rowID} checked={data.checked} onChange={(e) => carCheck(rowData.id)} activeStyle={{background: "none"}}/>
-                            </div>
-                            <div className="center" onClick={()=>history.push(`/goodsDetail/${rowData.goods_id}`)}><img src={rowData.goods_smallpic} alt=""/></div>
-                            <div className="right">
-                                <p className='title'>{rowData.goods_title}</p>
-                                <div className="two">
-                                    <span className="price">￥{rowData.goods_price}</span>
-                                    <span className="count"><span className="lose box" onClick={() => this._countLose(rowData)}>-</span>
-                                    <List ><InputItem type="number" error={this.state.hasError} readOnly value={rowData.goods_num}/></List>
-                                    <span className="add box" onClick={() => this._countAdd(rowData)}>＋</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </SwipeAction>
-                </div>
-            );
-        };
+        let tot = this._priceTol();
+        let html = ''
+
+        if (Number(activeInfo.datalist[0].man) <= Number(tot)) {
+            html = `可享减免${activeInfo.datalist[0].jian}!`
+        }
+
+        for (let i = 0; i < activeInfo.datalist.length; i++) {
+            if (Number(activeInfo.datalist[i].man) > Number(tot)) {
+                html = `还差￥${(Number(activeInfo.datalist[i].man) - Number(tot)).toFixed(2)}元可享减${activeInfo.datalist[i].jian}!`
+            }
+        }
+
+        return html
+
+    }
+
+    /***
+     * 优惠价
+     * @private
+     */
+    _freePrice = () => {
+        const {activeInfo}=this.props
+        let tot = this._priceTol();
+        let free=0;
+
+        if(activeInfo.datalist && activeInfo.datalist.length>0){
+
+            if (Number(activeInfo.datalist[0].man) <= Number(tot)) {
+                free = activeInfo.datalist[0].jian
+            }
+            for (let i = 1; i < activeInfo.datalist.length; i++) {
+                if (Number(activeInfo.datalist[i-1].man) > Number(tot) && Number(activeInfo.datalist[i].man) <= Number(tot)) {
+                    free = activeInfo.datalist[i].jian
+                }
+            }
+
+
+        }
+
+
+        return Number(free)
+
+
+    }
+
+
+    /***
+     * 活动后总价
+     * @returns {XML}
+     */
+
+    _activeTot=()=>{
+        let tot = this._priceTol();
+        let free=this._freePrice();
+
+        let newTot=tot-free
+
+        return newTot.toFixed(2)
+    }
+    render() {
+        const {match, owCheckData, osCheckData, carCheckAll, osCkeckAllState, owCkeckAllState, carCheck, history, activeInfo} = this.props
+
         return (
             <div>
-                <ListView
-                    ref={el => this.lv = el}
-                    dataSource={this.state.dataSource.cloneWithRows(checkData)}
-                    renderFooter={() => (<div style={{padding: 30, paddingBottom: 200, textAlign: 'center'}}>{this.state.isLoading ? '加载中' : '暂无更多'}</div>)}
-                    renderRow={row}
-                    renderSeparator={separator}
-                    initialListSize={5}
-                    pageSize={5}
-                    style={{
-                        height: this.state.height,
-                        paddingTop: "1.7rem",
-                    }}
-                    scrollRenderAheadDistance={200}
-                    scrollEventThrottle={20}
-                    onEndReachedThreshold={10}
-                />
+                <div style={{height: "1.8rem"}}/>
+                {
+                    owCheckData.length > 0 &&
+                    <div className="mel-owner-info">
+                        <div className="mel-owner-check-all">
+                            <CheckboxItem className="checkbox" key={1} onChange={() => carCheckAll(owCheckData[0].type)}
+                                          activeStyle={{background: "none"}} checked={owCkeckAllState}/>
+                            <span className="title">美纶自营</span>
+                        </div>
+                        {owCheckData.map((data, rowID) => {
+                            let rowData = data.list
+                            return (
+                                <div key={rowID}>
+                                    <SwipeAction
+                                        autoClose
+                                        right={[
+                                            {
+                                                text: '取消',
+                                                onPress: () => console.log('cancel'),
+                                                style: {backgroundColor: '#ddd', color: 'white'},
+                                            },
+                                            {
+                                                text: '删除',
+                                                onPress: () => this._del(rowData.id),
+                                                style: {backgroundColor: '#F4333C', color: 'white'},
+                                            },
+                                        ]}
+
+                                    >
+                                        <div className="item">
+                                            <div className="left">
+                                                <CheckboxItem className="checkbox" key={rowID} value={rowID}
+                                                              checked={data.checked}
+                                                              onChange={(e) => carCheck(rowData.id, owCheckData[0].type)}
+                                                              activeStyle={{background: "none"}}/>
+                                            </div>
+                                            <div className="center"
+                                                 onClick={() => history.push(`/goodsDetail/${rowData.goods_id}`)}><img
+                                                src={rowData.goods_smallpic} alt=""/></div>
+                                            <div className="right">
+                                                <p className='title'>{rowData.goods_title}</p>
+                                                <div className="two">
+                                                    <span className="price">￥{rowData.goods_price}</span>
+                                                    <span className="count"><span className="lose box"
+                                                                                  onClick={() => this._countLose(rowData)}>-</span>
+                                    <List ><InputItem type="number" error={this.state.hasError} readOnly
+                                                      value={rowData.goods_num}/></List>
+                                    <span className="add box" onClick={() => this._countAdd(rowData)}>＋</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwipeAction>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+
+
+                }
+
+
+                <div style={{height: ".2rem"}}/>
+
+                {
+                    osCheckData.length > 0 &&
+                    <div className="mel-owner-info">
+                        <div className="mel-owner-check-all">
+                            <CheckboxItem className="checkbox" key={1} onChange={() => carCheckAll(osCheckData[0].type)}
+                                          activeStyle={{background: "none"}} checked={osCkeckAllState}/>
+                            <span className="title">美纶国际</span>
+                        </div>
+                        {osCheckData.map((data, rowID) => {
+                            let rowData = data.list
+                            return (
+                                <div key={rowID}>
+                                    <SwipeAction
+                                        autoClose
+                                        right={[
+                                            {
+                                                text: '取消',
+                                                onPress: () => console.log('cancel'),
+                                                style: {backgroundColor: '#ddd', color: 'white'},
+                                            },
+                                            {
+                                                text: '删除',
+                                                onPress: () => this._del(rowData.id),
+                                                style: {backgroundColor: '#F4333C', color: 'white'},
+                                            },
+                                        ]}
+
+                                    >
+                                        <div className="item">
+                                            <div className="left">
+                                                <CheckboxItem className="checkbox" key={rowID} value={rowID}
+                                                              checked={data.checked}
+                                                              onChange={(e) => carCheck(rowData.id, osCheckData[0].type)}
+                                                              activeStyle={{background: "none"}}/>
+                                            </div>
+                                            <div className="center"
+                                                 onClick={() => history.push(`/goodsDetail/${rowData.goods_id}`)}><img
+                                                src={rowData.goods_smallpic} alt=""/></div>
+                                            <div className="right">
+
+                                                <p className='title'><span>海外直邮</span>{rowData.goods_title} </p>
+                                                <div className="two">
+                                                    <span className="price">￥{rowData.goods_price}</span>
+                                                    <span className="count"><span className="lose box"
+                                                                                  onClick={() => this._countLose(rowData)}>-</span>
+                                    <List ><InputItem type="number" error={this.state.hasError} readOnly
+                                                      value={rowData.goods_num}/></List>
+                                    <span className="add box" onClick={() => this._countAdd(rowData)}>＋</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwipeAction>
+                                </div>
+                            )
+                        })}
+                    </div>
+                }
+
+                <div style={{height: "2.5rem"}}/>
                 <div className={ match.params.state == 'dltocar' ? 'dgobuy' : 'gobuy'}>
+                    {
+                        activeInfo && activeInfo.id &&activeInfo.datalist!==null&& timeOut(activeInfo.endtime) &&
+                        <div className="active-msg-info">
+                            活动：{this._activeTxt(activeInfo)}
+                        </div>
+                    }
+
                     <Flex>
-                        <Flex.Item><CheckboxItem className="checkbox" key={1} onChange={() => carCheckAll()} activeStyle={{background: "none"}} checked={ckeckAllState}>全选</CheckboxItem></Flex.Item>
-                        <Flex.Item className="tot">总计:￥{ this._priceTol()}</Flex.Item>
-                        <Flex.Item className="buy-btn" onClick={() => this._gotoBuy()}>去结算</Flex.Item>
+                        <Flex.Item className="tot">
+                            {
+                                activeInfo && activeInfo.datalist && activeInfo.datalist.length>0 && timeOut(activeInfo.endtime) ?
+                                    <div>
+                                        <p className='all'>合计:￥{this._activeTot()}</p>
+                                        <p className='jian'> 总额：￥{ this._priceTol()} 立减：{this._freePrice()}</p>
+                                    </div>:
+                                    <p className='all' style={{height:'1rem',lineHeight:"1rem"}}>合计:￥{this._priceTol()}</p>
+                            }
+
+                        </Flex.Item>
+
+                        <Flex.Item><span className="buy-btn" onClick={() => this._gotoBuy()}>去结算</span></Flex.Item>
                     </Flex>
-
-
                 </div>
-
             </div>
         );
     }

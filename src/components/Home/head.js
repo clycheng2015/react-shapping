@@ -1,7 +1,9 @@
 import React from 'react'
-import {Badge, SearchBar} from 'antd-mobile'
+import {Toast, SearchBar,Badge} from 'antd-mobile'
 import {Link} from 'react-router-dom'
 
+import {AppLocalStorage} from '../../utils/cookie'
+import wx from 'weixin-js-sdk';
 class Head extends React.Component {
     constructor(props) {
         super(props)
@@ -10,17 +12,51 @@ class Head extends React.Component {
 
             focused: false,
         }
+
+        this.user=AppLocalStorage.Cache.get('user')
+    }
+
+    Qrcode = () => {
+        const {history} = this.props
+
+        wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function (res) {
+                if (res.resultStr) {
+                    if (res.resultStr.indexOf(',') > 0) {
+                        history.push(`/QRCodeList/${ res.resultStr.split(',')[1]}`)
+                    } else {
+                        history.push(`/QRCodeList/${res.resultStr}`)
+                    }
+                }
+            }
+        });
+    }
+
+    _click=()=>{
+        const { history} = this.props
+        history.push('/searchList')
+    }
+
+    _msgClick=()=>{
+
+        const {history} = this.props
+        if(! this.user){return false}
+
+        history.push('/message')
+
     }
 
     render() {
-        const {type, history} = this.props
+        const {type,history,msgCount} = this.props
         return (
             <div className={type == 0 ? "search-bar" : "search-bar-active"}>
-                <div className="box name">美纶购</div>
+                <div className="box msg">
+                    <img src={require('static/images/home/ic_scan.png')} alt="" onClick={() => this.Qrcode()}/>
 
-                <Link to='/search'>
-                    <div className="box s-btn">
-
+                </div>
+                <div className="box s-btn"  onClick={()=>this._click()}>
                         <SearchBar
                             placeholder="上新1200商品"
                             focused={this.state.focused}
@@ -33,13 +69,16 @@ class Head extends React.Component {
                             }}
                             disabled
                         />
-                    </div>
-                </Link>
+                </div>
                 <div className="box msg">
 
-                    {/*<p><img src={type==1?require('static/images/wmsg.png'):require('static/images/msg.png')} alt=""/><Badge dot className="badge"/></p>*/}
-                    {/*<p>消息</p>*/}
+                    <span style={{position:'relative'}}>
+                            <img src={require('static/images/home/mesicon.png')} alt="" onClick={() =>this._msgClick()}/>
+                        {msgCount>0&& <span className="icon-bag" style={{position:'absolute',top:"-.3rem",right:0}}><Badge dot/></span>}
+
+                    </span>
                 </div>
+
             </div>
         )
 

@@ -35,16 +35,16 @@ export const drawerShow=(showType)=>({
 
 
 
-export const countAdd=()=>({
+export const countAdd=(count)=>({
 
-    type:'COUNT_ADD'
+    type:'COUNT_ADD',count
 
 })
 
 
-export const countLose=()=>({
+export const countLose=(count)=>({
 
-    type:'COUNT_LOSE'
+    type:'COUNT_LOSE',count
 
 })
 

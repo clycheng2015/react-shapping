@@ -11,13 +11,18 @@ const Share = (config) => {
         nonceStr: config.nonceStr, // 必填，生成签名的随机串
         signature: config.signature, // 必填，签名，见附录1
         jsApiList: [
-            'onMenuShareAppMessage', 'onMenuShareTimeline',
-            'onMenuShareQQ', 'onMenuShareQZone','chooseImage','uploadImage'
+            'onMenuShareAppMessage',
+            'onMenuShareTimeline',
+            'onMenuShareQQ',
+            'onMenuShareQZone',
+            'chooseImage',
+            'uploadImage',
+            'previewImage',
+            'scanQRCode',
         ]
     });
-
-
 }
+
 Share.prototype = {
     constructor: Share,
     init(config) {
@@ -33,7 +38,6 @@ Share.prototype = {
             this. toShareQQ();
             this.toShareQZone();
         });
-
         wx.error(res => {
             console.log(`${res}`);
         });

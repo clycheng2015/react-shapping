@@ -21,6 +21,11 @@ export const activeDetail = (state = init, action) => {
             return {...state,isFetching:false,data:action.data}
         case 'ACDETAIL_REMOVE':
             return {...state,data:{}}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

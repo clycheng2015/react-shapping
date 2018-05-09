@@ -53,6 +53,19 @@ class MoreList extends React.Component {
         fetchHomeList({pagesize: pagesize, pagenum: ++num,})
     }
 
+    _goDetail=(rowData)=>{
+        const {history} =this.props
+        switch (rowData.type){
+
+            case '0':
+                history.push(`/goodsDetail/${rowData.good_id}`)
+                break;
+
+            case '1':
+                history.push(`/activeDetail/${rowData.good_id}SECKILL`)
+                break;
+        }
+    }
 
     render() {
         const {list, history, isFetching, hasMore} = this.props
@@ -60,18 +73,27 @@ class MoreList extends React.Component {
         const row = (rowData, sectionID, rowID) => {
 
             return (
-                <div key={rowID} className="goods" onClick={() => history.push(`/goodsDetail/${rowData.id}`)}>
+                <div key={rowID} className="goods" onClick={() =>this._goDetail(rowData)}>
 
-                    <div className="img-info">
+                    <div className="img-info list-goods-img-info">
 
-                        <img src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
+                        <div className="list-goods-img-icon">
+
+                            {
+                                rowData.type === '0' && rowData.list_smallpicafter && <img src={rowData.list_smallpicafter + '?imageMogr2/thumbnail/!99p'} alt="" />
+                            }
+
+
+                        </div>
+
+                        <img className='goods-bigpic' src={rowData.bigpic+'?imageMogr2/thumbnail/!30p'} alt="" ref={(el)=>this.imgH=el}/>
 
 
                     </div>
 
                     <div className="txt-info">
                         <p className="title">
-                            {rowData.stitle}
+                            {rowData.isown===2&&<span>海外直邮</span>} {rowData.stitle}
                         </p>
                         <p className="price">
                             ￥{Number(rowData.zkprice).toFixed(2)}

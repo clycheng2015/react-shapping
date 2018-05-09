@@ -6,9 +6,9 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {AppLocalStorage} from '../../utils/cookie'
+import wx from 'weixin-js-sdk';
 
-
-import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
+import { Icon, Toast, Modal, Flex, List} from 'antd-mobile'
 
 import * as user from 'actions/user'
 import * as global from 'actions/global'
@@ -40,7 +40,7 @@ export default class UserCenter extends React.Component {
 
     }
     _updateName = (value, uid) => {
-        const {fetchUpdateName} = this.props
+        const {fetchUpdateName,fetchUpdateImg} = this.props
         if (value == '') {
             Toast.info("昵称不能为空", 1)
         }
@@ -50,6 +50,27 @@ export default class UserCenter extends React.Component {
                 uid: uid
             })
         }
+    }
+    _changeImg=()=>{
+        const {fetchUpdateImg,userInfo} = this.props
+
+        wx.chooseImage({
+            count: 1,
+            success: function (res) {
+                wx.uploadImage({
+                    localId: res.localIds[0],
+                    success: function (res) {
+
+
+                        fetchUpdateImg({serverId:res.serverId},userInfo.id)
+
+                    },
+                    fail: function (res) {
+                        // alert(JSON.stringify(res));
+                    }
+                });
+            }
+        });
     }
 
     render() {
@@ -63,8 +84,7 @@ export default class UserCenter extends React.Component {
                 return (
                     <div>
                         <List style={{paddingTop: "1rem"}}>
-                            <List.Item arrow="horizontal"
-                                       extra={<img src={userInfo.headpic} alt="" className="headpic"/>}>头像</List.Item>
+                            <List.Item arrow="horizontal" onClick={()=>this._changeImg()} extra={<img src={userInfo.headpic} alt="" className="headpic" />}>头像</List.Item>
                         </List>
                         <List>
 
@@ -87,7 +107,7 @@ export default class UserCenter extends React.Component {
                         </List>
                         <List>
                             <List.Item arrow="" extra={<span
-                                style={{paddingRight: '.4rem'}}>{userInfo.id}</span>}>美纶购ID</List.Item>
+                                style={{paddingRight: '.4rem'}}>100{userInfo.id}</span>}>美纶购ID</List.Item>
                         </List>
                     </div>
 

@@ -1,17 +1,15 @@
-body {
-  background: white !important;
-}
 
 .item-container {
   overflow: hidden;
-  //background: #f7f6f6 ;
+  background: #f3f3f1;
 
-  .nav{
+  .nav {
 
     width: 100%;
     height: .9rem;
     position: fixed;
-    top:0;
+    top: 0;
+    background: white;
 
   }
   .search-nav {
@@ -141,29 +139,40 @@ body {
 
   .am-search {
 
-    background-color: #f3f3f1;
+    background-color: white;
+  }
+  .am-search-input {
+    background: #f3f3f1;
   }
 
   .new-item {
 
     .head {
+      text-align: center;
+      min-height:1.75rem ;
+      width: 100%;
       img {
-        width: 7.5rem;
+        width: 5.24rem;
+        border-radius: 5px;
+
+
 
       }
 
     }
     .list-info {
-      //background: white;
-      .box{
 
-        margin-top: .3rem;
-        margin-bottom: .3rem;
+      .box {
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background: white;
+        //min-height: 2.1rem;
       }
 
       .list-item {
 
-        width: 1.875rem;
+        width: 1.7rem;
         height: 2.1rem;
         //border: 1px solid red;
         box-sizing: border-box;
@@ -179,7 +188,7 @@ body {
 
           width: 1.3rem;
           height: 1.3rem;
-          background: #f3f3f1;
+          //background: #f3f3f1;
           margin: 0 auto;
           display: table-cell;
           text-align: center;
@@ -188,6 +197,7 @@ body {
             width: 100%;
             vertical-align: middle;
             max-height: 1.3rem;
+
           }
         }
         .title {
@@ -202,9 +212,70 @@ body {
 
   }
 
-  .new-item:last-child{
+  .new-item:last-child {
 
-    padding-bottom: 1rem;
+    //padding-bottom: 1rem;
+  }
+
+  .am-tabs-default-bar-left .am-tabs-default-bar-content {
+    margin-bottom: .4rem;
+  }
+
+  .am-tabs-default-bar-underline {
+    display: none;
+  }
+  .am-tabs-default-bar-tab-active {
+    color: #fedb62 !important;
+    background: #f3f3f1 !important;
+  }
+
+  .am-tabs-default-bar-left .am-tabs-default-bar-tab {
+    border-right: none;
+    border-bottom: 1px solid #f3f3f1;
+  }
+  .am-tabs-default-bar-tab {
+    width: 100% !important;
+    padding: 0;
+  }
+  .am-tabs-default-bar {
+    font-size: .3rem !important;
+    width: 2rem;
+  }
+
+  .index-list {
+
+
+  }
+  .list-cnt-info {
+
+    width: 5.5rem;
+    margin-left: 2rem;
+  }
+  .am-tabs-tab-bar-wrap {
+    background: white;
+  }
+  .index-list-info{
+    background: white;
+    width: 2rem;
+
+    position: fixed;
+    left: 0;
+    overflow: hidden;
+  }
+
+
+  .t-item-info{
+    background: #f3f3f1;
+    padding-left: .12rem;
+    padding-right: .12rem;
+
+    .t-title{
+      height: .85rem;
+      line-height: 1rem;
+      font-size: .26rem;
+    }
+
   }
 
 }
+

@@ -47,13 +47,12 @@ export default class Home extends React.Component {
 
         const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
         fetchHome('refresh')
-        fetchHomeList({pagesize: pagesize, pagenum: 0,})
+        fetchHomeList({pagesize: pagesize, pagenum: 1,})
     }
 
     render() {
         const { homeData, errorData } = this.props
 
-        console.log(homeData)
         return (
             <div className="home-container">
 

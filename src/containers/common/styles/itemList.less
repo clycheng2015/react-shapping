@@ -9,6 +9,7 @@ body{
 .item-list-container {
   background: #f7f6f6;
   .am-list-body {
+    width: 100%;
     border: none;
     float: left !important;
     background: transparent !important;
@@ -109,24 +110,38 @@ body{
       width: 3.7rem;
       height: 1.2rem;
       overflow: hidden;
-
+      margin-top: .1rem;
       .title{
 
         display: -webkit-box !important;
         -webkit-box-orient: vertical !important;
         -webkit-line-clamp: 2 !important;
         overflow: hidden !important;
-        font-size: .3rem;
-        height: .71rem;
+        font-size: .28rem;
+        line-height: .37rem;
+        height: .7rem;
         padding-right: .2rem;
         padding-left: .2rem;
+        span{
+          display: inline-block;
+          width: 1.1rem;
+          height: .3rem;
+          font-size: .2rem;
+          line-height: .32rem;
+          text-align: center;
+          background: #c058f6;
+          color: white;
+          border-radius: 2px;
+          margin-right: .1rem;
+          margin-bottom: .01rem;
+        }
       }
       .price{
         padding-right: .2rem;
         padding-left: .2rem;
         color: red;
         font-size: .3rem;
-        line-height: .5rem;
+        line-height: .4rem;
       }
 
     }
@@ -154,6 +169,12 @@ body{
       position: relative;
       top: .045rem;
     }
+    .ee1{
+
+      width: .17rem;
+      position: relative;
+      top: -.03rem;
+    }
 
     img{
       width: .15rem;
@@ -167,7 +188,34 @@ body{
 
 
   }
+.mo-box{
+  .box-bg{
+    background: black;
+    opacity: .1;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    margin-top: 1.7rem;
+  }
+  .ck-list{
+    width: 100%;
+    background: white;
+    position: fixed;
+    margin-top: .9rem;
+    z-index: 9999999999;
+    .am-list-body{
+      float: none !important;
+    }
+    .am-list-body div:not(:last-child) .am-list-line{
+      border: none;
+    }
+    .am-list-item{
+      border-bottom: 1px solid #f7f6f6;
+    }
+  }
 
+}
 
 
 }

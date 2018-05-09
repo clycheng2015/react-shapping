@@ -36,6 +36,7 @@
       text-align: right;
       padding-right: .3rem;
       padding-bottom: .1rem;
+
     }
     .item-head {
       //text-align: center;
@@ -48,6 +49,7 @@
     width: 100%;
     height: 2rem;
     overflow: hidden;
+    border-bottom: 1px solid #f6f5f5;
     .left {
       float: left;
       width: 10%;
@@ -90,6 +92,19 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+
+        span {
+          display: inline-block;
+          width: 1.3rem;
+          height: .28rem;
+          font-size: .2rem;
+          line-height: .32rem;
+          text-align: center;
+          background: #c058f6;
+          color: white;
+          border-radius: 2px;
+          margin-right: .1rem;
+        }
       }
       .two {
         .price {
@@ -175,8 +190,8 @@
 
     background: #fe4203;
     border: 1px solid #fe4203;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 
   }
 
@@ -184,6 +199,8 @@
     display: block;
     border-color: white;
     height: 8px;
+    top: 1px;
+    right: 4px;
   }
 
   .am-list-item {
@@ -210,12 +227,12 @@
   .gobuy {
     z-index: 99999;
     box-shadow: 3px 0 8px #f7f6f6;
-    height: 1rem;
+    min-height: 1rem;
     width: 100%;
     background: white;
     position: fixed;
     overflow: hidden;
-    bottom: 50px;
+    bottom: 1rem;
     .am-list-content {
       font-size: .22rem;
     }
@@ -239,14 +256,27 @@
       float: left;
       height: 1rem;
       font-size: .28rem;
-      line-height: 1rem;
+      //line-height: 1rem;
       text-align: left;
+      padding-left: .4rem;
       color: black;
+      p{
+        height: 0.5rem;
+
+      }
+      .all{
+        font-size: 0.32rem;
+        line-height: 0.6rem;
+      }
+      .jian{
+        font-size: 0.2rem;
+        line-height: 0.3rem;
+      }
     }
 
     .buy-btn {
 
-      float: left;
+      float: right;
       width: 2.4rem;
       height: 1rem;
       font-size: .32rem;
@@ -292,7 +322,7 @@
 
     box-shadow: 3px 0 8px #f7f6f6;
     overflow: hidden;
-    height: 1rem;
+    min-height: 1rem;
     width: 100%;
     background: white;
     position: fixed;
@@ -319,14 +349,28 @@
       float: left;
       height: 1rem;
       font-size: .28rem;
-      line-height: 1rem;
+      //line-height: 1rem;
       text-align: left;
+      padding-left: .4rem;
       color: black;
+      p{
+        height: 0.5rem;
+
+      }
+      .all{
+        font-size: 0.32rem;
+        line-height: 0.6rem;
+      }
+      .jian{
+        font-size: 0.2rem;
+        line-height: 0.3rem;
+      }
     }
+
 
     .buy-btn {
 
-      float: left;
+      float: right;
       width: 2.4rem;
       height: 1rem;
       font-size: .32rem;
@@ -409,4 +453,39 @@
 
     padding: 0;
   }
+
+  .mel-owner-info{
+    //padding-top: 1.8rem;
+    .mel-owner-check-all{
+      overflow: hidden;
+      background: white;
+      height: .8rem;
+      line-height: 1rem;
+      font-size: .26rem;
+      .title{
+
+        margin-left: .1rem;
+      }
+      .am-list-item{
+        float: left;
+      }
+    }
+
+  }
+
+  .active-msg-info{
+
+    height: .6rem;
+    width: 100%;
+    background: rgba(254, 129, 120, 1);
+
+    //opacity: .9;
+    line-height: .6rem;
+    font-size: .25rem;
+    color: white;
+    padding-left: .3rem;
+
+  }
+
+
 }

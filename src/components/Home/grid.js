@@ -15,7 +15,6 @@ class HomeGrid extends React.Component {
     componentDidMount() {
 
     }
-
     _gridClick=(el)=>{
         const {history}=this.props
         history.push(el.path)
@@ -34,10 +33,12 @@ class HomeGrid extends React.Component {
         return newData
     }
     render() {
+        const {data}=this.props
         return (
             <Grid
                 data={this._getGrid()}
                 hasLine={false}
+                columnNum={data.length >4 ? 5:4}
                 activeStyle='false'
                 onClick={(el) => this._gridClick(el)}
             />

@@ -100,11 +100,11 @@ module.exports = {
             //
             // },
             {
-                test: /\.(less|css)$/,
-                use: isPro ? ExtractTextPlugin.extract({
+                test: /\.(less|sass|css)$/,
+                use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ["css-loader", "less-loader"]
-                }) : ["style-loader", "css-loader", "less-loader"]
+                })
             },
             {
                 test: /\.(svg)$/i,

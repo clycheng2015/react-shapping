@@ -23,7 +23,7 @@ class ModelFour extends React.Component {
 
         return (
                 <div className="model-five" ref={el => this.shop = el} style={{width: "100%"}}>
-                    <ul style={{width: `${(data.length+2)*2}rem`}}>
+                    <ul style={{width: `${(data.length)*2.3+2}rem`}}>
                         {
                             data.map((i, index) => (
                                 <li className="" key={index}

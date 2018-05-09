@@ -43,11 +43,14 @@
       padding: 0;
       border-bottom: 1px solid #F6E16F;
       color: black;
-      font-size: .2rem;
+      font-size: .25rem;
     }
     .am-list-item .am-input-control input {
       color: black;
-      font-size: .2rem;
+      font-size: .25rem;
+    }
+    .am-input-control input{
+      font-size: .25rem !important;
     }
     .login-btn {
       height: .7rem;
@@ -86,12 +89,38 @@
       //line-height: 1rem;
       background: #b2b2b2;
       color: #3e3e3e;
-      font-size: .2rem;
+      font-size: .25rem;
       z-index: 99999;
       overflow: hidden;
 
 
     }
   }
+  .deal-info{
+    font-size: .28rem;
+    color: #847e7e;
+    margin-top: .2rem;
 
+    .am-radio-input{
+      //border: 1px solid red;
+    }
+    .am-radio{
+      width: .33rem;
+      height: .33rem;
+      border: 1px solid #4a4a4a;
+      border-radius: 3px;
+      margin-top: -.1rem;
+    }
+    .am-radio.am-radio-checked .am-radio-inner:after {
+      top:0;
+      border-color: white;
+      width: 6px;
+      height: 10px;
+
+    }
+    .am-radio-checked{
+      background: #fd5959;
+      border: 1px solid #fd5959;
+    }
+  }
 }

@@ -6,22 +6,24 @@ let init = {
     userInfo: {},
     uid: "",
     order: {
-        remark:'',
+        remark: '',
         isFetching: false,
-        isHandle:false,
+        isHandle: false,
         pagesize: 100,
         pagenum: 1,
-        tab: "待付款",
+        tab: "全部订单",
         tabIndex: 0,
-        orderState:1,
+        orderState: -1,
         orderList: [],
         orderListInfo: {},
-        tabs:
-            [{title: '待付款', state: 1},
+        tabs: [
+            {title: '全部订单', state: -1},
+            {title: '待付款', state: 1},
             {title: '待发货', state: 2},
             {title: '待收货', state: 3},
-            {title: '退/换货', state: 4},
-            {title: '已完成', state: 5}],
+            {title: '退款/售后', state: 4},
+            // {title: '已完成', state: 5}
+        ],
     },
     bill: {
         pagesize: 100,
@@ -34,19 +36,21 @@ let init = {
     },
     orderDetail: {
         pathList: [],
-        remark:""
+        remark: ""
     },
-    yesOrderDetail:{},
-    topUp:{},
-    withDraw:{},
-    payData:{},
-    newPayOrder:{},
-    postageData:{},
-    jinfuData:{},
-    helpData:{},
-    kefuTel:{},
-    IcBanner:{},
-    chooseAddress:{}
+    yesOrderDetail: {},
+    topUp: {},
+    withDraw: {},
+    payData: {},
+    newPayOrder: {},
+    postageData: {},
+    jinfuData: {},
+    helpData: {},
+    kefuTel: {},
+    IcBanner: {},
+    chooseAddress: {},
+
+    badgeData:{}
 
 
 }
@@ -80,7 +84,7 @@ export const user = (state = init, action) => {
                 }
             }
         case types.REQUEST_ORDER_LIST:
-            return {...state, order: {...state.order, isFetching: true,isHandle:false,}}
+            return {...state, order: {...state.order, isFetching: true, isHandle: false,}}
         case types.RECEIVE_ORDER_LIST:
 
             return {
@@ -88,16 +92,16 @@ export const user = (state = init, action) => {
                 order: {
                     ...state.order,
                     isFetching: false,
-                    isHandle:false,
+                    isHandle: false,
                     pagesize: action.pagesize,
                     pagenum: action.pagenum,
                     orderList: action.datalist,
-                    state:0,
+                    state: 0,
                     orderListInfo: {
                         ...state.order.orderListInfo, [action.tab]: {
                             orderList: action.datalist,
                             isFetching: false,
-                            isHandle:false,
+                            isHandle: false,
                             pagesize: action.pagesize,
                             pagenum: action.pagenum,
 
@@ -133,11 +137,11 @@ export const user = (state = init, action) => {
 
         case types.CAR_CREATE_ORDER:
 
-            return {...state,newPayOrder:action.data}
+            return {...state, newPayOrder: action.data}
 
         case types.GOODS_CREATE_ORDER:
 
-            return {...state,newPayOrder:action.data}
+            return {...state, newPayOrder: action.data}
 
         case types.DEL_ORDER:
 
@@ -188,73 +192,83 @@ export const user = (state = init, action) => {
             }
 
 
-
-
-
         case types.GET_ORDER_DETAIL:
 
             return {
-                ...state,yesOrderDetail:action.data
+                ...state, yesOrderDetail: action.data
             }
 
         case types.TOP_UP:
 
             return {
-                ...state,topUp:action.data,newPayOrder:action.data
+                ...state, topUp: action.data, newPayOrder: action.data
             }
 
         case types.DRAW_MONET:
 
             return {
-                ...state,withDraw:action.data
+                ...state, withDraw: action.data
             }
         case types.GO_PAY:
 
             return {
-                ...state,payData:action.data,newPayOrder:{}
+                ...state, payData: action.data, newPayOrder: {}
             }
         case types.GOTO_MONEY_PAY:
 
             return {
-                ...state,payData:action.data,newPayOrder:{}
+                ...state, payData: action.data, newPayOrder: {}
             }
 
         case types.SAVE_PAY_ORDER:
             return {
-                ...state,newPayOrder:action.data
+                ...state, newPayOrder: action.data
             }
         case types.GET_POSTAGE:
             return {
-                ...state,postageData:action.data
+                ...state, postageData: action.data
             }
         case types.GOODS_ACTIVE_ORDER:
             return {
-                ...state,newPayOrder:action.data
+                ...state, newPayOrder: action.data
             }
         case types.GET_JINFU_PRO:
             return {
-                ...state,jinfuData:action.data
+                ...state, jinfuData: action.data
             }
 
         case types.GET_HELP:
             return {
-                ...state,helpData:action.data
+                ...state, helpData: action.data
             }
 
         case types.GET_Tel:
             return {
-                ...state,kefuTel:action.data
+                ...state, kefuTel: action.data
             }
 
         case types.GET_IC_BANNER:
             return {
-                ...state,IcBanner:action.data
+                ...state, IcBanner: action.data
             }
 
         case 'CHOOSE_ADDRESS':
             return {
-                ...state,chooseAddressData:action.data
+                ...state, chooseAddressData: action.data
             }
+
+        case types.GET_BADGE:
+            return {
+                ...state, badgeData: action.data
+            }
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
+        case 'UPDATE_IMG':
+
+            return{...state}
 
         default:
             return state

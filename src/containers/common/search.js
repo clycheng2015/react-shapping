@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2016/7/1.
- */
+
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -12,8 +10,6 @@ import GoodsList from '../../components/Commons/goodsList'
 import * as global from 'actions/global'
 import * as search from 'actions/search'
 require('./styles/search.less')
-
-
 @connect(
     state => {
         return {...state.search}
@@ -24,111 +20,57 @@ export default class Search extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-
-            title: ''
+            title: '',
+            focused:false
         }
-
-    }
-
-    componentDidMount() {
-        //
-        // const {match, getSearchList, location} = this.props
-        // const {params} = match
-        // getSearchList({
-        //     pagesize: 100,
-        //     pagenum: 1,
-        //     word: params.value
-        // })
-
-
-    }
-
-    handleClick() {
-        //该函数用来执行组件内部的事件，比如在这里就是nav组件菜单的导航点击事件
-        // this.props.history.push('/')
-    }
-
-
-    _search = (v) => {
-        const {getSearchList} = this.props
-
-        getSearchList({
-            pagesize: 20,
-            pagenum: 0,
-            word: v
-        })
     }
 
     _updownMore = () => {
-        const {pagenum, isFetching, hasMore, getSearchList, pagesize, word} = this.props
-
+        const {pagenum, isFetching, hasMore, getSearchList, pagesize, word,match} = this.props
         if (isFetching || !hasMore) {
             return;
         }
         let num = pagenum
         let data = {
-            pagesize: pagesize, pagenum: ++num,
-
+            pagesize: pagesize,
+            pagenum: ++num,
+            isown:match.params.id,
         }
-
-        if (word !== '') {
-
-            data = {...data, word: word}
-
-        }
+        if (word !== '') {data = {...data, word: word}}
         getSearchList(data)
-
     }
 
     render() {
-        const {list, history, isFetching, hasMore} = this.props
+        const {list, history, isFetching, hasMore,word} = this.props
+
         return (
-            <div className="search-list-container">
+            <div className="search-list-container"
+                 style={{
+                     height: document.documentElement.clientHeight - 100,
+                     background: "#f7f6f6"
+                 }}
+            >
                 <div className="nav-tab">
-
-
-                    <Icon type="left" size="lg" onClick={() => {
-                        history.goBack()
-                    }} className='back-icon'/>
-
-
-                    <div className="s-box">
-                        <SearchBar
-                            placeholder="搜索"
-                            focused={this.state.focused}
-                            // cancelText="确定"
-                            onFocus={() => {
-                                this.setState({
-                                    focused: false,
-                                });
-                            }}
-                            // showCancelButton={false}
-                            onSubmit={value =>
-                                this._search(value)
-                            }
-                        />
+                    <Icon type="left" size="lg" onClick={() => {history.goBack()}} className='back-icon'/>
+                    <div className="s-box" onClick={()=>history.replace('/searchList')}>
+                        <SearchBar placeholder={word} disabled/>
                     </div>
-
-
                 </div>
-
                 <div className="list">
-                    {
-                        list && list.length > 0 &&
-                        <GoodsList
-                            list={list}
-                            history={history}
-                            isFetching={isFetching}
-                            hasMore={hasMore}
-                            loadMore={this._updownMore}
-
-                        />
+                    {list && list.length > 0 ? <GoodsList list={list} history={history} isFetching={isFetching} hasMore={hasMore} loadMore={this._updownMore}/>:
+                        <div className="empty-info"
+                             style={{
+                                 height: document.documentElement.clientHeight - 130,
+                                 background: "#f7f6f6"
+                             }}
+                        >
+                            <img src={require('static/images/empty/tmp_shopcar@2x.png')} alt=""/>
+                            <p>未找到您的宝贝儿~</p>
+                        </div>
                     }
 
                 </div>
-
             </div>
         )
     }

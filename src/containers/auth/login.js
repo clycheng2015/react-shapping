@@ -65,7 +65,7 @@ class Login extends React.Component {
                 }} style={{color: 'black'}}/></div>
                 <div>
                     <Flex justify="center" align="center">
-                        <Flex.Item className="logo"><img src={require('static/image/ic_logo.png')} alt=""/></Flex.Item>
+                        <Flex.Item className="logo"><img src={require('static/image/ic_logo.png')} alt="" style={{width:"1.5rem"}}/></Flex.Item>
                     </Flex>
                     <div className="login-form">
                         <List>

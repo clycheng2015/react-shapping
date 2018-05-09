@@ -46,20 +46,19 @@ export default class BuyCar extends React.Component {
     componentWillReceiveProps(nextProps) {
         const {fetchCarList, pagesize, pagenum, isFetching} = nextProps
         if (isFetching) {
-            fetchCarList({
-                pagesize: pagesize,
-                pagenum: pagenum
-            })
+            fetchCarList({pagesize: pagesize, pagenum: pagenum})
         }
     }
 
     render() {
-        const {data, history, match, banner} = this.props
+        const {data, history, match, banner,activeInfo} = this.props
+
+
 
         return (
             <div className="car-container"
                  style={{
-                     height: document.documentElement.clientHeight,
+                     minHeight: document.documentElement.clientHeight,
                      background: "#f7f6f6"
                  }}>
                 <div key={this.props.location.pathname}>
@@ -94,7 +93,7 @@ export default class BuyCar extends React.Component {
                                      background: "#f7f6f6"
                                  }}
                             >
-                                <img src={require('static/images/empty/noads_icon.png')} alt=""/>
+                                <img src={require('static/images/empty/tmp_shopcar@2x.png')} alt=""/>
                                 <p> 您的购物车空空如也</p>
                                 <p onClick={() => {
                                     history.push("/")

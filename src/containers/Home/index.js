@@ -9,7 +9,9 @@ import HomePage from '../../components/Home/homePage'
 import Head from '../../components/Home/head'
 import TabBarMain from 'containers/common/tabbar'
 import {getSize} from '../../utils/getSize'
+
 import {Icon} from 'antd-mobile'
+
 require('./styles/index.less')
 @connect(
     state => {
@@ -23,12 +25,14 @@ export default class Home extends React.Component {
     }
 
     componentDidMount() {
-        const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
+        const {pagenum, pagesize, fetchHome, fetchHomeList, dataList,fetchMsgCount} = this.props
 
         fetchHome()
         if (dataList.length === 0) {
             fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
         }
+
+        fetchMsgCount()
     }
 
     componentWillUnmount() {
@@ -42,22 +46,22 @@ export default class Home extends React.Component {
         window.onscroll = null;
     }
 
-    _toRefresh=()=>{
+    _toRefresh = () => {
         const {pagenum, pagesize, fetchHome, fetchHomeList, dataList} = this.props
         fetchHome()
-        if (dataList.length === 0) {
-            fetchHomeList({pagesize: pagesize, pagenum: pagenum,})
-        }
+        fetchHomeList({pagesize: pagesize, pagenum: 1,})
+
     }
 
+
     render() {
-        const {history, homeData, errorData, isFetching,headState} = this.props
+        const {history, homeData, errorData, isFetching, headState,msgCount} = this.props
         return (
             <div className="home-container">
 
-                {headState === 0 && <Head type={headState} history={history}/>}
+                {headState === 0 && <Head type={headState} history={history} msgCount={msgCount}/>}
 
-                {headState === 1 && <div className="white"><Head type={headState}/></div>}
+                {headState === 1 && <div className="white"><Head type={headState} history={history} msgCount={msgCount}/></div>}
 
 
                 { homeData && homeData.bannerDtoList && <HomePage {...this.props}/> }

@@ -5,7 +5,8 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {createForm} from 'rc-form';
-import {Modal, Icon, Flex, Switch, InputItem,List, Toast, Picker,Button,WhiteSpace,TextareaItem} from 'antd-mobile'
+import {idcard} from '../../utils/tools'
+import {Modal, Icon, Flex, Switch, InputItem, List, Toast, Picker, Button, WhiteSpace, TextareaItem} from 'antd-mobile'
 let area = require('./json/area.json')
 import * as user from 'actions/user'
 require('./styles/newads.less')
@@ -39,7 +40,7 @@ const CustomChildren = props => {
                 }}>{props.children}</div>
                 <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
                     <input type="text" disabled
-                           style={{width: "100%",border:'none',outline:"none"}}
+                           style={{width: "100%", border: 'none', outline: "none"}}
                            value={props.extra}/></div>
             </div>
         </div>
@@ -73,16 +74,13 @@ const CustomChildrenInit = props => {
                 }}>{props.children}</div>
                 <div style={{textAlign: 'left', color: '#888', paddingLeft: 25, fontSize: ".22rem", width: "100%"}}>
                     <input type="text" disabled
-                           style={{width: "100%",border:'none',outline:"none"}}
-                           value={initTxt||props.extra}/></div>
+                           style={{width: "100%", border: 'none', outline: "none"}}
+                           value={initTxt || props.extra}/></div>
             </div>
         </div>
     )
 
 };
-
-
-
 
 @connect(
     state => {
@@ -100,24 +98,32 @@ class NewAds extends React.Component {
             hasError: false,
             value: '',
             area: [],
-            areaText: ""
+            areaText: "",
+            card:''
         }
     }
+
     _save = () => {
-        const {uid, fetchAddAds, form, history, location} = this.props;
+        const {fetchAddAds, form, history, location} = this.props;
+        const {getFieldValue} = form
         let id = 0;
-        let isdefault = 1
+        let isdefault = getFieldValue('isdefault') === true ? 1 : 0
         if (location.state != undefined) {
             let data = location.state.data
             id = data.id
-            isdefault = data.isdefault
+
+            if(data.isdefault===1){
+                isdefault = data.isdefault
+            }
         }
-        const {getFieldValue} = form
+        // console.log(isdefault)
         let realname = getFieldValue('receiveName')
         let mobile = this.state.value
         // let area = this.state.area
         let address = this.state.areaText
-        let area =[]
+
+        let card=this.state.card
+        let area = []
         if (realname === undefined) {
             Toast.info("收件人不能为空！", 1)
             return
@@ -134,16 +140,26 @@ class NewAds extends React.Component {
             Toast.info('收货地址不能为空！', 1)
             return
         }
-        else if (areaTxt.indexOf('请选择')>0) {
+        else if (areaTxt.indexOf('请选择') > -1) {
             Toast.info('请选择所在地区', 1)
 
             return
         }
+
+        else if (card!=='' && !idcard(card)) {
+
+            Toast.info('您填写的身份证号码格式不正确！',1)
+            return
+
+        }
+
+
+
+
         else {
+
             area = areaTxt.split(",")
-            console.log(area)
             let data = {
-                uid: uid,
                 id: id,
                 realname: realname,
                 mobile: mobile.replace(/\s/g, ''),
@@ -151,7 +167,8 @@ class NewAds extends React.Component {
                 city: area[1] ? area[1] : '/',
                 county: area[2] ? area[2] : '/',
                 address: address,
-                isdefault: isdefault
+                isdefault: isdefault,
+                idcard:card
             }
 
             fetchAddAds(data, history)
@@ -164,7 +181,8 @@ class NewAds extends React.Component {
             let data = location.state.data
             this.setState({
                 value: data.mobile,
-                areaText:data.address
+                areaText: data.address,
+                card:data.idcard
             })
             let province = data.province === '/' ? '' : data.province
             let city = data.city === '/' ? '' : data.city
@@ -181,6 +199,7 @@ class NewAds extends React.Component {
         }
 
     }
+
     onChange = (value) => {
         if (value.replace(/\s/g, '').length < 11) {
             this.setState({hasError: true,});
@@ -189,11 +208,16 @@ class NewAds extends React.Component {
         }
         this.setState({value,});
     }
+
     render() {
         const {history, location} = this.props
         const {getFieldProps} = this.props.form;
+
+
         if (location.state !== undefined) {
             let data = location.state.data
+
+
             let province = data.province === '/' ? '' : data.province
             let city = data.city === '/' ? '' : data.city
             let county = data.county === '/' ? '' : data.county
@@ -229,7 +253,7 @@ class NewAds extends React.Component {
                             <InputItem
 
                                 {...getFieldProps('receiveName', {
-                                    initialValue:data.realname ,
+                                    initialValue: data.realname,
                                 })}
 
                                 clear
@@ -243,18 +267,33 @@ class NewAds extends React.Component {
                                 onChange={this.onChange}
                                 value={this.state.value}
                             >联系电话</InputItem>
-                            <div className="area-check">
-                            <Picker
-                                title="选择地区"
-                                extra={exp}
-                                data={area.data}
-                                value={this.state.area}
-                                onChange={v => this.setState({area: v})}
 
-                            >
-                                {/*<List.Item  arrow="horizontal">所在地区</List.Item>*/}
-                                <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
-                            </Picker>
+
+                            <InputItem
+                                {...getFieldProps('card',{
+
+
+                                })}
+                                type="text"
+                                placeholder="购买海外直邮商品需填写身份信息"
+
+
+                                onChange={(v)=>this.setState({card: v})}
+                                value={this.state.card}
+                            >身份证号码</InputItem>
+
+                            <div className="area-check">
+                                <Picker
+                                    title="选择地区"
+                                    extra={exp}
+                                    data={area.data}
+                                    value={this.state.area}
+                                    onChange={v => this.setState({area: v})}
+
+                                >
+                                    {/*<List.Item  arrow="horizontal">所在地区</List.Item>*/}
+                                    <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
+                                </Picker>
                             </div>
                             <TextareaItem
                                 clear
@@ -268,16 +307,19 @@ class NewAds extends React.Component {
                             />
                             <List.Item
                                 extra={<Switch
-                                    {...getFieldProps('Switch1', {
-                                        initialValue: false,
+                                    {...getFieldProps('isdefault', {
+                                        initialValue: data.isdefault,
                                         valuePropName: 'checked',
                                     })}
-                                    onClick={(checked) => { console.log(checked); }}
+                                    onClick={(checked) => {
+                                        console.log(checked);
+                                    }}
                                 />}
                             >选为默认地址：</List.Item>
                         </div>
 
-                        <Button type="primary"   style={{width:"95%",margin:"0 auto"}}   className="new-btn"   onClick={() => this._save()}>保存</Button>
+                        <Button type="primary" style={{width: "100%", margin: "0 auto"}} className="new-btn"
+                                onClick={() => this._save()}>保存</Button>
                     </div>
                 </div>
             )
@@ -321,21 +363,31 @@ class NewAds extends React.Component {
                                 value={this.state.value}
                             >联系电话</InputItem>
 
+                            <InputItem
+                                {...getFieldProps('card')}
+                                type="text"
+                                placeholder="购买海外直邮商品需填写身份信息"
+
+
+                                onChange={(v)=>this.setState({card: v})}
+                                value={this.state.card}
+                            >身份证号码</InputItem>
+
                             <div className="area-check">
-                            <Picker
+                                <Picker
 
-                                title="选择地区"
-                                extra="请选择(可选)"
-                                data={area.data}
-                                value={this.state.area}
-                                onChange={v => this.setState({area: v})}
-                            >
-                                {/*<List.Item    arrow="horizontal" onClick={() => this.setState({ visible: true })} >*/}
+                                    title="选择地区"
+                                    extra="请选择"
+                                    data={area.data}
+                                    value={this.state.area}
+                                    onChange={v => this.setState({area: v})}
+                                >
+                                    {/*<List.Item    arrow="horizontal" onClick={() => this.setState({ visible: true })} >*/}
                                     {/*所在地区*/}
-                                {/*</List.Item>*/}
-                                <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
+                                    {/*</List.Item>*/}
+                                    <CustomChildren       {...getFieldProps('area')} >所在地区</CustomChildren>
 
-                            </Picker>
+                                </Picker>
                             </div>
                             <TextareaItem
                                 onChange={v => this.setState({areaText: v})}
@@ -347,15 +399,18 @@ class NewAds extends React.Component {
                             />
                             <List.Item
                                 extra={<Switch
-                                    {...getFieldProps('Switch1', {
+                                    {...getFieldProps('isdefault', {
                                         initialValue: true,
                                         valuePropName: 'checked',
                                     })}
-                                    onClick={(checked) => { console.log(checked); }}
+                                    onClick={(checked) => {
+                                        console.log(checked);
+                                    }}
                                 />}
                             >选为默认地址：</List.Item>
                         </div>
-                        <Button type="primary" style={{width:"100%",margin:"0 auto"}}  className="new-btn"   onClick={() => this._save()}>保存地址</Button>
+                        <Button type="primary" style={{width: "100%", margin: "0 auto"}} className="new-btn"
+                                onClick={() => this._save()}>保存地址</Button>
                     </div>
                 </div>
             )

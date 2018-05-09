@@ -30,14 +30,16 @@ export const goodsDetail = (state = init, action) => {
         case 'COUNT_ADD':
 
 
-            return {...state, count: state.count++}
+            return {...state, count: action.count}
 
         case 'COUNT_LOSE':
-            let count = state.count
-            if (count < 1) {
-                count = 1
-            }
-            return {...state, count: count--}
+
+            return {...state, count: action.count}
+
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
         default:
             return state
     }

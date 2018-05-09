@@ -4,12 +4,14 @@
 
 export const home = {
     homeUrl: "/v2/circle/open/sechomelist", //POST
-    moreListUrl:"/app/findgoods/open/goodslist" // 参数 pagenum 页数  pagesize
+    moreListUrl:"/v2/findgoods/open/goodslist" ,// 参数 pagenum 页数  pagesize
+    msgCountUrl:'/app/my/unreadcount',
 
 
 }
 export const item = {
-    itemListUrl: "/app/findgoods/open/categoryalllist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid 一级菜单目录
+    itemListUrl: "/app/findgoods/open/categoryall ",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid 一级菜单目录
+
 }
 export const goodsDetail = {
 
@@ -24,7 +26,7 @@ export const goodsDetail = {
 }
 export const itemList = {
 
-    detailUrl: "/app/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id
+    detailUrl: "/v2/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 cid  分类id
 
 }
 export const moreList = {
@@ -32,7 +34,8 @@ export const moreList = {
 }
 
 export const search = {
-    detailUrl: "/app/findgoods/open/goodsSearch",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
+    detailUrl: "/v2/findgoods/open/goodsSearch",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
+    mlDetailUrl: "/v3/findgoods/open/goodslist",//POST   参数 pagenum 页数  pagesize 每页显示条数 word  关键字
 }
 export const auth = {
     loginUrl: "/app/user/open/login",//POST   mobile   password
@@ -67,7 +70,7 @@ export const user = {
     getOrderDetail:"/app/order/getgoodsorderdetail",//
     topUpUrl:"/app/order/createrechargeorder",//充值
     drawMoneyUrl:"/app/user/withdrawals",//提现
-    payUrl:'/app/pay/api',//支付接口
+    payUrl:'/v2/pay/api',//支付接口
     expPayUrl:'/app/order/successorder',//余额支付
     postage:"/app/findgoods/open/findyf",//获取邮费
     refundUrl:"/app/order/applyrefund",//申请退款
@@ -79,7 +82,15 @@ export const user = {
 
     icbannerUrl:"/app/ad/open/getadinfos",
 
-    protoUrl:"/app/user/open/getprotocol"
+    protoUrl:"/app/user/open/getprotocol",
+
+    badgeUrl:'/app/order/ordernum',
+
+
+    upLoadImgUrl:"/app/my/open/wxuploadhead",
+
+
+    storeAdsUrl:"/app/address/open/storeaddress",//门店地址列表
 
 
 
@@ -102,12 +113,29 @@ export const active = {
     activeList:"/app/findgoods/seckilllist",//列表
     activeDetail: "/app/findgoods/seckillgoodsinfo",//秒杀商品详情
     disList: "/app/findgoods/discountlist",//超值特惠
+    activeMoveMent:"/app/config/open/movement",//每日上新
 }
 
 
 export const wxSdkConfig={
 
     shareUrl:"/app/share/open/fenxiang",
+
+}
+
+
+export  const msg={
+
+
+    countUrl:"/app/my/unreadcount",
+    tlmeUrl:"/app/my/tlmessages",
+    msgListurl:"/app/my/open/mymessage",
+    readUrl:"/app/my/readmessage"
+}
+
+export const nation = {
+
+    nationList:'/v3/mlgj/open/config'//美伦国际
 
 }
 

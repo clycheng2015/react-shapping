@@ -23,7 +23,7 @@ export default class Seckill extends React.Component{
         this.data = [
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019141111.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019141111.jpg",
                     flashpic:null,
                     id:1575,
                     price:"95.50",
@@ -34,7 +34,7 @@ export default class Seckill extends React.Component{
                     zkprice:"93.50"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019154610.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019154610.jpg",
                     flashpic:null,
                     id:1592,
                     price:"158.00",
@@ -45,7 +45,7 @@ export default class Seckill extends React.Component{
                     zkprice:"138.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171013153109.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013153109.jpg",
                     flashpic:null,
                     id:1381,
                     price:"27.00",
@@ -56,7 +56,7 @@ export default class Seckill extends React.Component{
                     zkprice:"25.00"
                 },
                 {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171011161231.jpg",
+                    bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011161231.jpg",
                     flashpic:null,
                     id:1383,
                     price:"56.90",
@@ -67,7 +67,7 @@ export default class Seckill extends React.Component{
                     zkprice:"54.90"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011185245.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011185245.jpg",
                     flashpic: null,
                     id:1429,
                     price:"149.00",
@@ -78,7 +78,7 @@ export default class Seckill extends React.Component{
                     zkprice:"129.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011151426.png",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011151426.png",
                     flashpic: null,
                     id:1430,
                     price:"149.00",
@@ -91,7 +91,7 @@ export default class Seckill extends React.Component{
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171010144616.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171010144616.jpg",
                     flashpic:null,
                     id:1415,
                     price:"398.00",
@@ -102,7 +102,7 @@ export default class Seckill extends React.Component{
                     zkprice:"388.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011173705.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011173705.jpg",
                     flashpic: null,
                     id:1425,
                     price:"218.00",
@@ -113,7 +113,7 @@ export default class Seckill extends React.Component{
                     zkprice:"188.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011154326.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011154326.jpg",
                     flashpic: null,
                     id:1037,
                     price: "178.00",
@@ -124,7 +124,7 @@ export default class Seckill extends React.Component{
                     zkprice:"158.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011172644.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011172644.jpg",
                     flashpic: null,
                     id:1050,
                     price:"208.00",
@@ -135,7 +135,7 @@ export default class Seckill extends React.Component{
                     zkprice: "198.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171011120257.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171011120257.jpg",
                     flashpic: null,
                     id:1358,
                     price:"168.00",
@@ -146,7 +146,7 @@ export default class Seckill extends React.Component{
                     zkprice: "158.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924151606.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170924151606.jpg",
                     flashpic:null,
                     id:1103,
                     price:"65.00",
@@ -159,7 +159,7 @@ export default class Seckill extends React.Component{
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019141351.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019141351.jpg",
                     flashpic: null,
                     id: 1536,
                     price:"41.50",
@@ -170,7 +170,7 @@ export default class Seckill extends React.Component{
                     zkprice:"39.50"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171016143100.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171016143100.jpg",
                     flashpic:null,
                     id: 1537,
                     price:"17.30",
@@ -181,7 +181,7 @@ export default class Seckill extends React.Component{
                     zkprice:"15.30"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012160255.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012160255.jpg",
                     flashpic:null,
                     id:1538,
                     price:"39.20",
@@ -192,7 +192,7 @@ export default class Seckill extends React.Component{
                     zkprice:"37.20"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012162615.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012162615.jpg",
                     flashpic: null,
                     id:1539,
                     price:"12.30",
@@ -203,7 +203,7 @@ export default class Seckill extends React.Component{
                     zkprice:"10.30"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171012163033.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012163033.jpg",
                     flashpic: null,
                     id:1540,
                     price:"37.80",
@@ -214,7 +214,7 @@ export default class Seckill extends React.Component{
                     zkprice: "35.80"
                 },
                 {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012163345.jpg",
+                    bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012163345.jpg",
                     flashpic: null,
                     id:1541,
                     price:"37.80",
@@ -227,7 +227,7 @@ export default class Seckill extends React.Component{
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171019164336.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171019164336.jpg",
                     flashpic: null,
                     id:1479,
                     price:"35.00",
@@ -238,7 +238,7 @@ export default class Seckill extends React.Component{
                     zkprice:"33.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171013184032.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171013184032.jpg",
                     flashpic:null,
                     id:1024,
                     price:"37.00",
@@ -249,7 +249,7 @@ export default class Seckill extends React.Component{
                     zkprice:"35.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924111743.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170924111743.jpg",
                     flashpic:null,
                     id: 1026,
                     price:"209.00",
@@ -260,7 +260,7 @@ export default class Seckill extends React.Component{
                     zkprice:"189.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170924113522.png",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170924113522.png",
                     flashpic: null,
                     id: 1029,
                     price:"178.00",
@@ -271,7 +271,7 @@ export default class Seckill extends React.Component{
                     zkprice:"109.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171017113517.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017113517.jpg",
                     flashpic:null,
                     id:1030,
                     price:"178.00",
@@ -282,7 +282,7 @@ export default class Seckill extends React.Component{
                     zkprice: "158.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/170926163614.png",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170926163614.png",
                     flashpic:null,
                     id:1295,
                     price:"159.00",
@@ -295,7 +295,7 @@ export default class Seckill extends React.Component{
             ],
             [
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171002155201.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002155201.jpg",
                     flashpic: null,
                     id:369,
                     price:"37.80",
@@ -306,8 +306,8 @@ export default class Seckill extends React.Component{
                     zkprice:"29.00"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171002154754.jpg",
-                    flashpic:"http://worldwideapp.chinazjtc.com/upload/img/170923174805.png",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002154754.jpg",
+                    flashpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/170923174805.png",
                     id: 978,
                     price:"37.80",
                     standard:"/瓶",
@@ -317,7 +317,7 @@ export default class Seckill extends React.Component{
                     zkprice:"24.90"
                 },
                 {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171002113111.jpg",
+                    bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171002113111.jpg",
                     flashpic: null,
                     id:980,
                     price:"15.80",
@@ -328,7 +328,7 @@ export default class Seckill extends React.Component{
                     zkprice: "12.80"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171020110651.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171020110651.jpg",
                     flashpic:null,
                     id:1299,
                     price:"51.90",
@@ -339,7 +339,7 @@ export default class Seckill extends React.Component{
                     zkprice: "49.90"
                 },
                 {
-                    bigpic: "http://worldwideapp.chinazjtc.com/upload/img/171012172058.jpg",
+                    bigpic: "http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171012172058.jpg",
                     flashpic: null,
                     id:1555,
                     price:"15.50",
@@ -350,7 +350,7 @@ export default class Seckill extends React.Component{
                     zkprice:"12.30"
                 },
                 {
-                    bigpic:"http://worldwideapp.chinazjtc.com/upload/img/171017150008.jpg",
+                    bigpic:"http://mlgwxyt-1254277558.picsh.myqcloud.com/upload/img/171017150008.jpg",
                     flashpic:null,
                     id: 1300,
                     price:"189.00",

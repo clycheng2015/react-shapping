@@ -31,10 +31,10 @@ export const itemList = (state = init, action) => {
             let id = action.id
             let hasMore = true
             let dataList = []
-            if (state.list[id]) {
-
-                dataList = state.list[id].dataList
-            }
+            // if (state.list[id]) {
+            //
+            //     dataList = state.list[id].dataList
+            // }
 
             if(action.data.datalist.length<state.pagesize){
 
@@ -90,6 +90,10 @@ export const itemList = (state = init, action) => {
 
         case 'ITEM_SORT_BTN':
             return {...state,price:!state.price}
+        case 'CLEAR_ALL_STATE':
+
+            return{...init}
+
 
         default:
             return state

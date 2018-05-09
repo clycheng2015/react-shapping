@@ -5,7 +5,10 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppLocalStorage} from '../../utils/cookie'
-import {store} from '../../entry'
+
+import Bubble from '../../components/scroll/bubble'
+import Starry from '../../components/scroll/Starry'
+
 
 
 import {Modal, Icon, Toast, WhiteSpace, Flex, List} from 'antd-mobile'
@@ -33,26 +36,18 @@ export default class Setting extends React.Component {
 
     }
 
-    handleClick() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
     _loginOut = () => {
         const {loginOut, history} = this.props
         loginOut()
-        window.resetState = () => {
-            store.dispatch(init());
-        }
+        window.resetState()
         AppLocalStorage.Cache.clear()
         Toast.loading('正在退出...', 2, () => {
             history.push("/")
         });
 
     }
+
+
 
     render() {
         const {history} = this.props
@@ -64,6 +59,8 @@ export default class Setting extends React.Component {
                      background: "#f3f3f1"
                  }}
             >
+
+
 
                 <div className="nav-tab">
                     <Flex justify="center" align="center">
@@ -84,10 +81,10 @@ export default class Setting extends React.Component {
 
                     </List.Item>
 
-
-                    <List.Item arrow="" onClick={() => {
-                        history.push('/about')
-                    }}> 关于</List.Item>
+                    
+                    {/*<List.Item arrow="" onClick={() => {*/}
+                        {/*history.push('/about')*/}
+                    {/*}}> 关于</List.Item>*/}
                 </div>
                 <WhiteSpace/>
                 <div>
@@ -96,6 +93,7 @@ export default class Setting extends React.Component {
                         this._loginOut()
                     }}>安全退出</List.Item>
                 </div>
+
 
                 {/*<Button onClick={() => {*/}
                 {/*removeLocalItem("userInfo")*/}

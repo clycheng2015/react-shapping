@@ -37,7 +37,7 @@
         width: 1.1rem;
         box-sizing: border-box;
         border: 1px solid black;
-        a{
+        a {
           text-decoration: none;
           display: inline-block;
           width: 100%;
@@ -125,7 +125,6 @@
       width: 100%;
       min-height: 3.75rem;
       height: auto;
-      display: table-cell;
       text-align: center;
       vertical-align: middle;
       background: white;
@@ -138,13 +137,26 @@
 
     }
     .msg-info {
-
       padding-left: .2rem;
       background: white;
       padding-bottom: .2rem;
       .title {
         padding-top: .2rem;
         font-size: .3rem;
+        .owner {
+          display: inline-block;
+          width: 1.3rem;
+          height: .32rem;
+          font-size: .24rem;
+          line-height: .32rem;
+          text-align: center;
+          background: #c058f6;
+          color: white;
+          border-radius: 2px;
+          margin-right: .1rem;
+          margin-bottom: .05rem;
+
+        }
 
       }
       .sall {
@@ -217,17 +229,17 @@
         font-size: .24rem;
         color: #666666;
       }
-      .r-icon{
+      .r-icon {
 
         float: right;
         line-height: .56rem;
         color: #d0d0d0;
-        margin-top:.06rem
+        margin-top: .06rem
       }
       margin-top: .1rem;
     }
 
-    .more-know-info{
+    .more-know-info {
 
       height: .8rem;
       //width: 100%;
@@ -236,13 +248,12 @@
       line-height: .8rem;
       background: white;
       margin-top: .1rem;
-      .r-icon{
+      .r-icon {
         float: right;
         line-height: .8rem;
         color: #d0d0d0;
-        margin-top:.2rem
+        margin-top: .2rem
       }
-
 
     }
 
@@ -251,7 +262,7 @@
       background: white;
       margin-top: .2rem;
 
-      .title{
+      .title {
         height: .8rem;
         font-size: .32rem;
         line-height: .8rem;
@@ -316,6 +327,7 @@
         width: 50%;
         text-align: center;
         overflow: hidden;
+        position: relative;
         img {
           width: .4rem;
           //padding-top: .2rem;
@@ -330,6 +342,22 @@
 
         }
 
+        .am-badge{
+
+          position: absolute !important;
+          right: .2rem  !important;
+          width: .4rem  !important;
+          top: 0  !important;
+          padding: 0  !important;
+          margin: 0  !important;
+          .am-badge-text{
+
+            line-height: 0.35rem !important;
+            height: 0.3rem !important;
+          }
+
+        }
+
       }
 
     }
@@ -337,7 +365,6 @@
   }
 
   .like {
-
 
     height: 100%;
 
@@ -361,7 +388,7 @@
       }
     }
 
-    .goods{
+    .goods {
       width: 3.7rem;
       height: 5rem;
       background: white;
@@ -369,27 +396,26 @@
       float: left;
       box-sizing: border-box;
       margin-top: .1rem;
-      .img-info{
+      .img-info {
         width: 3.7rem;
         height: 3.7rem;
         text-align: center;
         display: table-cell;
         vertical-align: middle;
-        img{
+        img {
           width: 100%;
-          max-height:3.7rem;
+          max-height: 3.7rem;
           vertical-align: middle;
         }
 
-
       }
 
-      .txt-info{
+      .txt-info {
         width: 3.7rem;
         height: 1.2rem;
         overflow: hidden;
 
-        .title{
+        .title {
 
           display: -webkit-box !important;
           -webkit-box-orient: vertical !important;
@@ -399,12 +425,12 @@
           height: .7rem;
           padding-right: .2rem;
           padding-left: .2rem;
-          line-height: .3rem;
+          line-height: .37rem;
 
           margin: 0;
 
         }
-        .price{
+        .price {
           padding-right: .2rem;
           padding-left: .2rem;
           color: red;
@@ -414,9 +440,8 @@
 
       }
 
-
     }
-    .goods:nth-child(even){
+    .goods:nth-child(even) {
       margin-left: .09rem;
     }
 
@@ -456,31 +481,68 @@
 
   }
   .drawer-body {
+    width: 7.5rem;
     height: 2.2rem;
     border-bottom: 1px solid #f3f3f1;
+    padding-bottom: 0.8rem;
   }
   .drawer-img {
 
-    width: 35%;
+    width: 2rem;
     height: 2rem;
     //border: 1px solid red;
     float: left;
-    margin-left: .2rem;
+    margin-left: .3rem;
+    border-radius: .1rem;
+    overflow: hidden;
+    margin-top: -0.4rem;
     img {
       width: 100%;
-      height: 2rem;
+      height: 100%;
     }
 
+  }
+  .ReactDrawer__drawer-bottom___2f9G_{
+    min-height:0;
   }
   .drawer-gs-title {
     width: 59%;
     height: 2rem;
     //border: 1px solid red;
-    float: right;
+    float: left;
+    margin-left: 0.22rem;
+    position: relative;
+    .drawer-price{
+      font-size: 0.32rem;
+      color: #fe4203;
+      font-weight: 600;
+      margin-top: 0.4rem;
+    }
+    .icon-cross{
+      position: absolute;
+      top: 0.3rem;
+      right: 0;
+    }
+    .owner {
+      display: inline-block;
+      width: 1.3rem;
+      height: .32rem;
+      font-size: .24rem;
+      line-height: .32rem;
+      text-align: center;
+      background: #c058f6;
+      color: white;
+      border-radius: 2px;
+      margin-right: .1rem;
+      margin-bottom: .05rem;
+      margin-top: .05rem;
+
+    }
+
     .one {
-      padding-top: .2rem;
-      font-size:.28rem ;
-      height: .6rem;
+
+      font-size: .28rem;
+      height: .4rem;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
@@ -488,9 +550,29 @@
       padding-right: .1rem;
 
     }
-    .two {
 
-      margin-top: .4rem;
+
+    .num{
+      display: inline-block;
+      width: .5rem;
+      height: .5rem;
+      margin-bottom: -.22rem;
+      text-align: center;
+      //padding-left: .2rem;
+      //padding-right: .2rem;
+      overflow: hidden;
+      font-size: .3rem;
+
+    }
+    .two {
+      .count {
+
+        .exp{
+          font-size: .18rem;
+          color: grey;
+
+        }
+      }
       .am-list {
         border: none;
         margin-bottom: .2rem;
@@ -514,7 +596,7 @@
         }
         .am-list-item.am-input-item {
 
-          border: 1px solid #cacaca;
+          border: none;
           min-height: .3rem;
           height: .34rem;
           padding: 0;
@@ -530,15 +612,16 @@
       }
       .box {
         display: inline-block;
-        width: .32rem;
-        height: .32rem;
-        border: 1px solid #cccccc;
+        width: .35rem;
+        height: .35rem;
+        border-radius: 4px;
         line-height: .32rem;
         text-align: center;
+        background: #f3f3f1;
 
       }
       .add {
-        color: #d92f47;
+
         margin-left: .1rem;
       }
       .input {
@@ -551,40 +634,59 @@
     }
   }
 
-  .know-drawer-info{
+  .know-drawer-info {
 
     height: 7.2rem;
 
-    .list{
-     li{
+    .list {
+      li {
 
-       width: 7.5rem;
-       height: 1.35rem;
-       border-bottom: 1px solid #f7f6f6;
-       img{
-         width: .35rem;
-         margin-bottom: .08rem;
-         margin-right:.2rem ;
-         float: left;
-         margin-top: .15rem;
-       }
-       .title{
-         font-size: .3rem;
-         line-height: .7rem;
-         padding-left: .3rem;
+        width: 7.5rem;
+        height: 1.35rem;
+        border-bottom: 1px solid #f7f6f6;
+        img {
+          width: .35rem;
+          margin-bottom: .08rem;
+          margin-right: .2rem;
+          float: left;
+          margin-top: .15rem;
+        }
+        .title {
+          font-size: .3rem;
+          line-height: .7rem;
+          padding-left: .3rem;
 
-       }
-       .exp{
-         font-size: .26rem;
-         color: #666666;
-         padding-left: .85rem;
-       }
+        }
+        .exp {
+          font-size: .26rem;
+          color: #666666;
+          padding-left: .85rem;
+        }
 
-
-     }
-
+      }
 
     }
+  }
+
+  .has-no-sell-info{
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .24rem;
+    text-align: center;
+    color: #333333;
+    background: #fedb62;
+    position: fixed;
+    bottom: 1rem;
+    width: 7.5rem;
+    opacity: .9;
+
+  }
+
+  .has-no1{
+    background: #cdcdcd !important;
+  }
+  .has-no2{
+    background: #ababab !important;
   }
 }
 
